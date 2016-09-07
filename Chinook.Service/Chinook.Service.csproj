@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F4AFEA80-5247-482E-9D27-1B1C6635BC4C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Chinook.Service</RootNamespace>
+    <AssemblyName>Chinook.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.3.0\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChinookServiceHelper.cs" />
+    <Compile Include="EasyLOB\Unity\UnityHelper.cs" />
+    <Compile Include="EasyLOB\Unity\UnityHelperAuditTrail.cs" />
+    <Compile Include="EasyLOB\Unity\UnityHelperChinook.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ChinookServiceHelper.TXT.cs" />
+    <Compile Include="ChinookServiceHelper.XLSX.cs" />
+    <Compile Include="EasyLOB\Unity\UnityHelperLog.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Application\EasyLOB.Application\EasyLOB.Application.csproj">
+      <Project>{90d108e3-3dea-45ac-84a5-53de6ffa9ff5}</Project>
+      <Name>EasyLOB.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Data\EasyLOB.Data\EasyLOB.Data.csproj">
+      <Project>{1f89f104-c08b-4537-a9a8-5c51c53376f0}</Project>
+      <Name>EasyLOB.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.AuditTrail\EasyLOB.AuditTrail.Application\EasyLOB.AuditTrail.Application.csproj">
+      <Project>{87a7e2ee-a7ab-4b8c-865c-c534d5e622f6}</Project>
+      <Name>EasyLOB.AuditTrail.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.AuditTrail\EasyLOB.AuditTrailManager\EasyLOB.AuditTrailManager.csproj">
+      <Project>{3acd8d6b-b302-477a-aaf6-3383f3990f10}</Project>
+      <Name>EasyLOB.AuditTrailManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.AuditTrail\EasyLOB.AuditTrail\EasyLOB.AuditTrail.csproj">
+      <Project>{68555183-7e6f-4b6c-a908-63276d1ac73d}</Project>
+      <Name>EasyLOB.AuditTrail</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.AuditTrail\EasyLOB.AuditTrail.Persistence\EasyLOB.AuditTrail.Persistence.csproj">
+      <Project>{c66986f4-5bc0-4dde-ad33-6e54ba5f8816}</Project>
+      <Name>EasyLOB.AuditTrail.Persistence</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.AuditTrail\EasyLOB.AuditTrail.PersistenceEntityFramework\EasyLOB.AuditTrail.PersistenceEntityFramework.csproj">
+      <Project>{aee9b888-51e7-4083-877e-c5c76c3acbaf}</Project>
+      <Name>EasyLOB.AuditTrail.PersistenceEntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Extensions\EasyLOB.Extensions.Mail\EasyLOB.Extensions.Mail.csproj">
+      <Project>{2d9412e9-8719-4bda-9957-f4e9df5deb8f}</Project>
+      <Name>EasyLOB.Extensions.Mail</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Log\EasyLOB.LogManager\EasyLOB.LogManager.csproj">
+      <Project>{81e6e9d2-e870-46ee-9fcb-3ee959479a87}</Project>
+      <Name>EasyLOB.LogManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Log\EasyLOB.Log\EasyLOB.Log.csproj">
+      <Project>{0352f43e-27df-4fce-86bc-da3f6ead005a}</Project>
+      <Name>EasyLOB.Log</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Library\EasyLOB.Library\EasyLOB.Library.csproj">
+      <Project>{55b7716b-36a3-442d-9e9e-9caab7db592e}</Project>
+      <Name>EasyLOB.Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Persistence\EasyLOB.Persistence\EasyLOB.Persistence.csproj">
+      <Project>{35433610-cb14-4909-b890-2150b6443a25}</Project>
+      <Name>EasyLOB.Persistence</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chinook.Application\Chinook.Application.csproj">
+      <Project>{e607d4cf-420b-4aef-8ba6-5f19ba290ff1}</Project>
+      <Name>Chinook.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chinook.Data\Chinook.Data.csproj">
+      <Project>{9536d998-473d-4ee6-bb32-45a9c7b38297}</Project>
+      <Name>Chinook.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chinook.Persistence\Chinook.Persistence.csproj">
+      <Project>{edc764bf-825e-44da-b872-9fdf28cc1735}</Project>
+      <Name>Chinook.Persistence</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chinook.PersistenceEntityFramework\Chinook.PersistenceEntityFramework.csproj">
+      <Project>{afb47cac-9357-462f-8412-96251bc785af}</Project>
+      <Name>Chinook.PersistenceEntityFramework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

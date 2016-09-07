@@ -1,0 +1,194 @@
+@model TrackItemModel
+
+@{
+    string albumText = Model.Track == null ? "" : (Model.Track.AlbumLookupText ?? "");
+    string genreText = Model.Track == null ? "" : (Model.Track.GenreLookupText ?? "");
+    string mediaTypeText = Model.Track == null ? "" : (Model.Track.MediaTypeLookupText ?? "");
+}
+
+@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+@Html.HiddenFor(model => model.ControllerAction)
+@Html.HiddenFor(model => model.IsMasterDetail)
+@Html.HiddenFor(model => model.MasterAlbumId)
+@Html.HiddenFor(model => model.MasterGenreId)
+@Html.HiddenFor(model => model.MasterMediaTypeId)
+
+@{Html.EJ().Tab("Tab_Track")
+    .ClientSideEvents(clientEvent => clientEvent
+        .ItemActive("itemActive_Tab_Track")
+    )
+    .Items(data =>
+    {
+        data.Add().ID("TabSheet_Track_Track").Text(TrackResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
+            
+            <div id="Group_Track_TrackId" class="@AppDefaults.CssClassGroup col-md-2">
+                @Html.LabelFor(model => model.Track.TrackId, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.Track.TrackId, new { id = "Track_TrackId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.Track.TrackId, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+            
+            <div id="Group_Track_Name" class="@AppDefaults.CssClassGroup col-md-6">
+                @Html.LabelFor(model => model.Track.Name, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.Track.Name, new { id = "Track_Name", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.Track.Name, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+            
+            <div id="Group_Track_AlbumId" class="@AppDefaults.CssClassGroup col-md-6">
+                @Html.Label(@AlbumResources.EntitySingular, new { @class = AppDefaults.CssClassLabel })
+                @Html.EditorFor(model => model.Track.AlbumId, new { id = "Track_AlbumId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })                    
+                @Html.Action("Lookup", "Album", new
+                {
+                    Text = albumText,
+                    ValueId = "Track_AlbumId"
+                })
+                @Html.ValidationMessageFor(model => model.Track.AlbumId, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+            
+            <div id="Group_Track_MediaTypeId" class="@AppDefaults.CssClassGroup col-md-6">
+                @Html.Label(@MediaTypeResources.EntitySingular, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.Track.MediaTypeId, new { id = "Track_MediaTypeId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })                    
+                @Html.Action("Lookup", "MediaType", new
+                {
+                    Text = mediaTypeText,
+                    ValueId = "Track_MediaTypeId"
+                })
+                @Html.ValidationMessageFor(model => model.Track.MediaTypeId, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+            
+            <div id="Group_Track_GenreId" class="@AppDefaults.CssClassGroup col-md-6">
+                @Html.Label(@GenreResources.EntitySingular, new { @class = AppDefaults.CssClassLabel })
+                @Html.EditorFor(model => model.Track.GenreId, new { id = "Track_GenreId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })                    
+                @Html.Action("Lookup", "Genre", new
+                {
+                    Text = genreText,
+                    ValueId = "Track_GenreId"
+                })
+                @Html.ValidationMessageFor(model => model.Track.GenreId, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+            
+            <div id="Group_Track_Composer" class="@AppDefaults.CssClassGroup col-md-6">
+                @Html.LabelFor(model => model.Track.Composer, new { @class = AppDefaults.CssClassLabel })
+                @Html.EditorFor(model => model.Track.Composer, new { id = "Track_Composer", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.Track.Composer, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+            
+            <div id="Group_Track_Milliseconds" class="@AppDefaults.CssClassGroup col-md-2">
+                @Html.LabelFor(model => model.Track.Milliseconds, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.Track.Milliseconds, new { id = "Track_Milliseconds", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.Track.Milliseconds, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+            
+            <div id="Group_Track_Bytes" class="@AppDefaults.CssClassGroup col-md-2">
+                @Html.LabelFor(model => model.Track.Bytes, new { @class = AppDefaults.CssClassLabel })
+                @Html.EditorFor(model => model.Track.Bytes, new { id = "Track_Bytes", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.Track.Bytes, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+            
+            <div id="Group_Track_UnitPrice" class="@AppDefaults.CssClassGroup col-md-2">
+                @Html.LabelFor(model => model.Track.UnitPrice, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.Track.UnitPrice, new { id = "Track_UnitPrice", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.Track.UnitPrice, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+
+        </div>);
+        data.Add().ID("TabSheet_Track_InvoiceLine").Text(InvoiceLineResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
+            <div id="Ajax_Track_InvoiceLine"></div>
+        </div>);
+        data.Add().ID("TabSheet_Track_PlaylistTrack").Text(PlaylistTrackResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
+            <div id="Ajax_Track_PlaylistTrack"></div>
+        </div>);
+    })
+    .Render();
+}
+
+<script>
+    // Validate hidden fields
+    $.validator.setDefaults({ ignore: null });
+    // Parse validators
+    $.validator.unobtrusive.parse($("#Ajax"));
+
+    $(function () {
+        try {
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+            var trackDictionary = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(DataHelper.GetDataDictionaryAttribute(typeof(Track)))); }();
+            var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
+            
+            var ajaxUrl = "";
+            // InvoiceLine
+            ajaxUrl = "@(Html.Raw(Url.Action("Search", "InvoiceLine", new { MasterUrl = Context.Request.Url.AbsoluteUri, MasterControllerAction = Model.ControllerAction, MasterTrackId = Model.Track.TrackId })))";
+            $("#Ajax_Track_InvoiceLine").load(ajaxUrl);
+            // PlaylistTrack
+            ajaxUrl = "@(Html.Raw(Url.Action("Search", "PlaylistTrack", new { MasterUrl = Context.Request.Url.AbsoluteUri, MasterControllerAction = Model.ControllerAction, MasterTrackId = Model.Track.TrackId })))";
+            $("#Ajax_Track_PlaylistTrack").load(ajaxUrl);
+            ej.widget.init($("#Ajax"));
+            $(document).prop("title", "@(ViewBag.Title)");            
+    
+            var readonly = (controllerAction == "delete" || controllerAction == "read");
+            $("input.form-control").not(":input[type=button], :input[type=image], :input[type=reset], :input[type=submit]").attr("readonly", readonly);
+            if (readonly) {
+                $("img.z-buttonLookup").hide();
+            }
+            else {
+                $("img.z-buttonLookup").show();
+            }
+
+            $("input[name$='_Lookup']").attr("readonly", true);
+
+            if (trackDictionary.IsIdentity) {            
+                $("#Group_Track_TrackId").hide();
+            }
+
+            // Associations (FK)
+            // Album
+            if (model.MasterAlbumId != null) {
+                $("#Track_AlbumId").val(model.MasterAlbumId);
+                $("#Group_Track_AlbumId").hide();            
+            }
+            // Genre
+            if (model.MasterGenreId != null) {
+                $("#Track_GenreId").val(model.MasterGenreId);
+                $("#Group_Track_GenreId").hide();            
+            }
+            // MediaType
+            if (model.MasterMediaTypeId != null) {
+                $("#Track_MediaTypeId").val(model.MasterMediaTypeId);
+                $("#Group_Track_MediaTypeId").hide();            
+            }
+
+            // Collections (PK)
+            var display = controllerAction == "create" ? "none" : "block";
+            // InvoiceLine
+            var gridInvoiceLine = $("#Grid_InvoiceLine");
+            gridInvoiceLine.css("display", display);
+            // PlaylistTrack
+            var gridPlaylistTrack = $("#Grid_PlaylistTrack");
+            gridPlaylistTrack.css("display", display);
+        } catch (exception) {
+            alert(zExceptionMessage("_TrackItem.cshtml", "function()", exception));
+        }
+    });
+
+    function itemActive_Tab_Track(args) { // IE
+        try {
+            switch(args.activeIndex) {
+            // InvoiceLine
+                case 1:
+                    $("#Grid_InvoiceLine").ejGrid({
+                        allowScrolling: true,
+                        scrollSettings: { width: "100%" }
+                    });
+                    break;
+            // PlaylistTrack
+                case 2:
+                    $("#Grid_PlaylistTrack").ejGrid({
+                        allowScrolling: true,
+                        scrollSettings: { width: "100%" }
+                    });
+                    break;
+            }            
+        } catch (exception) {
+            alert(zExceptionMessage("_TrackItem.cshtml", "itemActive_Tab_Track(args)", exception));
+        }
+    }    
+</script>

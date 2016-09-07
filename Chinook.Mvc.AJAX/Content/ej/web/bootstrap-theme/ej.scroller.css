@@ -1,0 +1,124 @@
+/*@pager-currentitem:#428BCA;*/
+/*-----------------------Map------------------*/
+/*-----------------------PdfViewer------------------*/
+/*-----------------------End PdfViewer------------------*/
+/*-----------------------OLAP Definition Start-----------------*/
+.e-olapclient .removeSplitBtn {
+  border-radius: 4px;
+}
+/*-----------------------OLAP Definition End
+
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Diagram Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Ribbon End-----------------------*/
+/*----------------------Kanban Definition-----------------------*/
+/*----------------------Kanban End-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+/*----------------------rangeScrollbar Start------------------*/
+/*----------------------rangeScrollbar End--------------------*/
+/*----------------------Office 365 theme-----------------------*/
+/*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
+/*----------------------material theme-----------------------*/
+/*------------------------------------- scrollbar -------------------------------------------*/
+
+.e-scrollbar .e-vscroll,
+.e-scrollbar .e-hscroll,
+.e-scrollbar .e-vhandlespace {
+  background-color: #fafafa;
+}
+.e-scrollbar .e-vscroll {
+  border-left: 1px solid #cecece;
+  border-right: none;
+}
+.e-scrollbar .e-hscroll {
+  border-top: 1px solid #cecece;
+}
+.e-scrollbar .e-hscroll .e-hdown.e-icon {
+  border-right: 1px solid #cecece;
+}
+.e-scrollbar .e-hscroll .e-hup.e-icon {
+  border-left: none;
+}
+.e-scrollbar .e-vscroll .e-chevron-down_01.e-icon {
+  border-bottom: 1px solid #cecece;
+}
+.e-scroller.e-rtl .e-scrollbar .e-vscroll {
+  border-right: 1px solid #cecece;
+  border-left: none;
+}
+.e-scroller.e-rtl .e-scrollbar .e-hscroll .e-hup.e-icon {
+  border-left: 1px solid #cecece;
+}
+.e-scroller.e-rtl .e-scrollbar .e-hscroll .e-hdown.e-icon {
+  border-right: none;
+}
+.e-scrollbar .e-active {
+  background-color: #3277b2;
+}
+.e-scrollbar .e-vhandle,
+.e-scrollbar .e-hhandle {
+  background: #fcfcfc;
+  transition: top 0.1s linear 0s, left 0.1s linear 0s;
+}
+.e-scrollbar .e-vhandle {
+  border-top: 1px solid #cecece;
+  border-bottom: 1px solid #cecece;
+}
+.e-scrollbar .e-hhandle {
+  border-left: 1px solid #cecece;
+  border-right: 1px solid #cecece;
+}
+.e-vhandle.e-box.e-pinch.e-touch,
+.e-hhandle.e-box.e-pinch.e-touch {
+  background-color: #3277b2;
+}
+.e-scrollbar .e-vhandle:hover,
+.e-scrollbar .e-hhandle:hover {
+  background-color: #f4f4f4;
+  cursor: default;
+  border-color: #cecece;
+}
+.e-scrollbar .e-button {
+  color: #666666;
+}
+.e-scrollbar .e-button:hover {
+  background-color: #f4f4f4;
+  color: #333333;
+  border-color: #cecece;
+}
+.e-scroller .e-active {
+  background-color: #3277b2;
+}
+.e-scroller .e-vscroll .e-chevron-up_01.e-button,
+.e-scroller .e-vscroll .e-chevron-down_01.e-button,
+.e-scroller .e-hscroll .e-hup.e-button,
+.e-scroller .e-hscroll .e-hdown.e-button {
+  background: #fcfcfc;
+}
+.e-scroller .e-disable .e-vhandle:hover,
+.e-scroller .e-disable .e-chevron-up_01.e-button:hover,
+.e-scroller .e-disable .e-chevron-down_01.e-button:hover,
+.e-scroller .e-disable .e-hup.e-button:hover,
+.e-scroller .e-disable .e-hdown.e-button:hover .e-scroller .e-disable .e-hhandle:hover {
+  background-color: #bcbcbc;
+  border: 1px solid #cecece;
+  transition: top 0.1s linear 0s, left 0.1s linear 0s;
+}
+.e-scrollbar .e-v-line:before {
+  content: "";
+}
+.e-scrollbar .e-h-line:before {
+  content: "";
+}
+.e-scroller .e-button,
+.e-scroller .e-disable .e-button:hover {
+  color: #666666;
+}
+.e-scroller .e-disable .e-button:hover {
+  background-color: transparent;
+}

@@ -1,0 +1,256 @@
+@model UserClaimCollectionModel
+
+@(Html.EJ().Grid<UserClaim>("Grid_UserClaim")
+    .Datasource(datasource => datasource
+        .Adaptor(AdaptorType.UrlAdaptor)
+        .URL(Url.Content("~/UserClaim/DataSource"))
+    )
+    .AllowFiltering()
+    .AllowGrouping()
+    .AllowPaging()
+    .AllowResizing()
+    .AllowScrolling()
+    .AllowSearching()
+    .AllowSorting()
+    .ClientSideEvents(clientEvent => clientEvent
+        .ActionBegin("actionBegin_Grid_UserClaim")
+        .ActionFailure("actionFailure_Grid_UserClaim")
+        .Load("load_Grid_UserClaim")
+        .ToolbarClick("toolbarClick_Grid_UserClaim")
+    )
+    .Columns(column =>
+    {
+        column.Field("Id")
+            .AllowEditing(false)
+            .EditType(EditingType.Numeric)
+            .Format(SyncfusionPatternResources.GridFormat_Integer)
+            .HeaderText(UserClaimResources.PropertyId)
+            .IsIdentity(true)
+            .IsPrimaryKey(true)
+            .TextAlign(TextAlign.Right)
+            .Visible(false)
+            .Width(100)
+            .Add();
+        column.Field("UserId")
+            .EditType(EditingType.String)
+            .HeaderText(UserClaimResources.PropertyUserId)
+            .Visible(false)
+            .Width(240)
+            .Add();
+        column.Field("UserLookupText")
+            .AllowEditing(false)
+            .HeaderText(UserResources.EntitySingular)
+            .Visible(true)
+            .Width(100)
+            .Add();
+        column.Field("ClaimType")
+            .EditType(EditingType.String)
+            .HeaderText(UserClaimResources.PropertyClaimType)
+            .Visible(true)
+            .Width(-10)
+            .Add();
+        column.Field("ClaimValue")
+            .EditType(EditingType.String)
+            .HeaderText(UserClaimResources.PropertyClaimValue)
+            .Visible(true)
+            .Width(-10)
+            .Add();
+    })
+    .EditSettings(edit => edit
+        .AllowAdding()
+        .AllowDeleting()
+        .AllowEditing()
+    )
+    .EnablePersistence()
+    .FilterSettings(filter => filter
+        .EnableCaseSensitivity(false)
+        .FilterType(FilterType.Excel)
+        .MaxFilterChoices(System.Int32.MaxValue)
+    )
+    .Mappers(map => map
+        .ExportToExcelAction(Url.Content("~/UserClaim/ExportToExcel"))
+        .ExportToPdfAction(Url.Content("~/UserClaim/ExportToPdf"))
+        .ExportToWordAction(Url.Content("~/UserClaim/ExportToWord"))
+    )
+    .PageSettings(page => page
+        .PageSize(AppDefaults.SyncfusionRecordsByPage)
+    )
+    .SearchSettings(search =>
+    {
+        search.Fields(field =>
+        {
+            //field.Add("Id");
+            //field.Add("UserId");
+            field.Add("UserLookupText");
+            field.Add("ClaimType");
+            field.Add("ClaimValue");
+        });
+    })
+    .ShowColumnChooser()
+    .ToolbarSettings(toolbar => toolbar
+        .CustomToolbarItems(new List<object>() {
+            new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_UserClaim" }
+        })
+        .ShowToolbar()
+        .ToolbarItems(items =>
+        {
+            items.AddTool(ToolBarItems.Search);
+            items.AddTool(ToolBarItems.Add);
+            items.AddTool(ToolBarItems.Edit);
+            items.AddTool(ToolBarItems.Delete);
+            items.AddTool(ToolBarItems.ExcelExport);
+            items.AddTool(ToolBarItems.PdfExport);
+            items.AddTool(ToolBarItems.WordExport);
+        })
+    )
+)
+
+@Html.OperationResult(Model.OperationResult)
+
+<script type="text/x-jsrender" id="Toolbar_Grid_UserClaim">
+    <div id="Toolbar_Grid_UserClaim_Read" class="e-toolbaricons e-icon e-document" title="@PresentationResources.Read"></div>
+</script>
+
+<script>
+    $(function () {
+        try {
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+
+            var gridUserClaim = $("#Grid_UserClaim");
+            var ejGridUserClaim = gridUserClaim.data("ejGrid");
+    
+            if (ejGridUserClaim.model.filterSettings.filteredColumns.length != 0) {
+                ejGridUserClaim.clearFiltering();
+            }
+                
+            if (!model.IsMasterDetail) {
+                ejGridUserClaim.setModel({
+                    allowGrouping: true,
+                    toolbarSettings: {
+                        showToolbar: true,
+                        toolbarItems: [
+                            ej.Grid.ToolBarItems.Search,
+                            ej.Grid.ToolBarItems.Add,
+                            ej.Grid.ToolBarItems.Edit,
+                            ej.Grid.ToolBarItems.Delete,
+                            ej.Grid.ToolBarItems.ExcelExport,
+                            ej.Grid.ToolBarItems.PdfExport,
+                            ej.Grid.ToolBarItems.WordExport
+                        ]                    
+                    }
+                });
+            } else {
+                ejGridUserClaim.setModel({
+                    allowGrouping: false,
+                    toolbarSettings: {
+                        showToolbar: true,
+                        toolbarItems: [
+                            ej.Grid.ToolBarItems.Add,
+                            ej.Grid.ToolBarItems.Edit,
+                            ej.Grid.ToolBarItems.Delete
+                        ]                    
+                    }
+                });
+
+                if (model.MasterUserId != null) {
+                    ejGridUserClaim.filterColumn("UserId", ej.FilterOperators.equal, model.MasterUserId, ej.Predicate.and);
+                }
+            }
+        } catch (exception) {
+            alert(zExceptionMessage("_UserClaimCollection.cshtml", "function()", exception));
+        }
+    });
+    
+    function actionBegin_Grid_UserClaim(args) {
+        try {
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+            var masterControllerAction = model.MasterControllerAction == null ? "" : model.MasterControllerAction.toLowerCase();
+    
+            // Associations (FK)
+            var url = "";
+            // User
+            if (model.MasterUserId != null) {
+                url = url + (url == "" ? "" : "&") + "MasterUserId=" + String(model.MasterUserId);
+            }
+
+            if (masterControllerAction == "" || masterControllerAction == "update") {
+                switch(args.requestType) {     
+                    case "add":
+                        // Create
+                        if (model.IsSecurityOperations.IsCreate) {
+                            window.location = "@Url.Content("~/UserClaim/Create")" + (url == "" ? "" : "?") + url;
+                        }
+                        break;
+                    case "read":
+                        // Read
+                        if (model.IsSecurityOperations.IsRead) {
+                            var data = args.data;
+                            if (!ej.isNullOrUndefined(data)) {
+                                window.location = "@Url.Content("~/UserClaim/Read/")" + "?Id=" + String(data.Id) + (url == "" ? "" : "&") + url;
+                            }
+                        }
+                        break;
+                    case "beginedit":
+                        // Update
+                        if (model.IsSecurityOperations.IsUpdate) {
+                            var data = this.model.currentViewData[args.rowIndex];
+                            if (!ej.isNullOrUndefined(data)) {
+                                window.location = "@Url.Content("~/UserClaim/Update/")" + "?Id=" + String(data.Id) + (url == "" ? "" : "&") + url;
+                            }
+                        }
+                        break;
+                    case "delete":
+                        // Delete
+                        if (model.IsSecurityOperations.IsDelete) {
+                            var data = args.data;
+                            if (!ej.isNullOrUndefined(data)) {
+                                window.location = "@Url.Content("~/UserClaim/Delete/")" + "?Id=" + String(data.Id) + (url == "" ? "" : "&") + url;
+                            }
+                        }
+                        break;
+                }
+            }
+
+            if (args.requestType == "add" || args.requestType == "beginedit" || args.requestType == "delete") {
+                args.cancel = true;
+            }
+        } catch (exception) {
+            alert(zExceptionMessage("_UserClaimCollection.cshtml", "actionBegin_Grid_UserClaim(args)", exception));
+        }
+    }
+    
+    function actionFailure_Grid_UserClaim(args) {
+        try {
+            alert(zErrorMessage(args.error.responseText));
+        } catch (exception) {
+            alert(zExceptionMessage("_UserClaimCollection.cshtml", "actionFailure_Grid_UserClaim(args)", exception));
+        }
+    }    
+
+    function load_Grid_UserClaim(args) {
+        try {            
+            var culture = "@System.Globalization.CultureInfo.CurrentCulture.Name";
+            this.model.locale = culture;
+        } catch (exception) {
+            alert(zExceptionMessage("_UserClaimCollection.cshtml", "load_Grid_UserClaim(args)", exception));
+        }
+    }
+
+    function toolbarClick_Grid_UserClaim(sender) {
+        try {
+            var toolbar = $(sender.target);
+            var gridUserClaim = $("#Grid_UserClaim");
+            var ejGridUserClaim = gridUserClaim.data("ejGrid");
+
+            if (toolbar.attr("id") == "Toolbar_Grid_UserClaim_Read") {
+                var records = ejGridUserClaim.getSelectedRecords();
+                if (records.length == 1) {
+                    var args = { requestType: "read", data: records[0] };
+                    actionBegin_Grid_UserClaim(args)
+                }
+            }
+        } catch (exception) {
+            alert(zExceptionMessage("_UserClaimCollection.cshtml", "toolbarClick_Grid_UserClaim(sender)", exception));
+        }
+    }
+</script>

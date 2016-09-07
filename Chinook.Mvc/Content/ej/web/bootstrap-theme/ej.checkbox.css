@@ -1,0 +1,42 @@
+/*@pager-currentitem:#428BCA;*/
+/*-----------------------Map------------------*/
+/*-----------------------PdfViewer------------------*/
+/*-----------------------End PdfViewer------------------*/
+/*-----------------------OLAP Definition Start-----------------*/
+.e-olapclient .removeSplitBtn {
+  border-radius: 4px;
+}
+/*-----------------------OLAP Definition End
+
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Diagram Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Ribbon End-----------------------*/
+/*----------------------Kanban Definition-----------------------*/
+/*----------------------Kanban End-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+/*----------------------rangeScrollbar Start------------------*/
+/*----------------------rangeScrollbar End--------------------*/
+/*----------------------Office 365 theme-----------------------*/
+/*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
+/*----------------------material theme-----------------------*/
+.e-chkbox-wrap.e-focus div > span {
+  box-shadow: 0 0 2px #cccccc;
+}
+.e-chkbox-wrap div > span {
+  border-color: #cecece;
+  background-color: white;
+}
+.e-chkbox-wrap .e-chk-image.e-stop,
+.e-chkbox-wrap .e-chk-image.e-checkmark {
+  color: #3277b2;
+}
+.e-chkbox-wrap .e-text {
+  font-family: Segoe UI;
+  font-size: 12px;
+  color: #333333;
+}

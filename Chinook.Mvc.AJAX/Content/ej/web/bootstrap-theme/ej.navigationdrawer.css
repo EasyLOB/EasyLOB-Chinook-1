@@ -1,0 +1,65 @@
+/*@pager-currentitem:#428BCA;*/
+/*-----------------------Map------------------*/
+/*-----------------------PdfViewer------------------*/
+/*-----------------------End PdfViewer------------------*/
+/*-----------------------OLAP Definition Start-----------------*/
+.e-olapclient .removeSplitBtn {
+  border-radius: 4px;
+}
+/*-----------------------OLAP Definition End
+
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Diagram Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Ribbon End-----------------------*/
+/*----------------------Kanban Definition-----------------------*/
+/*----------------------Kanban End-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+/*----------------------rangeScrollbar Start------------------*/
+/*----------------------rangeScrollbar End--------------------*/
+/*----------------------Office 365 theme-----------------------*/
+/*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
+/*----------------------material theme-----------------------*/
+.e-nb.e-nb-layout.e-nb-right {
+  color: #333333;
+  border-left: 1px solid #cecece;
+  box-shadow: -1px 0 10px 0 black;
+  overflow-y: auto;
+}
+.e-nb.e-nb-layout.e-nb-right {
+  background: #fcfcfc;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #fcfcfc, #e0e0e0);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fcfcfc), color-stop(100%, #e0e0e0));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #fcfcfc, #e0e0e0);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #fcfcfc, #e0e0e0);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #fcfcfc, #e0e0e0);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #fcfcfc, #e0e0e0);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfcfc', endColorstr='#e0e0e0', GradientType=0);
+  /* IE6-9 */
+
+}
+.e-nb.e-nb-layout.e-nb-left {
+  background: white;
+  border-right: 1px solid #cecece;
+  box-shadow: -1px 0 10px 0 black;
+  overflow-y: auto;
+}
+.e-lv.subpage {
+  border-bottom: 1px solid #cecece;
+  border-left: 1px solid #cecece;
+  border-right: 1px solid #cecece;
+}
+.e-lv .e-lv .e-list-container {
+  border: none;
+}

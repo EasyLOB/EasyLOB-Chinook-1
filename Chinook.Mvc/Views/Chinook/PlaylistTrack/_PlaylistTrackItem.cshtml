@@ -1,0 +1,101 @@
+@model PlaylistTrackItemModel
+
+@{
+    string playlistText = Model.PlaylistTrack == null ? "" : (Model.PlaylistTrack.PlaylistLookupText ?? "");
+    string trackText = Model.PlaylistTrack == null ? "" : (Model.PlaylistTrack.TrackLookupText ?? "");
+}
+
+@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+@Html.HiddenFor(model => model.ControllerAction)
+@Html.HiddenFor(model => model.IsMasterDetail)
+@Html.HiddenFor(model => model.MasterPlaylistId)
+@Html.HiddenFor(model => model.MasterTrackId)
+
+@{Html.EJ().Tab("Tab_PlaylistTrack")
+    .ClientSideEvents(clientEvent => clientEvent
+        .ItemActive("itemActive_Tab_PlaylistTrack")
+    )
+    .Items(data =>
+    {
+        data.Add().ID("TabSheet_PlaylistTrack_PlaylistTrack").Text(PlaylistTrackResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
+
+            <div id="Group_PlaylistTrack_PlaylistId" class="@AppDefaults.CssClassGroup col-md-6">
+                @Html.Label(@PlaylistResources.EntitySingular, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.PlaylistTrack.PlaylistId, new { id = "PlaylistTrack_PlaylistId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })                    
+                @Html.Action("Lookup", "Playlist", new
+                {
+                    Text = playlistText,
+                    ValueId = "PlaylistTrack_PlaylistId"
+                })
+                @Html.ValidationMessageFor(model => model.PlaylistTrack.PlaylistId, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+
+            <div id="Group_PlaylistTrack_TrackId" class="@AppDefaults.CssClassGroup col-md-6">
+                @Html.Label(@TrackResources.EntitySingular, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.PlaylistTrack.TrackId, new { id = "PlaylistTrack_TrackId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })                    
+                @Html.Action("Lookup", "Track", new
+                {
+                    Text = trackText,
+                    ValueId = "PlaylistTrack_TrackId"
+                })
+                @Html.ValidationMessageFor(model => model.PlaylistTrack.TrackId, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+
+        </div>);
+    })
+    .Render();
+}
+
+<script>
+    // Validate hidden fields
+    $.validator.setDefaults({ ignore: null });
+
+    $(function () {
+        try {
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+            var playlistTrackDictionary = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(DataHelper.GetDataDictionaryAttribute(typeof(PlaylistTrack)))); }();
+            var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
+            
+            var readonly = (controllerAction == "delete" || controllerAction == "read");
+            $("input.form-control").not(":input[type=button], :input[type=image], :input[type=reset], :input[type=submit]").attr("readonly", readonly);
+            if (readonly) {
+                $("img.z-buttonLookup").hide();
+            }
+            else {
+                $("img.z-buttonLookup").show();
+            }
+
+            $("input[name$='_Lookup']").attr("readonly", true);
+
+            if (playlistTrackDictionary.IsIdentity) {            
+                $("#Group_PlaylistTrack_PlaylistId").hide();
+                $("#Group_PlaylistTrack_TrackId").hide();
+            }
+
+            // Associations (FK)
+            // Playlist
+            if (model.MasterPlaylistId != null) {
+                $("#PlaylistTrack_PlaylistId").val(model.MasterPlaylistId);
+                $("#Group_PlaylistTrack_PlaylistId").hide();            
+            }
+            // Track
+            if (model.MasterTrackId != null) {
+                $("#PlaylistTrack_TrackId").val(model.MasterTrackId);
+                $("#Group_PlaylistTrack_TrackId").hide();            
+            }
+
+            // Collections (PK)
+            var display = controllerAction == "create" ? "none" : "block";
+        } catch (exception) {
+            alert(zExceptionMessage("_PlaylistTrackItem.cshtml", "function()", exception));
+        }    
+    });
+
+    function itemActive_Tab_PlaylistTrack(args) { // IE
+        try {
+        } catch (exception) {
+            alert(zExceptionMessage("_PlaylistTrackItem.cshtml", "itemActive_Tab_PlaylistTrack(args)", exception));
+        }
+    }    
+</script>

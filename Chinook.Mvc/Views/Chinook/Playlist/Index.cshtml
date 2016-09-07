@@ -1,0 +1,9 @@
+@model PlaylistCollectionModel
+
+@{
+    ViewBag.Title = PlaylistResources.EntityPlural;
+}
+
+<h3>@ViewBag.Title</h3>
+
+@Html.Action("Search", "Playlist")

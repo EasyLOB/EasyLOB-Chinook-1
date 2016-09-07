@@ -1,0 +1,191 @@
+/*@pager-currentitem:#428BCA;*/
+/*-----------------------Map------------------*/
+/*-----------------------PdfViewer------------------*/
+/*-----------------------End PdfViewer------------------*/
+/*-----------------------OLAP Definition Start-----------------*/
+.e-olapclient .removeSplitBtn {
+  border-radius: 4px;
+}
+/*-----------------------OLAP Definition End
+
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Diagram Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Ribbon End-----------------------*/
+/*----------------------Kanban Definition-----------------------*/
+/*----------------------Kanban End-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+/*----------------------rangeScrollbar Start------------------*/
+/*----------------------rangeScrollbar End--------------------*/
+/*----------------------Office 365 theme-----------------------*/
+/*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
+/*----------------------material theme-----------------------*/
+/*------------------------------------- autocomplete -------------------------------------------*/
+
+.e-atc .e-in-wrap,
+.e-atc .e-input,
+.e-atc-popup,
+.e-atc .e-options {
+  background-color: white;
+  border-color: #cecece;
+  color: #333333;
+  font-family: Segoe UI;
+  font-size: 14px;
+  font-weight: normal;
+}
+.e-atc .e-options.e-active {
+  color: white;
+  border-color: #cecece;
+}
+.e-atc .e-options.e-active {
+  background: #3277b2;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #3277b2, #296293);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3277b2), color-stop(100%, #296293));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #3277b2, #296293);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #3277b2, #296293);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #3277b2, #296293);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #3277b2, #296293);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3277b2', endColorstr='#296293', GradientType=0);
+  /* IE6-9 */
+
+}
+.e-atc .e-options.e-active:hover,
+.e-atc .e-options:hover {
+  color: #333333;
+  border-color: #cecece;
+}
+.e-atc .e-options.e-active:hover,
+.e-atc .e-options:hover {
+  background: #f4f4f4;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f4f4f4), color-stop(100%, #e9e9e9));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #f4f4f4, #e9e9e9);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4', endColorstr='#e9e9e9', GradientType=0);
+  /* IE6-9 */
+
+}
+.e-atc .e-boxes {
+  background-color: white;
+}
+.e-atc.e-focus .e-in-wrap {
+  box-shadow: 0 0 7px rgba(154, 146, 203, 0.87);
+  border-color: #cecece;
+}
+.e-atc-popup .e-category {
+  border-bottom: 1px solid #cecece;
+}
+.e-atc-popup .e-hover,
+.e-atc-popup .e-content .e-atc-trbgcolor.e-hover {
+  color: #333333;
+  border-color: #f4f4f4;
+}
+.e-atc-popup .e-hover,
+.e-atc-popup .e-content .e-atc-trbgcolor.e-hover {
+  background: #f4f4f4;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f4f4f4), color-stop(100%, #e9e9e9));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #f4f4f4, #e9e9e9);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4', endColorstr='#e9e9e9', GradientType=0);
+  /* IE6-9 */
+
+}
+.e-atc .e-select:hover,
+.e-atc.e-rtl .e-select:hover {
+  color: #333333;
+  border-color: #cecece;
+}
+.e-atc .e-select:hover,
+.e-atc.e-rtl .e-select:hover {
+  background: #f4f4f4;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f4f4f4), color-stop(100%, #e9e9e9));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #f4f4f4, #e9e9e9);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4', endColorstr='#e9e9e9', GradientType=0);
+  /* IE6-9 */
+
+}
+.e-atc .e-select,
+.e-atc.e-rtl .e-select,
+.e-atc .e-select.e-disable:hover {
+  border-color: #cecece;
+  background: #fcfcfc;
+  /* Old browsers */
+
+  color: #666666;
+}
+.e-atc .e-input.e-load {
+  background-image: url(images/ajax-loader.gif);
+}
+::-webkit-input-placeholder {
+  color: #333333;
+}
+:-ms-input-placeholder {
+  color: #333333;
+}
+::-moz-placeholder {
+  color: #333333;
+}
+:-moz-placeholder {
+  color: #333333;
+}
+.e-atc-popup .e-atc-tdbottom,
+.e-atc-popup div.e-atc-tableHeader {
+  border-bottom: 1px solid #cecece;
+}
+.e-atc-popup .e-atc-tdright,
+.e-atc-popup .e-atc-tableHeaderScroll .e-atc-tableHeaderBorder,
+.e-atc-popup div .e-atc-thright {
+  border-right: 1px solid #cecece;
+}
+.e-atc-popup .e-atc-tdleft,
+.e-atc-popup .e-atc-tableHeaderRTL .e-atc-tableHeaderBorder,
+.e-atc-popup div .e-atc-thleft {
+  border-left: 1px solid #cecece;
+}
+.e-atc-popup .e-atc-tableHeaderContent th {
+  background: white;
+}
+.e-atc-popup .e-content .e-atc-trbgcolor {
+  background: white;
+}

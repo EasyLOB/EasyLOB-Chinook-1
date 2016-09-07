@@ -1,0 +1,9 @@
+@model UserLoginCollectionModel
+
+@{
+    ViewBag.Title = UserLoginResources.EntityPlural;
+}
+
+<h3>@ViewBag.Title</h3>
+
+@Html.Action("Search", "UserLogin")

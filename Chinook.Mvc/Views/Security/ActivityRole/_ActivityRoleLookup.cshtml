@@ -1,0 +1,158 @@
+@model LookupModel
+
+<div class="input-group">
+    <span class="input-group-addon"><img id="@(Model.ValueId + "_Button")" class="z-buttonLookup" /></span>
+    @Html.TextBox(Model.ValueId + "_Lookup", Model.Text, new { @class = AppDefaults.CssClassEditor + " z-lookup" })
+</div>
+
+<div id="Modal_ActivityRole_Lookup" aria-labelledby="Label_ActivityRole_Lookup" class="modal fade col-md-10" role="dialog" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-label="@PresentationResources.Cancel" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                <h4 id="Label_ActivityRole_Lookup" class="modal-title">@ActivityRoleResources.EntityPlural</h4>
+            </div>
+            <div class="modal-body">
+
+                @(Html.EJ().Grid<ActivityRole>("Grid_ActivityRole_Lookup")
+                    .Datasource(datasource => datasource
+                        .Adaptor(AdaptorType.UrlAdaptor)
+                        .URL(Url.Content("~/ActivityRole/DataSource"))
+                    )
+                    .AllowFiltering()
+                    .AllowPaging()
+                    .AllowSearching()
+                    .AllowSorting()
+                    .ClientSideEvents(clientEvent => clientEvent
+                        .ActionFailure("actionFailure_Grid_ActivityRole_Lookup")
+                        .Load("load_Grid_ActivityRole_Lookup")
+                        .RowSelected("rowSelected_Grid_ActivityRole_Lookup")                       
+                    )
+                    .Columns(column =>
+                    {
+                        column.Field("ActivityId")
+                            .EditType(EditingType.String)
+                            .HeaderText(ActivityRoleResources.PropertyActivityId)
+                            .IsPrimaryKey(true)
+                            .Visible(false)
+                            .Width(240)
+                            .Add();
+                        column.Field("ActivityLookupText")
+                            .AllowEditing(false)
+                            .HeaderText(ActivityResources.EntitySingular)
+                            .Visible(true)
+                            .Width(100)
+                            .Add();
+                        column.Field("RoleId")
+                            .EditType(EditingType.String)
+                            .HeaderText(ActivityRoleResources.PropertyRoleId)
+                            .IsPrimaryKey(true)
+                            .Visible(false)
+                            .Width(240)
+                            .Add();
+                        column.Field("RoleLookupText")
+                            .AllowEditing(false)
+                            .HeaderText(RoleResources.EntitySingular)
+                            .Visible(true)
+                            .Width(100)
+                            .Add();
+                        column.Field("Operations")
+                            .EditType(EditingType.String)
+                            .HeaderText(ActivityRoleResources.PropertyOperations)
+                            .Visible(true)
+                            .Width(240)
+                            .Add();
+                    })
+                    .FilterSettings(filter => filter
+                        .EnableCaseSensitivity(false)
+                        .FilterType(FilterType.Excel)
+                        .MaxFilterChoices(System.Int32.MaxValue)
+                    )
+                    .PageSettings(page => page
+                        .PageSize(AppDefaults.SyncfusionRecordsByPage)
+                    )
+                    .SearchSettings(search =>
+                    {
+                        search.Fields(field =>
+                        {
+                            //field.Add("ActivityId");
+                            //field.Add("ActivityLookupText");
+                            //field.Add("RoleId");
+                            //field.Add("RoleLookupText");
+                            field.Add("Operations");
+                        });
+                    })
+                    .ShowColumnChooser()
+                    .ToolbarSettings(toolbar => toolbar
+                        .ShowToolbar()
+                        .ToolbarItems(items =>
+                        {
+                            items.AddTool(ToolBarItems.Search);
+                        })
+                    )
+                )
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@*
+@Html.OperationResult(Model.OperationResult)
+*@
+
+<script>
+    $(function () {
+        try {
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+    
+            $("#@Model.ValueId").hide();
+    
+            $("#@(Model.ValueId)_Button").click(function () {
+                $("#Modal_ActivityRole_Lookup").modal("show");
+            });
+    
+            $("#@(Model.ValueId)_Lookup").attr("readonly", true);
+            $("#@(Model.ValueId)_Lookup").val(model.Text.toLocaleString("@CultureInfo.CurrentCulture.Name"));
+    
+            $("#Modal_ActivityRole_Lookup").modal("hide");
+        } catch (exception) {
+            alert(zExceptionMessage("_ActivityRoleLookup.cshtml", "function ()", exception));
+        }
+    });
+    
+    function actionFailure_Grid_ActivityRole_Lookup(args) {
+        try {
+            alert(zErrorMessage(args.error.responseText));
+        } catch (exception) {
+            alert(zExceptionMessage("_ActivityRoleLookup.cshtml", "actionFailure_Grid_ActivityRole_Lookup(args)", exception));
+        }
+    }    
+
+    function load_Grid_ActivityRole_Lookup(args) {
+        try {            
+            var culture = "@System.Globalization.CultureInfo.CurrentCulture.Name";
+            this.model.locale = culture;
+        } catch (exception) {
+            alert(zExceptionMessage("_ActivityRoleLookup.cshtml", "load_Grid_ActivityRole_Lookup(args)", exception));
+        }
+    }
+
+    function rowSelected_Grid_ActivityRole_Lookup(args) {
+        try {
+            var data = this.model.currentViewData[args.rowIndex];
+    
+            $("#@(Model.ValueId)").val(data.ActivityId);
+    
+            $("#@(Model.ValueId)_Lookup").val(data.LookupText);
+
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+            var culture = "@System.Globalization.CultureInfo.CurrentCulture.Name";
+            zLookupElements(data, model.Elements, culture);
+    
+            $("#Modal_ActivityRole_Lookup").modal("hide");
+        } catch (exception) {
+            alert(zExceptionMessage("_ActivityRoleLookup.cshtml", "rowSelected_Grid_ActivityRole_Lookup(args)", exception));
+        }
+    }
+</script>

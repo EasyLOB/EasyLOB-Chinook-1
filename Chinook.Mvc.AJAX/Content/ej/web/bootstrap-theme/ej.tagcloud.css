@@ -1,0 +1,59 @@
+/*@pager-currentitem:#428BCA;*/
+/*-----------------------Map------------------*/
+/*-----------------------PdfViewer------------------*/
+/*-----------------------End PdfViewer------------------*/
+/*-----------------------OLAP Definition Start-----------------*/
+.e-olapclient .removeSplitBtn {
+  border-radius: 4px;
+}
+/*-----------------------OLAP Definition End
+
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Diagram Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Ribbon End-----------------------*/
+/*----------------------Kanban Definition-----------------------*/
+/*----------------------Kanban End-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+/*----------------------rangeScrollbar Start------------------*/
+/*----------------------rangeScrollbar End--------------------*/
+/*----------------------Office 365 theme-----------------------*/
+/*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
+/*----------------------material theme-----------------------*/
+/*------------------------------------- tagcloud -------------------------------------------*/
+
+.e-tagcloud {
+  background-color: white;
+}
+.e-tagcloud.e-js .header {
+  border-color: #cecece;
+}
+.e-tagcloud .e-title {
+  color: #282827;
+  font-size: 16px;
+  font-weight: normal;
+  border-color: #cecece;
+  border-bottom: 3px solid #3277b2;
+}
+.e-tagcloud .e-title {
+  background: #fcfcfc;
+}
+.e-tagcloud .e-load {
+  background-image: url(images/ajax-loader.gif);
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.e-tagcloud .e-tagitems .e-txt {
+  color: #333333;
+}
+.e-tagcloud .e-tagitems .e-txt.hover {
+  color: #3277b2;
+}
+.e-tagcloud .e-cloud,
+.e-tagcloud .e-list {
+  border-color: #cecece;
+}

@@ -1,0 +1,72 @@
+@model RoleItemModel
+
+@{
+    ViewBag.Title = AppHelper.PageTitle(RoleResources.EntitySingular, PresentationResources.Create);
+
+    AjaxOptions ajaxOptions = new AjaxOptions()
+    {
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.Replace,
+        OnFailure = "ajaxFailure",
+        OnSuccess = "ajaxSuccess",
+        UpdateTargetId = "Ajax"
+    };
+}
+
+<h3>@ViewBag.Title</h3>
+
+@using (Ajax.BeginForm("Create", "Role", ajaxOptions))
+{
+    @Html.AntiForgeryToken()
+
+    <div id="Partial" class="form-inline">
+        @Html.Partial("_RoleItem", Model)
+    </div>
+
+    <div class="z-formButtons">
+        @Html.Raw(@Ajax.ImageLink("Button_Cancel", MvcHelper.ReadUrlDictionary(Context, "Role"), "Ajax", "z-buttonCancel", PresentationResources.Cancel))
+        <input id="Button_OK" type="image" class="btn btn-default z-buttonOk" title="@PresentationResources.Create" />
+    </div> 
+}
+
+<div id="OperationResult"></div>
+
+<script>
+    $(function () {
+        try
+        {
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+    
+            if (model.IsSecurityOperations.IsCreate) {
+                $("#Partial").show();
+                $("#Button_Cancel").show();
+                $("#Button_OK").show();
+            }
+            else {
+                $("#Partial").hide();
+                $("#Button_Cancel").show();
+                $("#Button_OK").hide();
+            }
+        } catch (exception) {
+            zExceptionMessage("Role Create.cshtml", "function()", exception.message)
+        }
+    });
+
+    function ajaxFailure(jqXHR, textStatus, errorThrown) {
+        try {
+             $("#OperationResult").html(zAjaxOperationResult(jqXHR));
+        } catch (exception) {
+            zExceptionMessage("Role Create.cshtml", "ajaxFailure", exception.message)
+        }
+    }
+
+    function ajaxSuccess(data, textStatus, jqXHR) {
+        try {
+            if (data != null) {
+                $("#Ajax").load(data.uri);
+            }
+        } catch (exception) {
+            zExceptionMessage("Role Create.cshtml", "ajaxSuccess", exception.message)
+        }
+    }
+</script>

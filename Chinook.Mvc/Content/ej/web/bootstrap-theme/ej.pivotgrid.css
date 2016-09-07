@@ -1,0 +1,1234 @@
+/*@pager-currentitem:#428BCA;*/
+/*-----------------------Map------------------*/
+/*-----------------------PdfViewer------------------*/
+/*-----------------------End PdfViewer------------------*/
+/*-----------------------OLAP Definition Start-----------------*/
+.e-olapclient .removeSplitBtn {
+  border-radius: 4px;
+}
+/*-----------------------OLAP Definition End
+
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Diagram Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Ribbon End-----------------------*/
+/*----------------------Kanban Definition-----------------------*/
+/*----------------------Kanban End-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+/*----------------------rangeScrollbar Start------------------*/
+/*----------------------rangeScrollbar End--------------------*/
+/*----------------------Office 365 theme-----------------------*/
+/*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
+/*----------------------material theme-----------------------*/
+.hoverCell {
+  background-color: #f4f4f4 !important;
+}
+.e-pivotgrid table {
+  font: 12px Segoe UI !important;
+  color: #333333;
+  border-collapse: collapse;
+  background-color: white;
+  cursor: default;
+}
+.e-pivotgrid .filterValues {
+  background-color: white;
+}
+.e-pivotgrid .conditionFrom,
+.conditionTo {
+  background-color: inherit;
+}
+.e-pivotgrid .hoverBtn {
+  background: #f4f4f4;
+}
+.tooltipText {
+  margin: 5px 0 10px 0;
+  font-size: 12px;
+  text-align: left;
+  height: auto;
+  color: #333333;
+  font-weight: normal;
+}
+.editcondition,
+.value2,
+.borderrangeLbl,
+.borderstyleLbl,
+.fSizeLbl {
+  margin-left: 15px;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0;
+}
+.pGridTooltip {
+  position: absolute;
+  z-index: 500;
+  display: none;
+  border-width: 10px;
+  height: auto;
+  padding: 5px;
+  opacity: 1;
+  background: #fcfcfc;
+  border: 2px solid #cecece;
+}
+.e-pivotgrid .pivotGridTable th,
+.e-pivotgrid .pivotGridTable td {
+  border: solid 1px #cecece;
+}
+.e-pivotgrid th,
+.e-pivotgrid td {
+  padding: 6px 2px 6px 8px;
+  white-space: nowrap;
+  height: 25px;
+  font-weight: normal;
+}
+.e-pivotgrid .value {
+  background-color: white;
+  text-align: right !important;
+  padding: 6px 6px 6px 16px;
+}
+.e-pivotgrid .summary {
+  white-space: nowrap;
+  text-align: left;
+  font-weight: bold;
+}
+.e-pivotgrid .colheader,
+.e-pivotgrid .rowheader,
+.e-pivotgrid .calc {
+  font-weight: bold;
+  color: #333333;
+  background: white;
+  background-repeat: repeat;
+  padding: 6px 16px 6px 2px;
+  text-align: left;
+  font-style: normal;
+}
+.e-pivotgrid .colheader:hover,
+.e-pivotgrid .rowheader:hover,
+.e-pivotgrid .calc:hover {
+  font-weight: bold;
+  color: #333333;
+  background: #f4f4f4;
+  background-repeat: repeat;
+  padding: 6px 16px 6px 2px;
+  text-align: left;
+  font-style: normal;
+}
+.e-pivotgrid {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+.cellSelection {
+  background: #f4f4f4;
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+  position: absolute;
+  border-style: dotted;
+  border-width: 3px;
+  border-color: #cecece;
+}
+.e-pivotgrid .value.selection {
+  cursor: crosshair;
+}
+.e-pivotgrid.e-rtl .colheader,
+.e-pivotgrid.e-rtl .colheader:hover,
+.e-pivotgrid.e-rtl .rowheader,
+.e-pivotgrid.e-rtl .rowheader:hover {
+  padding: 6px 0px 6px 24px;
+}
+.e-pivotgrid .expand,
+.e-pivotgrid .collapse {
+  width: 23px;
+  height: 17px;
+  display: inline-block;
+  cursor: pointer;
+}
+.e-pivotgrid .errOKBtn {
+  display: inline-block;
+  margin: 20px 0 10px 165px;
+  width: 50px;
+}
+.e-pivotgrid.e-rtl .errOKBtn {
+  margin: 20px 165px 10px 0;
+}
+.e-pivotgrid .dialogremoveBtn:before {
+  font-family: "ej-webfont";
+  content: "\e711";
+  display: inline-block;
+}
+.e-pivotgrid .expand:before {
+  content: "\e6a3";
+  display: inline-block;
+  float: left;
+  font-size: 7px;
+  margin-left: 9px;
+  margin-top: 5px;
+}
+.e-pivotgrid.e-rtl .pGridTooltip > p {
+  direction: ltr;
+  text-align: right;
+}
+.e-pivotgrid.e-rtl .expand:before {
+  content: "\e699";
+  font-size: 23px;
+  margin-top: -3px;
+}
+.e-pivotgrid.e-rtl .collapse:before {
+  margin-left: 0px;
+}
+.e-pivotgrid .collapse:before {
+  content: "\e6a0";
+  display: inline-block;
+  float: left;
+  font-size: 6px;
+  margin-left: 7px;
+  margin-top: 5px;
+}
+.e-pivotgrid.e-rtl .removeBtn:before,
+.e-pivotgrid.e-rtl .sorting:before,
+.e-pivotgrid.e-rtl .filter:before {
+  float: left;
+  margin-left: 4px;
+  margin-right: 0px;
+}
+.e-pivotgrid .kpiiconvalue {
+  height: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.e-pivotgrid .kpiuparrow {
+  background-image: url("../common-images/olapkpi/up-arrow.png");
+}
+.e-pivotgrid .kpirightarrow {
+  background-image: url("../common-images/olapkpi/right-arrow.png");
+}
+.e-pivotgrid .kpidownarrow {
+  background-image: url("../common-images/olapkpi/down-arrow.png");
+  background-position: center center;
+}
+.e-pivotgrid .kpidiamond {
+  background-image: url("../common-images/olapkpi/diamond.png");
+  background-position: center center;
+}
+.e-pivotgrid .kpitriangle {
+  background-image: url("../common-images/olapkpi/triangle.png");
+  background-position: center center;
+}
+.e-pivotgrid .kpicircle {
+  background-image: url("../common-images/olapkpi/circle.png");
+  background-position: center center;
+}
+.e-pivotgrid .kpiredroad {
+  background-image: url("../common-images/olapkpi/red.png");
+  background-position: center center;
+}
+.e-pivotgrid .kpigreenroad {
+  background-image: url("../common-images/olapkpi/green.png");
+  background-position: center center;
+}
+.e-pivotgrid .kpiallcolor {
+  background-image: url("../common-images/olapkpi/three-color.png");
+  background-position: center center;
+}
+.e-pivotgrid .hyperlinkValueCell {
+  color: #3277b2;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.e-pivotgrid .hyperlinkHeaderCell {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.e-pivotgrid .vScrollPanel {
+  background-color: #e0e0e0;
+  width: 8px;
+  margin-left: 8px;
+  display: inline-block;
+}
+.e-pivotgrid .hScrollPanel {
+  background-color: #e0e0e0;
+  height: 8px;
+  margin-top: 4px;
+}
+.e-pivotgrid .vScrollThumb {
+  width: 6px;
+  position: relative;
+  top: 1px;
+  left: 1px;
+  background-color: #b8b8b8;
+}
+.e-pivotgrid .hScrollThumb {
+  height: 6px;
+  position: relative;
+  left: 1px;
+  top: 1px;
+  background-color: #b8b8b8;
+}
+.e-pivotgrid .categPageIndicator,
+.e-pivotgrid .seriesPageIndicator {
+  width: auto;
+  background-color: #3277b2;
+  border: thin solid #cecece;
+  color: white;
+  padding: 5px;
+  position: absolute;
+}
+.e-pivotgrid.e-rtl .seriesPageIndicator .axislabel,
+.e-pivotgrid.e-rtl .categPageIndicator .axislabel {
+  float: right;
+  margin-left: 5px;
+}
+.e-pivotgrid.e-rtl .seriesPageIndicator .series_CurrentPage,
+.e-pivotgrid.e-rtl .categPageIndicator .categ_CurrentPage {
+  float: left;
+  margin-right: 2px;
+}
+.e-pivotgrid.e-rtl .seriesPageIndicator .series_pageCount,
+.e-pivotgrid.e-rtl .categPageIndicator .categ_pageCount {
+  float: right;
+  margin-left: 2px;
+}
+.e-pivotgrid .vScrollThumb:hover,
+.e-pivotgrid .hScrollThumb:hover {
+  background-color: #969696;
+}
+.e-pivotgrid .inActive {
+  display: none;
+}
+.e-pivotgrid .dragging {
+  background-color: #666666 !important;
+}
+.e-pivotgrid .filter,
+.e-pivotgrid .sorting,
+.e-pivotgrid .removeBtn {
+  color: #333333;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.e-pivotgrid .filter:before {
+  content: "\e669";
+  float: right;
+  margin-right: 4px;
+}
+.e-pivotgrid .filter.filtered:before {
+  content: "\e668";
+  float: right;
+}
+.e-pivotgrid .sorting:before {
+  content: "\e672";
+  float: right;
+  margin-right: 4px;
+}
+.e-pivotgrid .sorting.descending:before {
+  content: "\e673";
+  float: right;
+}
+.e-pivotgrid .removeBtn:before {
+  content: "\e711";
+  float: right;
+  margin-right: 4px;
+}
+.e-pivotgrid .memberEditorDiv {
+  height: 256px;
+  margin-top: 5px;
+  border: 1px solid #cecece;
+}
+.e-pivotgrid .editorTreeView {
+  margin-top: 7px;
+  height: 245px !important;
+}
+.e-pivotgrid .dialogOKBtn {
+  width: 69px;
+  margin-left: 83px;
+}
+.e-pivotgrid .dialogCancelBtn {
+  width: 69px;
+  margin-left: 10px;
+}
+.e-pivotgrid .e-treeview .e-text {
+  min-height: 20px;
+  border: 1px solid transparent;
+  font-family: Segoe UI;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: move;
+  color: #333333;
+}
+.e-pivotgrid .pivotButton {
+  color: #666666;
+  border-color: #cecece;
+}
+.e-pivotgrid .pivotButton .e-btn.e-select {
+  border: none;
+  height: auto;
+  color: #666666;
+  border-color: #cecece;
+}
+.e-pivotgrid .pivotButton .e-btn.e-select:hover {
+  border: none;
+  border-color: #cecece;
+  color: #333333;
+}
+.e-pivotgrid .pivotButton .e-btn.e-select:hover {
+  background: #f4f4f4;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f4f4f4), color-stop(100%, #e9e9e9));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #f4f4f4, #e9e9e9);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4', endColorstr='#e9e9e9', GradientType=0);
+  /* IE6-9 */
+
+}
+.e-pivotgrid .pivotButton.e-btn.e-select {
+  border: none;
+}
+.e-pivotgrid .drag {
+  color: white;
+  font-family: 'Segoe UI';
+  font-size: 14px;
+  font-weight: bold;
+  /*color: #5c5c5c;*/
+  padding: 9px 0px 9px 0px;
+  background: #3277b2;
+  /*background: @pager-default-bg-color;*/
+  border: 1px solid #cecece;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.e-pivotgrid .pivotButton.e-btn .e-icon {
+  padding: 0px;
+}
+.e-pivotgrid .values,
+.e-pivotgrid .columns,
+.e-pivotgrid .rows,
+.e-pivotgrid .emptyRows {
+  font-family: 'Segoe UI';
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  padding: 5px 0px 5px 0px;
+  /*background: @groupingBar-bg-color;*/
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.e-pivotgrid .values {
+  border-right: 1px solid #cecece;
+}
+.e-pivotgrid .emptyRows {
+  background: #3277b2;
+  border: 1px solid #cecece;
+}
+.e-pivotgrid .valueColumn {
+  background: #3277b2;
+  height: auto;
+  border-right: 1px solid #cecece;
+  border-left: 1px solid #cecece;
+}
+.e-pivotgrid .values .pivotButton,
+.e-pivotgrid .drag .pivotButton,
+.e-pivotgrid .columns .pivotButton,
+.e-pivotgrid .rows .pivotButton {
+  width: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background: #fcfcfc;
+}
+.e-pivotgrid .values .pivotButton:hover,
+.e-pivotgrid .drag .pivotButton:hover,
+.e-pivotgrid .columns .pivotButton:hover,
+.e-pivotgrid .rows .pivotButton:hover {
+  background: #f4f4f4;
+}
+.e-pivotgrid .pivotButton,
+.e-pivotgrid .rows,
+.e-pivotgrid .valueColumn,
+.e-pivotgrid .values,
+.e-pivotgrid .columns {
+  display: inline-block;
+  vertical-align: top;
+}
+.e-pivotgrid .e-btn {
+  vertical-align: auto;
+}
+.e-pivotgrid .drag .e-btn,
+.e-pivotgrid .drag .e-btn div {
+  vertical-align: initial;
+}
+.e-pivotgrid .drag .pivotButton {
+  vertical-align: top;
+  line-height: 0;
+}
+.e-pivotgrid .rows {
+  padding-bottom: 4px;
+  display: table-cell;
+  vertical-align: bottom;
+  height: 100%;
+  width: 100%;
+  min-height: 24px;
+  min-width: 140px;
+}
+.e-pivotgrid .values {
+  min-height: 24px;
+  min-width: 140px;
+}
+.e-pivotgrid .columns {
+  min-height: 24px;
+  min-width: 140px;
+}
+.e-pivotgrid .rows .pivotButton,
+.e-pivotgrid .values .pivotButton,
+.e-pivotgrid .columns .pivotButton,
+.e-pivotgrid .drag .pivotButton {
+  vertical-align: bottom;
+}
+.e-pivotgrid .pivotButton {
+  margin-left: 5px;
+}
+.e-pivotgrid .grpRow {
+  background: #3277b2;
+  vertical-align: bottom;
+  text-align: left;
+}
+.e-pivotgrid .pivotButton {
+  border: 1px solid #cecece !important;
+  padding: 0px !important;
+}
+.e-pivotgrid .pivotButton:hover {
+  border: 1px solid #cecece !important;
+}
+.e-pivotgrid th.grpRow {
+  padding: 10px 2px 0 0px !important;
+}
+.e-pivotgrid .e-btn {
+  font-size: 13px;
+}
+.e-pivotgrid .widthSetter {
+  width: 3em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.e-pivotgrid .contextMenuPopup .menuItem:hover {
+  background-color: #f4f4f4;
+  color: #333333;
+  cursor: default;
+}
+.e-pivotgrid .dropIndicatorActive {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  z-index: 30000;
+  color: #666666;
+  cursor: pointer;
+  font-family: "ej-webfont";
+}
+.e-pivotgrid .dropIndicatorActive:before {
+  content: "\E7CC";
+}
+.e-pivotgrid .selected {
+  background: #3277b2;
+  color: white;
+}
+.e-pivotgrid .highlighted {
+  background-color: #f4f4f4;
+}
+.e-pivotgrid .dlgCalculatedField label {
+  font-weight: bold;
+}
+.e-pivotgrid .borderLine {
+  margin-left: -10px;
+  margin-right: -10px;
+  border-top: 1px solid #cecece;
+}
+.e-pivotgrid .calculatorFields {
+  margin-top: -5px;
+  height: 31px;
+}
+.pivotTree .calculatedFieldMenuItem {
+  border-bottom: solid 1px #cecece;
+}
+.e-pivotgrid .calcFormulaDiv {
+  left: 136px;
+  top: 102px;
+  position: absolute;
+}
+.e-pivotgrid .dlgCalculatedField {
+  margin-top: 8px;
+  border: 1px solid #cecece;
+  margin-bottom: 12px;
+  padding: 13px 10px 10px;
+}
+.e-pivotgrid .calculateFieldName {
+  position: absolute;
+  top: 35px;
+  left: 105px;
+  width: 198px;
+  height: 24px;
+  border: none;
+  background-color: white;
+  color: #333333;
+}
+.e-pivotgrid .calculatedFieldFormula {
+  background-color: white;
+  color: #333333;
+  border: 1px solid #cecece;
+  cursor: not-allowed;
+  opacity: 0.85;
+  padding: 1px;
+}
+.e-pivotgrid .dlgCalculatedField .outerTable td {
+  padding: 4px 10px 15px;
+}
+.e-pivotgrid .dlgCalculatedField .fieldTable td {
+  padding: 4px 10px;
+}
+.e-pivotgrid .calcFormulaDiv td {
+  border: 1px solid #cecece;
+  background-color: white;
+  padding: 5px 18px;
+  cursor: default;
+  color: #333333;
+}
+.e-pivotgrid .calcFormulaDiv td:hover {
+  color: #333333;
+  border: 1px solid #cecece;
+}
+.e-pivotgrid .calcFormulaDiv td:hover {
+  background: #f4f4f4;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f4f4f4), color-stop(100%, #e9e9e9));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #f4f4f4, #e9e9e9);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4', endColorstr='#e9e9e9', GradientType=0);
+  /* IE6-9 */
+
+}
+.e-pivotschemadesigner {
+  color: #333333;
+  background: none repeat scroll 0 0 white;
+  font-size: 12px;
+  float: right;
+  position: static;
+  border: 1px solid #cecece;
+  font-family: Segoe UI;
+}
+.bg-div {
+  background: none repeat scroll 0 0 white;
+  border: 1px solid #cecece;
+}
+.e-pivotschemadesigner .fieldTable {
+  background: white;
+  border: 1px solid #cecece;
+  border-collapse: collapse;
+  margin: 10px 10px 8px;
+  width: 94%;
+}
+.e-pivotschemadesigner .schemaFieldList {
+  display: inline-block;
+  overflow: auto;
+  height: 182px;
+  width: 100%;
+  color: #666666;
+}
+.e-pivotschemadesigner .elementSeparator {
+  border: solid #cecece;
+  border-width: 0 0 1px 0;
+  display: block;
+  margin: 7px;
+}
+.e-pivotschemadesigner .schemaFieldTree {
+  overflow: hidden;
+}
+.e-pivotschemadesigner .editorTreeView {
+  margin-top: 7px;
+  height: 245px !important;
+}
+.e-pivotschemadesigner .schemaHeaders {
+  overflow: hidden;
+}
+.e-pivotschemadesigner .schemaFilter,
+.e-pivotschemadesigner .schemaColumn,
+.e-pivotschemadesigner .schemaRow,
+.e-pivotschemadesigner .schemaValue {
+  /*background: @aeb-bgcolor;*/
+  border: 1px solid #cecece;
+  overflow: auto;
+  height: 75%;
+  width: 93%;
+  margin-left: 10px;
+  /* margin-top: 3px; */
+
+}
+.e-pivotschemadesigner .schemaColumn,
+.e-pivotschemadesigner .schemaValue {
+  margin-right: 10px;
+}
+.e-pivotschemadesigner .axisTd1 {
+  float: left;
+  position: relative;
+}
+.e-pivotschemadesigner .axisTd2 {
+  float: right;
+  position: relative;
+}
+.e-pivotschemadesigner #axisTd {
+  margin-top: 10px;
+}
+.e-pivotschemadesigner .deferUpdateLayout {
+  margin-top: 20px;
+}
+.e-pivotschemadesigner .listSubhead {
+  margin: 10px 0 0;
+}
+.e-pivotschemadesigner .pivotHeader,
+.e-pivotschemadesigner .rPivotHeader {
+  font-weight: bold;
+  line-height: 240%;
+}
+.e-pivotschemadesigner .listHeader {
+  font-weight: bold;
+  /*background: none repeat scroll 0 0 #5eabde;*/
+  border-bottom: 1px solid #cecece;
+  font-size: 15px;
+  margin: -1px;
+  line-height: 40px;
+}
+.e-pivotschemadesigner .folderCDB:before {
+  content: "\e6e1";
+  display: inline;
+  vertical-align: middle;
+  font-size: 17px;
+}
+.e-pivotschemadesigner .namedSetCDB:before {
+  content: "\e6de";
+  display: inherit;
+  vertical-align: middle;
+  font-size: 18px;
+}
+.e-pivotschemadesigner .measureGroupCDB:before {
+  content: "\e615";
+  display: inline;
+  vertical-align: middle;
+}
+.e-pivotschemadesigner .dimensionCDB:before {
+  content: "\e704";
+  display: inline;
+  vertical-align: middle;
+}
+.e-pivotschemadesigner .centerDiv {
+  background-color: #cecece;
+  border-radius: 25px;
+  height: 2px;
+  margin-left: 4px;
+  width: 98%;
+}
+.e-pivotschemadesigner .centerDiv:hover {
+  cursor: default;
+}
+.e-pivotschemadesigner .centerHead {
+  margin: 7px 10px;
+  font: normal 14px Segoe UI;
+  color: #333333;
+}
+.e-pivotschemadesigner .pivotHeader,
+.e-pivotschemadesigner .rPivotHeader {
+  border: 1px solid #cecece;
+  border-bottom: none;
+  font-weight: bold;
+  width: 93%;
+  margin-left: 10px;
+}
+.e-pivotschemadesigner .rPivotHeader,
+.e-pivotschemadesigner .schemaColumn,
+.e-pivotschemadesigner .schemaValue {
+  margin-left: 1%;
+}
+.e-pivotschemadesigner.e-rtl .rPivotHeader,
+.e-pivotschemadesigner.e-rtl .schemaColumn,
+.e-pivotschemadesigner.e-rtl .schemaValue {
+  margin-right: 5%;
+}
+.e-pivotschemadesigner .headerText {
+  padding-left: 5px;
+}
+.e-pivotschemadesigner .subheadText {
+  padding-left: 10px;
+  margin: 10px 0 0;
+  font: normal 14px Segoe UI;
+  color: #333333;
+}
+.e-pivotschemadesigner .pivotLabel:hover {
+  background: none repeat scroll 0 0 #3277b2;
+  color: white;
+  cursor: move;
+}
+.e-pivotschemadesigner .pivotButton {
+  display: block;
+}
+.e-pivotschemadesigner .pivotButton > .pvtBtn {
+  cursor: move;
+  text-align: left;
+  text-overflow: ellipsis;
+  margin: 2px 3px 0;
+  width: 97%;
+  height: auto;
+  color: #666666;
+  border-color: #cecece;
+  border: 1px solid #cecece !important;
+}
+.e-pivotschemadesigner.e-rtl .pivotButton > .pvtBtn {
+  text-align: right;
+}
+/* .e-pivotschemadesigner .pvtBtn:hover
+{
+    background: linear-gradient(@active-font-color, @active-bg-stcolor);
+    border-color: @active-border-color;
+    color: @active-font-color;
+} */
+
+.e-pivotschemadesigner .pivotButton > .pvtBtn:hover {
+  border: 1px solid white !important;
+  color: #333333;
+}
+.e-pivotschemadesigner .pivotButton > .pvtBtn:hover {
+  background: #f4f4f4;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f4f4f4), color-stop(100%, #e9e9e9));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #f4f4f4, #e9e9e9);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4', endColorstr='#e9e9e9', GradientType=0);
+  /* IE6-9 */
+
+}
+.e-pivotschemadesigner .btnDeferUpdate {
+  text-overflow: ellipsis;
+  width: 90px;
+}
+.e-pivotschemadesigner .errOKBtn {
+  display: inline-block;
+  margin: 20px 0 10px 165px;
+  width: 50px;
+}
+.e-pivotschemadesigner.e-rtl .errOKBtn {
+  margin: 20px 165px 10px 0;
+}
+.e-pivotschemadesigner .pvtDrop:before,
+.e-pivotschemadesigner .treeDrop:before {
+  content: "\e666";
+}
+.e-pivotschemadesigner .dropIndicator {
+  background: none repeat scroll 0 0 transparent;
+  height: 2px;
+  width: auto;
+}
+.e-pivotschemadesigner .dropIndicatorHover {
+  background: none repeat scroll 0 0 #f4f4f4;
+}
+.e-pivotschemadesigner .removePivotBtn:before {
+  background-repeat: no-repeat;
+  height: 11px;
+  padding-left: 10px;
+  width: 11px;
+  color: white;
+  content: "\e681";
+  font-size: 13px;
+  background-color: white;
+  border: 1px solid #cecece;
+  float: none;
+  padding: 6px;
+  position: absolute;
+}
+.e-pivotschemadesigner .removePivotBtn:hover {
+  cursor: pointer;
+  background: none repeat scroll 0 0 #f4f4f4;
+}
+.e-pivotschemadesigner .ascending:before {
+  content: "\e672";
+}
+.e-pivotschemadesigner .descending:before {
+  content: "\e673";
+}
+.e-pivotschemadesigner .filter:before {
+  content: "\e669";
+  float: right;
+  margin-right: 40px;
+}
+.e-pivotschemadesigner.e-rtl .filter:before {
+  float: left;
+  margin-left: 17px;
+  margin-right: 0px;
+  margin-top: -20px;
+}
+.e-pivotschemadesigner.e-rtl .filter {
+  float: left !important;
+}
+.e-pivotschemadesigner .filter {
+  color: #666666;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.e-pivotschemadesigner .treeDrop,
+.e-pivotschemadesigner .sortDiv:hover,
+.e-pivotschemadesigner .clearSorting:hover,
+.e-pivotschemadesigner .clearAllFilters:hover,
+.e-pivotgrid .sortDiv:hover,
+.e-pivotgrid .clearSorting:hover,
+.e-pivotgrid .clearAllFilters:hover {
+  cursor: pointer;
+}
+.e-pivotschemadesigner .filterBtn {
+  height: 24px;
+}
+.e-pivotschemadesigner .filterIndicator {
+  background: none repeat scroll 0 0 #3277b2;
+}
+.e-pivotschemadesigner .memberEditorDiv {
+  height: 256px;
+  margin-top: 5px;
+  border: 1px solid #cecece;
+}
+.e-pivotschemadesigner .dialogOKBtn,
+.e-pivotschemadesigner .dialogCancelBtn {
+  width: 69px;
+  margin-left: 10px;
+}
+.e-pivotschemadesigner .dialogOKBtn {
+  margin-left: 83px;
+}
+.e-pivotschemadesigner.e-rtl .dialogOKBtn {
+  margin-left: 10px;
+  margin-right: 73px;
+}
+.e-pivotschemadesigner .e-chkbox-wrap {
+  margin-left: 7px;
+}
+.e-pivotschemadesigner .e-tbtn-wrap {
+  display: inline-block;
+}
+.e-pivotschemadesigner .e-togglebutton .e-icon {
+  height: 14px;
+  width: 14px;
+}
+.e-pivotschemadesigner .e-treeview .e-text {
+  min-height: 20px;
+  border: 1px solid transparent;
+  font-family: Segoe UI;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: move;
+  color: #333333;
+}
+.e-pivotschemadesigner .e-dialog .e-dialog-icon:hover {
+  background: #3277b2;
+}
+.e-pivotschemadesigner .e-treeview .e-active {
+  background: #3c719e;
+  color: white;
+}
+.e-pivotschemadesigner .btnDeferUpdate {
+  float: right;
+  margin-right: 10px;
+}
+.e-pivotschemadesigner.e-rtl .btnDeferUpdate {
+  float: left;
+  margin-left: 10px;
+}
+.e-pivotschemadesigner .deferUpdateLayout {
+  margin-left: 5px;
+}
+.e-pivotschemadesigner.e-rtl .deferUpdateLayout {
+  margin-right: 5px;
+}
+.e-pivotschemadesigner.e-rtl .deferUpdateLayout .e-text {
+  margin-right: 5px;
+}
+.e-pivotschemadesigner .schemaFieldTree.e-treeview .e-text {
+  width: 90%;
+}
+.e-pivotschemadesigner .schemaFieldTree ul,
+.e-pivotschemadesigner .schemaFieldTree li {
+  width: 96%;
+  height: auto;
+}
+.e-pivotschemadesigner .e-btn .e-btntxt {
+  padding: 0 6px 6px;
+}
+.e-pivotschemadesigner .expandSchema {
+  background: url("../images/expand.png") repeat scroll 0 0 transparent;
+  display: block;
+  float: right;
+  height: 25px;
+  left: 24px;
+  position: relative;
+  top: -615px;
+  width: 23px;
+}
+.e-pivotschemadesigner .collapseSchema {
+  float: right;
+  height: 25px;
+  position: relative;
+  background-image: url("../images/colapse.png");
+  top: -615px;
+  width: 23px;
+}
+.e-pivotschemadesigner .freeze {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  content: ' ';
+  top: 0;
+  left: 0;
+  z-index: 10;
+  opacity: 0;
+  background-color: lightgray;
+  filter: alpha(opacity=0);
+}
+.e-pivotschemadesigner .ddlGroupWrap,
+.e-pivotgrid .ddlGroupWrap {
+  font-weight: bold;
+  padding: 10px;
+}
+.e-pivotschemadesigner .ascOrder,
+.e-pivotschemadesigner .descOrder,
+.e-pivotgrid .ascOrder,
+.e-pivotgrid .descOrder {
+  list-style: none;
+  border: 1px solid white;
+}
+.e-pivotschemadesigner .descImage,
+.e-pivotschemadesigner .ascImage,
+.e-pivotgrid .descImage,
+.e-pivotgrid .ascImage {
+  display: inline-block;
+  height: 18px;
+  margin-right: 10px;
+  vertical-align: middle;
+  width: 20px;
+}
+.e-pivotschemadesigner .ascImage:before,
+.e-pivotgrid .ascImage:before {
+  content: "\e714";
+  font-size: 16px;
+  margin-left: 5px;
+}
+.e-pivotschemadesigner .descImage:before,
+.e-pivotgrid .descImage:before {
+  content: "\e713";
+  font-size: 16px;
+  margin-left: 5px;
+}
+.e-pivotschemadesigner .e-dialog .filter {
+  float: left;
+}
+.e-pivotschemadesigner .selectedSort,
+.e-pivotgrid .selectedSort {
+  border: 1px solid;
+  padding-top: 2px;
+}
+.e-pivotschemadesigner .filterElementTag.e-vertical,
+.e-pivotgrid .filterElementTag.e-vertical {
+  border-color: white;
+}
+.e-pivotschemadesigner .e-clrFilter:before,
+.e-pivotgrid .e-clrFilter:before {
+  content: "\e668";
+  font-size: 16px;
+  float: left;
+}
+.e-pivotschemadesigner .e-clrSort:before,
+.e-pivotgrid .e-clrSort:before {
+  content: "\e754";
+  font-size: 19px;
+  float: left;
+  margin-top: 4px;
+}
+.e-pivotschemadesigner .filterElementTag,
+.e-pivotgrid .filterElementTag {
+  font-family: Segoe UI;
+}
+.e-pivotschemadesigner .filterState:before,
+.e-pivotgrid .filterState:before {
+  content: "\e80a";
+  height: 16px;
+  width: 16px;
+}
+.e-pivotschemadesigner .clearAllFilters,
+.e-pivotgrid .clearAllFilters {
+  padding-top: 4px;
+  padding-left: 5px;
+}
+.e-pivotschemadesigner .clearAllFilters .e-clrFilter,
+.e-pivotgrid .clearAllFilters .e-clrFilter {
+  margin-top: 1px;
+  float: left;
+}
+.e-pivotschemadesigner .clearAllFilters .filter,
+.e-pivotgrid .clearAllFilters .filter {
+  margin-left: 0px;
+}
+.e-pivotschemadesigner .filterIndicator:before,
+.e-pivotgrid .filterIndicator:before {
+  content: "\e7cf";
+  height: 16px;
+  width: 16px;
+}
+.e-pivotschemadesigner .advancedFilter,
+.e-pivotgrid .advancedFilter {
+  margin-left: 38px;
+  margin-right: 15px;
+}
+.e-pivotschemadesigner .activeFilter:before,
+.e-pivotgrid .activeFilter:before {
+  content: "\e657";
+  height: 16px;
+  width: 16px;
+}
+.e-pivotschemadesigner .clearFilter .e-clrFilter,
+.e-pivotgrid .clearFilter .e-clrFilter {
+  margin-top: -1px !important;
+}
+.e-pivotschemadesigner .advancedFilter .editorTreeView,
+.e-pivotgrid .advancedFilter .editorTreeView {
+  height: inherit !important;
+  margin-top: 0px;
+}
+.e-pivotschemadesigner .separator,
+.e-pivotgrid .separator {
+  width: 81%;
+  height: 1px;
+  background-color: #cecece;
+  margin-top: 7px;
+  margin-left: 36px;
+}
+.e-pivotschemadesigner .filterElementTag a,
+.e-pivotgrid .filterElementTag a {
+  margin-left: 3px !important;
+}
+.e-pivotschemadesigner .clearFltrText,
+.e-pivotschemadesigner .clearSortText,
+.e-pivotgrid .clearFltrText,
+.e-pivotgrid .clearSortText {
+  padding-left: 1px !important;
+}
+.e-pivotschemadesigner .sortDiv,
+.e-pivotschemadesigner .clearSorting,
+.e-pivotschemadesigner .filterElementTag,
+.e-pivotgrid .sortDiv,
+.e-pivotgrid .clearSorting,
+.e-pivotgrid .filterElementTag {
+  padding-left: 5px;
+}
+.e-pivotschemadesigner .clearSorting,
+.e-pivotgrid .clearSorting {
+  height: 20px;
+}
+.e-pivotschemadesigner .filterState,
+.e-pivotgrid .filterState {
+  margin-left: 10px;
+}
+.e-pivotschemadesigner .filterDialog div,
+.e-pivotgrid .filterDialog div {
+  padding-bottom: 5px;
+}
+.e-pivotschemadesigner .filterDialog,
+.e-pivotgrid .filterDialog {
+  margin-left: -7px;
+}
+.e-pivotschemadesigner .filterElementTag,
+.e-pivotgrid .filterElementTag {
+  height: 20px;
+}
+.e-pivotgrid #clientDialog_wrapper .e-scroller:not([id$="_fieldCollection_container"]),
+.e-pivotschemadesigner #clientDialog_wrapper .e-scroller {
+  overflow: visible;
+  border: none;
+}
+@media (min-width: 20px) and (max-width: 799px) {
+  .e-pivotgrid .e-table {
+    width: 100%;
+    /*table-layout:fixed;*/
+    overflow-wrap: break-word;
+  }
+  .e-pivotgrid .e-table td {
+    overflow-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+@media (min-width: 800px) and (max-width: 959px) {
+  .e-pivotgrid .e-table {
+    width: 100%;
+    /*table-layout:fixed;*/
+    overflow-wrap: break-word;
+  }
+  .e-pivotgrid .e-table td {
+    overflow-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+@media (min-width: 960px) and (max-width: 1120px) {
+  .e-pivotgrid .e-table {
+    width: 100%;
+    /*table-layout:fixed;*/
+    overflow-wrap: break-word;
+  }
+  .e-pivotgrid .e-table td {
+    overflow-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+@media (min-width: 1120px) {
+  .e-pivotgrid .e-table {
+    width: 100%;
+    /*table-layout:fixed;*/
+    overflow-wrap: break-word;
+  }
+  .e-pivotgrid .e-table td {
+    overflow-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

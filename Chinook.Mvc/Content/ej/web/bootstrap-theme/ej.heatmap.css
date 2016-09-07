@@ -1,0 +1,51 @@
+/*@pager-currentitem:#428BCA;*/
+/*-----------------------Map------------------*/
+/*-----------------------PdfViewer------------------*/
+/*-----------------------End PdfViewer------------------*/
+/*-----------------------OLAP Definition Start-----------------*/
+.e-olapclient .removeSplitBtn {
+  border-radius: 4px;
+}
+/*-----------------------OLAP Definition End
+
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Diagram Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Ribbon End-----------------------*/
+/*----------------------Kanban Definition-----------------------*/
+/*----------------------Kanban End-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+/*----------------------rangeScrollbar Start------------------*/
+/*----------------------rangeScrollbar End--------------------*/
+/*----------------------Office 365 theme-----------------------*/
+/*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
+/*----------------------material theme-----------------------*/
+.e-heatmap.e-grid .e-alt_row,
+.e-heatmap.e-grid td.e-cellselectionbackground,
+.e-heatmap.e-grid .e-headercell,
+.e-heatmap.e-grid .e-grouptopleftcell {
+  background: white;
+}
+.e-heatmap.e-js.e-grid .e-headercelldiv {
+  font-weight: 600;
+  font-size: 12px;
+}
+.e-heatmap.e-js.e-grid.e-responsive .e-rowcell {
+  font-size: 12px;
+}
+.e-heatmap.e-js.e-grid .e-headercell {
+  height: 30px;
+}
+.e-heatmap.e-js.e-grid.e-responsive .e-row td:first-child,
+.e-heatmap.e-js.e-grid.e-responsive .e-alt_row td:first-child {
+  font-weight: 600;
+  font-size: 12px;
+}
+.e-heatmap.e-js.e-grid .e-movablecontent,
+.e-heatmap.e-js.e-grid .e-movableheader {
+  border-left-color: #c8c8c8;
+}

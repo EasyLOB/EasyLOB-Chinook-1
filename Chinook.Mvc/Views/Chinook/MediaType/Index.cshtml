@@ -1,0 +1,9 @@
+@model MediaTypeCollectionModel
+
+@{
+    ViewBag.Title = MediaTypeResources.EntityPlural;
+}
+
+<h3>@ViewBag.Title</h3>
+
+@Html.Action("Search", "MediaType")

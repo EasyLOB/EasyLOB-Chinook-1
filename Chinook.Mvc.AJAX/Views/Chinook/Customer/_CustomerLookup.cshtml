@@ -1,0 +1,222 @@
+@model LookupModel
+
+<div class="input-group">
+    <span class="input-group-addon"><img id="@(Model.ValueId + "_Button")" class="z-buttonLookup" /></span>
+    @Html.TextBox(Model.ValueId + "_Lookup", Model.Text, new { @class = AppDefaults.CssClassEditor + " z-lookup" })
+</div>
+
+<div id="Modal_Customer_Lookup" aria-labelledby="Label_Customer_Lookup" class="modal fade col-md-10" role="dialog" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-label="@PresentationResources.Cancel" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                <h4 id="Label_Customer_Lookup" class="modal-title">@CustomerResources.EntityPlural</h4>
+            </div>
+            <div class="modal-body">
+
+                @(Html.EJ().Grid<Customer>("Grid_Customer_Lookup")
+                    .Datasource(datasource => datasource
+                        .Adaptor(AdaptorType.UrlAdaptor)
+                        .URL(Url.Content("~/Customer/DataSource"))
+                    )
+                    .AllowFiltering()
+                    .AllowPaging()
+                    .AllowSearching()
+                    .AllowSorting()
+                    .ClientSideEvents(clientEvent => clientEvent
+                        .ActionFailure("actionFailure_Grid_Customer_Lookup")
+                        .Load("load_Grid_Customer_Lookup")
+                        .RowSelected("rowSelected_Grid_Customer_Lookup")                       
+                    )
+                    .Columns(column =>
+                    {
+                        column.Field("CustomerId")
+                            .AllowEditing(false)
+                            .EditType(EditingType.Numeric)
+                            .HeaderText(CustomerResources.PropertyCustomerId)
+                            .IsIdentity(true)
+                            .IsPrimaryKey(true)
+                            .Visible(false)
+                            .Width(100)
+                            .Add();
+                        column.Field("FirstName")
+                            .EditType(EditingType.String)
+                            .HeaderText(CustomerResources.PropertyFirstName)
+                            .Visible(true)
+                            .Width(240)
+                            .Add();
+                        column.Field("LastName")
+                            .EditType(EditingType.String)
+                            .HeaderText(CustomerResources.PropertyLastName)
+                            .Visible(true)
+                            .Width(200)
+                            .Add();
+                        column.Field("Company")
+                            .EditType(EditingType.String)
+                            .HeaderText(CustomerResources.PropertyCompany)
+                            .Visible(false)
+                            .Width(240)
+                            .Add();
+                        column.Field("Address")
+                            .EditType(EditingType.String)
+                            .HeaderText(CustomerResources.PropertyAddress)
+                            .Visible(false)
+                            .Width(240)
+                            .Add();
+                        column.Field("City")
+                            .EditType(EditingType.String)
+                            .HeaderText(CustomerResources.PropertyCity)
+                            .Visible(false)
+                            .Width(240)
+                            .Add();
+                        column.Field("State")
+                            .EditType(EditingType.String)
+                            .HeaderText(CustomerResources.PropertyState)
+                            .Visible(false)
+                            .Width(240)
+                            .Add();
+                        column.Field("Country")
+                            .EditType(EditingType.String)
+                            .HeaderText(CustomerResources.PropertyCountry)
+                            .Visible(false)
+                            .Width(240)
+                            .Add();
+                        column.Field("PostalCode")
+                            .EditType(EditingType.String)
+                            .HeaderText(CustomerResources.PropertyPostalCode)
+                            .Visible(false)
+                            .Width(100)
+                            .Add();
+                        column.Field("Phone")
+                            .EditType(EditingType.String)
+                            .HeaderText(CustomerResources.PropertyPhone)
+                            .Visible(false)
+                            .Width(240)
+                            .Add();
+                        column.Field("Fax")
+                            .EditType(EditingType.String)
+                            .HeaderText(CustomerResources.PropertyFax)
+                            .Visible(false)
+                            .Width(240)
+                            .Add();
+                        column.Field("Email")
+                            .EditType(EditingType.String)
+                            .HeaderText(CustomerResources.PropertyEmail)
+                            .Visible(false)
+                            .Width(240)
+                            .Add();
+                        column.Field("SupportRepId")
+                            .EditType(EditingType.Numeric)
+                            .HeaderText(CustomerResources.PropertySupportRepId)
+                            .Visible(false)
+                            .Width(100)
+                            .Add();
+                        column.Field("EmployeeLookupText")
+                            .AllowEditing(false)
+                            .HeaderText(EmployeeResources.EntitySingular)
+                            .Visible(true)
+                            .Width(100)
+                            .Add();
+                    })
+                    .FilterSettings(filter => filter
+                        .EnableCaseSensitivity(false)
+                        .FilterType(FilterType.Excel)
+                        .MaxFilterChoices(System.Int32.MaxValue)
+                    )
+                    .PageSettings(page => page
+                        .PageSize(AppDefaults.SyncfusionRecordsByPage)
+                    )
+                    .SearchSettings(search =>
+                    {
+                        search.Fields(field =>
+                        {
+                            //field.Add("CustomerId");
+                            field.Add("FirstName");
+                            field.Add("LastName");
+                            //field.Add("Company");
+                            //field.Add("Address");
+                            //field.Add("City");
+                            //field.Add("State");
+                            //field.Add("Country");
+                            //field.Add("PostalCode");
+                            //field.Add("Phone");
+                            //field.Add("Fax");
+                            //field.Add("Email");
+                            //field.Add("SupportRepId");
+                            //field.Add("EmployeeLookupText");
+                        });
+                    })
+                    .ShowColumnChooser()
+                    .ToolbarSettings(toolbar => toolbar
+                        .ShowToolbar()
+                        .ToolbarItems(items =>
+                        {
+                            items.AddTool(ToolBarItems.Search);
+                        })
+                    )
+                )
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@*
+@Html.OperationResult(Model.OperationResult)
+*@
+
+<script>
+    $(function () {
+        try {
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+    
+            $("#@Model.ValueId").hide();
+    
+            $("#@(Model.ValueId)_Button").click(function () {
+                $("#Modal_Customer_Lookup").modal("show");
+            });
+    
+            $("#@(Model.ValueId)_Lookup").attr("readonly", true);
+            $("#@(Model.ValueId)_Lookup").val(model.Text.toLocaleString("@CultureInfo.CurrentCulture.Name"));
+    
+            $("#Modal_Customer_Lookup").modal("hide");
+        } catch (exception) {
+            alert(zExceptionMessage("_CustomerLookup.cshtml", "function ()", exception));
+        }
+    });
+    
+    function actionFailure_Grid_Customer_Lookup(args) {
+        try {
+            alert(zErrorMessage(args.error.responseText));
+        } catch (exception) {
+            alert(zExceptionMessage("_CustomerLookup.cshtml", "actionFailure_Grid_Customer_Lookup(args)", exception));
+        }
+    }    
+
+    function load_Grid_Customer_Lookup(args) {
+        try {            
+            var culture = "@System.Globalization.CultureInfo.CurrentCulture.Name";
+            this.model.locale = culture;
+        } catch (exception) {
+            alert(zExceptionMessage("_CustomerLookup.cshtml", "load_Grid_Customer_Lookup(args)", exception));
+        }
+    }
+
+    function rowSelected_Grid_Customer_Lookup(args) {
+        try {
+            var data = this.model.currentViewData[args.rowIndex];
+    
+            $("#@(Model.ValueId)").val(data.CustomerId);
+    
+            $("#@(Model.ValueId)_Lookup").val(data.LookupText);
+
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+            var culture = "@System.Globalization.CultureInfo.CurrentCulture.Name";
+            zLookupElements(data, model.Elements, culture);
+    
+            $("#Modal_Customer_Lookup").modal("hide");
+        } catch (exception) {
+            alert(zExceptionMessage("_CustomerLookup.cshtml", "rowSelected_Grid_Customer_Lookup(args)", exception));
+        }
+    }
+</script>

@@ -1,0 +1,88 @@
+@model TaskImportGenreModel
+
+@*
+ASP.NET MVC: Simple example of ajax file upload using jQuery
+http://powerdotnetcore.com/asp-net-mvc/asp-net-mvc-simple-ajax-file-upload-using-jquery
+*@
+
+@section Styles
+{
+    @System.Web.Optimization.Styles.Render("~/content/jQuery.FileUpload/css/z-jquery-fileupload.css")
+}
+
+@section Scripts
+{
+    @Scripts.Render(Url.Content("~/scripts/z-jquery-fileupload.js"))
+}
+
+<h3>@TaskImportGenreResources.Task</h3>
+
+<p>
+    <input id="Input_File" class="input-sm z-editor col-md-6" readonly="readonly" type="text" value="?" />
+    &nbsp;&nbsp;
+    <span class="btn btn-success fileinput-button" style="height: 30px; padding: 4px; width:200px;">
+        <span>@PresentationResources.SelectFile</span>
+        @Html.TextBoxFor(model => model.Upload, new { id = "Input_Upload", type = "file" })
+    </span>
+</p>
+
+<div class="z-formButtons">
+    <input id="Button_Upload" type="image" class="btn btn-default z-buttonOk" title="@PresentationResources.OK" />
+</div>
+
+<div id="OperationResult">
+    @Html.OperationResult(Model.OperationResult)
+</div>
+
+<script>
+    var jqXHRData;
+
+    $(function () {
+        setupFileUpload();
+
+        $("#Button_Upload").on("click", function () {
+            if (jqXHRData) {
+                jqXHRData.submit();
+            }
+            return false;
+        });
+
+        $("#Input_Upload").on("change", function () {
+            $("#Input_File").val(this.files[0].name);
+        });        
+    });
+
+    function setupFileUpload() {
+
+        "use strict";
+
+        $("#Input_Upload").fileupload({
+            url: "@Url.Content("~/ChinookTasks/ImportGenreAjax")",
+            dataType: "json",
+            add: function (e, data) {
+                jqXHRData = data;
+            },
+            done: function (event, data) {
+                if (data.jqXHR != null && data.jqXHR.responseJSON != null) {
+                    if (data.jqXHR.responseJSON.IsUploaded) {
+                        $("#Input_File").val("?");
+                        var control = $("#Input_Upload");
+                        control.replaceWith(control = control.clone(true));
+                    }
+                }
+                
+                $("#OperationResult").html(zAjaxOperationResult(data.jqXHR));
+            },
+            fail: function (event, data) {
+                if (data.files != null)
+                {
+                    if (data.files[0].error) {
+                        alert(data.files[0].error);
+                    }
+                }
+                
+                $("#OperationResult").html(zAjaxOperationResult(data.jqXHR));
+            }
+        });
+    }
+</script>

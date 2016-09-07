@@ -1,0 +1,9 @@
+@model CustomerDocumentCollectionModel
+
+@{
+    ViewBag.Title = CustomerDocumentResources.EntityPlural;
+}
+
+<h3>@ViewBag.Title</h3>
+
+@Html.Action("Search", "CustomerDocument")

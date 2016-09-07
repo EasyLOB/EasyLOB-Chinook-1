@@ -1,0 +1,26 @@
+@model TaskModel
+
+<h3>@TaskExportGenreResources.Task</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="z-formButtons">
+        <input type="image" class="btn btn-default z-buttonOk" title="@PresentationResources.OK" />
+    </div>
+}
+
+@Html.OperationResult(Model.OperationResult)
+
+<script>
+    $(function () {
+        try {
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+        } catch (exception) {
+            alert(zExceptionMessage("ExportGenre.cshtml", "function()", exception));
+        }
+    });
+</script>

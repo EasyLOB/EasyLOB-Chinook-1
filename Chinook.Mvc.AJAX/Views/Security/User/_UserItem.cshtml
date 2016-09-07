@@ -1,0 +1,209 @@
+@model UserItemModel
+
+@* !!! *@
+
+@{
+}
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+@Html.HiddenFor(model => model.ControllerAction)
+@Html.HiddenFor(model => model.IsMasterDetail)
+
+@{Html.EJ().Tab("Tab_User")
+    .ClientSideEvents(clientEvent => clientEvent
+        .ItemActive("itemActive_Tab_User")
+    )
+    .Items(data =>
+    {
+        data.Add().ID("TabSheet_User_User").Text(UserResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
+            
+            <div id="Group_User_Id" class="@AppDefaults.CssClassGroup col-md-6">
+                @Html.LabelFor(model => model.User.Id, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.User.Id, new { id = "User_Id", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.User.Id, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+
+            @* !!! *@            
+            <div id="Group_User_UserName" class="@AppDefaults.CssClassGroup col-md-6">
+                @Html.LabelFor(model => model.User.UserName, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.User.UserName, new { id = "User_UserName", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.User.UserName, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+            
+            <div id="Group_User_Email" class="@AppDefaults.CssClassGroup col-md-6">
+                @Html.LabelFor(model => model.User.Email, new { @class = AppDefaults.CssClassLabel })
+                @Html.EditorFor(model => model.User.Email, new { id = "User_Email", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.User.Email, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+
+            <div id="Group_User_Password" class="@AppDefaults.CssClassGroup col-md-2">
+                @Html.LabelFor(model => model.User.Password, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.User.Password, new { id = "User_Password", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.User.Password, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+            @*
+            <div id="Group_User_EmailConfirmed" class="@AppDefaults.CssClassGroup col-md-2">
+                @Html.LabelFor(model => model.User.EmailConfirmed, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.User.EmailConfirmed, new { id = "User_EmailConfirmed", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.User.EmailConfirmed, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+            
+            <div id="Group_User_PasswordHash" class="@AppDefaults.CssClassGroup col-md-2">
+                @Html.LabelFor(model => model.User.PasswordHash, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.User.PasswordHash, new { id = "User_PasswordHash", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.User.PasswordHash, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+            
+            <div id="Group_User_SecurityStamp" class="@AppDefaults.CssClassGroup col-md-2">
+                @Html.LabelFor(model => model.User.SecurityStamp, new { @class = AppDefaults.CssClassLabel })
+                @Html.EditorFor(model => model.User.SecurityStamp, new { id = "User_SecurityStamp", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.User.SecurityStamp, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+            
+            <div id="Group_User_PhoneNumber" class="@AppDefaults.CssClassGroup col-md-2">
+                @Html.LabelFor(model => model.User.PhoneNumber, new { @class = AppDefaults.CssClassLabel })
+                @Html.EditorFor(model => model.User.PhoneNumber, new { id = "User_PhoneNumber", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.User.PhoneNumber, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+            
+            <div id="Group_User_PhoneNumberConfirmed" class="@AppDefaults.CssClassGroup col-md-3">
+                @Html.LabelFor(model => model.User.PhoneNumberConfirmed, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.User.PhoneNumberConfirmed, new { id = "User_PhoneNumberConfirmed", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.User.PhoneNumberConfirmed, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+            
+            <div id="Group_User_TwoFactorEnabled" class="@AppDefaults.CssClassGroup col-md-2">
+                @Html.LabelFor(model => model.User.TwoFactorEnabled, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.User.TwoFactorEnabled, new { id = "User_TwoFactorEnabled", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.User.TwoFactorEnabled, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+            
+            <div id="Group_User_LockoutEndDateUtc" class="@AppDefaults.CssClassGroup col-md-2">
+                @Html.LabelFor(model => model.User.LockoutEndDateUtc, new { @class = AppDefaults.CssClassLabel })
+                @Html.EditorFor(model => model.User.LockoutEndDateUtc, new { id = "User_LockoutEndDateUtc", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.User.LockoutEndDateUtc, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+            
+            <div id="Group_User_LockoutEnabled" class="@AppDefaults.CssClassGroup col-md-2">
+                @Html.LabelFor(model => model.User.LockoutEnabled, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.User.LockoutEnabled, new { id = "User_LockoutEnabled", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.User.LockoutEnabled, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+            
+            <div id="Group_User_AccessFailedCount" class="@AppDefaults.CssClassGroup col-md-2">
+                @Html.LabelFor(model => model.User.AccessFailedCount, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.User.AccessFailedCount, new { id = "User_AccessFailedCount", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.User.AccessFailedCount, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+            *@
+        </div>);
+        data.Add().ID("TabSheet_User_UserClaim").Text(UserClaimResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
+            <div id="Ajax_User_UserClaim"></div>
+        </div>);
+        data.Add().ID("TabSheet_User_UserLogin").Text(UserLoginResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
+            <div id="Ajax_User_UserLogin"></div>
+        </div>);
+        data.Add().ID("TabSheet_User_UserRole").Text(UserRoleResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
+            <div id="Ajax_User_UserRole"></div>
+        </div>);
+    })
+    .Render();
+}
+
+<script>
+    // Validate hidden fields
+    $.validator.setDefaults({ ignore: null });
+    // Parse validators
+    $.validator.unobtrusive.parse($("#Ajax"));
+
+    $(function () {
+        try {
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+            var userDictionary = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(DataHelper.GetDataDictionaryAttribute(typeof(User)))); }();
+            var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
+            
+            var ajaxUrl = "";
+            // UserClaim
+            ajaxUrl = "@(Html.Raw(Url.Action("Search", "UserClaim", new { MasterUrl = Context.Request.Url.AbsoluteUri, MasterControllerAction = Model.ControllerAction, MasterUserId = Model.User.Id })))";
+            $("#Ajax_User_UserClaim").load(ajaxUrl);
+            // UserLogin
+            ajaxUrl = "@(Html.Raw(Url.Action("Search", "UserLogin", new { MasterUrl = Context.Request.Url.AbsoluteUri, MasterControllerAction = Model.ControllerAction, MasterUserId = Model.User.Id })))";
+            $("#Ajax_User_UserLogin").load(ajaxUrl);
+            // UserRole
+            ajaxUrl = "@(Html.Raw(Url.Action("Search", "UserRole", new { MasterUrl = Context.Request.Url.AbsoluteUri, MasterControllerAction = Model.ControllerAction, MasterUserId = Model.User.Id })))";
+            $("#Ajax_User_UserRole").load(ajaxUrl);
+            ej.widget.init($("#Ajax"));
+            $(document).prop("title", "@(ViewBag.Title)");            
+    
+            var readonly = (controllerAction == "delete" || controllerAction == "read");
+            $("input.form-control").not(":input[type=button], :input[type=image], :input[type=reset], :input[type=submit]").attr("readonly", readonly);
+            if (readonly) {
+                $("img.z-buttonLookup").hide();
+            }
+            else {
+                $("img.z-buttonLookup").show();
+            }
+
+            $("input[name$='_Lookup']").attr("readonly", true);
+
+            if (userDictionary.IsIdentity) {            
+                $("#Group_User_Id").hide();
+            }
+
+            // Associations (FK)
+
+            // Collections (PK)
+            var display = controllerAction == "create" ? "none" : "block";
+            // UserClaim
+            var gridUserClaim = $("#Grid_UserClaim");
+            gridUserClaim.css("display", display);
+            // UserLogin
+            var gridUserLogin = $("#Grid_UserLogin");
+            gridUserLogin.css("display", display);
+            // UserRole
+            var gridUserRole = $("#Grid_UserRole");
+            gridUserRole.css("display", display);
+            
+            // !!!
+            $("#Group_User_Id").hide();
+            if (controllerAction == "update") {
+                $("#User_UserName").attr("readonly", true);
+                $("#User_Email").attr("readonly", true);
+                $("#User_Password").attr("readonly", true);
+            }
+        } catch (exception) {
+            alert(zExceptionMessage("_UserItem.cshtml", "function()", exception));
+        }
+    });
+
+    function itemActive_Tab_User(args) { // IE
+        try {
+            switch(args.activeIndex) {
+            // UserClaim
+                case 1:
+                    $("#Grid_UserClaim").ejGrid({
+                        allowScrolling: true,
+                        scrollSettings: { width: "100%" }
+                    });
+                    break;
+            // UserLogin
+                case 2:
+                    $("#Grid_UserLogin").ejGrid({
+                        allowScrolling: true,
+                        scrollSettings: { width: "100%" }
+                    });
+                    break;
+            // UserRole
+                case 3:
+                    $("#Grid_UserRole").ejGrid({
+                        allowScrolling: true,
+                        scrollSettings: { width: "100%" }
+                    });
+                    break;
+            }            
+        } catch (exception) {
+            alert(zExceptionMessage("_UserItem.cshtml", "itemActive_Tab_User(args)", exception));
+        }
+    }    
+</script>

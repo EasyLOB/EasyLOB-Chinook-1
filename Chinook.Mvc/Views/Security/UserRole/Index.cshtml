@@ -1,0 +1,9 @@
+@model UserRoleCollectionModel
+
+@{
+    ViewBag.Title = UserRoleResources.EntityPlural;
+}
+
+<h3>@ViewBag.Title</h3>
+
+@Html.Action("Search", "UserRole")

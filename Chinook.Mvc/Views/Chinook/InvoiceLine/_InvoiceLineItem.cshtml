@@ -1,0 +1,125 @@
+@model InvoiceLineItemModel
+
+@{
+    string invoiceText = Model.InvoiceLine == null ? "" : (Model.InvoiceLine.InvoiceLookupText ?? "");
+    string trackText = Model.InvoiceLine == null ? "" : (Model.InvoiceLine.TrackLookupText ?? "");
+}
+
+@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+@Html.HiddenFor(model => model.ControllerAction)
+@Html.HiddenFor(model => model.IsMasterDetail)
+@Html.HiddenFor(model => model.MasterInvoiceId)
+@Html.HiddenFor(model => model.MasterTrackId)
+
+@{Html.EJ().Tab("Tab_InvoiceLine")
+    .ClientSideEvents(clientEvent => clientEvent
+        .ItemActive("itemActive_Tab_InvoiceLine")
+    )
+    .Items(data =>
+    {
+        data.Add().ID("TabSheet_InvoiceLine_InvoiceLine").Text(InvoiceLineResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
+
+            <div id="Group_InvoiceLine_InvoiceLineId" class="@AppDefaults.CssClassGroup col-md-2">
+                @Html.LabelFor(model => model.InvoiceLine.InvoiceLineId, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.InvoiceLine.InvoiceLineId, new { id = "InvoiceLine_InvoiceLineId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.InvoiceLine.InvoiceLineId, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+
+            <div id="Group_InvoiceLine_InvoiceId" class="@AppDefaults.CssClassGroup col-md-6">
+                @Html.Label(@InvoiceResources.EntitySingular, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.InvoiceLine.InvoiceId, new { id = "InvoiceLine_InvoiceId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })                    
+                @Html.Action("Lookup", "Invoice", new
+                {
+                    Text = invoiceText,
+                    ValueId = "InvoiceLine_InvoiceId"
+                })
+                @Html.ValidationMessageFor(model => model.InvoiceLine.InvoiceId, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+
+            <div id="Group_InvoiceLine_TrackId" class="@AppDefaults.CssClassGroup col-md-6">
+                @Html.Label(@TrackResources.EntitySingular, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.InvoiceLine.TrackId, new { id = "InvoiceLine_TrackId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })                    
+                @Html.Action("Lookup", "Track", new
+                {
+                    Text = trackText,
+                    ValueId = "InvoiceLine_TrackId",
+                    // !!!
+                    Elements = new List<LookupModelElement>() {
+                        new LookupModelElement("InvoiceLine_UnitPrice", "UnitPrice")
+                    }
+                })
+                @Html.ValidationMessageFor(model => model.InvoiceLine.TrackId, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+
+            <div id="Group_InvoiceLine_UnitPrice" class="@AppDefaults.CssClassGroup col-md-2">
+                @Html.LabelFor(model => model.InvoiceLine.UnitPrice, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.InvoiceLine.UnitPrice, new { id = "InvoiceLine_UnitPrice", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.InvoiceLine.UnitPrice, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+
+            <div id="Group_InvoiceLine_Quantity" class="@AppDefaults.CssClassGroup col-md-2">
+                @Html.LabelFor(model => model.InvoiceLine.Quantity, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.InvoiceLine.Quantity, new { id = "InvoiceLine_Quantity", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.InvoiceLine.Quantity, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+
+        </div>);
+    })
+    .Render();
+}
+
+<script>
+    // Validate hidden fields
+    $.validator.setDefaults({ ignore: null });
+
+    $(function () {
+        try {
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+            var invoiceLineDictionary = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(DataHelper.GetDataDictionaryAttribute(typeof(InvoiceLine)))); }();
+            var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
+            
+            var readonly = (controllerAction == "delete" || controllerAction == "read");
+            $("input.form-control").not(":input[type=button], :input[type=image], :input[type=reset], :input[type=submit]").attr("readonly", readonly);
+            if (readonly) {
+                $("img.z-buttonLookup").hide();
+            }
+            else {
+                $("img.z-buttonLookup").show();
+            }
+
+            $("input[name$='_Lookup']").attr("readonly", true);
+
+            if (invoiceLineDictionary.IsIdentity) {            
+                $("#Group_InvoiceLine_InvoiceLineId").hide();
+            }
+
+            // Associations (FK)
+            // Invoice
+            if (model.MasterInvoiceId != null) {
+                $("#InvoiceLine_InvoiceId").val(model.MasterInvoiceId);
+                $("#Group_InvoiceLine_InvoiceId").hide();            
+            }
+            // Track
+            if (model.MasterTrackId != null) {
+                $("#InvoiceLine_TrackId").val(model.MasterTrackId);
+                $("#Group_InvoiceLine_TrackId").hide();            
+            }
+
+            // Collections (PK)
+            var display = controllerAction == "create" ? "none" : "block";
+
+            // !!!
+            $("#InvoiceLine_UnitPrice").attr("readonly", true);
+        } catch (exception) {
+            alert(zExceptionMessage("_InvoiceLineItem.cshtml", "function()", exception));
+        }    
+    });
+
+    function itemActive_Tab_InvoiceLine(args) { // IE
+        try {
+        } catch (exception) {
+            alert(zExceptionMessage("_InvoiceLineItem.cshtml", "itemActive_Tab_InvoiceLine(args)", exception));
+        }
+    }    
+</script>

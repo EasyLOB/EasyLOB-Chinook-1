@@ -1,0 +1,40 @@
+@model InvoiceLineItemModel
+
+@{
+    ViewBag.Title = AppHelper.PageTitle(InvoiceLineResources.EntitySingular, PresentationResources.Delete);
+}
+
+<h3>@ViewBag.Title</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div id="Partial" class="form-inline">
+        @Html.Partial("_InvoiceLineItem", Model)
+    </div>
+    
+    <div class="z-formButtons">
+        @Html.Raw(@Html.ImageLink("Button_Cancel", MvcHelper.ReadUrlDictionary(Context, "InvoiceLine"), "z-buttonCancel", PresentationResources.Cancel))
+        <input id="Button_OK" type="image" class="btn btn-default z-buttonOk" title="@PresentationResources.Delete" />
+    </div>
+}
+
+@Html.OperationResult(Model.OperationResult)
+
+<script>
+    $(function () {
+        var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+
+        if (model.IsSecurityOperations.IsDelete) {
+            $("#Partial").show();
+            $("#Button_Cancel").show();
+            $("#Button_OK").show();
+        }
+        else {
+            $("#Partial").hide();
+            $("#Button_Cancel").show();
+            $("#Button_OK").hide();
+        }
+    });
+</script>

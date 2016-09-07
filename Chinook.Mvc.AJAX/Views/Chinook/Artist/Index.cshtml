@@ -1,0 +1,14 @@
+@model ArtistCollectionModel
+
+<div id="Ajax">
+</div>
+
+<script>
+    $(function () {
+        try {
+            $("#Ajax").load("@(Url.Action("Search", "Artist", null, Request.Url.Scheme))");
+        } catch (exception) {
+            zExceptionMessage("Artist Index.cshtml", "function()", exception.message)
+        }
+    });
+</script>

@@ -1,0 +1,151 @@
+@model LookupModel
+
+<div class="input-group">
+    <span class="input-group-addon"><img id="@(Model.ValueId + "_Button")" class="z-buttonLookup" /></span>
+    @Html.TextBox(Model.ValueId + "_Lookup", Model.Text, new { @class = AppDefaults.CssClassEditor + " z-lookup" })
+</div>
+
+<div id="Modal_PlaylistTrack_Lookup" aria-labelledby="Label_PlaylistTrack_Lookup" class="modal fade col-md-10" role="dialog" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-label="@PresentationResources.Cancel" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                <h4 id="Label_PlaylistTrack_Lookup" class="modal-title">@PlaylistTrackResources.EntityPlural</h4>
+            </div>
+            <div class="modal-body">
+
+                @(Html.EJ().Grid<PlaylistTrack>("Grid_PlaylistTrack_Lookup")
+                    .Datasource(datasource => datasource
+                        .Adaptor(AdaptorType.UrlAdaptor)
+                        .URL(Url.Content("~/PlaylistTrack/DataSource"))
+                    )
+                    .AllowFiltering()
+                    .AllowPaging()
+                    .AllowSearching()
+                    .AllowSorting()
+                    .ClientSideEvents(clientEvent => clientEvent
+                        .ActionFailure("actionFailure_Grid_PlaylistTrack_Lookup")
+                        .Load("load_Grid_PlaylistTrack_Lookup")
+                        .RowSelected("rowSelected_Grid_PlaylistTrack_Lookup")                       
+                    )
+                    .Columns(column =>
+                    {
+                        column.Field("PlaylistId")
+                            .EditType(EditingType.Numeric)
+                            .HeaderText(PlaylistTrackResources.PropertyPlaylistId)
+                            .IsPrimaryKey(true)
+                            .Visible(true)
+                            .Width(100)
+                            .Add();
+                        column.Field("PlaylistLookupText")
+                            .AllowEditing(false)
+                            .HeaderText(PlaylistResources.EntitySingular)
+                            .Visible(true)
+                            .Width(100)
+                            .Add();
+                        column.Field("TrackId")
+                            .EditType(EditingType.Numeric)
+                            .HeaderText(PlaylistTrackResources.PropertyTrackId)
+                            .IsPrimaryKey(true)
+                            .Visible(true)
+                            .Width(100)
+                            .Add();
+                        column.Field("TrackLookupText")
+                            .AllowEditing(false)
+                            .HeaderText(TrackResources.EntitySingular)
+                            .Visible(true)
+                            .Width(100)
+                            .Add();
+                    })
+                    .FilterSettings(filter => filter
+                        .EnableCaseSensitivity(false)
+                        .FilterType(FilterType.Excel)
+                        .MaxFilterChoices(System.Int32.MaxValue)
+                    )
+                    .PageSettings(page => page
+                        .PageSize(AppDefaults.SyncfusionRecordsByPage)
+                    )
+                    .SearchSettings(search =>
+                    {
+                        search.Fields(field =>
+                        {
+                            field.Add("PlaylistId");
+                            field.Add("PlaylistLookupText");
+                            field.Add("TrackId");
+                            field.Add("TrackLookupText");
+                        });
+                    })
+                    .ShowColumnChooser()
+                    .ToolbarSettings(toolbar => toolbar
+                        .ShowToolbar()
+                        .ToolbarItems(items =>
+                        {
+                            items.AddTool(ToolBarItems.Search);
+                        })
+                    )
+                )
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@*
+@Html.OperationResult(Model.OperationResult)
+*@
+
+<script>
+    $(function () {
+        try {
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+    
+            $("#@Model.ValueId").hide();
+    
+            $("#@(Model.ValueId)_Button").click(function () {
+                $("#Modal_PlaylistTrack_Lookup").modal("show");
+            });
+    
+            $("#@(Model.ValueId)_Lookup").attr("readonly", true);
+            $("#@(Model.ValueId)_Lookup").val(model.Text.toLocaleString("@CultureInfo.CurrentCulture.Name"));
+    
+            $("#Modal_PlaylistTrack_Lookup").modal("hide");
+        } catch (exception) {
+            alert(zExceptionMessage("_PlaylistTrackLookup.cshtml", "function ()", exception));
+        }
+    });
+    
+    function actionFailure_Grid_PlaylistTrack_Lookup(args) {
+        try {
+            alert(zErrorMessage(args.error.responseText));
+        } catch (exception) {
+            alert(zExceptionMessage("_PlaylistTrackLookup.cshtml", "actionFailure_Grid_PlaylistTrack_Lookup(args)", exception));
+        }
+    }    
+
+    function load_Grid_PlaylistTrack_Lookup(args) {
+        try {            
+            var culture = "@System.Globalization.CultureInfo.CurrentCulture.Name";
+            this.model.locale = culture;
+        } catch (exception) {
+            alert(zExceptionMessage("_PlaylistTrackLookup.cshtml", "load_Grid_PlaylistTrack_Lookup(args)", exception));
+        }
+    }
+
+    function rowSelected_Grid_PlaylistTrack_Lookup(args) {
+        try {
+            var data = this.model.currentViewData[args.rowIndex];
+    
+            $("#@(Model.ValueId)").val(data.PlaylistId);
+    
+            $("#@(Model.ValueId)_Lookup").val(data.LookupText);
+
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+            var culture = "@System.Globalization.CultureInfo.CurrentCulture.Name";
+            zLookupElements(data, model.Elements, culture);
+    
+            $("#Modal_PlaylistTrack_Lookup").modal("hide");
+        } catch (exception) {
+            alert(zExceptionMessage("_PlaylistTrackLookup.cshtml", "rowSelected_Grid_PlaylistTrack_Lookup(args)", exception));
+        }
+    }
+</script>

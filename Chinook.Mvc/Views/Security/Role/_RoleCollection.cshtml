@@ -1,0 +1,230 @@
+@model RoleCollectionModel
+
+@(Html.EJ().Grid<Role>("Grid_Role")
+    .Datasource(datasource => datasource
+        .Adaptor(AdaptorType.UrlAdaptor)
+        .URL(Url.Content("~/Role/DataSource"))
+    )
+    .AllowFiltering()
+    .AllowGrouping()
+    .AllowPaging()
+    .AllowResizing()
+    .AllowScrolling()
+    .AllowSearching()
+    .AllowSorting()
+    .ClientSideEvents(clientEvent => clientEvent
+        .ActionBegin("actionBegin_Grid_Role")
+        .ActionFailure("actionFailure_Grid_Role")
+        .Load("load_Grid_Role")
+        .ToolbarClick("toolbarClick_Grid_Role")
+    )
+    .Columns(column =>
+    {
+        column.Field("Id")
+            .EditType(EditingType.String)
+            .HeaderText(RoleResources.PropertyId)
+            .IsPrimaryKey(true)
+            .Visible(false)
+            .Width(240)
+            .Add();
+        column.Field("Name")
+            .EditType(EditingType.String)
+            .HeaderText(RoleResources.PropertyName)
+            .Visible(true)
+            .Width(240)
+            .Add();
+        //column.Field("Discriminator")
+        //    .EditType(EditingType.String)
+        //    .HeaderText(RoleResources.PropertyDiscriminator)
+        //    .Visible(true)
+        //    .Width(240)
+        //    .Add(); // !!!
+    })
+    .EditSettings(edit => edit
+        .AllowAdding()
+        .AllowDeleting()
+        .AllowEditing()
+    )
+    .EnablePersistence()
+    .FilterSettings(filter => filter
+        .EnableCaseSensitivity(false)
+        .FilterType(FilterType.Excel)
+        .MaxFilterChoices(System.Int32.MaxValue)
+    )
+    .Mappers(map => map
+        .ExportToExcelAction(Url.Content("~/Role/ExportToExcel"))
+        .ExportToPdfAction(Url.Content("~/Role/ExportToPdf"))
+        .ExportToWordAction(Url.Content("~/Role/ExportToWord"))
+    )
+    .PageSettings(page => page
+        .PageSize(AppDefaults.SyncfusionRecordsByPage)
+    )
+    .SearchSettings(search =>
+    {
+        search.Fields(field =>
+        {
+            //field.Add("Id");
+            field.Add("Name");
+            //field.Add("Discriminator"); // !!!
+        });
+    })
+    .ShowColumnChooser()
+    .ToolbarSettings(toolbar => toolbar
+        .CustomToolbarItems(new List<object>() {
+            new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_Role" }
+        })
+        .ShowToolbar()
+        .ToolbarItems(items =>
+        {
+            items.AddTool(ToolBarItems.Search);
+            items.AddTool(ToolBarItems.Add);
+            items.AddTool(ToolBarItems.Edit);
+            items.AddTool(ToolBarItems.Delete);
+            items.AddTool(ToolBarItems.ExcelExport);
+            items.AddTool(ToolBarItems.PdfExport);
+            items.AddTool(ToolBarItems.WordExport);
+        })
+    )
+)
+
+@Html.OperationResult(Model.OperationResult)
+
+<script type="text/x-jsrender" id="Toolbar_Grid_Role">
+    <div id="Toolbar_Grid_Role_Read" class="e-toolbaricons e-icon e-document" title="@PresentationResources.Read"></div>
+</script>
+
+<script>
+    $(function () {
+        try {
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+
+            var gridRole = $("#Grid_Role");
+            var ejGridRole = gridRole.data("ejGrid");
+    
+            if (ejGridRole.model.filterSettings.filteredColumns.length != 0) {
+                ejGridRole.clearFiltering();
+            }
+                
+            if (!model.IsMasterDetail) {
+                ejGridRole.setModel({
+                    allowGrouping: true,
+                    toolbarSettings: {
+                        showToolbar: true,
+                        toolbarItems: [
+                            ej.Grid.ToolBarItems.Search,
+                            ej.Grid.ToolBarItems.Add,
+                            ej.Grid.ToolBarItems.Edit,
+                            ej.Grid.ToolBarItems.Delete,
+                            ej.Grid.ToolBarItems.ExcelExport,
+                            ej.Grid.ToolBarItems.PdfExport,
+                            ej.Grid.ToolBarItems.WordExport
+                        ]                    
+                    }
+                });
+            } else {
+                ejGridRole.setModel({
+                    allowGrouping: false,
+                    toolbarSettings: {
+                        showToolbar: true,
+                        toolbarItems: [
+                            ej.Grid.ToolBarItems.Add,
+                            ej.Grid.ToolBarItems.Edit,
+                            ej.Grid.ToolBarItems.Delete
+                        ]                    
+                    }
+                });
+            }
+        } catch (exception) {
+            alert(zExceptionMessage("_RoleCollection.cshtml", "function()", exception));
+        }
+    });
+    
+    function actionBegin_Grid_Role(args) {
+        try {
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+            var masterControllerAction = model.MasterControllerAction == null ? "" : model.MasterControllerAction.toLowerCase();
+    
+            // Associations (FK)
+            var url = "";
+
+            if (masterControllerAction == "" || masterControllerAction == "update") {
+                switch(args.requestType) {     
+                    case "add":
+                        // Create
+                        if (model.IsSecurityOperations.IsCreate) {
+                            window.location = "@Url.Content("~/Role/Create")" + (url == "" ? "" : "?") + url;
+                        }
+                        break;
+                    case "read":
+                        // Read
+                        if (model.IsSecurityOperations.IsRead) {
+                            var data = args.data;
+                            if (!ej.isNullOrUndefined(data)) {
+                                window.location = "@Url.Content("~/Role/Read/")" + "?Id=" + String(data.Id) + (url == "" ? "" : "&") + url;
+                            }
+                        }
+                        break;
+                    case "beginedit":
+                        // Update
+                        if (model.IsSecurityOperations.IsUpdate) {
+                            var data = this.model.currentViewData[args.rowIndex];
+                            if (!ej.isNullOrUndefined(data)) {
+                                window.location = "@Url.Content("~/Role/Update/")" + "?Id=" + String(data.Id) + (url == "" ? "" : "&") + url;
+                            }
+                        }
+                        break;
+                    case "delete":
+                        // Delete
+                        if (model.IsSecurityOperations.IsDelete) {
+                            var data = args.data;
+                            if (!ej.isNullOrUndefined(data)) {
+                                window.location = "@Url.Content("~/Role/Delete/")" + "?Id=" + String(data.Id) + (url == "" ? "" : "&") + url;
+                            }
+                        }
+                        break;
+                }
+            }
+
+            if (args.requestType == "add" || args.requestType == "beginedit" || args.requestType == "delete") {
+                args.cancel = true;
+            }
+        } catch (exception) {
+            alert(zExceptionMessage("_RoleCollection.cshtml", "actionBegin_Grid_Role(args)", exception));
+        }
+    }
+    
+    function actionFailure_Grid_Role(args) {
+        try {
+            alert(zErrorMessage(args.error.responseText));
+        } catch (exception) {
+            alert(zExceptionMessage("_RoleCollection.cshtml", "actionFailure_Grid_Role(args)", exception));
+        }
+    }    
+
+    function load_Grid_Role(args) {
+        try {            
+            var culture = "@System.Globalization.CultureInfo.CurrentCulture.Name";
+            this.model.locale = culture;
+        } catch (exception) {
+            alert(zExceptionMessage("_RoleCollection.cshtml", "load_Grid_Role(args)", exception));
+        }
+    }
+
+    function toolbarClick_Grid_Role(sender) {
+        try {
+            var toolbar = $(sender.target);
+            var gridRole = $("#Grid_Role");
+            var ejGridRole = gridRole.data("ejGrid");
+
+            if (toolbar.attr("id") == "Toolbar_Grid_Role_Read") {
+                var records = ejGridRole.getSelectedRecords();
+                if (records.length == 1) {
+                    var args = { requestType: "read", data: records[0] };
+                    actionBegin_Grid_Role(args)
+                }
+            }
+        } catch (exception) {
+            alert(zExceptionMessage("_RoleCollection.cshtml", "toolbarClick_Grid_Role(sender)", exception));
+        }
+    }
+</script>

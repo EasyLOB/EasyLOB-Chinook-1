@@ -1,0 +1,98 @@
+@model ActivityItemModel
+
+@{
+}
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+@Html.HiddenFor(model => model.ControllerAction)
+@Html.HiddenFor(model => model.IsMasterDetail)
+
+@{Html.EJ().Tab("Tab_Activity")
+    .ClientSideEvents(clientEvent => clientEvent
+        .ItemActive("itemActive_Tab_Activity")
+    )
+    .Items(data =>
+    {
+        data.Add().ID("TabSheet_Activity_Activity").Text(ActivityResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
+
+            <div id="Group_Activity_Id" class="@AppDefaults.CssClassGroup col-md-6">
+                @Html.LabelFor(model => model.Activity.Id, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.Activity.Id, new { id = "Activity_Id", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.Activity.Id, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+
+            <div id="Group_Activity_Name" class="@AppDefaults.CssClassGroup col-md-6">
+                @Html.LabelFor(model => model.Activity.Name, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.Activity.Name, new { id = "Activity_Name", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.Activity.Name, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+
+        </div>);
+        data.Add().ID("TabSheet_Activity_ActivityRole").Text(ActivityRoleResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
+            @Html.Action("Search", "ActivityRole", new
+            {
+                MasterControllerAction = Model.ControllerAction,
+                MasterActivityId = Model.Activity.Id
+            })    
+        </div>);
+    })
+    .Render();
+}
+
+<script>
+    // Validate hidden fields
+    $.validator.setDefaults({ ignore: null });
+
+    $(function () {
+        try {
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+            var activityDictionary = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(DataHelper.GetDataDictionaryAttribute(typeof(Activity)))); }();
+            var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
+            
+            var readonly = (controllerAction == "delete" || controllerAction == "read");
+            $("input.form-control").not(":input[type=button], :input[type=image], :input[type=reset], :input[type=submit]").attr("readonly", readonly);
+            if (readonly) {
+                $("img.z-buttonLookup").hide();
+            }
+            else {
+                $("img.z-buttonLookup").show();
+            }
+
+            $("input[name$='_Lookup']").attr("readonly", true);
+
+            if (activityDictionary.IsIdentity) {            
+                $("#Group_Activity_Id").hide();
+            }
+
+            // Associations (FK)
+
+            // Collections (PK)
+            var display = controllerAction == "create" ? "none" : "block";
+            // ActivityRole
+            var gridActivityRole = $("#Grid_ActivityRole");
+            gridActivityRole.css("display", display);
+
+            // !!!            
+            $("#Group_Activity_Id").hide();
+        } catch (exception) {
+            alert(zExceptionMessage("_ActivityItem.cshtml", "function()", exception));
+        }    
+    });
+
+    function itemActive_Tab_Activity(args) { // IE
+        try {
+            switch(args.activeIndex) {
+                // ActivityRole
+                case 1:
+                    $("#Grid_ActivityRole").ejGrid({
+                        allowScrolling: true,
+                        scrollSettings: { width: "100%" }
+                    });
+                    break;
+            }
+        } catch (exception) {
+            alert(zExceptionMessage("_ActivityItem.cshtml", "itemActive_Tab_Activity(args)", exception));
+        }
+    }    
+</script>

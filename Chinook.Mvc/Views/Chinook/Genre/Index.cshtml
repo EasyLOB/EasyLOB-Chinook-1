@@ -1,0 +1,9 @@
+@model GenreCollectionModel
+
+@{
+    ViewBag.Title = GenreResources.EntityPlural;
+}
+
+<h3>@ViewBag.Title</h3>
+
+@Html.Action("Search", "Genre")

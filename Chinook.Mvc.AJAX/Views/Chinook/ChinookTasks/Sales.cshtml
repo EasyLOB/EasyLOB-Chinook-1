@@ -1,0 +1,15 @@
+@model TaskSalesModel
+
+<div id="Ajax">
+    @Html.OperationResult(Model.OperationResult)
+</div>
+
+<script>
+    $(function () {
+        try {
+            $("#Ajax").load("@(Url.Action("_Sales", "ChinookTasks", null, Request.Url.Scheme))");
+        } catch (exception) {
+            alert(zExceptionMessage("Simple.cshtml", "function()", exception));
+        }
+    });
+</script>

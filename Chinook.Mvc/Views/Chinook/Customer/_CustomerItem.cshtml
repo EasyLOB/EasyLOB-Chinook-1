@@ -1,0 +1,190 @@
+@model CustomerItemModel
+
+@{
+    string employeeText = Model.Customer == null ? "" : (Model.Customer.EmployeeLookupText ?? "");
+}
+
+@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+@Html.HiddenFor(model => model.ControllerAction)
+@Html.HiddenFor(model => model.IsMasterDetail)
+@Html.HiddenFor(model => model.MasterSupportRepId)
+
+@{Html.EJ().Tab("Tab_Customer")
+    .ClientSideEvents(clientEvent => clientEvent
+        .ItemActive("itemActive_Tab_Customer")
+    )
+    .Items(data =>
+    {
+        data.Add().ID("TabSheet_Customer_Customer").Text(CustomerResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
+
+            <div id="Group_Customer_CustomerId" class="@AppDefaults.CssClassGroup col-md-2">
+                @Html.LabelFor(model => model.Customer.CustomerId, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.Customer.CustomerId, new { id = "Customer_CustomerId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.Customer.CustomerId, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+
+            <div id="Group_Customer_FirstName" class="@AppDefaults.CssClassGroup col-md-5">
+                @Html.LabelFor(model => model.Customer.FirstName, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.Customer.FirstName, new { id = "Customer_FirstName", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.Customer.FirstName, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+
+            <div id="Group_Customer_LastName" class="@AppDefaults.CssClassGroup col-md-3">
+                @Html.LabelFor(model => model.Customer.LastName, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.Customer.LastName, new { id = "Customer_LastName", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.Customer.LastName, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+
+            <div id="Group_Customer_Company" class="@AppDefaults.CssClassGroup col-md-6">
+                @Html.LabelFor(model => model.Customer.Company, new { @class = AppDefaults.CssClassLabel })
+                @Html.EditorFor(model => model.Customer.Company, new { id = "Customer_Company", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.Customer.Company, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+
+            <div id="Group_Customer_Address" class="@AppDefaults.CssClassGroup col-md-6">
+                @Html.LabelFor(model => model.Customer.Address, new { @class = AppDefaults.CssClassLabel })
+                @Html.EditorFor(model => model.Customer.Address, new { id = "Customer_Address", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.Customer.Address, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+
+            <div id="Group_Customer_City" class="@AppDefaults.CssClassGroup col-md-5">
+                @Html.LabelFor(model => model.Customer.City, new { @class = AppDefaults.CssClassLabel })
+                @Html.EditorFor(model => model.Customer.City, new { id = "Customer_City", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.Customer.City, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+
+            <div id="Group_Customer_State" class="@AppDefaults.CssClassGroup col-md-5">
+                @Html.LabelFor(model => model.Customer.State, new { @class = AppDefaults.CssClassLabel })
+                @Html.EditorFor(model => model.Customer.State, new { id = "Customer_State", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.Customer.State, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+
+            <div id="Group_Customer_Country" class="@AppDefaults.CssClassGroup col-md-5">
+                @Html.LabelFor(model => model.Customer.Country, new { @class = AppDefaults.CssClassLabel })
+                @Html.EditorFor(model => model.Customer.Country, new { id = "Customer_Country", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.Customer.Country, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+
+            <div id="Group_Customer_PostalCode" class="@AppDefaults.CssClassGroup col-md-2">
+                @Html.LabelFor(model => model.Customer.PostalCode, new { @class = AppDefaults.CssClassLabel })
+                @Html.EditorFor(model => model.Customer.PostalCode, new { id = "Customer_PostalCode", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.Customer.PostalCode, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+
+            <div id="Group_Customer_Phone" class="@AppDefaults.CssClassGroup col-md-3">
+                @Html.LabelFor(model => model.Customer.Phone, new { @class = AppDefaults.CssClassLabel })
+                @Html.EditorFor(model => model.Customer.Phone, new { id = "Customer_Phone", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.Customer.Phone, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+
+            <div id="Group_Customer_Fax" class="@AppDefaults.CssClassGroup col-md-3">
+                @Html.LabelFor(model => model.Customer.Fax, new { @class = AppDefaults.CssClassLabel })
+                @Html.EditorFor(model => model.Customer.Fax, new { id = "Customer_Fax", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.Customer.Fax, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+
+            <div id="Group_Customer_Email" class="@AppDefaults.CssClassGroup col-md-6">
+                @Html.LabelFor(model => model.Customer.Email, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.Customer.Email, new { id = "Customer_Email", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.Customer.Email, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+
+            <div id="Group_Customer_SupportRepId" class="@AppDefaults.CssClassGroup col-md-6">
+                @Html.Label(@EmployeeResources.EntitySingular, new { @class = AppDefaults.CssClassLabel })
+                @Html.EditorFor(model => model.Customer.SupportRepId, new { id = "Customer_SupportRepId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })                    
+                @Html.Action("Lookup", "Employee", new
+                {
+                    Text = employeeText,
+                    ValueId = "Customer_SupportRepId"
+                })
+                @Html.ValidationMessageFor(model => model.Customer.SupportRepId, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+
+        </div>);
+        data.Add().ID("TabSheet_Customer_CustomerDocument").Text(CustomerDocumentResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
+            @Html.Action("Search", "CustomerDocument", new
+            {
+                MasterControllerAction = Model.ControllerAction,
+                MasterCustomerId = Model.Customer.CustomerId
+            })    
+        </div>);
+        data.Add().ID("TabSheet_Customer_Invoice").Text(InvoiceResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
+            @Html.Action("Search", "Invoice", new
+            {
+                MasterControllerAction = Model.ControllerAction,
+                MasterCustomerId = Model.Customer.CustomerId
+            })    
+        </div>);
+    })
+    .Render();
+}
+
+<script>
+    // Validate hidden fields
+    $.validator.setDefaults({ ignore: null });
+
+    $(function () {
+        try {
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+            var customerDictionary = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(DataHelper.GetDataDictionaryAttribute(typeof(Customer)))); }();
+            var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
+            
+            var readonly = (controllerAction == "delete" || controllerAction == "read");
+            $("input.form-control").not(":input[type=button], :input[type=image], :input[type=reset], :input[type=submit]").attr("readonly", readonly);
+            if (readonly) {
+                $("img.z-buttonLookup").hide();
+            }
+            else {
+                $("img.z-buttonLookup").show();
+            }
+
+            $("input[name$='_Lookup']").attr("readonly", true);
+
+            if (customerDictionary.IsIdentity) {            
+                $("#Group_Customer_CustomerId").hide();
+            }
+
+            // Associations (FK)
+            // Employee
+            if (model.MasterEmployeeId != null) {
+                $("#Customer_SupportRepId").val(model.MasterEmployeeId);
+                $("#Group_Customer_SupportRepId").hide();            
+            }
+
+            // Collections (PK)
+            var display = controllerAction == "create" ? "none" : "block";
+            // CustomerDocument
+            var gridCustomerDocument = $("#Grid_CustomerDocument");
+            gridCustomerDocument.css("display", display);
+            // Invoice
+            var gridInvoice = $("#Grid_Invoice");
+            gridInvoice.css("display", display);
+        } catch (exception) {
+            alert(zExceptionMessage("_CustomerItem.cshtml", "function()", exception));
+        }    
+    });
+
+    function itemActive_Tab_Customer(args) { // IE
+        try {
+            switch(args.activeIndex) {
+                // CustomerDocument
+                case 1:
+                    $("#Grid_CustomerDocument").ejGrid({
+                        allowScrolling: true,
+                        scrollSettings: { width: "100%" }
+                    });
+                    break;
+                // Invoice
+                case 2:
+                    $("#Grid_Invoice").ejGrid({
+                        allowScrolling: true,
+                        scrollSettings: { width: "100%" }
+                    });
+                    break;
+            }
+        } catch (exception) {
+            alert(zExceptionMessage("_CustomerItem.cshtml", "itemActive_Tab_Customer(args)", exception));
+        }
+    }    
+</script>

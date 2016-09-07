@@ -1,0 +1,100 @@
+@model PlaylistItemModel
+
+@{
+}
+
+@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+@Html.HiddenFor(model => model.ControllerAction)
+@Html.HiddenFor(model => model.IsMasterDetail)
+
+@{Html.EJ().Tab("Tab_Playlist")
+    .ClientSideEvents(clientEvent => clientEvent
+        .ItemActive("itemActive_Tab_Playlist")
+    )
+    .Items(data =>
+    {
+        data.Add().ID("TabSheet_Playlist_Playlist").Text(PlaylistResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
+            
+            <div id="Group_Playlist_PlaylistId" class="@AppDefaults.CssClassGroup col-md-2">
+                @Html.LabelFor(model => model.Playlist.PlaylistId, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.Playlist.PlaylistId, new { id = "Playlist_PlaylistId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.Playlist.PlaylistId, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+            
+            <div id="Group_Playlist_Name" class="@AppDefaults.CssClassGroup col-md-6">
+                @Html.LabelFor(model => model.Playlist.Name, new { @class = AppDefaults.CssClassLabel })
+                @Html.EditorFor(model => model.Playlist.Name, new { id = "Playlist_Name", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.Playlist.Name, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+
+        </div>);
+        data.Add().ID("TabSheet_Playlist_PlaylistTrack").Text(PlaylistTrackResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
+            <div id="Ajax_Playlist_PlaylistTrack"></div>
+        </div>);
+    })
+    .Render();
+}
+
+<script>
+    // Validate hidden fields
+    $.validator.setDefaults({ ignore: null });
+    // Parse validators
+    $.validator.unobtrusive.parse($("#Ajax"));
+
+    $(function () {
+        try {
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+            var playlistDictionary = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(DataHelper.GetDataDictionaryAttribute(typeof(Playlist)))); }();
+            var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
+            
+            var ajaxUrl = "";
+            // PlaylistTrack
+            ajaxUrl = "@(Html.Raw(Url.Action("Search", "PlaylistTrack", new { MasterUrl = Context.Request.Url.AbsoluteUri, MasterControllerAction = Model.ControllerAction, MasterPlaylistId = Model.Playlist.PlaylistId })))";
+            $("#Ajax_Playlist_PlaylistTrack").load(ajaxUrl);
+            ej.widget.init($("#Ajax"));
+            $(document).prop("title", "@(ViewBag.Title)");            
+    
+            var readonly = (controllerAction == "delete" || controllerAction == "read");
+            $("input.form-control").not(":input[type=button], :input[type=image], :input[type=reset], :input[type=submit]").attr("readonly", readonly);
+            if (readonly) {
+                $("img.z-buttonLookup").hide();
+            }
+            else {
+                $("img.z-buttonLookup").show();
+            }
+
+            $("input[name$='_Lookup']").attr("readonly", true);
+
+            if (playlistDictionary.IsIdentity) {            
+                $("#Group_Playlist_PlaylistId").hide();
+            }
+
+            // Associations (FK)
+
+            // Collections (PK)
+            var display = controllerAction == "create" ? "none" : "block";
+            // PlaylistTrack
+            var gridPlaylistTrack = $("#Grid_PlaylistTrack");
+            gridPlaylistTrack.css("display", display);
+        } catch (exception) {
+            alert(zExceptionMessage("_PlaylistItem.cshtml", "function()", exception));
+        }
+    });
+
+    function itemActive_Tab_Playlist(args) { // IE
+        try {
+            switch(args.activeIndex) {
+            // PlaylistTrack
+                case 1:
+                    $("#Grid_PlaylistTrack").ejGrid({
+                        allowScrolling: true,
+                        scrollSettings: { width: "100%" }
+                    });
+                    break;
+            }            
+        } catch (exception) {
+            alert(zExceptionMessage("_PlaylistItem.cshtml", "itemActive_Tab_Playlist(args)", exception));
+        }
+    }    
+</script>

@@ -1,0 +1,14 @@
+@model InvoiceLineCollectionModel
+
+<div id="Ajax">
+</div>
+
+<script>
+    $(function () {
+        try {
+            $("#Ajax").load("@(Url.Action("Search", "InvoiceLine", null, Request.Url.Scheme))");
+        } catch (exception) {
+            zExceptionMessage("InvoiceLine Index.cshtml", "function()", exception.message)
+        }
+    });
+</script>

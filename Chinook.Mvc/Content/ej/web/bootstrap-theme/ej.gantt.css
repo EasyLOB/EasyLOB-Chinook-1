@@ -1,0 +1,101 @@
+/*@pager-currentitem:#428BCA;*/
+/*-----------------------Map------------------*/
+/*-----------------------PdfViewer------------------*/
+/*-----------------------End PdfViewer------------------*/
+/*-----------------------OLAP Definition Start-----------------*/
+.e-olapclient .removeSplitBtn {
+  border-radius: 4px;
+}
+/*-----------------------OLAP Definition End
+
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Diagram Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Ribbon End-----------------------*/
+/*----------------------Kanban Definition-----------------------*/
+/*----------------------Kanban End-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+/*----------------------rangeScrollbar Start------------------*/
+/*----------------------rangeScrollbar End--------------------*/
+/*----------------------Office 365 theme-----------------------*/
+/*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
+/*----------------------material theme-----------------------*/
+/*Theme Color*/
+
+.e-gantt .e-toolbaricons {
+  color: #666666;
+}
+.e-gantt .e-chkbox-wrap .e-chk-image {
+  background-image: url(images/checkedtick.png) !important;
+}
+.e-search.e-tooltxt.e-hover {
+  color: #333333 !important;
+}
+.e-gantt .e-tooltxt.e-hover > span {
+  color: #333333;
+}
+.e-gantt .e-gantt-add:before {
+  content: "\e6fe";
+}
+.e-gantt .e-gantt-edit:before {
+  content: "\e705";
+}
+.e-gantt .e-gantt-delete:before {
+  content: "\e706";
+}
+.e-gantt .e-gantt-save:before {
+  content: "\e6fc";
+}
+.e-gantt .e-gantt-cancel:before {
+  content: "\e708";
+}
+.e-gantt .e-gantt-indent:before {
+  content: "\e702";
+}
+.e-gantt .e-gantt-outdent:before {
+  content: "\e6fd";
+}
+.e-gantt .e-gantt-expandall:before {
+  content: "\e703";
+}
+.e-gantt .e-gantt-collapseall:before {
+  content: "\e707";
+}
+#Add.e-menuitem > div.e-icon:before {
+  content: "\e6fe";
+}
+#Indent.e-menuitem > div.e-icon:before {
+  content: "\e702";
+}
+#Outdent.e-menuitem > div.e-icon:before {
+  content: "\e6fd";
+}
+#Delete.e-menuitem > div.e-icon:before {
+  content: "\e706";
+}
+.e-gantt .e-splitter .e-splitbar.e-h-bar:before {
+  content: "\e6fa";
+}
+.e-gantt .e-gantt-Spliter {
+  border-top-color: #cecece !important;
+  border-bottom-color: #cecece !important;
+}
+.e-gantt .e-editValue .e-treegrid .e-headercell {
+  border-bottom-color: #cecece !important;
+  background-color: #fcfcfc !important;
+}
+.e-ejinputtext {
+  border: 1px solid #cecece;
+  outline: none;
+  background-color: white;
+  color: #333333;
+  vertical-align: baseline;
+}
+.e-deletepre.e-icon,
+.e-addpre.e-icon {
+  font-family: Segoe UI;
+}

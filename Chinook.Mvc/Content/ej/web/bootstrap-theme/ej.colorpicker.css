@@ -1,0 +1,277 @@
+/*@pager-currentitem:#428BCA;*/
+/*-----------------------Map------------------*/
+/*-----------------------PdfViewer------------------*/
+/*-----------------------End PdfViewer------------------*/
+/*-----------------------OLAP Definition Start-----------------*/
+.e-olapclient .removeSplitBtn {
+  border-radius: 4px;
+}
+/*-----------------------OLAP Definition End
+
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Diagram Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Ribbon End-----------------------*/
+/*----------------------Kanban Definition-----------------------*/
+/*----------------------Kanban End-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+/*----------------------rangeScrollbar Start------------------*/
+/*----------------------rangeScrollbar End--------------------*/
+/*----------------------Office 365 theme-----------------------*/
+/*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
+/*----------------------material theme-----------------------*/
+/*------------------------------------- Colorpicker -------------------------------------------*/
+
+.e-colorpicker .e-hsv-color,
+.e-colorpicker .e-buttons .e-preview,
+.e-colorpicker .e-slider-wrap .e-handle.e-select,
+.e-colorpicker .e-slider-wrap .e-hue,
+.e-colorpicker .e-slider-wrap .e-opacity,
+.e-colorpicker .e-slider-wrap .e-handle.e-select:hover {
+  border: 3px solid white;
+}
+.e-colorwidget .e-select {
+  background: white;
+  color: #666666;
+  border-color: #cecece;
+}
+.e-colorwidget.e-split .e-in-wrap .e-select:hover,
+.e-colorwidget.e-split .e-color-container:hover {
+  border-color: #cecece;
+  color: #333333;
+}
+.e-colorwidget.e-split .e-in-wrap .e-select:hover,
+.e-colorwidget.e-split .e-color-container:hover {
+  background: #f4f4f4;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f4f4f4), color-stop(100%, #e9e9e9));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #f4f4f4, #e9e9e9);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4', endColorstr='#e9e9e9', GradientType=0);
+  /* IE6-9 */
+
+}
+.e-colorwidget.e-picker.e-split.e-disable .e-in-wrap .e-select:hover,
+.e-colorwidget.e-picker.e-split.e-disable .e-in-wrap .e-color-container:hover {
+  cursor: default;
+  background: white;
+}
+.e-colorpicker.e-popup {
+  background-color: #fcfcfc;
+  border-color: #cecece;
+}
+.e-presetWrapper.e-widget.e-context {
+  border-color: #cecece;
+}
+.e-colorwidget.e-focus {
+  box-shadow: 0 0 7px rgba(154, 146, 203, 0.87);
+}
+.e-colorwidget.e-focus .e-in-wrap {
+  border-color: #cecece;
+}
+.e-colorpicker .e-recent-color .e-colorblock.e-block,
+.e-colorpicker .e-recent-color .e-colorblock.e-select,
+.e-colorpicker .e-footer .e-switcher {
+  background-color: white;
+  color: #333333;
+  border-color: white;
+}
+.e-colorwidget .e-in-wrap.e-box,
+.e-colorwidget .e-in-wrap.e-box .e-select,
+.e-colorpicker .e-footer .e-in-wrap.e-box .e-splitbutton,
+.e-colorpicker .e-footer .e-in-wrap.e-box .e-rht-btn,
+.e-colorpicker .e-footer .e-in-wrap.e-box .e-split-btn,
+.e-colorpicker .e-footer .e-in-wrap.e-box .e-drp-btn.e-rht-btn {
+  background: white;
+  color: #333333;
+  border-color: #cecece;
+}
+.e-colorwidget .e-select:hover,
+.e-colorpicker .e-element .e-split-btn.e-select.e-rht-btn:hover {
+  background-color: white;
+  color: #333333;
+  border-color: #cecece;
+}
+.e-colorpicker .e-footer .e-in-wrap.e-box .e-splitbutton:hover,
+.e-colorpicker .e-footer .e-in-wrap.e-box .e-rht-btn:hover {
+  color: #333333;
+  border-color: #cecece;
+}
+.e-colorpicker .e-footer .e-in-wrap.e-box .e-splitbutton:hover,
+.e-colorpicker .e-footer .e-in-wrap.e-box .e-rht-btn:hover {
+  background: #f4f4f4;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f4f4f4), color-stop(100%, #e9e9e9));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #f4f4f4, #e9e9e9);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4', endColorstr='#e9e9e9', GradientType=0);
+  /* IE6-9 */
+
+}
+.e-presetWrapper.e-menu.e-context,
+.e-presetWrapper.e-menu.e-context .e-list.e-mhover.e-mfocused,
+.e-presetWrapper.e-menu.e-context .e-list > ul,
+.e-presetWrapper.e-menu.e-context .e-list:hover {
+  background: white;
+  color: #333333;
+  border-color: white;
+}
+.e-presetWrapper.e-menu.e-context .e-list:hover {
+  background: white;
+  color: #333333;
+}
+.e-colorpicker .e-footer .e-split .e-splitbutton:hover {
+  border-color: #cecece;
+}
+.e-colorpicker .e-footer .e-split .e-splitbutton:hover {
+  background: #fcfcfc;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #fcfcfc, #e0e0e0);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fcfcfc), color-stop(100%, #e0e0e0));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #fcfcfc, #e0e0e0);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #fcfcfc, #e0e0e0);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #fcfcfc, #e0e0e0);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #fcfcfc, #e0e0e0);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfcfc', endColorstr='#e0e0e0', GradientType=0);
+  /* IE6-9 */
+
+}
+.e-colorpicker .e-footer .e-cancelButton.e-btn,
+.e-colorpicker .e-footer .e-applyButton.e-btn {
+  background: #fcfcfc;
+  /* Old browsers */
+
+  border-color: #cecece;
+}
+.e-colorpicker .e-footer .e-cancelButton.e-btn:hover,
+.e-colorpicker .e-footer .e-applyButton.e-btn:hover {
+  border-color: #cecece;
+  color: #333333;
+}
+.e-colorpicker .e-footer .e-cancelButton.e-btn:hover,
+.e-colorpicker .e-footer .e-applyButton.e-btn:hover {
+  background: #f4f4f4;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f4f4f4), color-stop(100%, #e9e9e9));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #f4f4f4, #e9e9e9);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4', endColorstr='#e9e9e9', GradientType=0);
+  /* IE6-9 */
+
+}
+.e-colorpicker .e-buttons .e-grpbtn,
+.e-colorpicker .e-buttons .e-color-code,
+.e-colorpicker .e-buttons .e-grpbtn .e-btn {
+  background: white;
+  border-color: white;
+}
+.e-colorpicker .e-buttons .e-previous,
+.e-presetWrapper .e-presets-table .e-preset-row {
+  border-color: #cecece;
+}
+.e-colorpicker .e-item {
+  border-color: #cecece;
+}
+.e-colorpicker .e-color-image,
+.e-presetWrapper .e-color-image,
+.e-presetWrapper.e-menu.e-context .e-color-image.e-mhover {
+  background-image: url(../common-images/colorpicker_light.png);
+  background-color: transparent;
+}
+.e-presetWrapper .e-presetHeader,
+.e-colorpicker .e-element .e-icon:before {
+  color: #333333;
+}
+.e-colorpicker .e-buttons .e-grpbtn .e-btn {
+  color: #333333;
+}
+.e-colorpicker .e-buttons .e-color-code {
+  color: #333333;
+}
+.e-colorpicker .e-buttons .e-grpbtn .e-click {
+  border-color: #cecece;
+  color: white;
+  box-shadow: 0 0 0 2px white;
+}
+.e-colorpicker .e-buttons .e-grpbtn .e-click {
+  background: #3277b2;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #3277b2, #296293);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3277b2), color-stop(100%, #296293));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #3277b2, #296293);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #3277b2, #296293);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #3277b2, #296293);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #3277b2, #296293);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3277b2', endColorstr='#296293', GradientType=0);
+  /* IE6-9 */
+
+}
+.e-colorpicker .e-buttons .e-grpbtn .e-btn:hover {
+  color: #333333;
+  border-color: #cecece;
+}
+.e-colorpicker .e-buttons .e-grpbtn .e-btn:hover {
+  background: #f4f4f4;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f4f4f4), color-stop(100%, #e9e9e9));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #f4f4f4, #e9e9e9);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4', endColorstr='#e9e9e9', GradientType=0);
+  /* IE6-9 */
+
+}
+.e-presetWrapper.e-menu.e-context li.e-list {
+  background: white;
+}

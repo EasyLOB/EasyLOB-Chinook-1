@@ -1,0 +1,236 @@
+@model LookupModel
+
+<div class="input-group">
+    <span class="input-group-addon"><img id="@(Model.ValueId + "_Button")" class="z-buttonLookup" /></span>
+    @Html.TextBox(Model.ValueId + "_Lookup", Model.Text, new { @class = AppDefaults.CssClassEditor + " z-lookup" })
+</div>
+
+<div id="Modal_Employee_Lookup" aria-labelledby="Label_Employee_Lookup" class="modal fade col-md-10" role="dialog" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-label="@PresentationResources.Cancel" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                <h4 id="Label_Employee_Lookup" class="modal-title">@EmployeeResources.EntityPlural</h4>
+            </div>
+            <div class="modal-body">
+
+                @(Html.EJ().Grid<Employee>("Grid_Employee_Lookup")
+                    .Datasource(datasource => datasource
+                        .Adaptor(AdaptorType.UrlAdaptor)
+                        .URL(Url.Content("~/Employee/DataSource"))
+                    )
+                    .AllowFiltering()
+                    .AllowPaging()
+                    .AllowSearching()
+                    .AllowSorting()
+                    .ClientSideEvents(clientEvent => clientEvent
+                        .ActionFailure("actionFailure_Grid_Employee_Lookup")
+                        .Load("load_Grid_Employee_Lookup")
+                        .RowSelected("rowSelected_Grid_Employee_Lookup")                       
+                    )
+                    .Columns(column =>
+                    {
+                        column.Field("EmployeeId")
+                            .AllowEditing(false)
+                            .EditType(EditingType.Numeric)
+                            .HeaderText(EmployeeResources.PropertyEmployeeId)
+                            .IsIdentity(true)
+                            .IsPrimaryKey(true)
+                            .Visible(false)
+                            .Width(100)
+                            .Add();
+                        column.Field("LastName")
+                            .EditType(EditingType.String)
+                            .HeaderText(EmployeeResources.PropertyLastName)
+                            .Visible(true)
+                            .Width(200)
+                            .Add();
+                        column.Field("FirstName")
+                            .EditType(EditingType.String)
+                            .HeaderText(EmployeeResources.PropertyFirstName)
+                            .Visible(true)
+                            .Width(200)
+                            .Add();
+                        column.Field("Title")
+                            .EditType(EditingType.String)
+                            .HeaderText(EmployeeResources.PropertyTitle)
+                            .Visible(false)
+                            .Width(240)
+                            .Add();
+                        column.Field("ReportsTo")
+                            .EditType(EditingType.Numeric)
+                            .HeaderText(EmployeeResources.PropertyReportsTo)
+                            .Visible(false)
+                            .Width(100)
+                            .Add();
+                        column.Field("EmployeeLookupText")
+                            .AllowEditing(false)
+                            .HeaderText(EmployeeResources.EntitySingular)
+                            .Visible(true)
+                            .Width(100)
+                            .Add();
+                        column.Field("BirthDate")
+                            .EditType(EditingType.DateTimePicker)
+                            .HeaderText(EmployeeResources.PropertyBirthDate)
+                            .Visible(false)
+                            .Width(100)
+                            .Add();
+                        column.Field("HireDate")
+                            .EditType(EditingType.DateTimePicker)
+                            .HeaderText(EmployeeResources.PropertyHireDate)
+                            .Visible(false)
+                            .Width(100)
+                            .Add();
+                        column.Field("Address")
+                            .EditType(EditingType.String)
+                            .HeaderText(EmployeeResources.PropertyAddress)
+                            .Visible(false)
+                            .Width(240)
+                            .Add();
+                        column.Field("City")
+                            .EditType(EditingType.String)
+                            .HeaderText(EmployeeResources.PropertyCity)
+                            .Visible(false)
+                            .Width(240)
+                            .Add();
+                        column.Field("State")
+                            .EditType(EditingType.String)
+                            .HeaderText(EmployeeResources.PropertyState)
+                            .Visible(false)
+                            .Width(240)
+                            .Add();
+                        column.Field("Country")
+                            .EditType(EditingType.String)
+                            .HeaderText(EmployeeResources.PropertyCountry)
+                            .Visible(false)
+                            .Width(240)
+                            .Add();
+                        column.Field("PostalCode")
+                            .EditType(EditingType.String)
+                            .HeaderText(EmployeeResources.PropertyPostalCode)
+                            .Visible(false)
+                            .Width(100)
+                            .Add();
+                        column.Field("Phone")
+                            .EditType(EditingType.String)
+                            .HeaderText(EmployeeResources.PropertyPhone)
+                            .Visible(false)
+                            .Width(240)
+                            .Add();
+                        column.Field("Fax")
+                            .EditType(EditingType.String)
+                            .HeaderText(EmployeeResources.PropertyFax)
+                            .Visible(false)
+                            .Width(240)
+                            .Add();
+                        column.Field("Email")
+                            .EditType(EditingType.String)
+                            .HeaderText(EmployeeResources.PropertyEmail)
+                            .Visible(false)
+                            .Width(240)
+                            .Add();
+                    })
+                    .FilterSettings(filter => filter
+                        .EnableCaseSensitivity(false)
+                        .FilterType(FilterType.Excel)
+                        .MaxFilterChoices(System.Int32.MaxValue)
+                    )
+                    .PageSettings(page => page
+                        .PageSize(AppDefaults.SyncfusionRecordsByPage)
+                    )
+                    .SearchSettings(search =>
+                    {
+                        search.Fields(field =>
+                        {
+                            //field.Add("EmployeeId");
+                            field.Add("LastName");
+                            field.Add("FirstName");
+                            //field.Add("Title");
+                            //field.Add("ReportsTo");
+                            //field.Add("EmployeeLookupText");
+                            //field.Add("BirthDate");
+                            //field.Add("HireDate");
+                            //field.Add("Address");
+                            //field.Add("City");
+                            //field.Add("State");
+                            //field.Add("Country");
+                            //field.Add("PostalCode");
+                            //field.Add("Phone");
+                            //field.Add("Fax");
+                            //field.Add("Email");
+                        });
+                    })
+                    .ShowColumnChooser()
+                    .ToolbarSettings(toolbar => toolbar
+                        .ShowToolbar()
+                        .ToolbarItems(items =>
+                        {
+                            items.AddTool(ToolBarItems.Search);
+                        })
+                    )
+                )
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@*
+@Html.OperationResult(Model.OperationResult)
+*@
+
+<script>
+    $(function () {
+        try {
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+    
+            $("#@Model.ValueId").hide();
+    
+            $("#@(Model.ValueId)_Button").click(function () {
+                $("#Modal_Employee_Lookup").modal("show");
+            });
+    
+            $("#@(Model.ValueId)_Lookup").attr("readonly", true);
+            $("#@(Model.ValueId)_Lookup").val(model.Text.toLocaleString("@CultureInfo.CurrentCulture.Name"));
+    
+            $("#Modal_Employee_Lookup").modal("hide");
+        } catch (exception) {
+            alert(zExceptionMessage("_EmployeeLookup.cshtml", "function ()", exception));
+        }
+    });
+    
+    function actionFailure_Grid_Employee_Lookup(args) {
+        try {
+            alert(zErrorMessage(args.error.responseText));
+        } catch (exception) {
+            alert(zExceptionMessage("_EmployeeLookup.cshtml", "actionFailure_Grid_Employee_Lookup(args)", exception));
+        }
+    }    
+
+    function load_Grid_Employee_Lookup(args) {
+        try {            
+            var culture = "@System.Globalization.CultureInfo.CurrentCulture.Name";
+            this.model.locale = culture;
+        } catch (exception) {
+            alert(zExceptionMessage("_EmployeeLookup.cshtml", "load_Grid_Employee_Lookup(args)", exception));
+        }
+    }
+
+    function rowSelected_Grid_Employee_Lookup(args) {
+        try {
+            var data = this.model.currentViewData[args.rowIndex];
+    
+            $("#@(Model.ValueId)").val(data.EmployeeId);
+    
+            $("#@(Model.ValueId)_Lookup").val(data.LookupText);
+
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+            var culture = "@System.Globalization.CultureInfo.CurrentCulture.Name";
+            zLookupElements(data, model.Elements, culture);
+    
+            $("#Modal_Employee_Lookup").modal("hide");
+        } catch (exception) {
+            alert(zExceptionMessage("_EmployeeLookup.cshtml", "rowSelected_Grid_Employee_Lookup(args)", exception));
+        }
+    }
+</script>

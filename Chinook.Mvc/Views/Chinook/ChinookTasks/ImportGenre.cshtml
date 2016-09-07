@@ -1,0 +1,40 @@
+@model TaskImportGenreModel
+
+<h3>@TaskImportGenreResources.Task</h3>
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+@using (Html.BeginForm("ImportGenre", "ChinookTasks", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="@AppDefaults.CssClassGroup col-md-6">
+        @Html.Label(PresentationResources.SelectFile, new { @class = AppDefaults.CssClassLabelRequired })
+        @Html.TextBoxFor(model => model.Upload, new { type = "file" })
+    </div>
+
+    @*
+    <div class="@AppDefaults.CssClassGroup col-md-6">
+        <label for="upload">@PresentationResources.SelectFile</label>
+        <input type="file" name="upload" id="upload" accept="text/plain" />
+    </div>
+    *@
+
+    <br />
+
+    <div class="z-formButtons">
+        <input type="image" class="btn btn-default z-buttonOk" title="@PresentationResources.OK" />
+    </div>
+}
+
+@Html.OperationResult(Model.OperationResult)
+
+<script>
+    $(function () {
+        try {
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+        } catch (exception) {
+            alert(zExceptionMessage("ImportGenre.cshtml", "function()", exception));
+        }
+    });
+</script>

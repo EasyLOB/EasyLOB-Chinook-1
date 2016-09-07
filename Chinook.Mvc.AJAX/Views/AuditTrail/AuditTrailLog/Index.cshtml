@@ -1,0 +1,14 @@
+@model AuditTrailLogCollectionModel
+
+<div id="Ajax">
+</div>
+
+<script>
+    $(function () {
+        try {
+            $("#Ajax").load("@(Url.Action("Search", "AuditTrailLog", null, Request.Url.Scheme))");
+        } catch (exception) {
+            zExceptionMessage("AuditTrailLog Index.cshtml", "function()", exception.message)
+        }
+    });
+</script>

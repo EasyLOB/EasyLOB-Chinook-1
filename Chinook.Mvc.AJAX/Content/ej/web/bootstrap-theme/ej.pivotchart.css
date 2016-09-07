@@ -1,0 +1,60 @@
+/*@pager-currentitem:#428BCA;*/
+/*-----------------------Map------------------*/
+/*-----------------------PdfViewer------------------*/
+/*-----------------------End PdfViewer------------------*/
+/*-----------------------OLAP Definition Start-----------------*/
+.e-olapclient .removeSplitBtn {
+  border-radius: 4px;
+}
+/*-----------------------OLAP Definition End
+
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Diagram Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Ribbon End-----------------------*/
+/*----------------------Kanban Definition-----------------------*/
+/*----------------------Kanban End-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+/*----------------------rangeScrollbar Start------------------*/
+/*----------------------rangeScrollbar End--------------------*/
+/*----------------------Office 365 theme-----------------------*/
+/*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
+/*----------------------material theme-----------------------*/
+.hoverCell {
+  background-color: #f4f4f4 !important;
+}
+.e-pivotchart {
+  font: normal 12px Segoe UI;
+  border: 1px solid #cecece;
+  background-color: white;
+  color: #333333;
+}
+.e-pivotchart .expandMenu {
+  min-height: 50px;
+}
+.e-pivotchart .menuList {
+  list-style-type: none;
+  padding: 4px 15px 4px 15px;
+}
+.e-pivotchart .menuList:hover {
+  list-style-type: none;
+  color: #333333;
+  background-color: #f4f4f4;
+  cursor: pointer;
+}
+.e-pivotchart .e-dialog,
+.e-pivotchart .e-wrapper,
+.e-pivotchart .e-shadow {
+  min-height: 50px;
+}
+.e-pivotchart .e-dialog-scroller {
+  height: auto !important;
+}
+.e-pivotchart .e-dialog,
+.e-pivotchart .e-content {
+  padding: 0;
+}

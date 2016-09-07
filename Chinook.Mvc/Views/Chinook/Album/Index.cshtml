@@ -1,0 +1,9 @@
+@model AlbumCollectionModel
+
+@{
+    ViewBag.Title = AlbumResources.EntityPlural;
+}
+
+<h3>@ViewBag.Title</h3>
+
+@Html.Action("Search", "Album")

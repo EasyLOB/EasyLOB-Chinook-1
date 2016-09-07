@@ -1,0 +1,113 @@
+@model AlbumItemModel
+
+@{
+    string artistText = Model.Album == null ? "" : (Model.Album.ArtistLookupText ?? "");
+}
+
+@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+@Html.HiddenFor(model => model.ControllerAction)
+@Html.HiddenFor(model => model.IsMasterDetail)
+@Html.HiddenFor(model => model.MasterArtistId)
+
+@{Html.EJ().Tab("Tab_Album")
+    .ClientSideEvents(clientEvent => clientEvent
+        .ItemActive("itemActive_Tab_Album")
+    )
+    .Items(data =>
+    {
+        data.Add().ID("TabSheet_Album_Album").Text(AlbumResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
+
+            <div id="Group_Album_AlbumId" class="@AppDefaults.CssClassGroup col-md-2">
+                @Html.LabelFor(model => model.Album.AlbumId, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.Album.AlbumId, new { id = "Album_AlbumId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.Album.AlbumId, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+
+            <div id="Group_Album_Title" class="@AppDefaults.CssClassGroup col-md-6">
+                @Html.LabelFor(model => model.Album.Title, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.Album.Title, new { id = "Album_Title", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.Album.Title, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+
+            <div id="Group_Album_ArtistId" class="@AppDefaults.CssClassGroup col-md-6">
+                @Html.Label(@ArtistResources.EntitySingular, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.Album.ArtistId, new { id = "Album_ArtistId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })                    
+                @Html.Action("Lookup", "Artist", new
+                {
+                    Text = artistText,
+                    ValueId = "Album_ArtistId"
+                })
+                @Html.ValidationMessageFor(model => model.Album.ArtistId, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+
+        </div>);
+        data.Add().ID("TabSheet_Album_Track").Text(TrackResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
+            @Html.Action("Search", "Track", new
+            {
+                MasterControllerAction = Model.ControllerAction,
+                MasterAlbumId = Model.Album.AlbumId
+            })    
+        </div>);
+    })
+    .Render();
+}
+
+<script>
+    // Validate hidden fields
+    $.validator.setDefaults({ ignore: null });
+
+    $(function () {
+        try {
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+            var albumDictionary = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(DataHelper.GetDataDictionaryAttribute(typeof(Album)))); }();
+            var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
+            
+            var readonly = (controllerAction == "delete" || controllerAction == "read");
+            $("input.form-control").not(":input[type=button], :input[type=image], :input[type=reset], :input[type=submit]").attr("readonly", readonly);
+            if (readonly) {
+                $("img.z-buttonLookup").hide();
+            }
+            else {
+                $("img.z-buttonLookup").show();
+            }
+
+            $("input[name$='_Lookup']").attr("readonly", true);
+
+            if (albumDictionary.IsIdentity) {            
+                $("#Group_Album_AlbumId").hide();
+            }
+
+            // Associations (FK)
+            // Artist
+            if (model.MasterArtistId != null) {
+                $("#Album_ArtistId").val(model.MasterArtistId);
+                $("#Group_Album_ArtistId").hide();            
+            }
+
+            // Collections (PK)
+            var display = controllerAction == "create" ? "none" : "block";
+            // Track
+            var gridTrack = $("#Grid_Track");
+            gridTrack.css("display", display);
+        } catch (exception) {
+            alert(zExceptionMessage("_AlbumItem.cshtml", "function()", exception));
+        }    
+    });
+
+    function itemActive_Tab_Album(args) { // IE
+        try {
+            switch(args.activeIndex) {
+                // Track
+                case 1:
+                    $("#Grid_Track").ejGrid({
+                        allowScrolling: true,
+                        scrollSettings: { width: "100%" }
+                    });
+                    break;
+            }
+        } catch (exception) {
+            alert(zExceptionMessage("_AlbumItem.cshtml", "itemActive_Tab_Album(args)", exception));
+        }
+    }    
+</script>

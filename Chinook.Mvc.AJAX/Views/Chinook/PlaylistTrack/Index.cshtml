@@ -1,0 +1,14 @@
+@model PlaylistTrackCollectionModel
+
+<div id="Ajax">
+</div>
+
+<script>
+    $(function () {
+        try {
+            $("#Ajax").load("@(Url.Action("Search", "PlaylistTrack", null, Request.Url.Scheme))");
+        } catch (exception) {
+            zExceptionMessage("PlaylistTrack Index.cshtml", "function()", exception.message)
+        }
+    });
+</script>

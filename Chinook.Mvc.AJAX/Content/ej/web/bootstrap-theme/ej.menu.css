@@ -1,0 +1,349 @@
+/*@pager-currentitem:#428BCA;*/
+/*-----------------------Map------------------*/
+/*-----------------------PdfViewer------------------*/
+/*-----------------------End PdfViewer------------------*/
+/*-----------------------OLAP Definition Start-----------------*/
+.e-olapclient .removeSplitBtn {
+  border-radius: 4px;
+}
+/*-----------------------OLAP Definition End
+
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Diagram Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Ribbon End-----------------------*/
+/*----------------------Kanban Definition-----------------------*/
+/*----------------------Kanban End-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+/*----------------------rangeScrollbar Start------------------*/
+/*----------------------rangeScrollbar End--------------------*/
+/*----------------------Office 365 theme-----------------------*/
+/*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
+/*----------------------material theme-----------------------*/
+/* ------- menu less ----------- */
+
+.e-menu.e-separator.e-horizontal > .e-list,
+.e-menu.e-separator.e-horizontal > .e-list:hover,
+.e-menu.e-horizontal > .e-separator.e-list,
+.e-menu.e-horizontal > .e-separator.e-list:hover {
+  border-right-color: #cecece;
+}
+.e-menu.e-horizontal .e-list > ul .e-list.e-separator,
+.e-menu.e-horizontal .e-list > ul .e-list.e-separator:hover,
+.e-menu.e-vertical .e-list > ul .e-list.e-separator,
+.e-menu.e-vertical .e-list > ul .e-list.e-separator:hover,
+.e-menu.e-context .e-list > ul .e-list.e-separator,
+.e-menu.e-context .e-list > ul .e-list.e-separator:hover,
+.e-menu.e-separator.e-vertical > .e-list,
+.e-menu.e-vertical > .e-separator.e-list,
+.e-menu.e-separator.e-vertical > .e-list:hover,
+.e-menu.e-vertical > .e-separator.e-list:hover,
+.e-menu.e-context > .e-separator.e-list,
+.e-menu.e-context > .e-separator.e-list:hover {
+  border-bottom-color: #cecece;
+}
+.e-menu.e-separator.e-rtl.e-horizontal > .e-list,
+.e-menu.e-rtl.e-horizontal > .e-separator.e-list,
+.e-menu.e-rtl.e-horizontal > .e-separator.e-list:hover {
+  border-left-color: #cecece;
+}
+/*---------------------theming----------------------------------*/
+
+.e-menu.e-horizontal .e-list > a,
+.e-menu.e-horizontal .e-list > span,
+.e-menu.e-vertical .e-list > a,
+.e-menu.e-vertical .e-list > span,
+.e-menu.e-context .e-list > a,
+.e-menu.e-context .e-list > span,
+.e-menu-res-wrap .e-menu-res-in-wrap .e-res-title,
+.e-menu.e-vertical {
+  color: #333333;
+}
+.e-menu,
+.e-menu-res-wrap .e-in-wrap.e-menu-res-in-wrap,
+.e-menu.e-vertical,
+.e-menu.e-vertical .e-list > ul,
+.e-menu.e-context,
+.e-menu.e-context .e-list > ul {
+  background: white;
+  border-color: #cecece;
+}
+.e-menu.e-horizontal .e-list > ul {
+  background: white;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  border-color: #cecece;
+}
+.e-menu.e-horizontal > .e-list > ul:after {
+  border-color: transparent transparent white;
+  border-style: solid;
+}
+.e-menu.e-horizontal .e-list:hover,
+.e-menu.e-vertical .e-list:hover,
+.e-menu.e-context .e-list:hover {
+  border-color: #f4f4f4;
+}
+.e-menu.e-horizontal .e-list:hover,
+.e-menu.e-vertical .e-list:hover,
+.e-menu.e-context .e-list:hover {
+  background: #f4f4f4;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f4f4f4), color-stop(100%, #e9e9e9));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #f4f4f4, #e9e9e9);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4', endColorstr='#e9e9e9', GradientType=0);
+  /* IE6-9 */
+
+}
+.e-menu.e-horizontal .e-list > ul li.e-haschild:hover,
+.e-menu.e-vertical .e-list > ul li.e-haschild:hover,
+.e-menu.e-context .e-list > ul li.e-haschild:hover {
+  background: #3277b2;
+  border-color: #f4f4f4;
+}
+.e-menu.e-horizontal .e-list > ul li.e-haschild:hover > a,
+.e-menu.e-horizontal .e-list > ul li.e-haschild:hover > span,
+.e-menu.e-vertical .e-list > ul li.e-haschild:hover > a,
+.e-menu.e-vertical .e-list > ul li.e-haschild:hover > span,
+.e-menu.e-context .e-list > ul li.e-haschild:hover > a,
+.e-menu.e-context .e-list > ul li.e-haschild:hover > span {
+  background: #3277b2;
+  color: white;
+}
+.e-menu.e-horizontal .e-list:hover > a,
+.e-menu.e-horizontal .e-list:hover > span,
+.e-menu.e-vertical .e-list:hover > a,
+.e-menu.e-vertical .e-list:hover > span,
+.e-menu.e-context .e-list:hover > a,
+.e-menu.e-context .e-list:hover > span {
+  color: #333333;
+}
+.e-menu.e-horizontal .e-list.e-active,
+.e-menu.e-vertical .e-list.e-active,
+.e-menu.e-context .e-list.e-active {
+  color: white;
+  border-color: #3277b2;
+}
+.e-menu.e-horizontal .e-list.e-active,
+.e-menu.e-vertical .e-list.e-active,
+.e-menu.e-context .e-list.e-active {
+  background: #3277b2;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #3277b2, #296293);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3277b2), color-stop(100%, #296293));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #3277b2, #296293);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #3277b2, #296293);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #3277b2, #296293);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #3277b2, #296293);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3277b2', endColorstr='#296293', GradientType=0);
+  /* IE6-9 */
+
+}
+.e-menu.e-horizontal .e-list > ul li.e-haschild.e-active > a,
+.e-menu.e-horizontal .e-list > ul li.e-haschild.e-active > span,
+.e-menu.e-vertical .e-list > ul li.e-haschild.e-active > a,
+.e-menu.e-vertical .e-list > ul li.e-haschild.e-active > span,
+.e-menu.e-context .e-list > ul li.e-haschild.e-active > a,
+.e-menu.e-context .e-list > ul li.e-haschild.e-active > span {
+  color: white;
+  border-color: #3277b2;
+}
+.e-menu.e-horizontal .e-list > ul li.e-haschild.e-active > a,
+.e-menu.e-horizontal .e-list > ul li.e-haschild.e-active > span,
+.e-menu.e-vertical .e-list > ul li.e-haschild.e-active > a,
+.e-menu.e-vertical .e-list > ul li.e-haschild.e-active > span,
+.e-menu.e-context .e-list > ul li.e-haschild.e-active > a,
+.e-menu.e-context .e-list > ul li.e-haschild.e-active > span {
+  background: #3277b2;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #3277b2, #296293);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3277b2), color-stop(100%, #296293));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #3277b2, #296293);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #3277b2, #296293);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #3277b2, #296293);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #3277b2, #296293);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3277b2', endColorstr='#296293', GradientType=0);
+  /* IE6-9 */
+
+}
+.e-menu.e-horizontal .e-list.e-active > a,
+.e-menu.e-horizontal .e-list.e-active > span,
+.e-menu.e-vertical .e-list.e-active > a,
+.e-menu.e-vertical .e-list.e-active > span,
+.e-menu.e-context .e-list.e-active > a,
+.e-menu.e-context .e-list.e-active > span,
+.e-menu.e-horizontal .e-list.e-active:hover,
+.e-menu.e-vertical .e-list.e-active:hover,
+.e-menu.e-context .e-list.e-active:hover {
+  color: white;
+}
+.e-menu .e-list > a .e-icon,
+.e-menu .e-list > span > .e-icon {
+  color: #666666;
+}
+.e-menu .e-list:hover > a .e-icon,
+.e-menu .e-list:hover > span > .e-icon {
+  color: #333333;
+}
+.e-menu .e-list.e-active > a > .e-icon,
+.e-menu .e-list.e-active > span > .e-icon,
+.e-menu .e-list.e-active:hover > a > .e-icon,
+.e-menu .e-list.e-active:hover > span > .e-icon {
+  color: white;
+}
+/*----------------------------------- disabled items ----------------------------------*/
+
+.e-menu.e-horizontal .e-list.e-disable-item,
+.e-menu.e-vertical .e-list.e-disable-item,
+.e-menu.e-context .e-list.e-disable-item {
+  background-color: transparent;
+}
+.e-menu.e-horizontal .e-list.e-disable-item .e-icon,
+.e-menu.e-vertical .e-list.e-disable-item .e-icon,
+.e-menu.e-context .e-list.e-disable-item .e-icon {
+  color: #666666;
+}
+.e-menu.e-horizontal .e-list.e-disable-item *,
+.e-menu.e-vertical .e-list.e-disable-item *,
+.e-menu.e-context .e-list.e-disable-item * {
+  filter: alpha(opacity=40);
+  opacity: 0.4;
+}
+.e-menu.e-horizontal .e-list.e-disable-item a:hover,
+.e-menu.e-horizontal .e-list.e-disable-item span:hover,
+.e-menu.e-horizontal .e-list.e-disable-item:hover,
+.e-menu.e-vertical .e-list.e-disable-item a:hover,
+.e-menu.e-vertical .e-list.e-disable-item span:hover,
+.e-menu.e-vertical .e-list.e-disable-item:hover,
+.e-menu.e-context .e-list.e-disable-item a:hover,
+.e-menu.e-context .e-list.e-disable-item span:hover,
+.e-menu.e-context .e-list.e-disable-item:hover {
+  background-color: transparent;
+  background-image: none;
+  color: #333333;
+  cursor: default;
+}
+.e-menu.e-horizontal .e-mhover,
+.e-menu.e-context .e-mhover,
+.e-menu.e-vertical .e-mhover,
+.e-menu.e-horizontal .e-mhover > a,
+.e-menu.e-horizontal .e-mhover > span,
+.e-menu.e-context .e-mhover > a,
+.e-menu.e-context .e-mhover > span,
+.e-menu.e-vertical .e-mhover > a,
+.e-menu.e-vertical .e-mhover > span,
+.e-menu.e-horizontal .e-mfocused,
+.e-menu.e-context .e-mfocused,
+.e-menu.e-vertical .e-mfocused,
+.e-menu.e-horizontal .e-mfocused > a,
+.e-menu.e-horizontal .e-mfocused > span,
+.e-menu.e-context .e-mfocused > a,
+.e-menu.e-context .e-mfocused > span,
+.e-menu.e-vertical .e-mfocused > a,
+.e-menu.e-vertical .e-mfocused > span,
+.e-menu-res-wrap .e-menu-res-in-wrap .e-icon.e-check-wrap:hover {
+  color: #333333;
+  border-color: #f4f4f4;
+}
+.e-menu.e-horizontal .e-mhover,
+.e-menu.e-context .e-mhover,
+.e-menu.e-vertical .e-mhover,
+.e-menu.e-horizontal .e-mhover > a,
+.e-menu.e-horizontal .e-mhover > span,
+.e-menu.e-context .e-mhover > a,
+.e-menu.e-context .e-mhover > span,
+.e-menu.e-vertical .e-mhover > a,
+.e-menu.e-vertical .e-mhover > span,
+.e-menu.e-horizontal .e-mfocused,
+.e-menu.e-context .e-mfocused,
+.e-menu.e-vertical .e-mfocused,
+.e-menu.e-horizontal .e-mfocused > a,
+.e-menu.e-horizontal .e-mfocused > span,
+.e-menu.e-context .e-mfocused > a,
+.e-menu.e-context .e-mfocused > span,
+.e-menu.e-vertical .e-mfocused > a,
+.e-menu.e-vertical .e-mfocused > span,
+.e-menu-res-wrap .e-menu-res-in-wrap .e-icon.e-check-wrap:hover {
+  background: #f4f4f4;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f4f4f4), color-stop(100%, #e9e9e9));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #f4f4f4, #e9e9e9);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4', endColorstr='#e9e9e9', GradientType=0);
+  /* IE6-9 */
+
+}
+.e-menu.e-horizontal .e-active,
+.e-menu.e-context .e-active,
+.e-menu.e-vertical .e-active,
+.e-menu.e-horizontal .e-active > a,
+.e-menu.e-horizontal .e-active > span,
+.e-menu.e-context .e-active > a,
+.e-menu.e-context .e-active > span,
+.e-menu.e-vertical .e-active > a,
+.e-menu.e-vertical .e-active > span,
+.e-menu-res-wrap .e-menu-res-in-wrap .e-icon.e-check-wrap:hover {
+  color: white;
+  border-color: #f4f4f4;
+}
+.e-menu.e-horizontal .e-active,
+.e-menu.e-context .e-active,
+.e-menu.e-vertical .e-active,
+.e-menu.e-horizontal .e-active > a,
+.e-menu.e-horizontal .e-active > span,
+.e-menu.e-context .e-active > a,
+.e-menu.e-context .e-active > span,
+.e-menu.e-vertical .e-active > a,
+.e-menu.e-vertical .e-active > span,
+.e-menu-res-wrap .e-menu-res-in-wrap .e-icon.e-check-wrap:hover {
+  background: #3277b2;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #3277b2, #296293);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3277b2), color-stop(100%, #296293));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #3277b2, #296293);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #3277b2, #296293);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #3277b2, #296293);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #3277b2, #296293);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3277b2', endColorstr='#296293', GradientType=0);
+  /* IE6-9 */
+
+}

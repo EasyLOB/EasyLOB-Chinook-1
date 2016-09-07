@@ -1,0 +1,87 @@
+@model TaskSimpleModel
+
+<h3>@TaskSimpleResources.Task</h3>
+
+@{
+    AjaxOptions ajaxOptions = new AjaxOptions()
+    {
+        HttpMethod = "POST",
+        OnFailure = "ajaxFailure",
+        OnSuccess = "ajaxSuccess"
+    };
+}
+
+@using (Ajax.BeginForm("Simple", "ChinookTasks", ajaxOptions))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="panel-body">
+
+        <div id="Group_XBoolean" class="@AppDefaults.CssClassGroup col-md-2">
+            @Html.LabelFor(model => model.XBoolean, new { @class = AppDefaults.CssClassLabel })
+            @Html.EditorFor(model => model.XBoolean, new { id = "XBoolean", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+            @Html.ValidationMessageFor(model => model.XBoolean, "", new { @class = AppDefaults.CssClassValidator })
+        </div>
+
+        <div id="Group_XDateTime" class="@AppDefaults.CssClassGroup col-md-2">
+            @Html.LabelFor(model => model.XDateTime, new { @class = AppDefaults.CssClassLabel })
+            @Html.EditorFor(model => model.XDateTime, new { id = "XDateTime", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+            @Html.ValidationMessageFor(model => model.XDateTime, "", new { @class = AppDefaults.CssClassValidator })
+        </div>
+
+        <div id="Group_XDouble" class="@AppDefaults.CssClassGroup col-md-2">
+            @Html.LabelFor(model => model.XDouble, new { @class = AppDefaults.CssClassLabel })
+            @Html.EditorFor(model => model.XDouble, new { id = "XDouble", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+            @Html.ValidationMessageFor(model => model.XDouble, "", new { @class = AppDefaults.CssClassValidator })
+        </div>
+
+        <div id="Group_XInteger" class="@AppDefaults.CssClassGroup col-md-2">
+            @Html.LabelFor(model => model.XInteger, new { @class = AppDefaults.CssClassLabel })
+            @Html.EditorFor(model => model.XInteger, new { id = "XInteger", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+            @Html.ValidationMessageFor(model => model.XInteger, "", new { @class = AppDefaults.CssClassValidator })
+        </div>
+
+        <div id="Group_XString" class="@AppDefaults.CssClassGroup col-md-2">
+            @Html.LabelFor(model => model.XString, new { @class = AppDefaults.CssClassLabel })
+            @Html.EditorFor(model => model.XString, new { id = "XString", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+            @Html.ValidationMessageFor(model => model.XString, "", new { @class = AppDefaults.CssClassValidator })
+        </div>
+
+    </div>
+
+    <div class="z-formButtons">
+        <input type="image" class="btn btn-default z-buttonOk" title="@PresentationResources.OK" />
+    </div>
+}
+
+<div id="OperationResult">
+    @Html.OperationResult(Model.OperationResult)
+</div>
+
+<script>
+    $(function () {
+        try {
+            //var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+        } catch (exception) {
+            alert(zExceptionMessage("Simple.cshtml", "function()", exception));
+        }
+    });
+
+    function ajaxFailure(jqXHR, textStatus, errorThrown) {
+        try {
+            $("#OperationResult").html(zAjaxOperationResult(jqXHR));
+        } catch (exception) {
+            zExceptionMessage("Simple.cshtml", "ajaxFailure(jqXHR, textStatus, errorThrown)", exception.message)
+        }
+    }
+
+    function ajaxSuccess(data, textStatus, jqXHR) {
+        try {
+            $("#OperationResult").html(zAjaxOperationResult(jqXHR));
+        } catch (exception) {
+            zExceptionMessage("Simple.cshtml", "ajaxSuccess(data, textStatus, jqXHR)", exception.message)
+        }
+    }
+</script>

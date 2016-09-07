@@ -1,0 +1,14 @@
+@model ActivityRoleCollectionModel
+
+<div id="Ajax">
+</div>
+
+<script>
+    $(function () {
+        try {
+            $("#Ajax").load("@(Url.Action("Search", "ActivityRole", null, Request.Url.Scheme))");
+        } catch (exception) {
+            zExceptionMessage("ActivityRole Index.cshtml", "function()", exception.message)
+        }
+    });
+</script>

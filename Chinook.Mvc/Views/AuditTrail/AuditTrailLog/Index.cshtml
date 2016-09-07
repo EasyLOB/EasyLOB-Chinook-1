@@ -1,0 +1,9 @@
+﻿@model AuditTrailLogCollectionModel
+
+@{
+    ViewBag.Title = AuditTrailLogResources.EntityPlural;
+}
+
+<h3>@ViewBag.Title</h3>
+
+@Html.Action("Search", "AuditTrailLog")

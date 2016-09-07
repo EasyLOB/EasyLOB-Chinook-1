@@ -1,0 +1,55 @@
+/*------------------------------------- Captcha -------------------------------------------*/
+
+/*@pager-currentitem:#428BCA;*/
+/*-----------------------Map------------------*/
+/*-----------------------PdfViewer------------------*/
+/*-----------------------End PdfViewer------------------*/
+/*-----------------------OLAP Definition Start-----------------*/
+.e-olapclient .removeSplitBtn {
+  border-radius: 4px;
+}
+/*-----------------------OLAP Definition End
+
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Diagram Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Ribbon End-----------------------*/
+/*----------------------Kanban Definition-----------------------*/
+/*----------------------Kanban End-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+/*----------------------rangeScrollbar Start------------------*/
+/*----------------------rangeScrollbar End--------------------*/
+/*----------------------Office 365 theme-----------------------*/
+/*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
+/*----------------------material theme-----------------------*/
+.e-captcha .refresh {
+  background: #f7f7f7;
+  border: 1px solid #c9c9c9;
+}
+.e-captcha .audio {
+  background: #f7f7f7;
+}
+.e-captcha .imagecontainer {
+  border: 1px solid #989898;
+}
+.e-captcha .validTextBox {
+  border: 1px solid #c7c5c5;
+}
+.e-captcha .e-validTextBox {
+  border: 1px solid #c7c5c5;
+}
+.e-captcha .e-refresh {
+  background: #f7f7f7;
+  border: 1px solid #c9c9c9;
+}
+.e-captcha .e-audio {
+  background: #f7f7f7;
+  border: 1px solid #c7c5c5;
+}
+.e-captcha .e-imageContainer {
+  border: 1px solid #989898;
+}

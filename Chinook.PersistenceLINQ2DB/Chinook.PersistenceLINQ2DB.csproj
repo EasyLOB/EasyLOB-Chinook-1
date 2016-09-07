@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D14C903E-DB29-46A5-8AE5-1527ACC31DE1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Chinook.Persistence</RootNamespace>
+    <AssemblyName>Chinook.PersistenceLINQ2DB</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="linq2db, Version=1.0.7.4, Culture=neutral, PublicKeyToken=f19f8aed7feff67e, processorArchitecture=MSIL">
+      <HintPath>..\packages\linq2db.1.0.7.4\lib\net45\linq2db.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChinookLINQ2DB.cs" />
+    <Compile Include="Maps\AlbumMap.cs" />
+    <Compile Include="Maps\ArtistMap.cs" />
+    <Compile Include="Maps\CustomerDocumentMap.cs" />
+    <Compile Include="Maps\CustomerMap.cs" />
+    <Compile Include="Maps\EmployeeMap.cs" />
+    <Compile Include="Maps\InvoiceLineMap.cs" />
+    <Compile Include="Maps\InvoiceMap.cs" />
+    <Compile Include="Maps\MediaTypeMap.cs" />
+    <Compile Include="Maps\PlaylistMap.cs" />
+    <Compile Include="Maps\PlaylistTrackMap.cs" />
+    <Compile Include="Maps\TrackMap.cs" />
+    <Compile Include="Maps\GenreMap.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ChinookAlbumRepositoryLINQ2DB.cs" />
+    <Compile Include="Repositories\ChinookArtistRepositoryLINQ2DB.cs" />
+    <Compile Include="Repositories\ChinookCustomerDocumentRepositoryLINQ2DB.cs" />
+    <Compile Include="Repositories\ChinookCustomerRepositoryLINQ2DB.cs" />
+    <Compile Include="Repositories\ChinookEmployeeRepositoryLINQ2DB.cs" />
+    <Compile Include="UnitOfWork\ChinookGenericRepositoryLINQ2DB.cs" />
+    <Compile Include="Repositories\ChinookGenreRepositoryLINQ2DB.cs" />
+    <Compile Include="Repositories\ChinookInvoiceLineRepositoryLINQ2DB.cs" />
+    <Compile Include="Repositories\ChinookInvoiceRepositoryLINQ2DB.cs" />
+    <Compile Include="Repositories\ChinookMediaTypeRepositoryLINQ2DB.cs" />
+    <Compile Include="Repositories\ChinookPlaylistRepositoryLINQ2DB.cs" />
+    <Compile Include="Repositories\ChinookPlaylistTrackRepositoryLINQ2DB.cs" />
+    <Compile Include="Repositories\ChinookTrackRepositoryLINQ2DB.cs" />
+    <Compile Include="UnitOfWork\ChinookUnitOfWorkLINQ2DB.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Data\EasyLOB.Data\EasyLOB.Data.csproj">
+      <Project>{1f89f104-c08b-4537-a9a8-5c51c53376f0}</Project>
+      <Name>EasyLOB.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Library\EasyLOB.Library\EasyLOB.Library.csproj">
+      <Project>{55b7716b-36a3-442d-9e9e-9caab7db592e}</Project>
+      <Name>EasyLOB.Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Persistence\EasyLOB.PersistenceLINQ2DB\EasyLOB.PersistenceLINQ2DB.csproj">
+      <Project>{50df4579-2559-46eb-83dc-032ec732b5b9}</Project>
+      <Name>EasyLOB.PersistenceLINQ2DB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Persistence\EasyLOB.Persistence\EasyLOB.Persistence.csproj">
+      <Project>{35433610-cb14-4909-b890-2150b6443a25}</Project>
+      <Name>EasyLOB.Persistence</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chinook.Data\Chinook.Data.csproj">
+      <Project>{9536d998-473d-4ee6-bb32-45a9c7b38297}</Project>
+      <Name>Chinook.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chinook.Persistence\Chinook.Persistence.csproj">
+      <Project>{edc764bf-825e-44da-b872-9fdf28cc1735}</Project>
+      <Name>Chinook.Persistence</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

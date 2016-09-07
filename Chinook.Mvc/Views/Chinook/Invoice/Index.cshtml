@@ -1,0 +1,9 @@
+@model InvoiceCollectionModel
+
+@{
+    ViewBag.Title = InvoiceResources.EntityPlural;
+}
+
+<h3>@ViewBag.Title</h3>
+
+@Html.Action("Search", "Invoice")

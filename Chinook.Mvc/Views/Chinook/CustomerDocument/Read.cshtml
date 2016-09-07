@@ -1,0 +1,37 @@
+@model CustomerDocumentItemModel
+
+@{
+    ViewBag.Title = AppHelper.PageTitle(CustomerDocumentResources.EntitySingular, PresentationResources.Read);
+}
+
+<h3>@ViewBag.Title</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div id="Partial" class="form-inline">
+        @Html.Partial("_CustomerDocumentItem", Model)
+    </div>
+    
+    <div class="z-formButtons">
+        @Html.Raw(@Html.ImageLink("Button_Cancel", MvcHelper.ReadUrlDictionary(Context, "CustomerDocument"), "z-buttonCancel", PresentationResources.Cancel))
+    </div>
+}
+
+@Html.OperationResult(Model.OperationResult)
+
+<script>
+    $(function () {
+        var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+
+        if (model.IsSecurityOperations.IsRead) {
+            $("#Partial").show();
+            $("#Button_Cancel").show();
+        }
+        else {
+            $("#Partial").hide();
+            $("#Button_Cancel").show();
+        }
+    });
+</script>

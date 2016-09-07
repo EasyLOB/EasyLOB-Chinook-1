@@ -1,0 +1,245 @@
+@model AlbumCollectionModel
+
+@{
+    ViewBag.Title = AlbumResources.EntityPlural;
+}
+
+<div id="Album_Title">
+    <h3>@ViewBag.Title</h3>
+</div>
+
+@(Html.EJ().Grid<Album>("Grid_Album")
+    .Datasource(datasource => datasource
+        .Adaptor(AdaptorType.UrlAdaptor)
+        .URL(Url.Content("~/Album/DataSource"))
+    )
+    .AllowFiltering()
+    .AllowGrouping()
+    .AllowPaging()
+    .AllowResizing()
+    .AllowScrolling()
+    .AllowSearching()
+    .AllowSorting()
+    .ClientSideEvents(clientEvent => clientEvent
+        .ActionBegin("actionBegin_Grid_Album")
+        .ActionFailure("actionFailure_Grid_Album")
+        .Load("load_Grid_Album")
+    )
+    .Columns(column =>
+    {
+        column.Field("AlbumId")
+            .AllowEditing(false)
+            .EditType(EditingType.Numeric)
+            .Format(SyncfusionPatternResources.GridFormat_Integer)
+            .HeaderText(AlbumResources.PropertyAlbumId)
+            .IsIdentity(true)
+            .IsPrimaryKey(true)
+            .TextAlign(TextAlign.Right)
+            .Visible(false)
+            .Width(100)
+            .Add();
+        column.Field("Title")
+            .EditType(EditingType.String)
+            .HeaderText(AlbumResources.PropertyTitle)
+            .Visible(true)
+            .Width(240)
+            .Add();
+        column.Field("ArtistId")
+            .EditType(EditingType.Numeric)
+            .Format(SyncfusionPatternResources.GridFormat_Integer)
+            .HeaderText(AlbumResources.PropertyArtistId)
+            .TextAlign(TextAlign.Right)
+            .Visible(false)
+            .Width(100)
+            .Add();
+        column.Field("ArtistLookupText")
+            .AllowEditing(false)
+            .HeaderText(ArtistResources.EntitySingular)
+            .Visible(true)
+            .Width(100)
+            .Add();
+    })
+    .EditSettings(edit => edit
+        .AllowAdding()
+        .AllowDeleting()
+        .AllowEditing()
+    )
+    .EnablePersistence()
+    .FilterSettings(filter => filter
+        .EnableCaseSensitivity(false)
+        .FilterType(FilterType.Excel)
+        .MaxFilterChoices(System.Int32.MaxValue)
+    )
+    .Mappers(map => map
+        .ExportToExcelAction(Url.Content("~/Album/ExportToExcel"))
+        .ExportToPdfAction(Url.Content("~/Album/ExportToPdf"))
+        .ExportToWordAction(Url.Content("~/Album/ExportToWord"))
+    )
+    .PageSettings(page => page
+        .PageSize(AppDefaults.SyncfusionRecordsByPage)
+    )
+    .SearchSettings(search =>
+    {
+        search.Fields(field =>
+        {
+            //field.Add("AlbumId");
+            field.Add("Title");
+            //field.Add("ArtistId");
+            field.Add("ArtistLookupText");
+        });
+    })
+    .ShowColumnChooser()
+    .ToolbarSettings(toolbar => toolbar
+        .CustomToolbarItems(new List<object>() {
+            new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_Album" }
+        })
+        .ShowToolbar()
+        .ToolbarItems(items =>
+        {
+            items.AddTool(ToolBarItems.Search);
+            items.AddTool(ToolBarItems.Add);
+            items.AddTool(ToolBarItems.Edit);
+            items.AddTool(ToolBarItems.Delete);
+            items.AddTool(ToolBarItems.ExcelExport);
+            items.AddTool(ToolBarItems.PdfExport);
+            items.AddTool(ToolBarItems.WordExport);
+        })
+    )
+)
+
+@Html.OperationResult(Model.OperationResult)
+
+<script type="text/x-jsrender" id="Toolbar_Grid_Album">
+    <div id="Toolbar_Grid_Album_Read" class="e-toolbaricons e-icon e-document" title="@PresentationResources.Read"></div>
+</script>
+
+<script>
+    $(function () {
+        try {
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+    
+            ej.widget.init($("#Ajax"));
+            var title = $("#Album_Title");       
+
+            var gridAlbum = $("#Grid_Album");
+            var ejGridAlbum = gridAlbum.data("ejGrid");
+    
+            if (ejGridAlbum.model.filterSettings.filteredColumns.length != 0) {
+                ejGridAlbum.clearFiltering();
+            }
+                
+            if (!model.IsMasterDetail) {
+                title.css("display", "block");
+                $(document).prop("title", "@Html.Raw(AppHelper.DocumentTitle(ViewBag.Title))");
+                
+                ejGridAlbum.setModel({
+                    allowGrouping: true,
+                    toolbarSettings: {
+                        showToolbar: true,
+                        toolbarItems: [
+                            ej.Grid.ToolBarItems.Search,
+                            ej.Grid.ToolBarItems.Add,
+                            ej.Grid.ToolBarItems.Edit,
+                            ej.Grid.ToolBarItems.Delete,
+                            ej.Grid.ToolBarItems.ExcelExport,
+                            ej.Grid.ToolBarItems.PdfExport,
+                            ej.Grid.ToolBarItems.WordExport
+                        ]                    
+                    }
+                });
+            } else {
+                title.css("display", "none");
+    
+                ejGridAlbum.setModel({
+                    allowGrouping: false,
+                    toolbarSettings: {
+                        showToolbar: true,
+                        toolbarItems: [
+                            ej.Grid.ToolBarItems.Add,
+                            ej.Grid.ToolBarItems.Edit,
+                            ej.Grid.ToolBarItems.Delete
+                        ]                    
+                    }
+                });
+
+                if (model.MasterArtistId != null) {
+                    ejGridAlbum.filterColumn("ArtistId", ej.FilterOperators.equal, model.MasterArtistId, ej.Predicate.and);
+                }
+            }
+        } catch (exception) {
+            alert(zExceptionMessage("_AlbumCollection.cshtml", "function()", exception));
+        }                
+    });
+    
+    function actionBegin_Grid_Album(args) {
+        try {
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+            var masterControllerAction = model.MasterControllerAction == null ? "" : model.MasterControllerAction.toLowerCase();
+
+            //var gridAlbum = $("#Grid_Album");
+            //var ejGridAlbum = gridAlbum.data("ejGrid");
+
+            //ejGridAlbum.setModel({
+            //    editSettings: {
+            //        allowAdding: model.IsSecurityOperations.IsCreate,
+            //        allowDeleting: model.IsSecurityOperations.IsDelete,
+            //        allowEditing: model.IsSecurityOperations.IsUpdate
+            //    }
+            //});
+    
+            // Associations (FK)
+            var url = "";
+            // Artist
+            if (model.MasterArtistId != null) {
+                url = url + (url == "" ? "" : "&") + "MasterArtistId=" + String(model.MasterArtistId);
+            }
+
+            if (masterControllerAction == "" || masterControllerAction == "update") {
+                switch(args.requestType) {     
+                    case "add":
+                        args.cancel = true;
+                        $("#Ajax").load("@(Url.Action("Create", "Album", null, Request.Url.Scheme))" + (url == "" ? "" : "?") + url);
+                        break;
+                    case "beginedit":
+                        var data = this.model.currentViewData[args.rowIndex];
+                        if (!ej.isNullOrUndefined(data)) {
+                            args.cancel = true;
+                            $("#Ajax").load("@(Url.Action("Update", "Album", null, Request.Url.Scheme))?AlbumId=" + String(data.AlbumId) + (url == "" ? "" : "&") + url);
+                        }
+                        break;
+                    case "delete":
+                        var data = args.data;
+                        if (!ej.isNullOrUndefined(data)) {
+                            args.cancel = true;
+                            $("#Ajax").load("@(Url.Action("Delete", "Album", null, Request.Url.Scheme))?AlbumId=" + String(data.AlbumId) + (url == "" ? "" : "&") + url);
+                        }
+                        break;
+                }
+            }
+            else {
+                if (args.requestType == "add" || args.requestType == "beginedit" || args.requestType == "delete") {
+                    args.cancel = true;
+                }
+            }
+        } catch (exception) {
+            alert(zExceptionMessage("_AlbumCollection.cshtml", "actionBegin_Grid_Album(args)", exception));
+        }            
+    }
+    
+    function actionFailure_Grid_Album(args) {
+        try {
+            alert(zErrorMessage(args.error.responseText));
+        } catch (exception) {
+            alert(zExceptionMessage("_AlbumCollection.cshtml", "actionFailure_Grid_Album(args)", exception));
+        }
+    }    
+
+    function load_Grid_Album(args) {
+        try {            
+            var culture = "@System.Globalization.CultureInfo.CurrentCulture.Name";
+            this.model.locale = culture;
+        } catch (exception) {
+            alert(zExceptionMessage("_AlbumCollection.cshtml", "load_Grid_Album(args)", exception));
+        }
+    }
+</script>

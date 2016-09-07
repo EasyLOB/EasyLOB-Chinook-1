@@ -1,0 +1,14 @@
+@model ActivityCollectionModel
+
+<div id="Ajax">
+</div>
+
+<script>
+    $(function () {
+        try {
+            $("#Ajax").load("@(Url.Action("Search", "Activity", null, Request.Url.Scheme))");
+        } catch (exception) {
+            zExceptionMessage("Activity Index.cshtml", "function()", exception.message)
+        }
+    });
+</script>

@@ -1,0 +1,268 @@
+@model UserRoleCollectionModel
+
+@{
+    ViewBag.Title = UserRoleResources.EntityPlural;
+}
+
+<div id="UserRole_Title">
+    <h3>@ViewBag.Title</h3>
+</div>
+
+@(Html.EJ().Grid<UserRole>("Grid_UserRole")
+    .Datasource(datasource => datasource
+        .Adaptor(AdaptorType.UrlAdaptor)
+        .URL(Url.Content("~/UserRole/DataSource"))
+    )
+    .AllowFiltering()
+    .AllowGrouping()
+    .AllowPaging()
+    .AllowResizing()
+    .AllowScrolling()
+    .AllowSearching()
+    .AllowSorting()
+    .ClientSideEvents(clientEvent => clientEvent
+        .ActionBegin("actionBegin_Grid_UserRole")
+        .ActionFailure("actionFailure_Grid_UserRole")
+        .Load("load_Grid_UserRole")
+        .ToolbarClick("toolbarClick_Grid_UserRole")
+    )
+    .Columns(column =>
+    {
+        column.Field("UserId")
+            .EditType(EditingType.String)
+            .HeaderText(UserRoleResources.PropertyUserId)
+            .IsPrimaryKey(true)
+            .Visible(true)
+            .Width(240)
+            .Add();
+        column.Field("UserLookupText")
+            .AllowEditing(false)
+            .HeaderText(UserResources.EntitySingular)
+            .Visible(true)
+            .Width(100)
+            .Add();
+        column.Field("RoleId")
+            .EditType(EditingType.String)
+            .HeaderText(UserRoleResources.PropertyRoleId)
+            .IsPrimaryKey(true)
+            .Visible(true)
+            .Width(240)
+            .Add();
+        column.Field("RoleLookupText")
+            .AllowEditing(false)
+            .HeaderText(RoleResources.EntitySingular)
+            .Visible(true)
+            .Width(100)
+            .Add();
+    })
+    .EditSettings(edit => edit
+        .AllowAdding()
+        .AllowDeleting()
+        .AllowEditing()
+    )
+    .EnablePersistence()
+    .FilterSettings(filter => filter
+        .EnableCaseSensitivity(false)
+        .FilterType(FilterType.Excel)
+        .MaxFilterChoices(System.Int32.MaxValue)
+    )
+    .Mappers(map => map
+        .ExportToExcelAction(Url.Content("~/UserRole/ExportToExcel"))
+        .ExportToPdfAction(Url.Content("~/UserRole/ExportToPdf"))
+        .ExportToWordAction(Url.Content("~/UserRole/ExportToWord"))
+    )
+    .PageSettings(page => page
+        .PageSize(AppDefaults.SyncfusionRecordsByPage)
+    )
+    .SearchSettings(search =>
+    {
+        search.Fields(field =>
+        {
+            field.Add("UserId");
+            field.Add("UserLookupText");
+            field.Add("RoleId");
+            field.Add("RoleLookupText");
+        });
+    })
+    .ShowColumnChooser()
+    .ToolbarSettings(toolbar => toolbar
+        .CustomToolbarItems(new List<object>() {
+            new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_UserRole" }
+        })
+        .ShowToolbar()
+        .ToolbarItems(items =>
+        {
+            items.AddTool(ToolBarItems.Search);
+            items.AddTool(ToolBarItems.Add);
+            items.AddTool(ToolBarItems.Edit);
+            items.AddTool(ToolBarItems.Delete);
+            items.AddTool(ToolBarItems.ExcelExport);
+            items.AddTool(ToolBarItems.PdfExport);
+            items.AddTool(ToolBarItems.WordExport);
+        })
+    )
+)
+
+@Html.OperationResult(Model.OperationResult)
+
+<script type="text/x-jsrender" id="Toolbar_Grid_UserRole">
+    <div id="Toolbar_Grid_UserRole_Read" class="e-toolbaricons e-icon e-document" title="@PresentationResources.Read"></div>
+</script>
+
+<script>
+    $(function () {
+        try {
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+    
+            ej.widget.init($("#Ajax"));
+            var title = $("#UserRole_Title");       
+
+            var gridUserRole = $("#Grid_UserRole");
+            var ejGridUserRole = gridUserRole.data("ejGrid");
+    
+            if (ejGridUserRole.model.filterSettings.filteredColumns.length != 0) {
+                ejGridUserRole.clearFiltering();
+            }
+                
+            if (!model.IsMasterDetail) {
+                title.css("display", "block");
+                $(document).prop("title", "@Html.Raw(AppHelper.DocumentTitle(ViewBag.Title))");
+                
+                ejGridUserRole.setModel({
+                    allowGrouping: true,
+                    toolbarSettings: {
+                        showToolbar: true,
+                        toolbarItems: [
+                            ej.Grid.ToolBarItems.Search,
+                            ej.Grid.ToolBarItems.Add,
+                            ej.Grid.ToolBarItems.Edit,
+                            ej.Grid.ToolBarItems.Delete,
+                            ej.Grid.ToolBarItems.ExcelExport,
+                            ej.Grid.ToolBarItems.PdfExport,
+                            ej.Grid.ToolBarItems.WordExport
+                        ]                    
+                    }
+                });
+            } else {
+                title.css("display", "none");
+    
+                ejGridUserRole.setModel({
+                    allowGrouping: false,
+                    toolbarSettings: {
+                        showToolbar: true,
+                        toolbarItems: [
+                            ej.Grid.ToolBarItems.Add,
+                            ej.Grid.ToolBarItems.Edit,
+                            ej.Grid.ToolBarItems.Delete
+                        ]                    
+                    }
+                });
+
+                if (model.MasterRoleId != null) {
+                    ejGridUserRole.filterColumn("RoleId", ej.FilterOperators.equal, model.MasterRoleId, ej.Predicate.and);
+                } else if (model.MasterUserId != null) {
+                    ejGridUserRole.filterColumn("UserId", ej.FilterOperators.equal, model.MasterUserId, ej.Predicate.and);
+                }
+            }
+        } catch (exception) {
+            alert(zExceptionMessage("_UserRoleCollection.cshtml", "function()", exception));
+        }                
+    });
+    
+    function actionBegin_Grid_UserRole(args) {
+        try {
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+            var masterControllerAction = model.MasterControllerAction == null ? "" : model.MasterControllerAction.toLowerCase();
+    
+            // Associations (FK)
+            var url = "";
+            // Role
+            if (model.MasterRoleId != null) {
+                url = url + (url == "" ? "" : "&") + "MasterRoleId=" + String(model.MasterRoleId);
+            }
+            // User
+            if (model.MasterUserId != null) {
+                url = url + (url == "" ? "" : "&") + "MasterUserId=" + String(model.MasterUserId);
+            }
+
+            if (masterControllerAction == "" || masterControllerAction == "update") {
+                switch(args.requestType) {
+                    case "add":
+                        // Create
+                        if (model.IsSecurityOperations.IsCreate) {
+                            $("#Ajax").load("@(Url.Action("Create", "UserRole", null, Request.Url.Scheme))" + (url == "" ? "" : "?") + url);
+                        }
+                        break;
+                    case "read":
+                        // Read
+                        if (model.IsSecurityOperations.IsRead) {
+                            var data = args.data;
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#Ajax").load("@(Url.Action("Read", "UserRole", null, Request.Url.Scheme))?UserId=" + String(data.UserId) + "&RoleId=" + String(data.RoleId) + (url == "" ? "" : "&") + url);
+                            }
+                        }
+                        break;                        
+                    case "beginedit":
+                        // Update
+                        if (model.IsSecurityOperations.IsUpdate) {
+                            var data = this.model.currentViewData[args.rowIndex];
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#Ajax").load("@(Url.Action("Update", "UserRole", null, Request.Url.Scheme))?UserId=" + String(data.UserId) + "&RoleId=" + String(data.RoleId) + (url == "" ? "" : "&") + url);
+                            }
+                        }
+                        break;
+                    case "delete":
+                        // Delete
+                        if (model.IsSecurityOperations.IsDelete) {
+                            var data = args.data;
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#Ajax").load("@(Url.Action("Delete", "UserRole", null, Request.Url.Scheme))?UserId=" + String(data.UserId) + "&RoleId=" + String(data.RoleId) + (url == "" ? "" : "&") + url);
+                            }
+                        }
+                        break;
+                }
+            }
+
+            if (args.requestType == "add" || args.requestType == "beginedit" || args.requestType == "delete") {
+                args.cancel = true;
+            }
+        } catch (exception) {
+            alert(zExceptionMessage("_UserRoleCollection.cshtml", "actionBegin_Grid_UserRole(args)", exception));
+        }            
+    }
+    
+    function actionFailure_Grid_UserRole(args) {
+        try {
+            alert(zErrorMessage(args.error.responseText));
+        } catch (exception) {
+            alert(zExceptionMessage("_UserRoleCollection.cshtml", "actionFailure_Grid_UserRole(args)", exception));
+        }
+    }    
+
+    function load_Grid_UserRole(args) {
+        try {            
+            var culture = "@System.Globalization.CultureInfo.CurrentCulture.Name";
+            this.model.locale = culture;
+        } catch (exception) {
+            alert(zExceptionMessage("_UserRoleCollection.cshtml", "load_Grid_UserRole(args)", exception));
+        }
+    }
+
+    function toolbarClick_Grid_UserRole(sender) {
+        try {
+            var toolbar = $(sender.target);
+            var gridUserRole = $("#Grid_UserRole");
+            var ejGridUserRole = gridUserRole.data("ejGrid");
+
+            if (toolbar.attr("id") == "Toolbar_Grid_UserRole_Read") {
+                var records = ejGridUserRole.getSelectedRecords();
+                if (records.length == 1) {
+                    var args = { requestType: "read", data: records[0] };
+                    actionBegin_Grid_UserRole(args)
+                }
+            }
+        } catch (exception) {
+            alert(zExceptionMessage("_UserRoleCollection.cshtml", "toolbarClick_Grid_UserRole(sender)", exception));
+        }
+    }
+</script>

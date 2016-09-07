@@ -1,0 +1,1867 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E654FC78-C826-43F1-A4D3-40BFDDF2FD49}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Chinook.Mvc</RootNamespace>
+    <AssemblyName>Chinook.Mvc</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentValidationNA, Version=1.2.16.24816, Culture=neutral, PublicKeyToken=0950390b87309e14, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidationNA.1.2.16\lib\net40\FluentValidationNA.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=4.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Iesi.Collections.4.0.1.4000\lib\net40\Iesi.Collections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="linq2db, Version=1.0.7.4, Culture=neutral, PublicKeyToken=f19f8aed7feff67e, processorArchitecture=MSIL">
+      <HintPath>..\packages\linq2db.1.0.7.4\lib\net45\linq2db.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Spatial, Version=6.15.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Spatial.6.15.0\lib\portable-net45+win+wpa81\Microsoft.Spatial.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MongoDB.Bson, Version=2.2.3.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Bson.2.2.3\lib\net45\MongoDB.Bson.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MongoDB.Driver, Version=2.2.3.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.2.2.3\lib\net45\MongoDB.Driver.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core, Version=2.2.3.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.Core.2.2.3\lib\net45\MongoDB.Driver.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.8\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.6.9.8\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.3.0\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Compression.Base, Version=14.2460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Core, Version=14.2460.0.26, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.DocIO.Base, Version=14.2460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.EJ, Version=14.2460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.EJ.Export, Version=14.2460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.EJ.MVC, Version=14.2500.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.EJ.ReportViewer, Version=14.2460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Linq.Base, Version=14.2460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Pdf.Base, Version=14.2460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.XlsIO.Base, Version=14.2460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.SQLite, Version=1.0.101.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.101.0\lib\net46\System.Data.SQLite.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.101.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.101.0\lib\net46\System.Data.SQLite.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.101.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.101.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Unity.Mvc5, Version=1.2.3.0, Culture=neutral, PublicKeyToken=43da31bc42a85347, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Mvc5.1.2.3\lib\net45\Unity.Mvc5.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_GlobalResources\ValidationResources.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ValidationResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\ValidationResources.pt-BR.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ValidationResources.pt-BR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\AccountConfig.cs" />
+    <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AuditTrail\AuditTrailConfigurationController.cs" />
+    <Compile Include="Controllers\AuditTrail\AuditTrailLogController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BaseControllerDashboard.cs" />
+    <Compile Include="Controllers\BaseControllerSCRUDPersistence.cs" />
+    <Compile Include="Controllers\BaseControllerSCRUDApplication.cs" />
+    <Compile Include="Controllers\BaseControllerSCRUD.cs" />
+    <Compile Include="Controllers\BaseControllerReport.cs" />
+    <Compile Include="Controllers\BaseControllerTask.cs" />
+    <Compile Include="Controllers\Chinook\AlbumController.cs" />
+    <Compile Include="Controllers\Chinook\ArtistController.cs" />
+    <Compile Include="Controllers\Chinook\CustomerDocumentController.cs" />
+    <Compile Include="Controllers\Chinook\CustomerController.cs" />
+    <Compile Include="Controllers\Chinook\EmployeeController.cs" />
+    <Compile Include="Controllers\Chinook\GenreController.cs" />
+    <Compile Include="Controllers\Chinook\InvoiceController.cs" />
+    <Compile Include="Controllers\Chinook\InvoiceLineController.cs" />
+    <Compile Include="Controllers\Chinook\MediaTypeController.cs" />
+    <Compile Include="Controllers\Chinook\PlaylistController.cs" />
+    <Compile Include="Controllers\Chinook\PlaylistTrackController.cs" />
+    <Compile Include="Controllers\Chinook\ChinookTasks\Reset.cs" />
+    <Compile Include="Controllers\Chinook\ChinookDashboard\ChinookDashboardsController.cs" />
+    <Compile Include="Controllers\Dashboards\PowerBI.cs" />
+    <Compile Include="Controllers\Dashboards\Syncfusion.cs" />
+    <Compile Include="Controllers\Dashboards\DashboardsController.cs" />
+    <Compile Include="Controllers\EDM\EDMController.cs" />
+    <Compile Include="Controllers\Identity\AccountController.cs" />
+    <Compile Include="Controllers\Identity\ManageController.cs" />
+    <Compile Include="Controllers\Reports\RDLCApiController.cs" />
+    <Compile Include="Controllers\Reports\RDLC.cs" />
+    <Compile Include="Controllers\Chinook\ChinookReports\ChinookReportsController.cs" />
+    <Compile Include="Controllers\Reports\ReportsController.cs" />
+    <Compile Include="Controllers\Reports\RDL.cs" />
+    <Compile Include="Controllers\Chinook\ChinookTasks\ChinookTasksController.cs" />
+    <Compile Include="Controllers\Chinook\ChinookTasks\Clean.cs" />
+    <Compile Include="Controllers\Chinook\ChinookTasks\ExportAlbumByArtist.cs" />
+    <Compile Include="Controllers\Chinook\ChinookTasks\ImportGenre.cs" />
+    <Compile Include="Controllers\Chinook\ChinookTasks\Simple.cs" />
+    <Compile Include="Controllers\Chinook\ChinookTasks\ExportGenre.cs" />
+    <Compile Include="Controllers\Chinook\TrackController.cs" />
+    <Compile Include="Controllers\GlobalizationController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Reports\RDLApiController.cs" />
+    <Compile Include="Controllers\Security\ActivityController.cs" />
+    <Compile Include="Controllers\Security\ActivityRoleController.cs" />
+    <Compile Include="Controllers\Security\RoleController.cs" />
+    <Compile Include="Controllers\Security\UserClaimController.cs" />
+    <Compile Include="Controllers\Security\UserController.cs" />
+    <Compile Include="Controllers\Security\UserLoginController.cs" />
+    <Compile Include="Controllers\Security\UserRoleController.cs" />
+    <Compile Include="Controllers\Tasks\TasksController.cs" />
+    <Compile Include="EasyLOB\AppDefaults.cs" />
+    <Compile Include="EasyLOB\AppHelper.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="EasyLOB\Unity\UnityHelperAuditTrail.cs" />
+    <Compile Include="EasyLOB\Unity\UnityHelperEDM.cs" />
+    <Compile Include="EasyLOB\Unity\UnityHelperLog.cs" />
+    <Compile Include="EasyLOB\Mvc\CustomRazorViewEngine.cs" />
+    <Compile Include="EasyLOB\Syncfusion\XlsIOExtensions.cs" />
+    <Compile Include="EasyLOB\Syncfusion\XlsResult.cs" />
+    <Compile Include="EasyLOB\Unity\UnityHelperChinook.cs" />
+    <Compile Include="EasyLOB\Unity\UnityHelperSecurity.cs" />
+    <Compile Include="EasyLOB\Syncfusion\Dashboard\DashboardServiceSerialization.cs" />
+    <Compile Include="EasyLOB\Syncfusion\Dashboard\DashboardViewer.cs" />
+    <Compile Include="Models\AuditTrail\CollectionModels\AuditTrailConfigurationCollectionModel.cs" />
+    <Compile Include="Models\AuditTrail\CollectionModels\AuditTrailLogCollectionModel.cs" />
+    <Compile Include="Models\AuditTrail\ItemModels\AuditTrailConfigurationItemModel.cs" />
+    <Compile Include="Models\AuditTrail\ItemModels\AuditTrailLogItemModel.cs" />
+    <Compile Include="Models\Chinook\CollectionModels\CustomerDocumentCollectionModel.cs" />
+    <Compile Include="Models\Chinook\ItemModels\CustomerDocumentItemModel.cs" />
+    <Compile Include="Models\Chinook\Tasks\TaskImportGenreModel.cs" />
+    <Compile Include="Models\Identity\AccountViewModels.cs" />
+    <Compile Include="Models\Identity\ManageViewModels.cs" />
+    <Compile Include="Models\Reports\ReportModelRDL.cs" />
+    <Compile Include="Models\Reports\ReportModelRDLC.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\AccountResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AccountResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\AccountResources.pt-BR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AccountResources.pt-BR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\AppResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\AppResources.pt-BR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.pt-BR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ManageResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ManageResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ManageResources.pt-BR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ManageResources.pt-BR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\MenuResources.pt-BR.Designer.cs">
+      <DependentUpon>MenuResources.pt-BR.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\MenuResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MenuResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Tasks\TaskImportGenreResources.pt-br.Designer.cs">
+      <DependentUpon>TaskImportGenreResources.pt-br.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Tasks\TaskImportGenreResources.Designer.cs">
+      <DependentUpon>TaskImportGenreResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Tasks\TaskCleanResources.pt-BR.Designer.cs">
+      <DependentUpon>TaskCleanResources.pt-BR.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Tasks\TaskCleanResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TaskCleanResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Tasks\TaskExportAlbumByArtistResources.Designer.cs">
+      <DependentUpon>TaskExportAlbumByArtistResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Tasks\TaskExportAlbumByArtistResources.pt-BR.Designer.cs">
+      <DependentUpon>TaskExportAlbumByArtistResources.pt-BR.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Tasks\TaskResetResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TaskResetResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Tasks\TaskResetResources.pt-BR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TaskResetResources.pt-BR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Tasks\TaskSimpleResources.Designer.cs">
+      <DependentUpon>TaskSimpleResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Tasks\TaskExportGenreResources.pt-BR.Designer.cs">
+      <DependentUpon>TaskExportGenreResources.pt-BR.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Tasks\TaskSimpleResources.pt-BR.Designer.cs">
+      <DependentUpon>TaskSimpleResources.pt-BR.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Tasks\TaskExportGenreResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TaskExportGenreResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Chinook\CollectionModels\AlbumCollectionModel.cs" />
+    <Compile Include="Models\Chinook\CollectionModels\ArtistCollectionModel.cs" />
+    <Compile Include="Models\Chinook\CollectionModels\CustomerCollectionModel.cs" />
+    <Compile Include="Models\Chinook\CollectionModels\EmployeeCollectionModel.cs" />
+    <Compile Include="Models\Chinook\CollectionModels\GenreCollectionModel.cs" />
+    <Compile Include="Models\Chinook\CollectionModels\InvoiceCollectionModel.cs" />
+    <Compile Include="Models\Chinook\CollectionModels\InvoiceLineCollectionModel.cs" />
+    <Compile Include="Models\Chinook\CollectionModels\MediaTypeCollectionModel.cs" />
+    <Compile Include="Models\Chinook\CollectionModels\PlaylistCollectionModel.cs" />
+    <Compile Include="Models\Chinook\CollectionModels\PlaylistTrackCollectionModel.cs" />
+    <Compile Include="Models\Chinook\CollectionModels\TrackCollectionModel.cs" />
+    <Compile Include="Models\Chinook\ItemModels\AlbumItemModel.cs" />
+    <Compile Include="Models\Chinook\ItemModels\ArtistItemModel.cs" />
+    <Compile Include="Models\Chinook\ItemModels\CustomerItemModel.cs" />
+    <Compile Include="Models\Chinook\ItemModels\EmployeeItemModel.cs" />
+    <Compile Include="Models\Chinook\ItemModels\GenreItemModel.cs" />
+    <Compile Include="Models\Chinook\ItemModels\InvoiceItemModel.cs" />
+    <Compile Include="Models\Chinook\ItemModels\InvoiceLineItemModel.cs" />
+    <Compile Include="Models\Chinook\ItemModels\MediaTypeItemModel.cs" />
+    <Compile Include="Models\Chinook\ItemModels\PlaylistItemModel.cs" />
+    <Compile Include="Models\Chinook\ItemModels\PlaylistTrackItemModel.cs" />
+    <Compile Include="Models\Chinook\ItemModels\TrackItemModel.cs" />
+    <Compile Include="Models\Chinook\Tasks\TaskModel.cs" />
+    <Compile Include="Models\Chinook\Tasks\TaskSimpleModel.cs" />
+    <Compile Include="Models\Security\CollectionModels\ActivityCollectionModel.cs" />
+    <Compile Include="Models\Security\CollectionModels\ActivityRoleCollectionModel.cs" />
+    <Compile Include="Models\Security\CollectionModels\RoleCollectionModel.cs" />
+    <Compile Include="Models\Security\CollectionModels\UserClaimCollectionModel.cs" />
+    <Compile Include="Models\Security\CollectionModels\UserCollectionModel.cs" />
+    <Compile Include="Models\Security\CollectionModels\UserLoginCollectionModel.cs" />
+    <Compile Include="Models\Security\CollectionModels\UserRoleCollectionModel.cs" />
+    <Compile Include="Models\Security\ItemModels\ActivityItemModel.cs" />
+    <Compile Include="Models\Security\ItemModels\ActivityRoleItemModel.cs" />
+    <Compile Include="Models\Security\ItemModels\RoleItemModel.cs" />
+    <Compile Include="Models\Security\ItemModels\UserClaimItemModel.cs" />
+    <Compile Include="Models\Security\ItemModels\UserItemModel.cs" />
+    <Compile Include="Models\Security\ItemModels\UserLoginItemModel.cs" />
+    <Compile Include="Models\Security\ItemModels\UserRoleItemModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\easylob\easylob.css" />
+    <Content Include="Content\ej\dashboard\themes\bootstrap.css" />
+    <Content Include="Content\ej\dashboard\themes\bootstrap.min.css" />
+    <Content Include="Content\ej\dashboard\themes\chromium.css" />
+    <Content Include="Content\ej\dashboard\themes\common-images\Chrome.png" />
+    <Content Include="Content\ej\dashboard\themes\common-images\Edge.png" />
+    <Content Include="Content\ej\dashboard\themes\common-images\ejicons.eot" />
+    <Content Include="Content\ej\dashboard\themes\common-images\ejicons.svg" />
+    <Content Include="Content\ej\dashboard\themes\common-images\ejicons.ttf" />
+    <Content Include="Content\ej\dashboard\themes\common-images\ejicons.woff" />
+    <Content Include="Content\ej\dashboard\themes\common-images\Firefox.png" />
+    <Content Include="Content\ej\dashboard\themes\common-images\icons-black.png" />
+    <Content Include="Content\ej\dashboard\themes\common-images\icons-gray.png" />
+    <Content Include="Content\ej\dashboard\themes\common-images\icons-halfwhite.png" />
+    <Content Include="Content\ej\dashboard\themes\common-images\icons-white.png" />
+    <Content Include="Content\ej\dashboard\themes\common-images\IE.png" />
+    <Content Include="Content\ej\dashboard\themes\common-images\maps\Arrow_Bootom.png" />
+    <Content Include="Content\ej\dashboard\themes\common-images\maps\Arrow_Bootom_hover.png" />
+    <Content Include="Content\ej\dashboard\themes\common-images\maps\Arrow_Left.png" />
+    <Content Include="Content\ej\dashboard\themes\common-images\maps\Arrow_Left_hover.png" />
+    <Content Include="Content\ej\dashboard\themes\common-images\maps\Arrow_Right.png" />
+    <Content Include="Content\ej\dashboard\themes\common-images\maps\Arrow_Right_hover.png" />
+    <Content Include="Content\ej\dashboard\themes\common-images\maps\Arrow_Top.png" />
+    <Content Include="Content\ej\dashboard\themes\common-images\maps\Arrow_Top_hover.png" />
+    <Content Include="Content\ej\dashboard\themes\common-images\maps\Bar.png" />
+    <Content Include="Content\ej\dashboard\themes\common-images\maps\Home.png" />
+    <Content Include="Content\ej\dashboard\themes\common-images\maps\Home_hover.png" />
+    <Content Include="Content\ej\dashboard\themes\common-images\maps\Navicatior.png" />
+    <Content Include="Content\ej\dashboard\themes\common-images\maps\Zoom-In.png" />
+    <Content Include="Content\ej\dashboard\themes\common-images\maps\Zoom-In_hover.png" />
+    <Content Include="Content\ej\dashboard\themes\common-images\maps\Zoom-out.png" />
+    <Content Include="Content\ej\dashboard\themes\common-images\maps\Zoom-out_hover.png" />
+    <Content Include="Content\ej\dashboard\themes\common-images\Opera.png" />
+    <Content Include="Content\ej\dashboard\themes\common-images\reports\minus.gif" />
+    <Content Include="Content\ej\dashboard\themes\common-images\reports\plus.gif" />
+    <Content Include="Content\ej\dashboard\themes\common-images\Rotate.cur" />
+    <Content Include="Content\ej\dashboard\themes\common-images\safari.png" />
+    <Content Include="Content\ej\dashboard\themes\default-responsive.css" />
+    <Content Include="Content\ej\dashboard\themes\default-theme\ej.pivotgridcustomtheme.css" />
+    <Content Include="Content\ej\dashboard\themes\default-theme\ej.theme.css" />
+    <Content Include="Content\ej\dashboard\themes\default-theme\ej.theme.min.css" />
+    <Content Include="Content\ej\dashboard\themes\default-theme\ej.widgets.all.css" />
+    <Content Include="Content\ej\dashboard\themes\default-theme\ej.widgets.all.min.css" />
+    <Content Include="Content\ej\dashboard\themes\default-theme\ej.widgets.core.min.css" />
+    <Content Include="Content\ej\dashboard\themes\default-theme\images\ajax-loader.gif" />
+    <Content Include="Content\ej\dashboard\themes\default-theme\images\checkedtick.png" />
+    <Content Include="Content\ej\dashboard\themes\default-theme\images\gradient.png" />
+    <Content Include="Content\ej\dashboard\themes\default-theme\images\palette-arrow.png" />
+    <Content Include="Content\ej\dashboard\themes\default-theme\images\tgarrow.png" />
+    <Content Include="Content\ej\dashboard\themes\default-theme\images\toolbar_icons.png" />
+    <Content Include="Content\ej\dashboard\themes\default-theme\images\ui-icon.png" />
+    <Content Include="Content\ej\dashboard\themes\default-theme\images\waitingpopup.gif" />
+    <Content Include="Content\ej\dashboard\themes\default-theme\Style.css" />
+    <Content Include="Content\ej\dashboard\themes\default.css" />
+    <Content Include="Content\ej\dashboard\themes\e-Breadcrumb.css" />
+    <Content Include="Content\ej\dashboard\themes\e-Card.css" />
+    <Content Include="Content\ej\dashboard\themes\ej.dashboarddatepicker.css" />
+    <Content Include="Content\ej\dashboard\themes\ej.DashboardViewer.css" />
+    <Content Include="Content\ej\dashboard\themes\ej.DashboardViewer_light.css" />
+    <Content Include="Content\ej\dashboard\themes\ej.pivotgridcustomtheme.css" />
+    <Content Include="Content\ej\dashboard\themes\ej.widgets.core.css" />
+    <Content Include="Content\ej\dashboard\themes\ej.widgets.core.min.css" />
+    <Content Include="Content\ej\dashboard\themes\Images\alert.png" />
+    <Content Include="Content\ej\dashboard\themes\Images\clear_filter.png" />
+    <Content Include="Content\ej\dashboard\themes\Images\clear_filter_disabled.png" />
+    <Content Include="Content\ej\dashboard\themes\Images\loader_blue.GIF" />
+    <Content Include="Content\ej\dashboard\themes\Images\not_configured.png" />
+    <Content Include="Content\ej\dashboard\themes\Images\warning.png" />
+    <Content Include="Content\ej\dashboard\themes\Images\white_triangle_arrow.png" />
+    <Content Include="Content\ej\dashboard\themes\lightcontroltheme.css" />
+    <Content Include="Content\ej\dashboard\themes\Style.css" />
+    <Content Include="Content\ej\dashboard\themes\ViewerIcons\filter_loader.GIF" />
+    <Content Include="Content\ej\dashboard\themes\ViewerIcons\initial_loader.GIF" />
+    <Content Include="Content\ej\dashboard\themes\ViewerIcons\loading_text.png" />
+    <Content Include="Content\ej\dashboard\themes\ViewerIcons\loading_widget.png" />
+    <Content Include="Content\ej\dashboard\themes\ViewerIcons\processingimage_white.png" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.accordion.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.autocomplete.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.button.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.captcha.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.checkbox.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.colorpicker.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.datepicker.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.datetimepicker.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.diagram.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.dialog.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.dropdownlist.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.editor.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.excelfilter.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.fileexplorer.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.gantt.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.ganttchart.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.grid.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.groupbutton.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.heatmap.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.kanban.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.listbox.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.listview.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.map.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.menu.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.navigationdrawer.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.olapclient.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.pager.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.pdfviewer.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.pivotchart.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.pivotgauge.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.pivotgrid.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.pivotpager.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.pivottreemap.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.progressbar.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.radialmenu.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.radialslider.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.radiobutton.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.rangeScrollbar.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.rating.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.reportviewer.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.ribbon.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.rotator.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.rte.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.schedule.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.scroller.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.slider.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.splitter.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.spreadsheet.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.symbolpalette.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.tab.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.tagcloud.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.theme.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.theme.less" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.tile.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.timepicker.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.toolbar.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.tooltip.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.treegrid.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.treemap.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.treeview.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.uploadbox.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.waitingpopup.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.web.all.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.widgets.all.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\images\ajax-loader.gif" />
+    <Content Include="Content\ej\web\bootstrap-theme\images\checkedtick.png" />
+    <Content Include="Content\ej\web\bootstrap-theme\images\dot.png" />
+    <Content Include="Content\ej\web\bootstrap-theme\images\drop-sibling.png" />
+    <Content Include="Content\ej\web\bootstrap-theme\images\gradient.png" />
+    <Content Include="Content\ej\web\bootstrap-theme\images\palette-arrow.png" />
+    <Content Include="Content\ej\web\bootstrap-theme\images\rating-star.png" />
+    <Content Include="Content\ej\web\bootstrap-theme\images\rotator-icon.png" />
+    <Content Include="Content\ej\web\bootstrap-theme\images\toggle-text.png" />
+    <Content Include="Content\ej\web\bootstrap-theme\images\toolbar_icons.png" />
+    <Content Include="Content\ej\web\bootstrap-theme\images\waitingpopup.gif" />
+    <Content Include="Content\ej\web\common-images\colorpicker_dark.png" />
+    <Content Include="Content\ej\web\common-images\colorpicker_light.png" />
+    <Content Include="Content\ej\web\common-images\diagram_context.png" />
+    <Content Include="Content\ej\web\common-images\diagram_context1.png" />
+    <Content Include="Content\ej\web\common-images\ejicons.eot" />
+    <Content Include="Content\ej\web\common-images\ejicons.svg" />
+    <Content Include="Content\ej\web\common-images\ejicons.ttf" />
+    <Content Include="Content\ej\web\common-images\ejicons.woff" />
+    <Content Include="Content\ej\web\common-images\grid\dropPointer.cur" />
+    <Content Include="Content\ej\web\common-images\kanban\nouser.svg" />
+    <Content Include="Content\ej\web\common-images\maps\Arrow_Bootom.png" />
+    <Content Include="Content\ej\web\common-images\maps\Arrow_Bootom_hover.png" />
+    <Content Include="Content\ej\web\common-images\maps\Arrow_Left.png" />
+    <Content Include="Content\ej\web\common-images\maps\Arrow_Left_hover.png" />
+    <Content Include="Content\ej\web\common-images\maps\Arrow_Right.png" />
+    <Content Include="Content\ej\web\common-images\maps\Arrow_Right_hover.png" />
+    <Content Include="Content\ej\web\common-images\maps\Arrow_Top.png" />
+    <Content Include="Content\ej\web\common-images\maps\Arrow_Top_hover.png" />
+    <Content Include="Content\ej\web\common-images\maps\Bar.png" />
+    <Content Include="Content\ej\web\common-images\maps\Home.png" />
+    <Content Include="Content\ej\web\common-images\maps\Home_hover.png" />
+    <Content Include="Content\ej\web\common-images\maps\Home_hover_lime.png" />
+    <Content Include="Content\ej\web\common-images\maps\Home_hover_saffron.png" />
+    <Content Include="Content\ej\web\common-images\maps\Home_lime.png" />
+    <Content Include="Content\ej\web\common-images\maps\Home_saffron.png" />
+    <Content Include="Content\ej\web\common-images\maps\Navicatior.png" />
+    <Content Include="Content\ej\web\common-images\maps\Zoom-In.png" />
+    <Content Include="Content\ej\web\common-images\maps\Zoom-In_hover.png" />
+    <Content Include="Content\ej\web\common-images\maps\Zoom-out.png" />
+    <Content Include="Content\ej\web\common-images\maps\Zoom-out_hover.png" />
+    <Content Include="Content\ej\web\common-images\olapkpi\circle.png" />
+    <Content Include="Content\ej\web\common-images\olapkpi\diamond.png" />
+    <Content Include="Content\ej\web\common-images\olapkpi\down-arrow.png" />
+    <Content Include="Content\ej\web\common-images\olapkpi\green.png" />
+    <Content Include="Content\ej\web\common-images\olapkpi\red.png" />
+    <Content Include="Content\ej\web\common-images\olapkpi\right-arrow.png" />
+    <Content Include="Content\ej\web\common-images\olapkpi\three-color.png" />
+    <Content Include="Content\ej\web\common-images\olapkpi\triangle.png" />
+    <Content Include="Content\ej\web\common-images\olapkpi\up-arrow.png" />
+    <Content Include="Content\ej\web\common-images\radialmenu\back.png" />
+    <Content Include="Content\ej\web\common-images\radialmenu\radial.png" />
+    <Content Include="Content\ej\web\common-images\reports\down.png" />
+    <Content Include="Content\ej\web\common-images\reports\minus.gif" />
+    <Content Include="Content\ej\web\common-images\reports\minus.jpg" />
+    <Content Include="Content\ej\web\common-images\reports\minus.png" />
+    <Content Include="Content\ej\web\common-images\reports\plus.gif" />
+    <Content Include="Content\ej\web\common-images\reports\plus.jpg" />
+    <Content Include="Content\ej\web\common-images\reports\plus.png" />
+    <Content Include="Content\ej\web\common-images\reports\up.png" />
+    <Content Include="Content\ej\web\common-images\reports\updown.png" />
+    <Content Include="Content\ej\web\common-images\ribbon\Blank.png" />
+    <Content Include="Content\ej\web\common-images\ribbon\Browser.png" />
+    <Content Include="Content\ej\web\common-images\ribbon\Check.png" />
+    <Content Include="Content\ej\web\common-images\ribbon\Diet.png" />
+    <Content Include="Content\ej\web\common-images\ribbon\ejrbnicons.eot" />
+    <Content Include="Content\ej\web\common-images\ribbon\ejrbnicons.svg" />
+    <Content Include="Content\ej\web\common-images\ribbon\ejrbnicons.ttf" />
+    <Content Include="Content\ej\web\common-images\ribbon\ejrbnicons.woff" />
+    <Content Include="Content\ej\web\common-images\ribbon\gallery.png" />
+    <Content Include="Content\ej\web\common-images\ribbon\Gantt.png" />
+    <Content Include="Content\ej\web\common-images\ribbon\homegallery.png" />
+    <Content Include="Content\ej\web\common-images\ribbon\paste.png" />
+    <Content Include="Content\ej\web\common-images\ribbon\Project.png" />
+    <Content Include="Content\ej\web\common-images\ribbon\Protect.png" />
+    <Content Include="Content\ej\web\common-images\ribbon\Sales.png" />
+    <Content Include="Content\ej\web\common-images\ribbon\style.gallery.png" />
+    <Content Include="Content\ej\web\common-images\ribbon\User.jpg" />
+    <Content Include="Content\ej\web\common-images\ribbon\Version.png" />
+    <Content Include="Content\ej\web\common-images\Rotate.cur" />
+    <Content Include="Content\ej\web\common-images\schedule_priority.png" />
+    <Content Include="Content\ej\web\common-images\spreadsheet\blank.png" />
+    <Content Include="Content\ej\web\common-images\spreadsheet\chart-sprites.png" />
+    <Content Include="Content\ej\web\common-images\spreadsheet\charttab-sprites.png" />
+    <Content Include="Content\ej\web\common-images\spreadsheet\charttype-sprites.png" />
+    <Content Include="Content\ej\web\common-images\spreadsheet\down_arrow_dark.cur" />
+    <Content Include="Content\ej\web\common-images\spreadsheet\down_arrow_light.cur" />
+    <Content Include="Content\ej\web\common-images\spreadsheet\draw_border_dark.cur" />
+    <Content Include="Content\ej\web\common-images\spreadsheet\draw_border_grid_dark.cur" />
+    <Content Include="Content\ej\web\common-images\spreadsheet\draw_border_grid_light.cur" />
+    <Content Include="Content\ej\web\common-images\spreadsheet\draw_border_light.cur" />
+    <Content Include="Content\ej\web\common-images\spreadsheet\ejxlicons.eot" />
+    <Content Include="Content\ej\web\common-images\spreadsheet\ejxlicons.svg" />
+    <Content Include="Content\ej\web\common-images\spreadsheet\ejxlicons.ttf" />
+    <Content Include="Content\ej\web\common-images\spreadsheet\ejxlicons.woff" />
+    <Content Include="Content\ej\web\common-images\spreadsheet\format_painter_dark.cur" />
+    <Content Include="Content\ej\web\common-images\spreadsheet\format_painter_light.cur" />
+    <Content Include="Content\ej\web\common-images\spreadsheet\right_arrow_dark.cur" />
+    <Content Include="Content\ej\web\common-images\spreadsheet\right_arrow_light.cur" />
+    <Content Include="Content\ej\web\common-images\spreadsheet\sprites.png" />
+    <Content Include="Content\ej\web\common-images\tools\drop-sibling-rtl.png" />
+    <Content Include="Content\ej\web\common-images\tools\file_icons.png" />
+    <Content Include="Content\ej\web\default-theme\ej.accordion.css" />
+    <Content Include="Content\ej\web\default-theme\ej.autocomplete.css" />
+    <Content Include="Content\ej\web\default-theme\ej.button.css" />
+    <Content Include="Content\ej\web\default-theme\ej.captcha.css" />
+    <Content Include="Content\ej\web\default-theme\ej.checkbox.css" />
+    <Content Include="Content\ej\web\default-theme\ej.colorpicker.css" />
+    <Content Include="Content\ej\web\default-theme\ej.datepicker.css" />
+    <Content Include="Content\ej\web\default-theme\ej.datetimepicker.css" />
+    <Content Include="Content\ej\web\default-theme\ej.diagram.css" />
+    <Content Include="Content\ej\web\default-theme\ej.dialog.css" />
+    <Content Include="Content\ej\web\default-theme\ej.dropdownlist.css" />
+    <Content Include="Content\ej\web\default-theme\ej.editor.css" />
+    <Content Include="Content\ej\web\default-theme\ej.excelfilter.css" />
+    <Content Include="Content\ej\web\default-theme\ej.fileexplorer.css" />
+    <Content Include="Content\ej\web\default-theme\ej.gantt.css" />
+    <Content Include="Content\ej\web\default-theme\ej.ganttchart.css" />
+    <Content Include="Content\ej\web\default-theme\ej.grid.css" />
+    <Content Include="Content\ej\web\default-theme\ej.groupbutton.css" />
+    <Content Include="Content\ej\web\default-theme\ej.heatmap.css" />
+    <Content Include="Content\ej\web\default-theme\ej.kanban.css" />
+    <Content Include="Content\ej\web\default-theme\ej.listbox.css" />
+    <Content Include="Content\ej\web\default-theme\ej.listview.css" />
+    <Content Include="Content\ej\web\default-theme\ej.map.css" />
+    <Content Include="Content\ej\web\default-theme\ej.menu.css" />
+    <Content Include="Content\ej\web\default-theme\ej.navigationdrawer.css" />
+    <Content Include="Content\ej\web\default-theme\ej.olapclient.css" />
+    <Content Include="Content\ej\web\default-theme\ej.pager.css" />
+    <Content Include="Content\ej\web\default-theme\ej.pdfviewer.css" />
+    <Content Include="Content\ej\web\default-theme\ej.pivotchart.css" />
+    <Content Include="Content\ej\web\default-theme\ej.pivotgauge.css" />
+    <Content Include="Content\ej\web\default-theme\ej.pivotgrid.css" />
+    <Content Include="Content\ej\web\default-theme\ej.pivotpager.css" />
+    <Content Include="Content\ej\web\default-theme\ej.pivottreemap.css" />
+    <Content Include="Content\ej\web\default-theme\ej.progressbar.css" />
+    <Content Include="Content\ej\web\default-theme\ej.radialmenu.css" />
+    <Content Include="Content\ej\web\default-theme\ej.radialslider.css" />
+    <Content Include="Content\ej\web\default-theme\ej.radiobutton.css" />
+    <Content Include="Content\ej\web\default-theme\ej.rangeScrollbar.css" />
+    <Content Include="Content\ej\web\default-theme\ej.rating.css" />
+    <Content Include="Content\ej\web\default-theme\ej.reportviewer.css" />
+    <Content Include="Content\ej\web\default-theme\ej.ribbon.css" />
+    <Content Include="Content\ej\web\default-theme\ej.rotator.css" />
+    <Content Include="Content\ej\web\default-theme\ej.rte.css" />
+    <Content Include="Content\ej\web\default-theme\ej.schedule.css" />
+    <Content Include="Content\ej\web\default-theme\ej.scroller.css" />
+    <Content Include="Content\ej\web\default-theme\ej.slider.css" />
+    <Content Include="Content\ej\web\default-theme\ej.splitter.css" />
+    <Content Include="Content\ej\web\default-theme\ej.spreadsheet.css" />
+    <Content Include="Content\ej\web\default-theme\ej.symbolpalette.css" />
+    <Content Include="Content\ej\web\default-theme\ej.tab.css" />
+    <Content Include="Content\ej\web\default-theme\ej.tagcloud.css" />
+    <Content Include="Content\ej\web\default-theme\ej.theme.css" />
+    <Content Include="Content\ej\web\default-theme\ej.theme.less" />
+    <Content Include="Content\ej\web\default-theme\ej.tile.css" />
+    <Content Include="Content\ej\web\default-theme\ej.timepicker.css" />
+    <Content Include="Content\ej\web\default-theme\ej.toolbar.css" />
+    <Content Include="Content\ej\web\default-theme\ej.tooltip.css" />
+    <Content Include="Content\ej\web\default-theme\ej.treegrid.css" />
+    <Content Include="Content\ej\web\default-theme\ej.treemap.css" />
+    <Content Include="Content\ej\web\default-theme\ej.treeview.css" />
+    <Content Include="Content\ej\web\default-theme\ej.uploadbox.css" />
+    <Content Include="Content\ej\web\default-theme\ej.waitingpopup.css" />
+    <Content Include="Content\ej\web\default-theme\ej.web.all.css" />
+    <Content Include="Content\ej\web\default-theme\ej.widgets.all.css" />
+    <Content Include="Content\ej\web\default-theme\images\ajax-loader.gif" />
+    <Content Include="Content\ej\web\default-theme\images\checkedtick.png" />
+    <Content Include="Content\ej\web\default-theme\images\dot.png" />
+    <Content Include="Content\ej\web\default-theme\images\drop-sibling.png" />
+    <Content Include="Content\ej\web\default-theme\images\gradient.png" />
+    <Content Include="Content\ej\web\default-theme\images\palette-arrow.png" />
+    <Content Include="Content\ej\web\default-theme\images\rating-star.png" />
+    <Content Include="Content\ej\web\default-theme\images\rotator-icon.png" />
+    <Content Include="Content\ej\web\default-theme\images\toggle-text.png" />
+    <Content Include="Content\ej\web\default-theme\images\toolbar_icons.png" />
+    <Content Include="Content\ej\web\default-theme\images\ui-icon.png" />
+    <Content Include="Content\ej\web\default-theme\images\waitingpopup.gif" />
+    <Content Include="Content\ej\web\ej.widgets.core.bootstrap.css" />
+    <Content Include="Content\ej\web\ej.widgets.core.bootstrap.less" />
+    <Content Include="Content\ej\web\ej.widgets.core.bootstrap.min.css" />
+    <Content Include="Content\ej\web\ej.widgets.core.css" />
+    <Content Include="Content\ej\web\ej.widgets.core.less" />
+    <Content Include="Content\ej\web\ej.widgets.core.min.css" />
+    <Content Include="Content\ej\web\responsive-css\ej.responsive.css" />
+    <Content Include="Content\ej\web\responsive-css\ejgrid.responsive.css" />
+    <Content Include="Content\ej\web\ribbon-css\ej.icons.css" />
+    <Content Include="Content\site.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Content\ej\dashboard\fonts\dashboarddatepicker-font.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\16\ok.png" />
+    <Content Include="Images\16\create.png" />
+    <Content Include="Images\16\backward.png" />
+    <Content Include="Images\16\down.png" />
+    <Content Include="Images\16\forward.png" />
+    <Content Include="Images\16\help.png" />
+    <Content Include="Images\16\home.png" />
+    <Content Include="Images\16\cancel.png" />
+    <Content Include="Images\16\execute.png" />
+    <Content Include="Images\16\delete.png" />
+    <Content Include="Images\16\info.png" />
+    <Content Include="Images\16\mail.png" />
+    <Content Include="Images\16\read.png" />
+    <Content Include="Images\16\update.png" />
+    <Content Include="Images\16\search.png" />
+    <Content Include="Images\16\up.png" />
+    <Content Include="Images\16\clear.png" />
+    <Content Include="Images\24\backward.png" />
+    <Content Include="Images\24\cancel.png" />
+    <Content Include="Images\24\clear.png" />
+    <Content Include="Images\24\delete.png" />
+    <Content Include="Images\24\down.png" />
+    <Content Include="Images\24\execute.png" />
+    <Content Include="Images\24\forward.png" />
+    <Content Include="Images\24\help.png" />
+    <Content Include="Images\24\home.png" />
+    <Content Include="Images\24\info.png" />
+    <Content Include="Images\24\create.png" />
+    <Content Include="Images\24\mail.png" />
+    <Content Include="Images\24\ok.png" />
+    <Content Include="Images\24\search.png" />
+    <Content Include="Images\24\up.png" />
+    <Content Include="Images\24\update.png" />
+    <Content Include="Images\24\read.png" />
+    <Content Include="Images\32\backward.png" />
+    <Content Include="Images\32\cancel.png" />
+    <Content Include="Images\32\clear.png" />
+    <Content Include="Images\32\delete.png" />
+    <Content Include="Images\32\down.png" />
+    <Content Include="Images\32\execute.png" />
+    <Content Include="Images\32\forward.png" />
+    <Content Include="Images\32\help.png" />
+    <Content Include="Images\32\home.png" />
+    <Content Include="Images\32\info.png" />
+    <Content Include="Images\32\create.png" />
+    <Content Include="Images\32\mail.png" />
+    <Content Include="Images\32\ok.png" />
+    <Content Include="Images\32\search.png" />
+    <Content Include="Images\32\up.png" />
+    <Content Include="Images\32\update.png" />
+    <Content Include="Images\32\read.png" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\ej\dashboard\fonts\dashboarddatepicker-font.eot" />
+    <Content Include="Content\ej\dashboard\fonts\dashboarddatepicker-font.ttf" />
+    <Content Include="Content\ej\dashboard\fonts\dashboarddatepicker-font.woff" />
+    <Content Include="Content\ej\dashboard\fonts\ejDashboardFonts.eot" />
+    <Content Include="Content\ej\dashboard\fonts\ejDashboardFonts.ttf" />
+    <Content Include="Content\ej\dashboard\fonts\ejDashboardFonts.woff" />
+    <Content Include="Content\ej\dashboard\fonts\ejDashboardViewerIconFont.eot" />
+    <Content Include="Content\ej\dashboard\fonts\ejDashboardViewerIconFont.ttf" />
+    <Content Include="Content\ej\dashboard\fonts\ejDashboardViewerIconFont.woff" />
+    <Content Include="Content\ej\dashboard\fonts\Roboto-Black.ttf" />
+    <Content Include="Content\ej\dashboard\fonts\Roboto-BlackItalic.ttf" />
+    <Content Include="Content\ej\dashboard\fonts\Roboto-Bold.ttf" />
+    <Content Include="Content\ej\dashboard\fonts\Roboto-BoldItalic.ttf" />
+    <Content Include="Content\ej\dashboard\fonts\Roboto-Italic.ttf" />
+    <Content Include="Content\ej\dashboard\fonts\Roboto-Light.ttf" />
+    <Content Include="Content\ej\dashboard\fonts\Roboto-LightItalic.ttf" />
+    <Content Include="Content\ej\dashboard\fonts\Roboto-Medium.ttf" />
+    <Content Include="Content\ej\dashboard\fonts\Roboto-MediumItalic.ttf" />
+    <Content Include="Content\ej\dashboard\fonts\Roboto-Regular.ttf" />
+    <Content Include="Content\ej\dashboard\fonts\Roboto-Thin.ttf" />
+    <Content Include="Content\ej\dashboard\fonts\Roboto-ThinItalic.ttf" />
+    <Content Include="Images\File\txt.png" />
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EasyLOB\INI\DashboardResources.ini" />
+    <Content Include="EasyLOB\INI\MenuResources.ini" />
+    <Content Include="EasyLOB\INI\ReportResources.ini" />
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\PublishProfiles\Chinook Debug.pubxml" />
+    <None Include="Properties\PublishProfiles\Chinook Release.pubxml" />
+    <Content Include="App_GlobalResources\ValidationResources.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>ValidationResources.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\ValidationResources.pt-BR.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>ValidationResources.pt-BR.designer.cs</LastGenOutput>
+    </Content>
+    <EmbeddedResource Include="Resources\AccountResources.pt-BR.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AccountResources.pt-BR.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>EasyLOB.Identity</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\AccountResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AccountResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>EasyLOB.Identity</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ManageResources.pt-BR.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ManageResources.pt-BR.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>EasyLOB.Identity</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ManageResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ManageResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>EasyLOB.Identity</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Tasks\TaskResetResources.pt-BR.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TaskResetResources.pt-BR.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Images\Culture\en-US.png" />
+    <Content Include="Images\Culture\pt-BR.png" />
+    <Content Include="Images\File\audio.png" />
+    <Content Include="Images\File\excel.png" />
+    <Content Include="Images\File\image.png" />
+    <Content Include="Images\File\pdf.png" />
+    <Content Include="Images\File\unknown.png" />
+    <Content Include="Images\File\video.png" />
+    <Content Include="Images\File\word.png" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\easylob\easylob.js" />
+    <Content Include="Scripts\ej\cultures\ej.culture.en-US.js" />
+    <Content Include="Scripts\ej\cultures\ej.culture.en-US.min.js" />
+    <Content Include="Scripts\ej\cultures\ej.culture.pt-BR.js" />
+    <Content Include="Scripts\ej\cultures\ej.culture.pt-BR.min.js" />
+    <Content Include="Scripts\ej\cultures\ej.excelfilter.locale.en-US.js" />
+    <Content Include="Scripts\ej\cultures\ej.excelfilter.locale.pt-BR.js" />
+    <Content Include="Scripts\ej\cultures\ej.grid.locale.en-US.js" />
+    <Content Include="Scripts\ej\cultures\ej.grid.locale.pt-BR.js" />
+    <Content Include="Scripts\ej\cultures\ej.pager.locale.en-US.js" />
+    <Content Include="Scripts\ej\cultures\ej.pager.locale.pt-BR.js" />
+    <Content Include="Scripts\ej\cultures\ej.reportviewer.locale.en-US.js" />
+    <Content Include="Scripts\ej\cultures\ej.reportviewer.locale.pt-BR.js" />
+    <Content Include="Scripts\ej\dashboard\ej.dashboardViewer.all.js" />
+    <Content Include="Scripts\ej\dashboard\ej.dashboardViewer.all.min.js" />
+    <Content Include="Scripts\ej\ej.globalize.js" />
+    <Content Include="Scripts\ej\ej.globalize.min.js" />
+    <Content Include="Scripts\ej\ej.unobtrusive.js" />
+    <Content Include="Scripts\ej\ej.unobtrusive.min.js" />
+    <None Include="Scripts\ej\ej.web.all-vsdoc.js" />
+    <Content Include="Scripts\ej\ej.web.all.js" />
+    <None Include="Scripts\ej\ej.web.all.min.intellisense.js" />
+    <Content Include="Scripts\ej\ej.web.all.min.js" />
+    <Content Include="Scripts\globalize.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.af-ZA.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.af.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.am-ET.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.am.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ar-AE.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ar-BH.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ar-DZ.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ar-EG.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ar-IQ.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ar-JO.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ar-KW.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ar-LB.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ar-LY.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ar-MA.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ar-OM.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ar-QA.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ar-SA.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ar-SY.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ar-TN.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ar-YE.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ar.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.arn-CL.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.arn.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.as-IN.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.as.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.az-Cyrl-AZ.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.az-Cyrl.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.az-Latn-AZ.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.az-Latn.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.az.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ba-RU.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ba.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.be-BY.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.be.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.bg-BG.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.bg.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.bn-BD.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.bn-IN.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.bn.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.bo-CN.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.bo.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.br-FR.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.br.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.bs-Cyrl-BA.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.bs-Cyrl.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.bs-Latn-BA.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.bs-Latn.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.bs.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ca-ES.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ca.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.co-FR.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.co.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.cs-CZ.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.cs.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.cy-GB.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.cy.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.da-DK.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.da.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.de-AT.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.de-CH.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.de-DE.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.de-LI.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.de-LU.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.de.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.dsb-DE.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.dsb.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.dv-MV.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.dv.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.el-GR.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.el.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.en-029.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.en-AU.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.en-BZ.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.en-CA.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.en-GB.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.en-IE.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.en-IN.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.en-JM.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.en-MY.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.en-NZ.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.en-PH.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.en-SG.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.en-TT.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.en-US.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.en-ZA.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.en-ZW.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.es-AR.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.es-BO.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.es-CL.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.es-CO.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.es-CR.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.es-DO.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.es-EC.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.es-ES.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.es-GT.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.es-HN.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.es-MX.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.es-NI.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.es-PA.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.es-PE.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.es-PR.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.es-PY.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.es-SV.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.es-US.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.es-UY.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.es-VE.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.es.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.et-EE.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.et.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.eu-ES.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.eu.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.fa-IR.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.fa.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.fi-FI.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.fi.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.fil-PH.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.fil.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.fo-FO.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.fo.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.fr-BE.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.fr-CA.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.fr-CH.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.fr-FR.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.fr-LU.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.fr-MC.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.fr.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.fy-NL.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.fy.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ga-IE.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ga.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.gd-GB.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.gd.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.gl-ES.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.gl.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.gsw-FR.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.gsw.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.gu-IN.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.gu.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ha-Latn-NG.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ha-Latn.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ha.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.he-IL.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.he.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.hi-IN.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.hi.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.hr-BA.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.hr-HR.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.hr.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.hsb-DE.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.hsb.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.hu-HU.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.hu.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.hy-AM.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.hy.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.id-ID.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.id.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ig-NG.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ig.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ii-CN.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ii.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.is-IS.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.is.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.it-CH.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.it-IT.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.it.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.iu-Cans-CA.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.iu-Cans.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.iu-Latn-CA.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.iu-Latn.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.iu.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ja-JP.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ja.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ka-GE.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ka.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.kk-KZ.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.kk.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.kl-GL.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.kl.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.km-KH.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.km.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.kn-IN.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.kn.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ko-KR.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ko.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.kok-IN.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.kok.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ky-KG.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ky.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.lb-LU.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.lb.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.lo-LA.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.lo.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.lt-LT.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.lt.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.lv-LV.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.lv.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.mi-NZ.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.mi.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.mk-MK.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.mk.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ml-IN.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ml.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.mn-Cyrl.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.mn-MN.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.mn-Mong-CN.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.mn-Mong.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.mn.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.moh-CA.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.moh.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.mr-IN.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.mr.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ms-BN.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ms-MY.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ms.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.mt-MT.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.mt.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.nb-NO.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.nb.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ne-NP.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ne.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.nl-BE.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.nl-NL.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.nl.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.nn-NO.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.nn.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.no.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.nso-ZA.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.nso.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.oc-FR.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.oc.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.or-IN.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.or.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.pa-IN.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.pa.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.pl-PL.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.pl.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.prs-AF.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.prs.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ps-AF.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ps.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.pt-BR.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.pt-PT.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.pt.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.qut-GT.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.qut.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.quz-BO.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.quz-EC.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.quz-PE.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.quz.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.rm-CH.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.rm.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ro-RO.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ro.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ru-RU.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ru.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.rw-RW.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.rw.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.sa-IN.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.sa.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.sah-RU.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.sah.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.se-FI.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.se-NO.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.se-SE.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.se.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.si-LK.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.si.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.sk-SK.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.sk.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.sl-SI.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.sl.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.sma-NO.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.sma-SE.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.sma.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.smj-NO.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.smj-SE.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.smj.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.smn-FI.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.smn.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.sms-FI.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.sms.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.sq-AL.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.sq.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.sr-Cyrl-BA.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.sr-Cyrl-CS.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.sr-Cyrl-ME.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.sr-Cyrl-RS.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.sr-Cyrl.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.sr-Latn-BA.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.sr-Latn-CS.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.sr-Latn-ME.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.sr-Latn-RS.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.sr-Latn.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.sr.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.sv-FI.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.sv-SE.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.sv.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.sw-KE.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.sw.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.syr-SY.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.syr.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ta-IN.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ta.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.te-IN.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.te.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.tg-Cyrl-TJ.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.tg-Cyrl.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.tg.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.th-TH.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.th.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.tk-TM.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.tk.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.tn-ZA.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.tn.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.tr-TR.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.tr.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.tt-RU.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.tt.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.tzm-Latn-DZ.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.tzm-Latn.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.tzm.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ug-CN.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ug.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.uk-UA.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.uk.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ur-PK.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.ur.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.uz-Cyrl-UZ.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.uz-Cyrl.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.uz-Latn-UZ.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.uz-Latn.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.uz.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.vi-VN.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.vi.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.wo-SN.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.wo.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.xh-ZA.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.xh.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.yo-NG.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.yo.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.zh-CHS.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.zh-CHT.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.zh-CN.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.zh-Hans.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.zh-Hant.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.zh-HK.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.zh-MO.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.zh-SG.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.zh-TW.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.zh.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.zu-ZA.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.culture.zu.js" />
+    <Content Include="Scripts\globalize\cultures\globalize.cultures.js" />
+    <Content Include="Scripts\globalize\globalize.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.easing.1.3.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\syncfusion\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\syncfusion\jquery.easing.1.3.min.js" />
+    <Content Include="Scripts\syncfusion\jquery.globalize.min.js" />
+    <Content Include="Scripts\syncfusion\jsrender.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\syncfusion\jsrender.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Chinook\Album\Create.cshtml" />
+    <Content Include="Views\Chinook\Album\Delete.cshtml" />
+    <Content Include="Views\Chinook\Album\Index.cshtml" />
+    <Content Include="Views\Chinook\Album\Read.cshtml" />
+    <Content Include="Views\Chinook\Album\Update.cshtml" />
+    <Content Include="Views\Chinook\Album\_AlbumCollection.cshtml" />
+    <Content Include="Views\Chinook\Album\_AlbumItem.cshtml" />
+    <Content Include="Views\Chinook\Album\_AlbumLookup.cshtml" />
+    <Content Include="Views\Chinook\Artist\Create.cshtml" />
+    <Content Include="Views\Chinook\Artist\Delete.cshtml" />
+    <Content Include="Views\Chinook\Artist\Index.cshtml" />
+    <Content Include="Views\Chinook\Artist\Read.cshtml" />
+    <Content Include="Views\Chinook\Artist\Update.cshtml" />
+    <Content Include="Views\Chinook\Artist\_ArtistCollection.cshtml" />
+    <Content Include="Views\Chinook\Artist\_ArtistItem.cshtml" />
+    <Content Include="Views\Chinook\Artist\_ArtistLookup.cshtml" />
+    <Content Include="Views\Chinook\Customer\Create.cshtml" />
+    <Content Include="Views\Chinook\Customer\Delete.cshtml" />
+    <Content Include="Views\Chinook\Customer\Index.cshtml" />
+    <Content Include="Views\Chinook\Customer\Read.cshtml" />
+    <Content Include="Views\Chinook\Customer\Update.cshtml" />
+    <Content Include="Views\Chinook\Customer\_CustomerCollection.cshtml" />
+    <Content Include="Views\Chinook\Customer\_CustomerItem.cshtml" />
+    <Content Include="Views\Chinook\Customer\_CustomerLookup.cshtml" />
+    <Content Include="Views\Chinook\Employee\Create.cshtml" />
+    <Content Include="Views\Chinook\Employee\Delete.cshtml" />
+    <Content Include="Views\Chinook\Employee\Index.cshtml" />
+    <Content Include="Views\Chinook\Employee\Read.cshtml" />
+    <Content Include="Views\Chinook\Employee\Update.cshtml" />
+    <Content Include="Views\Chinook\Employee\_EmployeeCollection.cshtml" />
+    <Content Include="Views\Chinook\Employee\_EmployeeItem.cshtml" />
+    <Content Include="Views\Chinook\Employee\_EmployeeLookup.cshtml" />
+    <Content Include="Views\Chinook\Genre\Create.cshtml" />
+    <Content Include="Views\Chinook\Genre\Delete.cshtml" />
+    <Content Include="Views\Chinook\Genre\Index.cshtml" />
+    <Content Include="Views\Chinook\Genre\Read.cshtml" />
+    <Content Include="Views\Chinook\Genre\Update.cshtml" />
+    <Content Include="Views\Chinook\Genre\_GenreCollection.cshtml" />
+    <Content Include="Views\Chinook\Genre\_GenreItem.cshtml" />
+    <Content Include="Views\Chinook\Genre\_GenreLookup.cshtml" />
+    <Content Include="Views\Chinook\InvoiceLine\Create.cshtml" />
+    <Content Include="Views\Chinook\InvoiceLine\Delete.cshtml" />
+    <Content Include="Views\Chinook\InvoiceLine\Index.cshtml" />
+    <Content Include="Views\Chinook\InvoiceLine\Read.cshtml" />
+    <Content Include="Views\Chinook\InvoiceLine\Update.cshtml" />
+    <Content Include="Views\Chinook\InvoiceLine\_InvoiceLineCollection.cshtml" />
+    <Content Include="Views\Chinook\InvoiceLine\_InvoiceLineItem.cshtml" />
+    <Content Include="Views\Chinook\InvoiceLine\_InvoiceLineLookup.cshtml" />
+    <Content Include="Views\Chinook\Invoice\Create.cshtml" />
+    <Content Include="Views\Chinook\Invoice\Delete.cshtml" />
+    <Content Include="Views\Chinook\Invoice\Index.cshtml" />
+    <Content Include="Views\Chinook\Invoice\Read.cshtml" />
+    <Content Include="Views\Chinook\Invoice\Update.cshtml" />
+    <Content Include="Views\Chinook\Invoice\_InvoiceCollection.cshtml" />
+    <Content Include="Views\Chinook\Invoice\_InvoiceItem.cshtml" />
+    <Content Include="Views\Chinook\Invoice\_InvoiceLookup.cshtml" />
+    <Content Include="Views\Chinook\MediaType\Create.cshtml" />
+    <Content Include="Views\Chinook\MediaType\Delete.cshtml" />
+    <Content Include="Views\Chinook\MediaType\Index.cshtml" />
+    <Content Include="Views\Chinook\MediaType\Read.cshtml" />
+    <Content Include="Views\Chinook\MediaType\Update.cshtml" />
+    <Content Include="Views\Chinook\MediaType\_MediaTypeCollection.cshtml" />
+    <Content Include="Views\Chinook\MediaType\_MediaTypeItem.cshtml" />
+    <Content Include="Views\Chinook\MediaType\_MediaTypeLookup.cshtml" />
+    <Content Include="Views\Chinook\PlaylistTrack\Create.cshtml" />
+    <Content Include="Views\Chinook\PlaylistTrack\Delete.cshtml" />
+    <Content Include="Views\Chinook\PlaylistTrack\Index.cshtml" />
+    <Content Include="Views\Chinook\PlaylistTrack\Read.cshtml" />
+    <Content Include="Views\Chinook\PlaylistTrack\Update.cshtml" />
+    <Content Include="Views\Chinook\PlaylistTrack\_PlaylistTrackCollection.cshtml" />
+    <Content Include="Views\Chinook\PlaylistTrack\_PlaylistTrackItem.cshtml" />
+    <Content Include="Views\Chinook\PlaylistTrack\_PlaylistTrackLookup.cshtml" />
+    <Content Include="Views\Chinook\Playlist\Create.cshtml" />
+    <Content Include="Views\Chinook\Playlist\Delete.cshtml" />
+    <Content Include="Views\Chinook\Playlist\Index.cshtml" />
+    <Content Include="Views\Chinook\Playlist\Read.cshtml" />
+    <Content Include="Views\Chinook\Playlist\Update.cshtml" />
+    <Content Include="Views\Chinook\Playlist\_PlaylistCollection.cshtml" />
+    <Content Include="Views\Chinook\Playlist\_PlaylistItem.cshtml" />
+    <Content Include="Views\Chinook\Playlist\_PlaylistLookup.cshtml" />
+    <Content Include="Views\Chinook\Track\Create.cshtml" />
+    <Content Include="Views\Chinook\Track\Delete.cshtml" />
+    <Content Include="Views\Chinook\Track\Index.cshtml" />
+    <Content Include="Views\Chinook\Track\Read.cshtml" />
+    <Content Include="Views\Chinook\Track\Update.cshtml" />
+    <Content Include="Views\Chinook\Track\_TrackCollection.cshtml" />
+    <Content Include="Views\Chinook\Track\_TrackItem.cshtml" />
+    <Content Include="Views\Chinook\Track\_TrackLookup.cshtml" />
+    <Content Include="Views\Security\ActivityRole\Create.cshtml" />
+    <Content Include="Views\Security\ActivityRole\Delete.cshtml" />
+    <Content Include="Views\Security\ActivityRole\Index.cshtml" />
+    <Content Include="Views\Security\ActivityRole\Read.cshtml" />
+    <Content Include="Views\Security\ActivityRole\Update.cshtml" />
+    <Content Include="Views\Security\ActivityRole\_ActivityRoleCollection.cshtml" />
+    <Content Include="Views\Security\ActivityRole\_ActivityRoleItem.cshtml" />
+    <Content Include="Views\Security\ActivityRole\_ActivityRoleLookup.cshtml" />
+    <Content Include="Views\Security\Activity\Create.cshtml" />
+    <Content Include="Views\Security\Activity\Delete.cshtml" />
+    <Content Include="Views\Security\Activity\Index.cshtml" />
+    <Content Include="Views\Security\Activity\Read.cshtml" />
+    <Content Include="Views\Security\Activity\Update.cshtml" />
+    <Content Include="Views\Security\Activity\_ActivityCollection.cshtml" />
+    <Content Include="Views\Security\Activity\_ActivityItem.cshtml" />
+    <Content Include="Views\Security\Activity\_ActivityLookup.cshtml" />
+    <Content Include="Views\Security\Role\Create.cshtml" />
+    <Content Include="Views\Security\Role\Delete.cshtml" />
+    <Content Include="Views\Security\Role\Index.cshtml" />
+    <Content Include="Views\Security\Role\Read.cshtml" />
+    <Content Include="Views\Security\Role\Update.cshtml" />
+    <Content Include="Views\Security\Role\_RoleCollection.cshtml" />
+    <Content Include="Views\Security\Role\_RoleItem.cshtml" />
+    <Content Include="Views\Security\Role\_RoleLookup.cshtml" />
+    <Content Include="Views\Security\UserClaim\Create.cshtml" />
+    <Content Include="Views\Security\UserClaim\Delete.cshtml" />
+    <Content Include="Views\Security\UserClaim\Index.cshtml" />
+    <Content Include="Views\Security\UserClaim\Read.cshtml" />
+    <Content Include="Views\Security\UserClaim\Update.cshtml" />
+    <Content Include="Views\Security\UserClaim\_UserClaimCollection.cshtml" />
+    <Content Include="Views\Security\UserClaim\_UserClaimItem.cshtml" />
+    <Content Include="Views\Security\UserClaim\_UserClaimLookup.cshtml" />
+    <Content Include="Views\Security\UserLogin\Create.cshtml" />
+    <Content Include="Views\Security\UserLogin\Delete.cshtml" />
+    <Content Include="Views\Security\UserLogin\Index.cshtml" />
+    <Content Include="Views\Security\UserLogin\Read.cshtml" />
+    <Content Include="Views\Security\UserLogin\Update.cshtml" />
+    <Content Include="Views\Security\UserLogin\_UserLoginCollection.cshtml" />
+    <Content Include="Views\Security\UserLogin\_UserLoginItem.cshtml" />
+    <Content Include="Views\Security\UserLogin\_UserLoginLookup.cshtml" />
+    <Content Include="Views\Security\UserRole\Create.cshtml" />
+    <Content Include="Views\Security\UserRole\Delete.cshtml" />
+    <Content Include="Views\Security\UserRole\Index.cshtml" />
+    <Content Include="Views\Security\UserRole\Read.cshtml" />
+    <Content Include="Views\Security\UserRole\Update.cshtml" />
+    <Content Include="Views\Security\UserRole\_UserRoleCollection.cshtml" />
+    <Content Include="Views\Security\UserRole\_UserRoleItem.cshtml" />
+    <Content Include="Views\Security\UserRole\_UserRoleLookup.cshtml" />
+    <Content Include="Views\Security\User\Create.cshtml" />
+    <Content Include="Views\Security\User\Delete.cshtml" />
+    <Content Include="Views\Security\User\Index.cshtml" />
+    <Content Include="Views\Security\User\Read.cshtml" />
+    <Content Include="Views\Security\User\Update.cshtml" />
+    <Content Include="Views\Security\User\_UserCollection.cshtml" />
+    <Content Include="Views\Security\User\_UserItem.cshtml" />
+    <Content Include="Views\Security\User\_UserLookup.cshtml" />
+    <Content Include="Views\Chinook\ChinookTasks\Simple.cshtml" />
+    <Content Include="Views\Chinook\ChinookTasks\ExportGenre.cshtml" />
+    <Content Include="EasyLOB-Template\AlbumByArtist.xlsx" />
+    <Content Include="Views\Chinook\ChinookTasks\ExportAlbumByArtist.cshtml" />
+    <Content Include="Views\Chinook\ChinookTasks\Clean.cshtml" />
+    <Content Include="Views\Chinook\ChinookTasks\ImportGenre.cshtml" />
+    <Content Include="Scripts\syncfusion\jsrender.min.js.map" />
+    <Content Include="Views\Reports\RDL.cshtml" />
+    <Content Include="Views\Shared\OperationResult.cshtml" />
+    <Content Include="Views\Reports\RDLC.cshtml" />
+    <Content Include="Views\Dashboards\Syncfusion.cshtml" />
+    <Content Include="Views\Chinook\CustomerDocument\Create.cshtml" />
+    <Content Include="Views\Chinook\CustomerDocument\Delete.cshtml" />
+    <Content Include="Views\Chinook\CustomerDocument\Index.cshtml" />
+    <Content Include="Views\Chinook\CustomerDocument\Read.cshtml" />
+    <Content Include="Views\Chinook\CustomerDocument\Update.cshtml" />
+    <Content Include="Views\Chinook\CustomerDocument\_CustomerDocumentCollection.cshtml" />
+    <Content Include="Views\Chinook\CustomerDocument\_CustomerDocumentItem.cshtml" />
+    <Content Include="Views\Chinook\CustomerDocument\_CustomerDocumentLookup.cshtml" />
+    <Content Include="Views\Chinook\ChinookTasks\Reset.cshtml" />
+    <Content Include="Views\AuditTrail\AuditTrailConfiguration\Create.cshtml" />
+    <Content Include="Views\AuditTrail\AuditTrailConfiguration\Delete.cshtml" />
+    <Content Include="Views\AuditTrail\AuditTrailConfiguration\Index.cshtml" />
+    <Content Include="Views\AuditTrail\AuditTrailConfiguration\Read.cshtml" />
+    <Content Include="Views\AuditTrail\AuditTrailConfiguration\Update.cshtml" />
+    <Content Include="Views\AuditTrail\AuditTrailConfiguration\_AuditTrailConfigurationCollection.cshtml" />
+    <Content Include="Views\AuditTrail\AuditTrailConfiguration\_AuditTrailConfigurationItem.cshtml" />
+    <Content Include="Views\AuditTrail\AuditTrailConfiguration\_AuditTrailConfigurationLookup.cshtml" />
+    <Content Include="Views\AuditTrail\AuditTrailLog\Create.cshtml" />
+    <Content Include="Views\AuditTrail\AuditTrailLog\Delete.cshtml" />
+    <Content Include="Views\AuditTrail\AuditTrailLog\Index.cshtml" />
+    <Content Include="Views\AuditTrail\AuditTrailLog\Read.cshtml" />
+    <Content Include="Views\AuditTrail\AuditTrailLog\Update.cshtml" />
+    <Content Include="Views\AuditTrail\AuditTrailLog\_AuditTrailLogCollection.cshtml" />
+    <Content Include="Views\AuditTrail\AuditTrailLog\_AuditTrailLogItem.cshtml" />
+    <Content Include="Views\AuditTrail\AuditTrailLog\_AuditTrailLogLookup.cshtml" />
+    <Content Include="Views\EasyLOB\Status.cshtml" />
+    <Content Include="Views\Identity\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Identity\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Identity\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Identity\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Identity\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Identity\Account\Login.cshtml" />
+    <Content Include="Views\Identity\Account\Register.cshtml" />
+    <Content Include="Views\Identity\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Identity\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Identity\Account\SendCode.cshtml" />
+    <Content Include="Views\Identity\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Identity\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Identity\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Identity\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Identity\Manage\Index.cshtml" />
+    <Content Include="Views\Identity\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Identity\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Identity\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Dashboards\PowerBI.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="EasyLOB-Export\" />
+    <Folder Include="EasyLOB-Import\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Activity\EasyLOB.Activity\EasyLOB.Activity.csproj">
+      <Project>{d8fb9c93-4224-4eea-ac7a-68435da6065e}</Project>
+      <Name>EasyLOB.Activity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.AuditTrail\EasyLOB.AuditTrail.Application\EasyLOB.AuditTrail.Application.csproj">
+      <Project>{87a7e2ee-a7ab-4b8c-865c-c534d5e622f6}</Project>
+      <Name>EasyLOB.AuditTrail.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.AuditTrail\EasyLOB.AuditTrail.PersistenceLINQ2DB\EasyLOB.AuditTrail.PersistenceLINQ2DB.csproj">
+      <Project>{fe30e167-5757-4e5b-8d7b-ac86070f82f6}</Project>
+      <Name>EasyLOB.AuditTrail.PersistenceLINQ2DB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.AuditTrail\EasyLOB.AuditTrail.PersistenceNHibernate\EasyLOB.AuditTrail.PersistenceNHibernate.csproj">
+      <Project>{ea6c8a0a-70fb-4d4a-b32b-bafd3c1f0060}</Project>
+      <Name>EasyLOB.AuditTrail.PersistenceNHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.AuditTrail\EasyLOB.AuditTrailManager\EasyLOB.AuditTrailManager.csproj">
+      <Project>{3acd8d6b-b302-477a-aaf6-3383f3990f10}</Project>
+      <Name>EasyLOB.AuditTrailManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.AuditTrail\EasyLOB.AuditTrail\EasyLOB.AuditTrail.csproj">
+      <Project>{68555183-7e6f-4b6c-a908-63276d1ac73d}</Project>
+      <Name>EasyLOB.AuditTrail</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.AuditTrail\EasyLOB.AuditTrail.Data\EasyLOB.AuditTrail.Data.csproj">
+      <Project>{c1271aa6-876d-4d3f-af2e-3f5097c232d3}</Project>
+      <Name>EasyLOB.AuditTrail.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.AuditTrail\EasyLOB.AuditTrail.Persistence\EasyLOB.AuditTrail.Persistence.csproj">
+      <Project>{c66986f4-5bc0-4dde-ad33-6e54ba5f8816}</Project>
+      <Name>EasyLOB.AuditTrail.Persistence</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.AuditTrail\EasyLOB.AuditTrail.PersistenceEntityFramework\EasyLOB.AuditTrail.PersistenceEntityFramework.csproj">
+      <Project>{aee9b888-51e7-4083-877e-c5c76c3acbaf}</Project>
+      <Name>EasyLOB.AuditTrail.PersistenceEntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Extensions\EasyLOB.Extensions.Edm\EasyLOB.Extensions.Edm.csproj">
+      <Project>{e876d7fb-2103-44d7-84d1-2db735423c9c}</Project>
+      <Name>EasyLOB.Extensions.Edm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Extensions\EasyLOB.Extensions.Ini\EasyLOB.Extensions.Ini.csproj">
+      <Project>{7a3b48cd-b1ef-494e-8692-6d8a26997f07}</Project>
+      <Name>EasyLOB.Extensions.Ini</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Identity\EasyLOB.IdentityEntityFramework\EasyLOB.IdentityEntityFramework.csproj">
+      <Project>{72ccb99a-7c74-4d24-b2bd-e8928a0eb936}</Project>
+      <Name>EasyLOB.IdentityEntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Log\EasyLOB.LogManager\EasyLOB.LogManager.csproj">
+      <Project>{81e6e9d2-e870-46ee-9fcb-3ee959479a87}</Project>
+      <Name>EasyLOB.LogManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Log\EasyLOB.Log\EasyLOB.Log.csproj">
+      <Project>{0352f43e-27df-4fce-86bc-da3f6ead005a}</Project>
+      <Name>EasyLOB.Log</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Persistence\EasyLOB.PersistenceEntityFramework\EasyLOB.PersistenceEntityFramework.csproj">
+      <Project>{97a09b32-5d2f-448a-b114-68a85ad2499e}</Project>
+      <Name>EasyLOB.PersistenceEntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Persistence\EasyLOB.PersistenceLINQ2DB\EasyLOB.PersistenceLINQ2DB.csproj">
+      <Project>{50df4579-2559-46eb-83dc-032ec732b5b9}</Project>
+      <Name>EasyLOB.PersistenceLINQ2DB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Persistence\EasyLOB.PersistenceMongoDB\EasyLOB.PersistenceMongoDB.csproj">
+      <Project>{15ac1b9f-8417-4239-b22b-964772fe8572}</Project>
+      <Name>EasyLOB.PersistenceMongoDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Persistence\EasyLOB.PersistenceNHibernate\EasyLOB.PersistenceNHibernate.csproj">
+      <Project>{fe71a014-1922-476c-a27a-f0a819c38e7e}</Project>
+      <Name>EasyLOB.PersistenceNHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Persistence\EasyLOB.PersistenceRavenDB\EasyLOB.PersistenceRavenDB.csproj">
+      <Project>{530c1720-7caf-407d-ad81-aa1a1fcbeb1e}</Project>
+      <Name>EasyLOB.PersistenceRavenDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Persistence\EasyLOB.PersistenceRedis\EasyLOB.PersistenceRedis.csproj">
+      <Project>{c06915c5-067b-4d09-870a-98f32fd2b0f3}</Project>
+      <Name>EasyLOB.PersistenceRedis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Security\EasyLOB.Security.Application\EasyLOB.Security.Application.csproj">
+      <Project>{7fe3fcb5-79cd-48af-83a8-a1b30a58587d}</Project>
+      <Name>EasyLOB.Security.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Security\EasyLOB.Security.Data\EasyLOB.Security.Data.csproj">
+      <Project>{637e4c69-daf3-4c5d-99ac-241ef3fcee31}</Project>
+      <Name>EasyLOB.Security.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Security\EasyLOB.Security.PersistenceNHibernate\EasyLOB.Security.PersistenceNHibernate.csproj">
+      <Project>{25223aef-d330-40e5-a60f-36d481558681}</Project>
+      <Name>EasyLOB.Security.PersistenceNHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Security\EasyLOB.Security.Persistence\EasyLOB.Security.Persistence.csproj">
+      <Project>{2919c632-9b3a-4f1c-9728-457e9ade3dea}</Project>
+      <Name>EasyLOB.Security.Persistence</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Security\EasyLOB.Security.PersistenceEntityFramework\EasyLOB.Security.PersistenceEntityFramework.csproj">
+      <Project>{a180a6b6-1543-4e97-b37e-43a33ecfe07a}</Project>
+      <Name>EasyLOB.Security.PersistenceEntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Security\EasyLOB.SecurityManager\EasyLOB.SecurityManager.csproj">
+      <Project>{f2f54356-5cdf-4052-926c-30c1f01d89e0}</Project>
+      <Name>EasyLOB.SecurityManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chinook.Application\Chinook.Application.csproj">
+      <Project>{e607d4cf-420b-4aef-8ba6-5f19ba290ff1}</Project>
+      <Name>Chinook.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Application\EasyLOB.Application\EasyLOB.Application.csproj">
+      <Project>{90d108e3-3dea-45ac-84a5-53de6ffa9ff5}</Project>
+      <Name>EasyLOB.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Data\EasyLOB.Data\EasyLOB.Data.csproj">
+      <Project>{1f89f104-c08b-4537-a9a8-5c51c53376f0}</Project>
+      <Name>EasyLOB.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Identity\EasyLOB.Identity\EasyLOB.Identity.csproj">
+      <Project>{9416c420-cd94-44df-9e0c-55dd7c0077aa}</Project>
+      <Name>EasyLOB.Identity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Library\EasyLOB.Library.Mvc\EasyLOB.Library.Mvc.csproj">
+      <Project>{1c0b1e61-c978-4bb9-b2cf-ad173b9844f5}</Project>
+      <Name>EasyLOB.Library.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Library\EasyLOB.Library.Syncfusion\EasyLOB.Library.Syncfusion.csproj">
+      <Project>{8842fd16-08f0-434f-b07a-8e61a3ee07e1}</Project>
+      <Name>EasyLOB.Library.Syncfusion</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Library\EasyLOB.Library\EasyLOB.Library.csproj">
+      <Project>{55b7716b-36a3-442d-9e9e-9caab7db592e}</Project>
+      <Name>EasyLOB.Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chinook.Data.DTO\Chinook.Data.DTO.csproj">
+      <Project>{23a32c53-01ae-4354-92f3-3ac50907ce5c}</Project>
+      <Name>Chinook.Data.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chinook.Data.ViewModel\Chinook.Data.ViewModel.csproj">
+      <Project>{1bbb4c93-56f2-440b-a12a-6c522466274b}</Project>
+      <Name>Chinook.Data.ViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chinook.Data\Chinook.Data.csproj">
+      <Project>{9536d998-473d-4ee6-bb32-45a9c7b38297}</Project>
+      <Name>Chinook.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chinook.PersistenceRavenDB\Chinook.PersistenceRavenDB.csproj">
+      <Project>{2121c842-14ba-4bdc-8e63-d5232ca5899d}</Project>
+      <Name>Chinook.PersistenceRavenDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chinook.Persistence\Chinook.Persistence.csproj">
+      <Project>{edc764bf-825e-44da-b872-9fdf28cc1735}</Project>
+      <Name>Chinook.Persistence</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Persistence\EasyLOB.Persistence\EasyLOB.Persistence.csproj">
+      <Project>{35433610-cb14-4909-b890-2150b6443a25}</Project>
+      <Name>EasyLOB.Persistence</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB\EasyLOB.Security\EasyLOB.Security\EasyLOB.Security.csproj">
+      <Project>{cd519bed-67d7-4be8-a3a5-7ddad88ceed5}</Project>
+      <Name>EasyLOB.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chinook.PersistenceEntityFramework\Chinook.PersistenceEntityFramework.csproj">
+      <Project>{afb47cac-9357-462f-8412-96251bc785af}</Project>
+      <Name>Chinook.PersistenceEntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chinook.PersistenceLINQ2DB\Chinook.PersistenceLINQ2DB.csproj">
+      <Project>{d14c903e-db29-46a5-8ae5-1527acc31de1}</Project>
+      <Name>Chinook.PersistenceLINQ2DB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chinook.PersistenceMongoDB\Chinook.PersistenceMongoDB.csproj">
+      <Project>{0d56c5cf-f579-47bb-8187-51f4f9975999}</Project>
+      <Name>Chinook.PersistenceMongoDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chinook.PersistenceNHibernate\Chinook.PersistenceNHibernate.csproj">
+      <Project>{d73cf047-26d2-4a5a-aa1b-18d6071fdccd}</Project>
+      <Name>Chinook.PersistenceNHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chinook.PersistenceRedis\Chinook.PersistenceRedis.csproj">
+      <Project>{74c3a05b-3756-47c3-a485-90cda606197a}</Project>
+      <Name>Chinook.PersistenceRedis</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AppResources.pt-BR.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.pt-BR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\AppResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\MenuResources.pt-BR.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MenuResources.pt-BR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\MenuResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MenuResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Tasks\TaskImportGenreResources.pt-br.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TaskImportGenreResources.pt-br.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Tasks\TaskImportGenreResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TaskImportGenreResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Tasks\TaskCleanResources.pt-BR.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TaskCleanResources.pt-BR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Tasks\TaskCleanResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TaskCleanResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Tasks\TaskExportAlbumByArtistResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TaskExportAlbumByArtistResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Tasks\TaskExportAlbumByArtistResources.pt-BR.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TaskExportAlbumByArtistResources.pt-BR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Tasks\TaskExportGenreResources.pt-BR.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TaskExportGenreResources.pt-BR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Tasks\TaskResetResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TaskResetResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Tasks\TaskSimpleResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TaskSimpleResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Tasks\TaskSimpleResources.pt-BR.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TaskSimpleResources.pt-BR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Tasks\TaskExportGenreResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TaskExportGenreResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>64708</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:65011/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.101.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.101.0\build\net46\System.Data.SQLite.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.101.0\build\net46\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.101.0\build\net46\System.Data.SQLite.Core.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

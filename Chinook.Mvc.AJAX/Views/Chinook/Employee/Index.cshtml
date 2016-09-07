@@ -1,0 +1,14 @@
+@model EmployeeCollectionModel
+
+<div id="Ajax">
+</div>
+
+<script>
+    $(function () {
+        try {
+            $("#Ajax").load("@(Url.Action("Search", "Employee", null, Request.Url.Scheme))");
+        } catch (exception) {
+            zExceptionMessage("Employee Index.cshtml", "function()", exception.message)
+        }
+    });
+</script>

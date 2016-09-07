@@ -1,0 +1,127 @@
+@model RoleItemModel
+
+@* !!! *@
+
+@{
+}
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+@Html.HiddenFor(model => model.ControllerAction)
+@Html.HiddenFor(model => model.IsMasterDetail)
+
+@{Html.EJ().Tab("Tab_Role")
+    .ClientSideEvents(clientEvent => clientEvent
+        .ItemActive("itemActive_Tab_Role")
+    )
+    .Items(data =>
+    {
+        data.Add().ID("TabSheet_Role_Role").Text(RoleResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
+            
+            <div id="Group_Role_Id" class="@AppDefaults.CssClassGroup col-md-6">
+                @Html.LabelFor(model => model.Role.Id, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.Role.Id, new { id = "Role_Id", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.Role.Id, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+            
+            <div id="Group_Role_Name" class="@AppDefaults.CssClassGroup col-md-6">
+                @Html.LabelFor(model => model.Role.Name, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.Role.Name, new { id = "Role_Name", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.Role.Name, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+            @*
+            <div id="Group_Role_Discriminator" class="@AppDefaults.CssClassGroup col-md-6">
+                @Html.LabelFor(model => model.Role.Discriminator, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.Role.Discriminator, new { id = "Role_Discriminator", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @Html.ValidationMessageFor(model => model.Role.Discriminator, "", new { @class = AppDefaults.CssClassValidator })
+            </div>
+            *@
+        </div>);
+        data.Add().ID("TabSheet_Role_ActivityRole").Text(ActivityRoleResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
+            <div id="Ajax_Role_ActivityRole"></div>
+        </div>);
+        data.Add().ID("TabSheet_Role_UserRole").Text(UserRoleResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
+            <div id="Ajax_Role_UserRole"></div>
+        </div>);
+    })
+    .Render();
+}
+
+<script>
+    // Validate hidden fields
+    $.validator.setDefaults({ ignore: null });
+    // Parse validators
+    $.validator.unobtrusive.parse($("#Ajax"));
+
+    $(function () {
+        try {
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+            var roleDictionary = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(DataHelper.GetDataDictionaryAttribute(typeof(Role)))); }();
+            var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
+            
+            var ajaxUrl = "";
+            // ActivityRole
+            ajaxUrl = "@(Html.Raw(Url.Action("Search", "ActivityRole", new { MasterUrl = Context.Request.Url.AbsoluteUri, MasterControllerAction = Model.ControllerAction, MasterRoleId = Model.Role.Id })))";
+            $("#Ajax_Role_ActivityRole").load(ajaxUrl);
+            // UserRole
+            ajaxUrl = "@(Html.Raw(Url.Action("Search", "UserRole", new { MasterUrl = Context.Request.Url.AbsoluteUri, MasterControllerAction = Model.ControllerAction, MasterRoleId = Model.Role.Id })))";
+            $("#Ajax_Role_UserRole").load(ajaxUrl);
+            ej.widget.init($("#Ajax"));
+            $(document).prop("title", "@(ViewBag.Title)");            
+    
+            var readonly = (controllerAction == "delete" || controllerAction == "read");
+            $("input.form-control").not(":input[type=button], :input[type=image], :input[type=reset], :input[type=submit]").attr("readonly", readonly);
+            if (readonly) {
+                $("img.z-buttonLookup").hide();
+            }
+            else {
+                $("img.z-buttonLookup").show();
+            }
+
+            $("input[name$='_Lookup']").attr("readonly", true);
+
+            if (roleDictionary.IsIdentity) {            
+                $("#Group_Role_Id").hide();
+            }
+
+            // Associations (FK)
+
+            // Collections (PK)
+            var display = controllerAction == "create" ? "none" : "block";
+            // ActivityRole
+            var gridActivityRole = $("#Grid_ActivityRole");
+            gridActivityRole.css("display", display);
+            // UserRole
+            var gridUserRole = $("#Grid_UserRole");
+            gridUserRole.css("display", display);
+            
+            // !!!            
+            $("#Group_Role_Id").hide();
+        } catch (exception) {
+            alert(zExceptionMessage("_RoleItem.cshtml", "function()", exception));
+        }
+    });
+
+    function itemActive_Tab_Role(args) { // IE
+        try {
+            switch(args.activeIndex) {
+            // ActivityRole
+                case 1:
+                    $("#Grid_ActivityRole").ejGrid({
+                        allowScrolling: true,
+                        scrollSettings: { width: "100%" }
+                    });
+                    break;
+            // UserRole
+                case 2:
+                    $("#Grid_UserRole").ejGrid({
+                        allowScrolling: true,
+                        scrollSettings: { width: "100%" }
+                    });
+                    break;
+            }            
+        } catch (exception) {
+            alert(zExceptionMessage("_RoleItem.cshtml", "itemActive_Tab_Role(args)", exception));
+        }
+    }    
+</script>

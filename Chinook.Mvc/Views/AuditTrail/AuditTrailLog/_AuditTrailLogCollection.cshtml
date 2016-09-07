@@ -1,0 +1,284 @@
+﻿@model AuditTrailLogCollectionModel
+
+@(Html.EJ().Grid<AuditTrailLog>("Grid_AuditTrailLog")
+    .Datasource(datasource => datasource
+        .Adaptor(AdaptorType.UrlAdaptor)
+        .URL(Url.Content("~/AuditTrailLog/DataSource"))
+    )
+    .AllowFiltering()
+    .AllowGrouping()
+    .AllowPaging()
+    .AllowResizing()
+    .AllowScrolling()
+    .AllowSearching()
+    .AllowSorting()
+    .ClientSideEvents(clientEvent => clientEvent
+        .ActionBegin("actionBegin_Grid_AuditTrailLog")
+        .ActionFailure("actionFailure_Grid_AuditTrailLog")
+        .Load("load_Grid_AuditTrailLog")
+        .ToolbarClick("toolbarClick_Grid_AuditTrailLog")
+    )
+    .Columns(column =>
+    {
+        column.Field("AuditTrailLogId")
+            .AllowEditing(false)
+            .EditType(EditingType.Numeric)
+            .HeaderText(AuditTrailLogResources.PropertyAuditTrailLogId)
+            .IsIdentity(true)
+            .IsPrimaryKey(true)
+            .TextAlign(TextAlign.Right)
+            .Visible(false)
+            .Width(100)
+            .Add();
+        column.Field("LogDate")
+            .EditType(EditingType.DateTimePicker)
+            .Format(SyncfusionPatternResources.GridFormat_Date)
+            .HeaderText(AuditTrailLogResources.PropertyLogDate)
+            .Visible(false)
+            .Width(100)
+            .Add(); // !!!
+        column.Field("LogTime")
+            .EditType(EditingType.DateTimePicker)
+            .Format(SyncfusionPatternResources.GridFormat_Time)
+            .HeaderText(AuditTrailLogResources.PropertyLogTime)
+            .Visible(true)
+            .Width(100)
+            .Add(); // !!!
+        column.Field("LogUserName")
+            .EditType(EditingType.String)
+            .HeaderText(AuditTrailLogResources.PropertyLogUserName)
+            .Visible(true)
+            .Width(75)
+            .Add(); // !!!
+        column.Field("LogDomain")
+            .EditType(EditingType.String)
+            .HeaderText(AuditTrailLogResources.PropertyLogDomain)
+            .Visible(true)
+            .Width(75)
+            .Add(); // !!!
+        column.Field("LogEntity")
+            .EditType(EditingType.String)
+            .HeaderText(AuditTrailLogResources.PropertyLogEntity)
+            .Visible(true)
+            .Width(75)
+            .Add(); // !!!
+        column.Field("LogOperation")
+            .EditType(EditingType.String)
+            .HeaderText(AuditTrailLogResources.PropertyLogOperation)
+            .Visible(true)
+            .Width(75)
+            .Add(); // !!!
+        column.Field("LogId")
+            .EditType(EditingType.String)
+            .HeaderText(AuditTrailLogResources.PropertyLogId)
+            .Visible(true)
+            .Width(75)
+            .Add();
+        column.Field("LogentityBefore")
+            .EditType(EditingType.String)
+            .HeaderText(AuditTrailLogResources.PropertyLogEntityBefore)
+            .Visible(false)
+            .Width(240)
+            .Add();
+        column.Field("LogEntityAfter")
+            .EditType(EditingType.String)
+            .HeaderText(AuditTrailLogResources.PropertyLogEntityAfter)
+            .Visible(false)
+            .Width(240)
+            .Add();
+    })
+    .EditSettings(edit => edit
+        .AllowAdding()
+        .AllowDeleting()
+        .AllowEditing()
+    )
+    .EnablePersistence()
+    .FilterSettings(filter => filter
+        .EnableCaseSensitivity(false)
+        .FilterType(FilterType.Excel)
+        .MaxFilterChoices(System.Int32.MaxValue)
+    )
+    .Mappers(map => map
+        .ExportToExcelAction(Url.Content("~/AuditTrailLog/ExportToExcel"))
+        .ExportToPdfAction(Url.Content("~/AuditTrailLog/ExportToPdf"))
+        .ExportToWordAction(Url.Content("~/AuditTrailLog/ExportToWord"))
+    )
+    .PageSettings(page => page
+        .PageSize(AppDefaults.SyncfusionRecordsByPage)
+    )
+    .SearchSettings(search =>
+    {
+        search.Fields(field =>
+        {
+            //field.Add("AuditTrailLogId");
+            field.Add("LogDate");
+            field.Add("LogTime");
+            //field.Add("LogUserName");
+            //field.Add("LogDomain");
+            //field.Add("LogEntity");
+            //field.Add("LogOperation");
+            //field.Add("LogId");
+            //field.Add("LogEntityBefore");
+            //field.Add("LogEntityAfter");
+        });
+    })
+    .ShowColumnChooser()
+    .ToolbarSettings(toolbar => toolbar
+        .CustomToolbarItems(new List<object>() {
+            new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_AuditTrailLog" }
+        })
+        .ShowToolbar()
+        .ToolbarItems(items =>
+        {
+            items.AddTool(ToolBarItems.Search);
+            items.AddTool(ToolBarItems.Add);
+            items.AddTool(ToolBarItems.Edit);
+            items.AddTool(ToolBarItems.Delete);
+            items.AddTool(ToolBarItems.ExcelExport);
+            items.AddTool(ToolBarItems.PdfExport);
+            items.AddTool(ToolBarItems.WordExport);
+        })
+    )
+)
+
+@Html.OperationResult(Model.OperationResult)
+
+<script type="text/x-jsrender" id="Toolbar_Grid_AuditTrailLog">
+    <div id="Toolbar_Grid_AuditTrailLog_Read" class="e-toolbaricons e-icon e-document" title="@PresentationResources.Read"></div>
+</script>
+
+<script>
+    $(function () {
+        try {
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+
+            var gridAuditTrailLog = $("#Grid_AuditTrailLog");
+            var ejGridAuditTrailLog = gridAuditTrailLog.data("ejGrid");
+
+            if (ejGridAuditTrailLog.model.filterSettings.filteredColumns.length != 0) {
+                ejGridAuditTrailLog.clearFiltering();
+            }
+
+            if (!model.IsMasterDetail) {
+                ejGridAuditTrailLog.setModel({
+                    allowGrouping: true,
+                    toolbarSettings: {
+                        showToolbar: true,
+                        toolbarItems: [
+                            ej.Grid.ToolBarItems.Search,
+                            ej.Grid.ToolBarItems.Add,
+                            ej.Grid.ToolBarItems.Edit,
+                            ej.Grid.ToolBarItems.Delete,
+                            ej.Grid.ToolBarItems.ExcelExport,
+                            ej.Grid.ToolBarItems.PdfExport,
+                            ej.Grid.ToolBarItems.WordExport
+                        ]
+                    }
+                });
+            } else {
+                ejGridAuditTrailLog.setModel({
+                    allowGrouping: false,
+                    toolbarSettings: {
+                        showToolbar: true,
+                        toolbarItems: [
+                            ej.Grid.ToolBarItems.Add,
+                            ej.Grid.ToolBarItems.Edit,
+                            ej.Grid.ToolBarItems.Delete
+                        ]
+                    }
+                });
+            }
+        } catch (exception) {
+            alert(zExceptionMessage("_AuditTrailLogCollection.cshtml", "function()", exception));
+        }
+    });
+
+    function actionBegin_Grid_AuditTrailLog(args) {
+        try {
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+            var masterControllerAction = model.MasterControllerAction == null ? "" : model.MasterControllerAction.toLowerCase();
+
+            // Associations (FK)
+            var url = "";
+
+            if (masterControllerAction == "" || masterControllerAction == "update") {
+                switch(args.requestType) {
+                    case "add":
+                        // Create
+                        if (model.IsSecurityOperations.IsCreate) {
+                            window.location = "@Url.Content("~/AuditTrailLog/Create")" + (url == "" ? "" : "?") + url;
+                        }
+                        break;
+                    case "read":
+                        // Read
+                        if (model.IsSecurityOperations.IsRead) {
+                            var data = args.data;
+                            if (!ej.isNullOrUndefined(data)) {
+                                window.location = "@Url.Content("~/AuditTrailLog/Read/")" + "?AuditTrailLogId=" + String(data.AuditTrailLogId) + (url == "" ? "" : "&") + url;
+                            }
+                        }
+                        break;
+                    case "beginedit":
+                        // Update
+                        if (model.IsSecurityOperations.IsUpdate) {
+                            var data = this.model.currentViewData[args.rowIndex];
+                            if (!ej.isNullOrUndefined(data)) {
+                                window.location = "@Url.Content("~/AuditTrailLog/Update/")" + "?AuditTrailLogId=" + String(data.AuditTrailLogId) + (url == "" ? "" : "&") + url;
+                            }
+                        }
+                        break;
+                    case "delete":
+                        // Delete
+                        if (model.IsSecurityOperations.IsDelete) {
+                            var data = args.data;
+                            if (!ej.isNullOrUndefined(data)) {
+                                window.location = "@Url.Content("~/AuditTrailLog/Delete/")" + "?AuditTrailLogId=" + String(data.AuditTrailLogId) + (url == "" ? "" : "&") + url;
+                            }
+                        }
+                        break;
+                }
+            }
+
+            if (args.requestType == "add" || args.requestType == "beginedit" || args.requestType == "delete") {
+                args.cancel = true;
+            }
+        } catch (exception) {
+            alert(zExceptionMessage("_AuditTrailLogCollection.cshtml", "actionBegin_Grid_AuditTrailLog(args)", exception));
+        }
+    }
+
+    function actionFailure_Grid_AuditTrailLog(args) {
+        try {
+            alert(zErrorMessage(args.error.responseText));
+        } catch (exception) {
+            alert(zExceptionMessage("_AuditTrailLogCollection.cshtml", "actionFailure_Grid_AuditTrailLog(args)", exception));
+        }
+    }
+
+    function load_Grid_AuditTrailLog(args) {
+        try {
+            var culture = "@System.Globalization.CultureInfo.CurrentCulture.Name";
+            this.model.locale = culture;
+        } catch (exception) {
+            alert(zExceptionMessage("_AuditTrailLogCollection.cshtml", "load_Grid_AuditTrailLog(args)", exception));
+        }
+    }
+
+    function toolbarClick_Grid_AuditTrailLog(sender) {
+        try {
+            var toolbar = $(sender.target);
+            var gridAuditTrailLog = $("#Grid_AuditTrailLog");
+            var ejGridAuditTrailLog = gridAuditTrailLog.data("ejGrid");
+
+            if (toolbar.attr("id") == "Toolbar_Grid_AuditTrailLog_Read") {
+                var records = ejGridAuditTrailLog.getSelectedRecords();
+                if (records.length == 1) {
+                    var args = { requestType: "read", data: records[0] };
+                    actionBegin_Grid_AuditTrailLog(args)
+                }
+            }
+        } catch (exception) {
+            alert(zExceptionMessage("_AuditTrailLogCollection.cshtml", "toolbarClick_Grid_AuditTrailLog(sender)", exception));
+        }
+    }
+</script>

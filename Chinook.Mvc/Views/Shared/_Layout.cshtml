@@ -1,0 +1,248 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@AppHelper.DocumentTitle(@ViewBag.Title)</title>
+    
+    @* CSS *@
+
+    @System.Web.Optimization.Styles.Render("~/content/z-css.css")
+    @System.Web.Optimization.Styles.Render("~/content/ej/web/z-syncfusion.css")
+    @System.Web.Optimization.Styles.Render("~/content/ej/web/" + EasyLOB.AppDefaults.SyncfusionTheme + "/z-syncfusion-theme.css")
+    @System.Web.Optimization.Styles.Render("~/content/easylob/z-easylob.css")
+
+    @RenderSection("Styles", required: false)
+
+    @* JavaScript *@
+
+    @Scripts.Render("~/scripts/z-jquery.js")
+    @Scripts.Render("~/scripts/z-bootstrap.js")
+    @Scripts.Render("~/scripts/z-modernizr.js")
+    @Scripts.Render("~/scripts/z-syncfusion.js")
+
+    @Scripts.Render("~/scripts/z-easylob.js")
+
+    @RenderSection("Scripts", required: false)
+
+</head>
+<body>
+    <div id="Layout_Menu" class="container" style="visibility: hidden;">
+
+        @Html.EJ().Menu("MyMenu").Items(items =>
+        {
+            items.Add().Url(@Url.Content("~/Home")).Id("Home").Text(MenuResources.Home);
+            items.Add().Url(@Url.Content("~/Home/About")).Id("About").Text(MenuResourcesHelper.GetResource("About"));
+            items.Add().Url(@Url.Content("~/Home/Contact")).Id("Contact").Text(MenuResourcesHelper.GetResource("Contact"));
+            items.Add().Url("").Id("Chinook").Text("Chinook").Children(child =>
+            {
+                child.Add().Url("").Text("Chinook").Children(child1 =>
+                {
+                    child1.Add().Url(@Url.Content("~/Artist")).Text(ArtistResources.EntityPlural);
+                    child1.Add().Url(@Url.Content("~/Album")).Text(AlbumResources.EntityPlural);
+                    child1.Add().Url(@Url.Content("~/Genre")).Text(GenreResources.EntityPlural);
+                    child1.Add().Url(@Url.Content("~/MediaType")).Text(MediaTypeResources.EntityPlural);
+                    child1.Add().Url(@Url.Content("~/Track")).Text(TrackResources.EntityPlural);
+                    child1.Add().Url(@Url.Content("~/Playlist")).Text(PlaylistResources.EntityPlural);
+                    child1.Add().Url(@Url.Content("~/PlaylistTrack")).Text(PlaylistTrackResources.EntityPlural);
+                    child1.Add().Url(@Url.Content("~/Employee")).Text(EmployeeResources.EntityPlural);
+                    child1.Add().Url(@Url.Content("~/Customer")).Text(CustomerResources.EntityPlural);
+                    child1.Add().Url(@Url.Content("~/CustomerDocument")).Text(CustomerDocumentResources.EntityPlural);
+                    child1.Add().Url(@Url.Content("~/Invoice")).Text(InvoiceResources.EntityPlural);
+                    child1.Add().Url(@Url.Content("~/InvoiceLine")).Text(InvoiceLineResources.EntityPlural);
+                });
+                child.Add().Url("").Text("Chinook Tasks").Children(child1 =>
+                {
+                    child1.Add().Url(@Url.Content("~/ChinookTasks/Simple")).Text(TaskSimpleResources.Task);
+                    child1.Add().Url(@Url.Content("~/ChinookTasks/ExportAlbumByArtist")).Text(TaskExportAlbumByArtistResources.Task);
+                    child1.Add().Url(@Url.Content("~/ChinookTasks/ExportGenre")).Text(TaskExportGenreResources.Task);
+                    child1.Add().Url(@Url.Content("~/ChinookTasks/ImportGenre")).Text(TaskImportGenreResources.Task);
+                    child1.Add().Url(@Url.Content("~/ChinookTasks/Clean")).Text(TaskCleanResources.Task);
+                    child1.Add().Url(@Url.Content("~/ChinookTasks/Reset")).Text(TaskResetResources.Task);
+                });
+            });
+            items.Add().Url("").Id("Reports").Text(PresentationResources.Reports).Children(child =>
+            {
+                child.Add().Url("").Text("Chinook RDLC Reports").Children(child1 =>
+                {
+                    child1.Add().Url(@Url.Content("~/ChinookReports/RDLC?ReportDirectory=Chinook&ReportName=Artist")).Text(ReportResourcesHelper.GetResource("Artist"));
+                    child1.Add().Url(@Url.Content("~/ChinookReports/RDLC?ReportDirectory=Chinook&ReportName=ArtistParameter")).Text(ReportResourcesHelper.GetResource("ArtistParameter"));
+                    child1.Add().Url(@Url.Content("~/ChinookReports/RDLC?ReportDirectory=Chinook&ReportName=AlbumByArtist")).Text(ReportResourcesHelper.GetResource("AlbumByArtist"));
+                });
+                child.Add().Url("").Text("Chinook RDL Reports").Children(child1 =>
+                {
+                    child1.Add().Url(@Url.Content("~/ChinookReports/RDL?ReportDirectory=Chinook&ReportName=Artist")).Text(ReportResourcesHelper.GetResource("Artist"));
+                    child1.Add().Url(@Url.Content("~/ChinookReports/RDL?ReportDirectory=Chinook&ReportName=ArtistParameter")).Text(ReportResourcesHelper.GetResource("ArtistParameter"));
+                    child1.Add().Url(@Url.Content("~/ChinookReports/RDL?ReportDirectory=Chinook&ReportName=AlbumByArtist")).Text(ReportResourcesHelper.GetResource("AlbumByArtist"));
+                });
+            });
+            items.Add().Url("").Id("Dashboards").Text(PresentationResources.Dashboards).Children(child =>
+            {
+                child.Add().Url("").Text("Chinook Syncfusion Dashboards").Children(child1 =>
+                {
+                    child1.Add().Url(@Url.Content("~/ChinookDashboards/Syncfusion?DashboardDirectory=Chinook&DashboardName=Dashboard")).Text(DashboardResourcesHelper.GetResource("Sales"));
+                    child1.Add().Url(@Url.Content("~/ChinookDashboards/AutoRefresh")).Text(DashboardResourcesHelper.GetResource("Sales") + " - 3 X 10s");
+                });
+                child.Add().Url("").Text("Chinook PowerBI Dashboards").Children(child2 =>
+                {
+                    child2.Add().Url(@Url.Content("~/ChinookDashboards/PowerBI?DashboardId=eyJrIjoiYTRjOWRiMGEtNzEzMS00ZGE1LTkwZGItODQ0OGYxZGM3ZmFmIiwidCI6IjIyZmY3NWIyLTViYjItNGFlYy1iNDIyLWE3NjAyYWFmMzk0NSJ9")).Text(DashboardResourcesHelper.GetResource("Sales"));
+                });
+            });
+            items.Add().Url("").Text(AuditTrailResources.AuditTrail).Children(child =>
+            {
+                child.Add().Url(@Url.Content("~/AuditTrailConfiguration")).Text(AuditTrailConfigurationResources.EntityPlural);
+                child.Add().Url(@Url.Content("~/AuditTrailLog")).Text(AuditTrailLogResources.EntityPlural);
+            });
+            items.Add().Url("").Text(SecurityResources.Security).Children(child =>
+            {
+                child.Add().Url(@Url.Content("~/Role")).Text(RoleResources.EntityPlural);
+                child.Add().Url(@Url.Content("~/User")).Text(UserResources.EntityPlural);
+                child.Add().Url(@Url.Content("~/UserRole")).Text(UserRoleResources.EntityPlural);
+                child.Add().Url(@Url.Content("~/Activity")).Text(ActivityResources.EntityPlural);
+                child.Add().Url(@Url.Content("~/ActivityRole")).Text(ActivityRoleResources.EntityPlural);
+                @*
+                child.Add().Url(@Url.Content("~/UserClaim")).Text(UserClaimResources.EntityPlural);
+                child.Add().Url(@Url.Content("~/UserLogin")).Text(UserLoginResources.EntityPlural);
+                *@
+            });
+            items.Add().Url("").Text(SecurityIdentityResources.Identity).Children(child =>
+            {
+                child.Add().Url(@Url.Content("~/Account/Logout")).Text(AccountResources.LogOut);
+                child.Add().Url(@Url.Content("~/Manage/ChangePassword")).Text(ManageResources.ChangePassword);
+            });
+            items.Add().Url("").Text(MenuResources.Globalization).Children(child =>
+            {
+                child.Add().Url(@Url.Content("~/Globalization/Culture?language=en&locale=US")).Text("English {en-US}");
+                child.Add().Url(@Url.Content("~/Globalization/Culture?language=pt&locale=BR")).Text("Português {pt-BR}");
+            });
+        })
+
+    </div>
+    <div id="Layout_Content" class="container body-content">
+
+        @*
+        @Html.Raw(ZLibrary.Mvc.MvcHelper.RenderUrlDictionary(Context))
+        *@
+
+        @RenderBody()      
+
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application { @IdentityHelper.UserName } { @CultureInfo.CurrentCulture.EnglishName - @CultureInfo.CurrentUICulture.EnglishName - <img alt="@CultureInfo.CurrentCulture.Name" class="z-culture-@CultureInfo.CurrentCulture.Name" /> }</p>
+        </footer>
+    </div>
+
+    @* @RenderSection("scripts", required: false) *@
+
+    <script>
+
+        // jQuery Globalize
+        // A monkey patch for jquery.validate.js that allows validation to be internationalised
+        // https://gist.github.com/johnnyreilly/3651751
+        (function ($, Globalize) {
+
+            // Clone original methods we want to call into
+            var originalMethods = {
+                min: $.validator.methods.min,
+                max: $.validator.methods.max,
+                range: $.validator.methods.range
+            };
+
+            // Tell the validator that we want numbers parsed using Globalize
+
+            $.validator.methods.number = function (value, element) {
+                // !!!
+                var parsedValue = value
+                    .replace(/[0-9]/g, "")
+                    .replace("-", "")
+                    .replace(Globalize.cultures[Globalize.cultureSelector].numberFormat["."], "")
+                    .trim();
+                if (parsedValue != "") {
+                    return false;
+                }
+
+                var val = Globalize.parseFloat(value);
+                return this.optional(element) || ($.isNumeric(val));
+            };
+
+            // Tell the validator that we want dates parsed using Globalize
+
+            $.validator.methods.date = function (value, element) {
+                var val = Globalize.parseDate(value);
+                return this.optional(element) || (val);
+            };
+
+            // Tell the validator that we want numbers parsed using Globalize,
+            // then call into original implementation with parsed value
+
+            $.validator.methods.min = function (value, element, param) {
+                // !!!
+                var parsedValue = value
+                    .replace(/[0-9]/g, "")
+                    .replace("-", "")
+                    .replace(Globalize.cultures[Globalize.cultureSelector].numberFormat["."], "")
+                    .trim();
+                if (parsedValue != "") {
+                    return false;
+                }
+
+                var val = Globalize.parseFloat(value);
+                return originalMethods.min.call(this, val, element, param);
+            };
+
+            $.validator.methods.max = function (value, element, param) {
+                // !!!
+                var parsedValue = value
+                    .replace(/[0-9]/g, "")
+                    .replace("-", "")
+                    .replace(Globalize.cultures[Globalize.cultureSelector].numberFormat["."], "")
+                    .trim();
+                if (parsedValue != "") {
+                    return false;
+                }
+
+                var val = Globalize.parseFloat(value);
+                return originalMethods.max.call(this, val, element, param);
+            };
+
+            $.validator.methods.range = function (value, element, param) {
+                // !!!
+                var parsedValue = value
+                    .replace(/[0-9]/g, "")
+                    .replace("-", "")
+                    .replace(Globalize.cultures[Globalize.cultureSelector].numberFormat["."], "")
+                    .trim();
+                if (parsedValue != "") {
+                    return false;
+                }
+
+                var val = Globalize.parseFloat(value);
+                return originalMethods.range.call(this, val, element, param);
+            };
+
+        }(jQuery, Globalize));
+
+        $(function () {
+            try {
+                var isAuthenticated = @Request.IsAuthenticated.ToString().ToLower();
+                //var isAuthenticated = @User.Identity.IsAuthenticated.ToString().ToLower();
+
+                if (isAuthenticated)
+                {
+                    $("#MyMenu").show();
+                }
+                else
+                {
+                    $("#MyMenu").hide();
+                }
+
+                // jQuery Globalize
+                Globalize.culture("@CultureInfo.CurrentCulture.Name");
+            } catch (exception) {
+                alert(zExceptionMessage("_Layout.cshtml", "function()", exception));
+            }
+        });
+
+    </script>
+</body>
+</html>

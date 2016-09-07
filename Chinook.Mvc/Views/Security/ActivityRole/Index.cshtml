@@ -1,0 +1,9 @@
+@model ActivityRoleCollectionModel
+
+@{
+    ViewBag.Title = ActivityRoleResources.EntityPlural;
+}
+
+<h3>@ViewBag.Title</h3>
+
+@Html.Action("Search", "ActivityRole")

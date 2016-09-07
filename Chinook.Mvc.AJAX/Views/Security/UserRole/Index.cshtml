@@ -1,0 +1,14 @@
+@model UserRoleCollectionModel
+
+<div id="Ajax">
+</div>
+
+<script>
+    $(function () {
+        try {
+            $("#Ajax").load("@(Url.Action("Search", "UserRole", null, Request.Url.Scheme))");
+        } catch (exception) {
+            zExceptionMessage("UserRole Index.cshtml", "function()", exception.message)
+        }
+    });
+</script>

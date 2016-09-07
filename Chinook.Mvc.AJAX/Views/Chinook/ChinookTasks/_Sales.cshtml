@@ -1,0 +1,398 @@
+@model TaskSalesModel
+
+<h3>&nbsp;&nbsp;@TaskSalesResources.Task</h3>
+
+@{
+    string customerText = Model.Invoice != null ? Model.Invoice.CustomerLookupText : "";
+
+    string invoiceText = Model.InvoiceLine != null ? Model.InvoiceLine.InvoiceLookupText : "";
+    string trackText = Model.InvoiceLine != null ? Model.InvoiceLine.TrackLookupText : "";
+}
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<div id="Buttons" class="z-formButtons" style="margin-left: 16px; margin-bottom: 8px;">
+
+    <button id="Button_InvoiceLine_New" type="button" class="btn btn-primary" onclick="onClick_Button_Invoice_New()">@TaskSalesResources.NewInvoiceLine</button>
+
+</div>
+
+<div id="Inputs_Invoice" class="form-inline">
+
+    <div id="Group_Invoice_InvoiceId" class="@AppDefaults.CssClassGroup col-md-2">
+        @Html.LabelFor(model => model.Invoice.InvoiceId, new { @class = AppDefaults.CssClassLabel })
+        @Html.EditorFor(model => model.Invoice.InvoiceId, new { id = "Invoice_InvoiceId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+        @Html.ValidationMessageFor(model => model.Invoice.InvoiceId, "", new { @class = AppDefaults.CssClassValidator })
+    </div>
+
+    <div id="Group_Invoice_CustomerId" class="@AppDefaults.CssClassGroup col-md-6">
+        @Html.Label(@CustomerResources.EntitySingular, new { @class = AppDefaults.CssClassLabelRequired })
+        @Html.EditorFor(model => model.Invoice.CustomerId, new { id = "Invoice_CustomerId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+        @Html.Action("Lookup", "Customer", new
+        {
+            Text = customerText,
+            ValueId = "Invoice_CustomerId"
+        })
+        @Html.ValidationMessageFor(model => model.Invoice.CustomerId, "", new { @class = AppDefaults.CssClassValidator })
+    </div>
+
+    <div id="Group_Invoice_InvoiceDate" class="@AppDefaults.CssClassGroup col-md-2">
+        @Html.LabelFor(model => model.Invoice.InvoiceDate, new { @class = AppDefaults.CssClassLabelRequired })
+        @Html.EditorFor(model => model.Invoice.InvoiceDate, new { id = "Invoice_InvoiceDate", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+        @Html.ValidationMessageFor(model => model.Invoice.InvoiceDate, "", new { @class = AppDefaults.CssClassValidator })
+    </div>
+
+    <div id="Group_Invoice_Total" class="@AppDefaults.CssClassGroup col-md-2">
+        @Html.LabelFor(model => model.Invoice.Total, new { @class = AppDefaults.CssClassLabel })
+        @Html.EditorFor(model => model.Invoice.Total, new { id = "Invoice_Total", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+        @Html.ValidationMessageFor(model => model.Invoice.Total, "", new { @class = AppDefaults.CssClassValidator })
+    </div>
+
+</div>
+
+<div id="Buttons_Invoice" class="z-formButtons" style="margin-left: 16px; margin-bottom: 8px;">
+
+    <button id="Button_Invoice_Create" type="button" class="btn btn-primary" onclick="onClick_Button_Invoice_Create()">@TaskSalesResources.CreateInvoice</button>
+
+</div>
+
+<div id="Inputs_InvoiceLine" class="form-inline">
+
+    @*
+    <div id="Group_InvoiceLine_InvoiceLineId" class="@AppDefaults.CssClassGroup col-md-2">
+        @Html.LabelFor(model => model.InvoiceLine.InvoiceLineId, new { @class = AppDefaults.CssClassLabel })
+        @Html.EditorFor(model => model.InvoiceLine.InvoiceLineId, new { id = "InvoiceLine_InvoiceLineId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+        @Html.ValidationMessageFor(model => model.InvoiceLine.InvoiceLineId, "", new { @class = AppDefaults.CssClassValidator })
+    </div>
+
+    <div id="Group_InvoiceLine_InvoiceId" class="@AppDefaults.CssClassGroup col-md-6">
+        @Html.Label(@InvoiceResources.EntitySingular, new { @class = AppDefaults.CssClassLabel })
+        @Html.EditorFor(model => model.InvoiceLine.InvoiceId, new { id = "InvoiceLine_InvoiceId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+        @Html.Action("Lookup", "Invoice", new
+        {
+            Text = invoiceText,
+            ValueId = "InvoiceLine_InvoiceId"
+        })
+        @Html.ValidationMessageFor(model => model.InvoiceLine.InvoiceId, "", new { @class = AppDefaults.CssClassValidator })
+    </div>
+    *@
+
+    <div id="Group_InvoiceLine_TrackId" class="@AppDefaults.CssClassGroup col-md-6">
+        @Html.Label(@TrackResources.EntitySingular, new { @class = AppDefaults.CssClassLabel })
+        @Html.EditorFor(model => model.InvoiceLine.TrackId, new { id = "InvoiceLine_TrackId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+        @Html.Action("Lookup", "Track", new
+        {
+            Text = trackText,
+            ValueId = "InvoiceLine_TrackId",
+            Elements = new List<LookupModelElement>() {
+                new LookupModelElement("InvoiceLine_UnitPrice", "UnitPrice")
+            }
+        })
+        @Html.ValidationMessageFor(model => model.InvoiceLine.TrackId, "", new { @class = AppDefaults.CssClassValidator })
+    </div>
+
+    <div id="Group_InvoiceLine_UnitPrice" class="@AppDefaults.CssClassGroup col-md-2">
+        @Html.LabelFor(model => model.InvoiceLine.UnitPrice, new { @class = AppDefaults.CssClassLabel })
+        @Html.EditorFor(model => model.InvoiceLine.UnitPrice, new { id = "InvoiceLine_UnitPrice", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+        @Html.ValidationMessageFor(model => model.InvoiceLine.UnitPrice, "", new { @class = AppDefaults.CssClassValidator })
+    </div>
+
+    <div id="Group_InvoiceLine_Quantity" class="@AppDefaults.CssClassGroup col-md-2">
+        @Html.LabelFor(model => model.InvoiceLine.Quantity, new { @class = AppDefaults.CssClassLabel })
+        @Html.EditorFor(model => model.InvoiceLine.Quantity, new { id = "InvoiceLine_Quantity", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+        @Html.ValidationMessageFor(model => model.InvoiceLine.Quantity, "", new { @class = AppDefaults.CssClassValidator })
+    </div>
+
+</div>
+
+<div id="Buttons_InvoiceLine" class="z-formButtons" style="margin-left: 16px; margin-bottom: 16px;">
+
+    <button id="Button_InvoiceLine_Create" type="button" class="btn btn-primary" onclick="onClick_Button_InvoiceLine_Create()">@TaskSalesResources.CreateInvoiceLine</button>
+
+</div>
+
+<div style="margin-left: 16px; margin-right: 16px;">
+
+    @(Html.EJ().Grid<InvoiceLine>("Grid_InvoiceLine")
+        .Datasource(datasource => datasource
+            .Adaptor(AdaptorType.UrlAdaptor)
+            .URL(Url.Content("~/InvoiceLine/DataSource"))
+        )
+        .AllowFiltering()
+        .ClientSideEvents(clientEvent => clientEvent
+            .ActionFailure("actionFailure_Grid_InvoiceLine")
+            .Load("load_Grid_InvoiceLine")
+        )
+        .Columns(column =>
+        {
+            column.Field("InvoiceLineId")
+                .AllowEditing(false)
+                .EditType(EditingType.Numeric)
+                .HeaderText(InvoiceLineResources.PropertyInvoiceLineId)
+                .IsIdentity(true)
+                .IsPrimaryKey(true)
+                .Visible(false)
+                .Width(100)
+                .Add();
+            column.Field("InvoiceId")
+                .EditType(EditingType.Numeric)
+                .HeaderText(InvoiceLineResources.PropertyInvoiceId)
+                .Visible(false)
+                .Width(100)
+                .Add();
+            column.Field("InvoiceLookupText")
+                .AllowEditing(false)
+                .HeaderText(InvoiceResources.EntitySingular)
+                .Visible(false)
+                .Width(100)
+                .Add();
+            column.Field("TrackId")
+                .EditType(EditingType.Numeric)
+                .HeaderText(InvoiceLineResources.PropertyTrackId)
+                .Visible(false)
+                .Width(100)
+                .Add();
+            column.Field("TrackLookupText")
+                .AllowEditing(false)
+                .HeaderText(TrackResources.EntitySingular)
+                .Visible(true)
+                .Width(100)
+                .Add();
+            column.Field("UnitPrice")
+                .EditType(EditingType.Numeric)
+                .HeaderText(InvoiceLineResources.PropertyUnitPrice)
+                .Visible(true)
+                .Width(100)
+                .Add();
+            column.Field("Quantity")
+                .EditType(EditingType.Numeric)
+                .HeaderText(InvoiceLineResources.PropertyQuantity)
+                .Visible(true)
+                .Width(100)
+                .Add();
+        })
+        .FilterSettings(filter => filter
+            .EnableCaseSensitivity(false)
+            .FilterType(FilterType.Excel)
+            .MaxFilterChoices(System.Int32.MaxValue)
+        )
+        .SelectedRowIndex(0)
+    )
+</div>
+
+<div id="OperationResult">
+    @Html.OperationResult(Model.OperationResult)
+</div>
+
+<script>
+    $(function () {
+        try {
+            // AJAX
+            ej.widget.init($("#Ajax"));
+
+            invoiceClear();
+            invoiceLineClear();
+
+            invoiceShow(false);
+            invoiceLineShow(false);
+            gridShow(false);
+
+            //onClick_Button_Invoice_New();
+        } catch (exception) {
+            alert(zExceptionMessage("_Sales.cshtml", "function()", exception));
+        }
+    });
+
+    function actionFailure_Grid_InvoiceLine(args) {
+        try {
+            alert(zErrorMessage(args.error.responseText));
+        } catch (exception) {
+            alert(zExceptionMessage("_Sales.cshtml", "actionFailure_Grid_InvoiceLine(args)", exception));
+        }
+    }
+
+    function load_Grid_InvoiceLine(args) {
+        try {
+            var culture = "@System.Globalization.CultureInfo.CurrentCulture.Name";
+            this.model.locale = culture;
+        } catch (exception) {
+            alert(zExceptionMessage("_Sales.cshtml", "load_Grid_InvoiceLine(args)", exception));
+        }
+    }
+
+    function onClick_Button_Invoice_New() {
+        try {
+            $("#OperationResult").html("");
+
+            invoiceClear();
+            invoiceLineClear();
+
+            invoiceShow(true);
+            invoiceLineShow(false);
+            gridShow(false);
+        } catch (exception) {
+            alert(zExceptionMessage("_Sales.cshtml", "onClick_Button_Invoice_New()", exception));
+        }
+    }
+
+    function onClick_Button_Invoice_Create() {
+        try {
+            $("#OperationResult").html("");
+
+            var customerId = parseInt($("#Invoice_CustomerId").val());
+            customerId = isNaN(customerId) ? 0 : customerId;
+
+            if (customerId != 0) {
+                var ajaxData = JSON.stringify({
+                    customerId: $("#Invoice_CustomerId").val(),
+                    invoiceDate: $("#Invoice_InvoiceDate").val()
+                });
+
+                $.ajax({
+                    cache: false,
+                    contentType: "application/json; charset=utf-8",
+                    data: ajaxData,
+                    dataType: "json",
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        $("#OperationResult").html(jqXHR.responseJSON.OperationResult.Html);
+                    },
+                    success: function (data, textStatus, jqXHR) {
+                        var invoiceId = data.OperationResult.Data.InvoiceId;
+                        $("#Invoice_InvoiceId").val(invoiceId);
+
+                        $("#Invoice_CustomerId").attr("readonly", true);
+                        $("#Invoice_CustomerId_Button").hide(); // CustomerId Lookup
+                        $("#Buttons_Invoice").hide();
+
+                        invoiceLineShow(true);
+
+                        var gridInvoiceLine = $("#Grid_InvoiceLine");
+                        var ejGridInvoiceLine = gridInvoiceLine.data("ejGrid");
+
+                        ejGridInvoiceLine.filterColumn("InvoiceId", ej.FilterOperators.equal, invoiceId, ej.Predicate.and);
+                        gridInvoiceLine.show();
+                    },
+                    type: "POST",
+                    url: "@Url.Action("CreateInvoice", "Tasks")"
+                });
+            }
+        } catch (exception) {
+            alert(zExceptionMessage("_Sales.cshtml", "onClick_ButtonInvoice_Create()", exception));
+        }
+    }
+
+    function onClick_Button_InvoiceLine_Create() {
+        try {
+            $("#OperationResult").html("");
+
+            var trackId = parseInt($("#InvoiceLine_TrackId").val());
+            trackId = isNaN(trackId) ? 0 : trackId;
+            var quantity = parseInt($("#InvoiceLine_Quantity").val());
+            quantity = isNaN(quantity) ? 0 : quantity;
+
+            if (trackId > 0 && quantity > 0) {
+                var ajaxData = JSON.stringify({
+                    invoiceId: $("#Invoice_InvoiceId").val(),
+                    trackId: $("#InvoiceLine_TrackId").val(),
+                    unitPrice: $("#InvoiceLine_UnitPrice").val(),
+                    quantity: $("#InvoiceLine_Quantity").val()
+                });
+
+                $.ajax({
+                    cache: false,
+                    contentType: "application/json; charset=utf-8",
+                    data: ajaxData,
+                    dataType: "json",
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        $("#OperationResult").html(jqXHR.responseJSON.OperationResult.Html);
+                    },
+                    success: function (data, textStatus, jqXHR) {
+                        var total = data.OperationResult.Data.Total;
+                        var culture = "@System.Globalization.CultureInfo.CurrentCulture.Name";
+                        $("#Invoice_Total").val(total.toLocaleString(culture));
+
+                        invoiceLineClear();
+
+                        var ejGridInvoiceLine = $("#Grid_InvoiceLine").data("ejGrid");
+                        ejGridInvoiceLine.refreshContent();
+                    },
+                    type: "POST",
+                    url: "@Url.Action("CreateInvoiceLine", "Tasks")"
+                });
+            }
+        } catch (exception) {
+            alert(zExceptionMessage("_Sales.cshtml", "onClick_ButtonInvoiceLine_Create()", exception));
+        }
+    }
+
+    function invoiceClear() {
+        try {
+            $("#Invoice_InvoiceId").val("");
+            $("#Invoice_InvoiceId").attr("readonly", true);
+            var culture = "@System.Globalization.CultureInfo.CurrentCulture.Name";
+            var today = new Date();
+            $("#Invoice_CustomerId").val("");
+            $("#Invoice_CustomerId_Lookup").val("");
+            $("#Invoice_CustomerId_Button").show(); // CustomerId Lookup
+            $("#Invoice_InvoiceDate").val(today.toLocaleString(culture).substring(0, 11)); // dd/mm/yyyy | yyyy/mm/dd | mm/dd/yyyy
+            $("#Invoice_InvoiceDate").attr("readonly", true);
+            $("#Invoice_Total").val("");
+            $("#Invoice_Total").attr("readonly", true);
+        } catch (exception) {
+            alert(zExceptionMessage("_Sales.cshtml", "invoiceClear()", exception));
+        }
+    }
+
+    function invoiceShow(show) {
+        try {
+            if (show) {
+                $("#Inputs_Invoice").show();
+                $("#Buttons_Invoice").show();
+            } else {
+                $("#Inputs_Invoice").hide();
+                $("#Buttons_Invoice").hide();
+            }            
+        } catch (exception) {
+            alert(zExceptionMessage("_Sales.cshtml", "invoiceShow()", exception));
+        }
+    }
+
+    function invoiceLineClear() {
+        try {
+            $("#InvoiceLine_TrackId").val("");
+            $("#InvoiceLine_TrackId_Lookup").val("");
+            $("#InvoiceLine_UnitPrice").val("");
+            $("#InvoiceLine_Quantity").val("");
+
+            $("#InvoiceLine_UnitPrice").attr("readonly", true);
+        } catch (exception) {
+            alert(zExceptionMessage("_Sales.cshtml", "clearInvoiceLine()", exception));
+        }
+    }
+
+    function invoiceLineShow(show) {
+        try {
+            if (show) {
+                $("#Inputs_InvoiceLine").show();
+                $("#Buttons_InvoiceLine").show();
+            } else {
+                $("#Inputs_InvoiceLine").hide();
+                $("#Buttons_InvoiceLine").hide();
+            }
+        } catch (exception) {
+            alert(zExceptionMessage("_Sales.cshtml", "invoiceLineShow()", exception));
+        }
+    }
+
+    function gridShow(show) {
+        try {
+            if (show) {
+                $("#Grid_InvoiceLine").show();
+            } else {
+                $("#Grid_InvoiceLine").hide();
+            }
+        } catch (exception) {
+            alert(zExceptionMessage("_Sales.cshtml", "gridShow()", exception));
+        }
+    }
+</script>

@@ -1,0 +1,206 @@
+@model LookupModel
+
+<div class="input-group">
+    <span class="input-group-addon"><img id="@(Model.ValueId + "_Button")" class="z-buttonLookup" /></span>
+    @Html.TextBox(Model.ValueId + "_Lookup", Model.Text, new { @class = AppDefaults.CssClassEditor + " z-lookup" })
+</div>
+
+<div id="Modal_User_Lookup" aria-labelledby="Label_User_Lookup" class="modal fade col-md-10" role="dialog" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-label="@PresentationResources.Cancel" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                <h4 id="Label_User_Lookup" class="modal-title">@UserResources.EntityPlural</h4>
+            </div>
+            <div class="modal-body">
+
+                @(Html.EJ().Grid<User>("Grid_User_Lookup")
+                    .Datasource(datasource => datasource
+                        .Adaptor(AdaptorType.UrlAdaptor)
+                        .URL(Url.Content("~/User/DataSource"))
+                    )
+                    .AllowFiltering()
+                    .AllowPaging()
+                    .AllowSearching()
+                    .AllowSorting()
+                    .ClientSideEvents(clientEvent => clientEvent
+                        .ActionFailure("actionFailure_Grid_User_Lookup")
+                        .Load("load_Grid_User_Lookup")
+                        .RowSelected("rowSelected_Grid_User_Lookup")                       
+                    )
+                    .Columns(column =>
+                    {
+                        column.Field("Id")
+                            .EditType(EditingType.String)
+                            .HeaderText(UserResources.PropertyId)
+                            .IsPrimaryKey(true)
+                            .Visible(false)
+                            .Width(240)
+                            .Add();
+                        column.Field("Email")
+                            .EditType(EditingType.String)
+                            .HeaderText(UserResources.PropertyEmail)
+                            .Visible(true)
+                            .Width(240)
+                            .Add();
+                        column.Field("EmailConfirmed")
+                            .EditType(EditingType.String)
+                            .HeaderText(UserResources.PropertyEmailConfirmed)
+                            .Visible(true)
+                            .Width(100)
+                            .Add();
+                        column.Field("PasswordHash")
+                            .EditType(EditingType.String)
+                            .HeaderText(UserResources.PropertyPasswordHash)
+                            .Visible(false)
+                            .Width(-10)
+                            .Add();
+                        column.Field("SecurityStamp")
+                            .EditType(EditingType.String)
+                            .HeaderText(UserResources.PropertySecurityStamp)
+                            .Visible(false)
+                            .Width(-10)
+                            .Add();
+                        column.Field("PhoneNumber")
+                            .EditType(EditingType.String)
+                            .HeaderText(UserResources.PropertyPhoneNumber)
+                            .Visible(false)
+                            .Width(-10)
+                            .Add();
+                        column.Field("PhoneNumberConfirmed")
+                            .EditType(EditingType.String)
+                            .HeaderText(UserResources.PropertyPhoneNumberConfirmed)
+                            .Visible(false)
+                            .Width(100)
+                            .Add();
+                        column.Field("TwoFactorEnabled")
+                            .EditType(EditingType.String)
+                            .HeaderText(UserResources.PropertyTwoFactorEnabled)
+                            .Visible(false)
+                            .Width(100)
+                            .Add();
+                        column.Field("LockoutEndDateUtc")
+                            .EditType(EditingType.DateTimePicker)
+                            .HeaderText(UserResources.PropertyLockoutEndDateUtc)
+                            .Visible(false)
+                            .Width(100)
+                            .Add();
+                        column.Field("LockoutEnabled")
+                            .EditType(EditingType.String)
+                            .HeaderText(UserResources.PropertyLockoutEnabled)
+                            .Visible(false)
+                            .Width(100)
+                            .Add();
+                        column.Field("AccessFailedCount")
+                            .EditType(EditingType.Numeric)
+                            .HeaderText(UserResources.PropertyAccessFailedCount)
+                            .Visible(false)
+                            .Width(100)
+                            .Add();
+                        column.Field("UserName")
+                            .EditType(EditingType.String)
+                            .HeaderText(UserResources.PropertyUserName)
+                            .Visible(false)
+                            .Width(240)
+                            .Add();
+                    })
+                    .FilterSettings(filter => filter
+                        .EnableCaseSensitivity(false)
+                        .FilterType(FilterType.Excel)
+                        .MaxFilterChoices(System.Int32.MaxValue)
+                    )
+                    .PageSettings(page => page
+                        .PageSize(AppDefaults.SyncfusionRecordsByPage)
+                    )
+                    .SearchSettings(search =>
+                    {
+                        search.Fields(field =>
+                        {
+                            //field.Add("Id");
+                            field.Add("Email");
+                            field.Add("EmailConfirmed");
+                            //field.Add("PasswordHash");
+                            //field.Add("SecurityStamp");
+                            //field.Add("PhoneNumber");
+                            //field.Add("PhoneNumberConfirmed");
+                            //field.Add("TwoFactorEnabled");
+                            //field.Add("LockoutEndDateUtc");
+                            //field.Add("LockoutEnabled");
+                            //field.Add("AccessFailedCount");
+                            //field.Add("UserName");
+                        });
+                    })
+                    .ShowColumnChooser()
+                    .ToolbarSettings(toolbar => toolbar
+                        .ShowToolbar()
+                        .ToolbarItems(items =>
+                        {
+                            items.AddTool(ToolBarItems.Search);
+                        })
+                    )
+                )
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@*
+@Html.OperationResult(Model.OperationResult)
+*@
+
+<script>
+    $(function () {
+        try {
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+    
+            $("#@Model.ValueId").hide();
+    
+            $("#@(Model.ValueId)_Button").click(function () {
+                $("#Modal_User_Lookup").modal("show");
+            });
+    
+            $("#@(Model.ValueId)_Lookup").attr("readonly", true);
+            $("#@(Model.ValueId)_Lookup").val(model.Text.toLocaleString("@CultureInfo.CurrentCulture.Name"));
+    
+            $("#Modal_User_Lookup").modal("hide");
+        } catch (exception) {
+            alert(zExceptionMessage("_UserLookup.cshtml", "function ()", exception));
+        }
+    });
+    
+    function actionFailure_Grid_User_Lookup(args) {
+        try {
+            alert(zErrorMessage(args.error.responseText));
+        } catch (exception) {
+            alert(zExceptionMessage("_UserLookup.cshtml", "actionFailure_Grid_User_Lookup(args)", exception));
+        }
+    }    
+
+    function load_Grid_User_Lookup(args) {
+        try {            
+            var culture = "@System.Globalization.CultureInfo.CurrentCulture.Name";
+            this.model.locale = culture;
+        } catch (exception) {
+            alert(zExceptionMessage("_UserLookup.cshtml", "load_Grid_User_Lookup(args)", exception));
+        }
+    }
+
+    function rowSelected_Grid_User_Lookup(args) {
+        try {
+            var data = this.model.currentViewData[args.rowIndex];
+    
+            $("#@(Model.ValueId)").val(data.Id);
+    
+            $("#@(Model.ValueId)_Lookup").val(data.LookupText);
+
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+            var culture = "@System.Globalization.CultureInfo.CurrentCulture.Name";
+            zLookupElements(data, model.Elements, culture);
+    
+            $("#Modal_User_Lookup").modal("hide");
+        } catch (exception) {
+            alert(zExceptionMessage("_UserLookup.cshtml", "rowSelected_Grid_User_Lookup(args)", exception));
+        }
+    }
+</script>
