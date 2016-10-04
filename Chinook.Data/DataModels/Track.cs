@@ -86,9 +86,9 @@ namespace Chinook.Data
 
         #region Collections (PK)
 
-        public virtual IList<InvoiceLine> InvoiceLines { get; set; }
+        public virtual IList<InvoiceLine> InvoiceLines { get; }
 
-        public virtual IList<PlaylistTrack> PlaylistTracks { get; set; }
+        public virtual IList<PlaylistTrack> PlaylistTracks { get; }
 
         #endregion Collections (PK)
 

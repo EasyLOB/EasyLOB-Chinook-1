@@ -1,0 +1,16 @@
+﻿@model AuditTrailLogCollectionModel
+
+<div class="form-inline">
+    @Html.Partial("_AuditTrailLogCollection", Model)
+</div>
+
+<div id="OperationResult"></div>
+
+<script>
+    $(function () {
+        try {
+        } catch (exception) {
+            zExceptionMessage("AuditTrailLog Search.cshtml", "function", exception.message)
+        }
+    });
+</script>

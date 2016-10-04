@@ -20,12 +20,30 @@
 /*----------------------Office 365 theme-----------------------*/
 /*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
 /*----------------------material theme-----------------------*/
+/*--------------- common ----------------- */
+/*---------------high-contrast ------*/
+/*---------------- Office-365 ----------------*/
+/*------------------ material theme ---------------------*/
+/*-----------------------HeatMap Definition-----------------*/
+/* Common style */
+
+.e-content-area {
+  background-color: white;
+  color: #111111;
+  border-color: #c8c8c8;
+  font-family: Segoe UI;
+}
 .e-treegrid .e-extendcolumn {
   background-color: white;
 }
 .e-treegrid .e-headercelldiv {
   color: #282827;
   font-family: Segoe UI;
+}
+.e-treegrid .e-headercelldiv .e-descending,
+.e-treegrid .e-headercelldiv .e-ascending,
+.e-treegrid .e-headercell .e-columnmenu-icon {
+  color: #232323;
 }
 .e-treegrid-core {
   font-family: Segoe UI;
@@ -65,16 +83,12 @@
 }
 .e-treegrid .e-selectionbackground {
   color: white;
+  -ms-filter: 'progid:DXImageTransform.Microsoft.gradient(startColorstr="#179bd7", endColorstr="#179bd7", GradientType=0), progid:DXImageTransform.Microsoft.Alpha(Opacity=20)';
 }
 .e-treegrid .e-selectionbackground {
   background: #179bd7;
 }
 .e-treegridPane .e-treegrid .e-selectionbackground {
-  color: #333333;
-}
-.e-treegridPane .e-treegrid .e-selectionbackground {
-  background: rgba(23, 155, 215, 0.2);
-  /* Old browsers */
   background: -moz-linear-gradient(top, rgba(23, 155, 215, 0.2), rgba(23, 155, 215, 0.2));
   /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(23, 155, 215, 0.2)), color-stop(100%, rgba(23, 155, 215, 0.2)));
@@ -87,9 +101,9 @@
   /* IE10+ */
   background: linear-gradient(to bottom, rgba(23, 155, 215, 0.2), rgba(23, 155, 215, 0.2));
   /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='rgba(23, 155, 215, 0.2)', endColorstr='rgba(23, 155, 215, 0.2)', GradientType=0);
-  /* IE6-9 */
 
+  color: #333333;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#179bd7", endColorstr="#179bd7", GradientType=0), progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
 }
 .e-treegrid .selectingcell {
   color: white;
@@ -98,11 +112,6 @@
   background: #179bd7;
 }
 .e-treegridPane .e-treegrid .selectingcell {
-  color: #333333;
-}
-.e-treegridPane .e-treegrid .selectingcell {
-  background: rgba(23, 155, 215, 0.2);
-  /* Old browsers */
   background: -moz-linear-gradient(top, rgba(23, 155, 215, 0.2), rgba(23, 155, 215, 0.2));
   /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(23, 155, 215, 0.2)), color-stop(100%, rgba(23, 155, 215, 0.2)));
@@ -115,9 +124,8 @@
   /* IE10+ */
   background: linear-gradient(to bottom, rgba(23, 155, 215, 0.2), rgba(23, 155, 215, 0.2));
   /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='rgba(23, 155, 215, 0.2)', endColorstr='rgba(23, 155, 215, 0.2)', GradientType=0);
-  /* IE6-9 */
 
+  color: #333333;
 }
 .e-treegrid .e-detailsinfoiconhide:before,
 .e-treegrid .e-detailsinfoiconshow:before {
@@ -144,7 +152,7 @@
 .e-treegrid .e-treegrid-edit:before {
   content: "\e705";
 }
-.e-treegrid .e-treegrid-delete:before {
+.e-treegrid .e-treegrid-delete.e-delete:before {
   content: "\e706";
 }
 .e-treegrid .e-treegrid-save:before {
@@ -184,13 +192,17 @@
 .e-treegrid .e-headercontent {
   border-right-color: #c8c8c8;
 }
-.e-treegrid .e-ejinputtext {
-  border-color: #c8c8c8 !important;
+.e-treegrid .e-ejinputtext,
+.e-addedColumn .e-ejinputtext,
+.e-treegridrenamedialog .e-ejinputtext {
+  border: 1px solid #c8c8c8;
+  outline: none;
   background-color: white;
   color: #333333;
+  vertical-align: baseline;
 }
 .e-treegrid .e-ejinputtext:focus {
-  box-shadow: #c8c8c8 !important;
+  box-shadow: 0 0 5px #cbcbcb;
 }
 .e-treegrid .e-reSizeColbg {
   border-left-color: #c8c8c8 !important;

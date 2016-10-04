@@ -3,7 +3,7 @@
 /*-----------------------PdfViewer------------------*/
 /*-----------------------End PdfViewer------------------*/
 /*-----------------------OLAP Definition Start-----------------*/
-.e-olapclient .removeSplitBtn {
+.e-pivotclient .removeSplitBtn {
   border-radius: 4px;
 }
 /*-----------------------OLAP Definition End
@@ -24,6 +24,19 @@
 /*----------------------Office 365 theme-----------------------*/
 /*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
 /*----------------------material theme-----------------------*/
+/*--------------- common ----------------- */
+/*---------------high-contrast ------*/
+/*---------------- Office-365 ----------------*/
+/*------------------ material theme ---------------------*/
+/*-----------------------HeatMap Definition-----------------*/
+/* Common style */
+
+.e-content-area {
+  background-color: white;
+  color: #111111;
+  border-color: #cecece;
+  font-family: Segoe UI;
+}
 .e-dialog.e-dialog-wrap {
   background: white;
   font-family: Segoe UI;
@@ -55,6 +68,7 @@
   background: transparent;
 }
 .e-dialog .e-dialog-icon:before {
+  color: #777777;
   line-height: 1.5;
 }
 .e-dialog > .e-header {
@@ -84,10 +98,7 @@
   border: 1px solid #cecece;
   border-top: none;
 }
-.e-dialog .e-dialog-icon .e-icon:before {
-  color: #777777;
-}
-.e-dialog .e-dialog-icon:hover .e-icon:before {
+.e-dialog .e-dialog-icon:hover:before {
   color: #333333;
 }
 .e-dialog > .e-footerbar {
@@ -114,4 +125,10 @@
 }
 .e-corner.e-dialog-top {
   border-radius: 3px 3px 0px 0px;
+}
+.e-dialog .e-scrollbar .e-icon {
+  display: block;
+}
+.e-dialog .e-scrollbar .e-icon {
+  display: block;
 }

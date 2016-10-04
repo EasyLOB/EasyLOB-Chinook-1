@@ -3,7 +3,7 @@
 /*-----------------------PdfViewer------------------*/
 /*-----------------------End PdfViewer------------------*/
 /*-----------------------OLAP Definition Start-----------------*/
-.e-olapclient .removeSplitBtn {
+.e-pivotclient .removeSplitBtn {
   border-radius: 4px;
 }
 /*-----------------------OLAP Definition End
@@ -24,6 +24,19 @@
 /*----------------------Office 365 theme-----------------------*/
 /*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
 /*----------------------material theme-----------------------*/
+/*--------------- common ----------------- */
+/*---------------high-contrast ------*/
+/*---------------- Office-365 ----------------*/
+/*------------------ material theme ---------------------*/
+/*-----------------------HeatMap Definition-----------------*/
+/* Common style */
+
+.e-content-area {
+  background-color: white;
+  color: #111111;
+  border-color: #cecece;
+  font-family: Segoe UI;
+}
 /*---------------------------------Schedule Theme--------------------------------*/
 
 .e-schedule,
@@ -313,12 +326,24 @@ e-schedule .e-datedisplay {
   border: 1px solid #cecece;
   border-top: none;
 }
+.e-schedule.e-scheduleresponsive.e-resources {
+  border-right: 1px solid #cecece;
+}
+.e-schedule.e-rtl.e-scheduleresponsive.e-resources {
+  border-right: none;
+  border-left: 1px solid #cecece;
+}
 .e-schedule .e-headerbackcolor,
 .e-schedule .e-timecells {
   border-bottom: 1px solid #cecece;
 }
 .e-schedule .e-currentdayhighlight {
   background: rgba(50, 119, 178, 0.3) !important;
+  color: #282827 !important;
+}
+.e-schedule .e-currentdayhighlight .e-activeview {
+  background: none !important;
+  color: #282827 !important;
 }
 .e-schedule .e-mousehover {
   background-color: #dbdbdb;
@@ -494,6 +519,18 @@ e-schedule .e-datedisplay {
 }
 .e-schedule .e-borderright {
   border-right: 1px solid #cecece !important;
+}
+.e-scheduledialog .e-inputtext:focus {
+  box-shadow: 0 0 7px #cccccc;
+  border-color: #cecece;
+}
+.e-scheduledialog .e-buttonactive:not(.e-disable) {
+  background: #3277b2 !important;
+  color: white !important;
+}
+.e-scheduledialog .e-buttonactive:not(.e-disable):hover {
+  background: #f4f4f4 !important;
+  color: #333333 !important;
 }
 .e-scheduledialog .e-detailedapp,
 .e-scheduledialog .e-editevents,

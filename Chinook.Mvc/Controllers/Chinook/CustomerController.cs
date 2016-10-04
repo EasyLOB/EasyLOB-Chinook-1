@@ -77,7 +77,7 @@ namespace Chinook.Mvc
                 customerCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return PartialView("_CustomerCollection", customerCollectionModel);
+            return PartialView(customerCollectionModel);
         }
 
         // GET & POST: Customer/Lookup

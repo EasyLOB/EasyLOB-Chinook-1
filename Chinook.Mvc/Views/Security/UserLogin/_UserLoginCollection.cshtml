@@ -1,100 +1,102 @@
-@model UserLoginCollectionModel
+﻿@model UserLoginCollectionModel
 
-@(Html.EJ().Grid<UserLogin>("Grid_UserLogin")
-    .Datasource(datasource => datasource
-        .Adaptor(AdaptorType.UrlAdaptor)
-        .URL(Url.Content("~/UserLogin/DataSource"))
-    )
-    .AllowFiltering()
-    .AllowGrouping()
-    .AllowPaging()
-    .AllowResizing()
-    .AllowScrolling()
-    .AllowSearching()
-    .AllowSorting()
-    .ClientSideEvents(clientEvent => clientEvent
-        .ActionBegin("actionBegin_Grid_UserLogin")
-        .ActionFailure("actionFailure_Grid_UserLogin")
-        .Load("load_Grid_UserLogin")
-        .ToolbarClick("toolbarClick_Grid_UserLogin")
-    )
-    .Columns(column =>
-    {
-        column.Field("LoginProvider")
-            .EditType(EditingType.String)
-            .HeaderText(UserLoginResources.PropertyLoginProvider)
-            .IsPrimaryKey(true)
-            .Visible(true)
-            .Width(240)
-            .Add();
-        column.Field("ProviderKey")
-            .EditType(EditingType.String)
-            .HeaderText(UserLoginResources.PropertyProviderKey)
-            .IsPrimaryKey(true)
-            .Visible(true)
-            .Width(240)
-            .Add();
-        column.Field("UserId")
-            .EditType(EditingType.String)
-            .HeaderText(UserLoginResources.PropertyUserId)
-            .IsPrimaryKey(true)
-            .Visible(true)
-            .Width(240)
-            .Add();
-        column.Field("UserLookupText")
-            .AllowEditing(false)
-            .HeaderText(UserResources.EntitySingular)
-            .Visible(true)
-            .Width(100)
-            .Add();
-    })
-    .EditSettings(edit => edit
-        .AllowAdding()
-        .AllowDeleting()
-        .AllowEditing()
-    )
-    .EnablePersistence()
-    .FilterSettings(filter => filter
-        .EnableCaseSensitivity(false)
-        .FilterType(FilterType.Excel)
-        .MaxFilterChoices(System.Int32.MaxValue)
-    )
-    .Mappers(map => map
-        .ExportToExcelAction(Url.Content("~/UserLogin/ExportToExcel"))
-        .ExportToPdfAction(Url.Content("~/UserLogin/ExportToPdf"))
-        .ExportToWordAction(Url.Content("~/UserLogin/ExportToWord"))
-    )
-    .PageSettings(page => page
-        .PageSize(AppDefaults.SyncfusionRecordsByPage)
-    )
-    .SearchSettings(search =>
-    {
-        search.Fields(field =>
+<div id="Collection_UserLogin">
+    @(Html.EJ().Grid<UserLogin>("Grid_UserLogin")
+        .Datasource(datasource => datasource
+            .Adaptor(AdaptorType.UrlAdaptor)
+            .URL(Url.Content("~/UserLogin/DataSource"))
+        )
+        .AllowFiltering()
+        .AllowGrouping()
+        .AllowPaging()
+        .AllowResizing()
+        .AllowScrolling()
+        .AllowSearching()
+        .AllowSorting()
+        .ClientSideEvents(clientEvent => clientEvent
+            .ActionBegin("actionBegin_Grid_UserLogin")
+            .ActionFailure("actionFailure_Grid_UserLogin")
+            .Load("load_Grid_UserLogin")
+            .ToolbarClick("toolbarClick_Grid_UserLogin")
+        )
+        .Columns(column =>
         {
-            field.Add("LoginProvider");
-            field.Add("ProviderKey");
-            field.Add("UserId");
-            field.Add("UserLookupText");
-        });
-    })
-    .ShowColumnChooser()
-    .ToolbarSettings(toolbar => toolbar
-        .CustomToolbarItems(new List<object>() {
-            new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_UserLogin" }
+            column.Field("LoginProvider")
+                .EditType(EditingType.String)
+                .HeaderText(UserLoginResources.PropertyLoginProvider)
+                .IsPrimaryKey(true)
+                .Visible(true)
+                .Width(240)
+                .Add();
+            column.Field("ProviderKey")
+                .EditType(EditingType.String)
+                .HeaderText(UserLoginResources.PropertyProviderKey)
+                .IsPrimaryKey(true)
+                .Visible(true)
+                .Width(240)
+                .Add();
+            column.Field("UserId")
+                .EditType(EditingType.String)
+                .HeaderText(UserLoginResources.PropertyUserId)
+                .IsPrimaryKey(true)
+                .Visible(true)
+                .Width(240)
+                .Add();
+            column.Field("UserLookupText")
+                .AllowEditing(false)
+                .HeaderText(UserResources.EntitySingular)
+                .Visible(true)
+                .Width(100)
+                .Add();
         })
-        .ShowToolbar()
-        .ToolbarItems(items =>
+        .EditSettings(edit => edit
+            .AllowAdding()
+            .AllowDeleting()
+            .AllowEditing()
+        )
+        .EnablePersistence()
+        .FilterSettings(filter => filter
+            .EnableCaseSensitivity(false)
+            .FilterType(FilterType.Excel)
+            .MaxFilterChoices(System.Int32.MaxValue)
+        )
+        .Mappers(map => map
+            .ExportToExcelAction(Url.Content("~/UserLogin/ExportToExcel"))
+            .ExportToPdfAction(Url.Content("~/UserLogin/ExportToPdf"))
+            .ExportToWordAction(Url.Content("~/UserLogin/ExportToWord"))
+        )
+        .PageSettings(page => page
+            .PageSize(AppDefaults.SyncfusionRecordsByPage)
+        )
+        .SearchSettings(search =>
         {
-            items.AddTool(ToolBarItems.Search);
-            items.AddTool(ToolBarItems.Add);
-            items.AddTool(ToolBarItems.Edit);
-            items.AddTool(ToolBarItems.Delete);
-            items.AddTool(ToolBarItems.ExcelExport);
-            items.AddTool(ToolBarItems.PdfExport);
-            items.AddTool(ToolBarItems.WordExport);
+            search.Fields(field =>
+            {
+                field.Add("LoginProvider");
+                field.Add("ProviderKey");
+                field.Add("UserId");
+                field.Add("UserLookupText");
+            });
         })
+        .ShowColumnChooser()
+        .ToolbarSettings(toolbar => toolbar
+            .CustomToolbarItems(new List<object>() {
+                new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_UserLogin" }
+            })
+            .ShowToolbar()
+            .ToolbarItems(items =>
+            {
+                items.AddTool(ToolBarItems.Search);
+                items.AddTool(ToolBarItems.Add);
+                items.AddTool(ToolBarItems.Edit);
+                items.AddTool(ToolBarItems.Delete);
+                items.AddTool(ToolBarItems.ExcelExport);
+                items.AddTool(ToolBarItems.PdfExport);
+                items.AddTool(ToolBarItems.WordExport);
+            })
+        )
     )
-)
+</div>
 
 @Html.OperationResult(Model.OperationResult)
 
@@ -106,6 +108,13 @@
     $(function () {
         try {
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+
+            if (model.IsSecurityOperations.IsSearch) {
+                $("#Collection_UserLogin").css("display", "block");
+            }
+            else {
+                $("#Collection_UserLogin").css("display", "none");
+            }
 
             var gridUserLogin = $("#Grid_UserLogin");
             var ejGridUserLogin = gridUserLogin.data("ejGrid");

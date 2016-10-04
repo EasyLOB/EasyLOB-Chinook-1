@@ -3,7 +3,7 @@
 /*-----------------------PdfViewer------------------*/
 /*-----------------------End PdfViewer------------------*/
 /*-----------------------OLAP Definition Start-----------------*/
-.e-olapclient .removeSplitBtn {
+.e-pivotclient .removeSplitBtn {
   border-radius: 4px;
 }
 /*-----------------------OLAP Definition End
@@ -24,6 +24,19 @@
 /*----------------------Office 365 theme-----------------------*/
 /*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
 /*----------------------material theme-----------------------*/
+/*--------------- common ----------------- */
+/*---------------high-contrast ------*/
+/*---------------- Office-365 ----------------*/
+/*------------------ material theme ---------------------*/
+/*-----------------------HeatMap Definition-----------------*/
+/* Common style */
+
+.e-content-area {
+  background-color: white;
+  color: #111111;
+  border-color: #cecece;
+  font-family: Segoe UI;
+}
 /*------------------------------pdfviewer Theme Start-------------------------------*/
 
 .e-pdfviewer-outerborder:hover {
@@ -115,7 +128,7 @@
   background-color: white !important;
 }
 .e-pdfviewer-viewerblock {
-  background-color: #d6d6d6;
+  background-color: white;
   font-size: 12.5px;
   color: #333333;
 }
@@ -171,14 +184,22 @@
 .e-pdfviewer-labelpageno {
   font-family: Segoe UI !important;
 }
-.e-pdfviewer-toolbarcontainer.e-toolbar,
 .e-pdfviewer-viewerblock,
-.e-pdfviewer-viewercontainer,
 .e-pdfviewer-elementalignments,
 .e-pdfviewer-viewerblockcellcontent,
 .e-pdfviewer-viewerblockcontent,
 .e-pdfviewer-textbox,
 .e-pdfviewer-documentmappopup {
+  border-color: #cecece;
+}
+.e-pdfviewer-toolbarcontainer.e-toolbar {
+  border-color: #cecece;
+}
+.e-pdfviewer-searchbox {
+  border-color: #cecece;
+}
+.e-pdfviewer-viewercontainer {
+  background-color: #fcfcfc;
   border-color: #cecece;
 }
 .e-pdfviewer-popupli:hover {
@@ -209,14 +230,6 @@
   font-family: Segoe UI !important;
   font-size: 14px !important;
   font-weight: normal !important;
-}
-.e-pdfviewer-gotonext.e-pdfviewer-disabled,
-.e-pdfviewer-gotoprevious.e-pdfviewer-disabled,
-.e-pdfviewer-gotolast.e-pdfviewer-disabled,
-.e-pdfviewer-gotofirst.e-pdfviewer-disabled,
-.e-pdfviewer-disabled-fitWidthButton,
-.e-pdfviewer-disabled-fitPageButton {
-  color: #b2b2b2;
 }
 /*------------------------------pdfviewer Theme End-------------------------------*/
 

@@ -32,7 +32,7 @@ namespace Chinook.Data
 
         #region Collections (PK)
 
-        public virtual IList<PlaylistTrack> PlaylistTracks { get; set; }
+        public virtual IList<PlaylistTrack> PlaylistTracks { get; }
 
         #endregion Collections (PK)
 

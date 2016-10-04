@@ -1,56 +1,55 @@
-@model CustomerDocumentItemModel
+﻿@model CustomerDocumentItemModel
 
 @{
     string customerText = Model.CustomerDocument == null ? "" : (Model.CustomerDocument.CustomerLookupText ?? "");
 }
 
-@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+<div id="Item_CustomerDocument">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
 
-@Html.HiddenFor(model => model.ControllerAction)
-@Html.HiddenFor(model => model.IsMasterDetail)
-@Html.HiddenFor(model => model.MasterCustomerId)
+    @Html.HiddenFor(model => model.ControllerAction)
+    @Html.HiddenFor(model => model.IsMasterDetail)
+    @Html.HiddenFor(model => model.MasterCustomerId)
 
-@{Html.EJ().Tab("Tab_CustomerDocument")
-    .ClientSideEvents(clientEvent => clientEvent
-        .ItemActive("itemActive_Tab_CustomerDocument")
-    )
-    .Items(data =>
-    {
-        data.Add().ID("TabSheet_CustomerDocument_CustomerDocument").Text(CustomerDocumentResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
-            
-            <div id="Group_CustomerDocument_CustomerDocumentId" class="@AppDefaults.CssClassGroup col-md-2">
-                @Html.LabelFor(model => model.CustomerDocument.CustomerDocumentId, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.CustomerDocument.CustomerDocumentId, new { id = "CustomerDocument_CustomerDocumentId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.CustomerDocument.CustomerDocumentId, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
-            
-            <div id="Group_CustomerDocument_CustomerId" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.Label(@CustomerResources.EntitySingular, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.CustomerDocument.CustomerId, new { id = "CustomerDocument_CustomerId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })                    
-                @Html.Action("Lookup", "Customer", new
-                {
-                    Text = customerText,
-                    ValueId = "CustomerDocument_CustomerId"
-                })
-                @Html.ValidationMessageFor(model => model.CustomerDocument.CustomerId, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
-            
-            <div id="Group_CustomerDocument_Description" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.LabelFor(model => model.CustomerDocument.Description, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.CustomerDocument.Description, new { id = "CustomerDocument_Description", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.CustomerDocument.Description, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
-            
-            <div id="Group_CustomerDocument_FileAcronym" class="@AppDefaults.CssClassGroup col-md-2">
-                @Html.LabelFor(model => model.CustomerDocument.FileAcronym, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.CustomerDocument.FileAcronym, new { id = "CustomerDocument_FileAcronym", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.CustomerDocument.FileAcronym, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+    @{Html.EJ().Tab("Tab_CustomerDocument")
+        .Items(data =>
+        {
+            data.Add().ID("TabSheet_CustomerDocument_CustomerDocument").Text(CustomerDocumentResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
+                
+                <div id="Group_CustomerDocument_CustomerDocumentId" class="@AppDefaults.CssClassGroup col-md-2">
+                    @Html.LabelFor(model => model.CustomerDocument.CustomerDocumentId, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.CustomerDocument.CustomerDocumentId, new { id = "CustomerDocument_CustomerDocumentId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.CustomerDocument.CustomerDocumentId, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
+                
+                <div id="Group_CustomerDocument_CustomerId" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.Label(@CustomerResources.EntitySingular, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.CustomerDocument.CustomerId, new { id = "CustomerDocument_CustomerId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })                    
+                    @Html.Action("Lookup", "Customer", new
+                    {
+                        Text = customerText,
+                        ValueId = "CustomerDocument_CustomerId"
+                    })
+                    @Html.ValidationMessageFor(model => model.CustomerDocument.CustomerId, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
+                
+                <div id="Group_CustomerDocument_Description" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.LabelFor(model => model.CustomerDocument.Description, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.CustomerDocument.Description, new { id = "CustomerDocument_Description", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.CustomerDocument.Description, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
+                
+                <div id="Group_CustomerDocument_FileAcronym" class="@AppDefaults.CssClassGroup col-md-2">
+                    @Html.LabelFor(model => model.CustomerDocument.FileAcronym, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.CustomerDocument.FileAcronym, new { id = "CustomerDocument_FileAcronym", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.CustomerDocument.FileAcronym, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-        </div>);
-    })
-    .Render();
-}
+            </div>);
+        })
+        .Render();
+    }
+</div>
 
 <script>
     // Validate hidden fields
@@ -64,10 +63,22 @@
             var customerDocumentDictionary = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(DataHelper.GetDataDictionaryAttribute(typeof(CustomerDocument)))); }();
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
             
+            $(document).prop("title", "@(ViewBag.Title)");
+
             var ajaxUrl = "";
-            ej.widget.init($("#Ajax"));
-            $(document).prop("title", "@(ViewBag.Title)");            
-    
+
+            ej.widget.init($("#Item_CustomerDocument"));
+
+            if ((model.ControllerAction = "create" && model.IsSecurityOperations.IsCreate) ||
+                (model.ControllerAction = "read" && model.IsSecurityOperations.IsRead) ||
+                (model.ControllerAction = "update" && model.IsSecurityOperations.IsUpdate) ||
+                (model.ControllerAction = "delete" && model.IsSecurityOperations.IsDelete)) {
+                $("#Item_CustomerDocument").css("display", "block");
+            }
+            else {
+                $("#Item_CustomerDocument").css("display", "none");
+            }
+
             var readonly = (controllerAction == "delete" || controllerAction == "read");
             $("input.form-control").not(":input[type=button], :input[type=image], :input[type=reset], :input[type=submit]").attr("readonly", readonly);
             if (readonly) {
@@ -93,14 +104,7 @@
             // Collections (PK)
             var display = controllerAction == "create" ? "none" : "block";
         } catch (exception) {
-            alert(zExceptionMessage("_CustomerDocumentItem.cshtml", "function()", exception));
+            alert(zExceptionMessage("_CustomerDocumentItem.cshtml", "function", exception));
         }
     });
-
-    function itemActive_Tab_CustomerDocument(args) { // IE
-        try {
-        } catch (exception) {
-            alert(zExceptionMessage("_CustomerDocumentItem.cshtml", "itemActive_Tab_CustomerDocument(args)", exception));
-        }
-    }    
 </script>

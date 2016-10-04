@@ -1,0 +1,16 @@
+﻿@model EmployeeCollectionModel
+
+<div class="form-inline">
+    @Html.Partial("_EmployeeCollection", Model)
+</div>
+
+<div id="OperationResult"></div>
+
+<script>
+    $(function () {
+        try {
+        } catch (exception) {
+            zExceptionMessage("Employee Search.cshtml", "function", exception.message)
+        }
+    });
+</script>

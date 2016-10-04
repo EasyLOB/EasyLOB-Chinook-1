@@ -77,7 +77,7 @@ namespace EasyLOB.Security.Mvc
                 userClaimCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return PartialView("_UserClaimCollection", userClaimCollectionModel);
+            return PartialView(userClaimCollectionModel);
         }
 
         // GET & POST: UserClaim/Lookup

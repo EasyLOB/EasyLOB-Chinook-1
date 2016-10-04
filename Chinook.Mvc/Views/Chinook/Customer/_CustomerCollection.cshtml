@@ -1,174 +1,176 @@
-@model CustomerCollectionModel
+﻿@model CustomerCollectionModel
 
-@(Html.EJ().Grid<Customer>("Grid_Customer")
-    .Datasource(datasource => datasource
-        .Adaptor(AdaptorType.UrlAdaptor)
-        .URL(Url.Content("~/Customer/DataSource"))
-    )
-    .AllowFiltering()
-    .AllowGrouping()
-    .AllowPaging()
-    .AllowResizing()
-    .AllowScrolling()
-    .AllowSearching()
-    .AllowSorting()
-    .ClientSideEvents(clientEvent => clientEvent
-        .ActionBegin("actionBegin_Grid_Customer")
-        .ActionFailure("actionFailure_Grid_Customer")
-        .Load("load_Grid_Customer")
-        .ToolbarClick("toolbarClick_Grid_Customer")
-    )
-    .Columns(column =>
-    {
-        column.Field("CustomerId")
-            .AllowEditing(false)
-            .EditType(EditingType.Numeric)
-            .Format(SyncfusionPatternResources.GridFormat_Integer)
-            .HeaderText(CustomerResources.PropertyCustomerId)
-            .IsIdentity(true)
-            .IsPrimaryKey(true)
-            .TextAlign(TextAlign.Right)
-            .Visible(false)
-            .Width(100)
-            .Add();
-        column.Field("FirstName")
-            .EditType(EditingType.String)
-            .HeaderText(CustomerResources.PropertyFirstName)
-            .Visible(true)
-            .Width(240)
-            .Add();
-        column.Field("LastName")
-            .EditType(EditingType.String)
-            .HeaderText(CustomerResources.PropertyLastName)
-            .Visible(true)
-            .Width(200)
-            .Add();
-        column.Field("Company")
-            .EditType(EditingType.String)
-            .HeaderText(CustomerResources.PropertyCompany)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("Address")
-            .EditType(EditingType.String)
-            .HeaderText(CustomerResources.PropertyAddress)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("City")
-            .EditType(EditingType.String)
-            .HeaderText(CustomerResources.PropertyCity)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("State")
-            .EditType(EditingType.String)
-            .HeaderText(CustomerResources.PropertyState)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("Country")
-            .EditType(EditingType.String)
-            .HeaderText(CustomerResources.PropertyCountry)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("PostalCode")
-            .EditType(EditingType.String)
-            .HeaderText(CustomerResources.PropertyPostalCode)
-            .Visible(false)
-            .Width(100)
-            .Add();
-        column.Field("Phone")
-            .EditType(EditingType.String)
-            .HeaderText(CustomerResources.PropertyPhone)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("Fax")
-            .EditType(EditingType.String)
-            .HeaderText(CustomerResources.PropertyFax)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("Email")
-            .EditType(EditingType.String)
-            .HeaderText(CustomerResources.PropertyEmail)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("SupportRepId")
-            .EditType(EditingType.Numeric)
-            .Format(SyncfusionPatternResources.GridFormat_Integer)
-            .HeaderText(CustomerResources.PropertySupportRepId)
-            .TextAlign(TextAlign.Right)
-            .Visible(false)
-            .Width(100)
-            .Add();
-        column.Field("EmployeeLookupText")
-            .AllowEditing(false)
-            .HeaderText(EmployeeResources.EntitySingular)
-            .Visible(true)
-            .Width(100)
-            .Add();
-    })
-    .EditSettings(edit => edit
-        .AllowAdding()
-        .AllowDeleting()
-        .AllowEditing()
-    )
-    .EnablePersistence()
-    .FilterSettings(filter => filter
-        .EnableCaseSensitivity(false)
-        .FilterType(FilterType.Excel)
-        .MaxFilterChoices(System.Int32.MaxValue)
-    )
-    .Mappers(map => map
-        .ExportToExcelAction(Url.Content("~/Customer/ExportToExcel"))
-        .ExportToPdfAction(Url.Content("~/Customer/ExportToPdf"))
-        .ExportToWordAction(Url.Content("~/Customer/ExportToWord"))
-    )
-    .PageSettings(page => page
-        .PageSize(AppDefaults.SyncfusionRecordsByPage)
-    )
-    .SearchSettings(search =>
-    {
-        search.Fields(field =>
+<div id="Collection_Customer">
+    @(Html.EJ().Grid<Customer>("Grid_Customer")
+        .Datasource(datasource => datasource
+            .Adaptor(AdaptorType.UrlAdaptor)
+            .URL(Url.Content("~/Customer/DataSource"))
+        )
+        .AllowFiltering()
+        .AllowGrouping()
+        .AllowPaging()
+        .AllowResizing()
+        .AllowScrolling()
+        .AllowSearching()
+        .AllowSorting()
+        .ClientSideEvents(clientEvent => clientEvent
+            .ActionBegin("actionBegin_Grid_Customer")
+            .ActionFailure("actionFailure_Grid_Customer")
+            .Load("load_Grid_Customer")
+            .ToolbarClick("toolbarClick_Grid_Customer")
+        )
+        .Columns(column =>
         {
-            //field.Add("CustomerId");
-            field.Add("FirstName");
-            field.Add("LastName");
-            //field.Add("Company");
-            //field.Add("Address");
-            //field.Add("City");
-            //field.Add("State");
-            //field.Add("Country");
-            //field.Add("PostalCode");
-            //field.Add("Phone");
-            //field.Add("Fax");
-            //field.Add("Email");
-            //field.Add("SupportRepId");
-            field.Add("EmployeeLookupText");
-        });
-    })
-    .ShowColumnChooser()
-    .ToolbarSettings(toolbar => toolbar
-        .CustomToolbarItems(new List<object>() {
-            new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_Customer" }
+            column.Field("CustomerId")
+                .AllowEditing(false)
+                .EditType(EditingType.Numeric)
+                .Format(SyncfusionPatternResources.GridFormat_Integer)
+                .HeaderText(CustomerResources.PropertyCustomerId)
+                .IsIdentity(true)
+                .IsPrimaryKey(true)
+                .TextAlign(TextAlign.Right)
+                .Visible(false)
+                .Width(100)
+                .Add();
+            column.Field("FirstName")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyFirstName)
+                .Visible(true)
+                .Width(240)
+                .Add();
+            column.Field("LastName")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyLastName)
+                .Visible(true)
+                .Width(200)
+                .Add();
+            column.Field("Company")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyCompany)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("Address")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyAddress)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("City")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyCity)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("State")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyState)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("Country")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyCountry)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("PostalCode")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyPostalCode)
+                .Visible(false)
+                .Width(100)
+                .Add();
+            column.Field("Phone")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyPhone)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("Fax")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyFax)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("Email")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyEmail)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("SupportRepId")
+                .EditType(EditingType.Numeric)
+                .Format(SyncfusionPatternResources.GridFormat_Integer)
+                .HeaderText(CustomerResources.PropertySupportRepId)
+                .TextAlign(TextAlign.Right)
+                .Visible(false)
+                .Width(100)
+                .Add();
+            column.Field("EmployeeLookupText")
+                .AllowEditing(false)
+                .HeaderText(EmployeeResources.EntitySingular)
+                .Visible(true)
+                .Width(100)
+                .Add();
         })
-        .ShowToolbar()
-        .ToolbarItems(items =>
+        .EditSettings(edit => edit
+            .AllowAdding()
+            .AllowDeleting()
+            .AllowEditing()
+        )
+        .EnablePersistence()
+        .FilterSettings(filter => filter
+            .EnableCaseSensitivity(false)
+            .FilterType(FilterType.Excel)
+            .MaxFilterChoices(System.Int32.MaxValue)
+        )
+        .Mappers(map => map
+            .ExportToExcelAction(Url.Content("~/Customer/ExportToExcel"))
+            .ExportToPdfAction(Url.Content("~/Customer/ExportToPdf"))
+            .ExportToWordAction(Url.Content("~/Customer/ExportToWord"))
+        )
+        .PageSettings(page => page
+            .PageSize(AppDefaults.SyncfusionRecordsByPage)
+        )
+        .SearchSettings(search =>
         {
-            items.AddTool(ToolBarItems.Search);
-            items.AddTool(ToolBarItems.Add);
-            items.AddTool(ToolBarItems.Edit);
-            items.AddTool(ToolBarItems.Delete);
-            items.AddTool(ToolBarItems.ExcelExport);
-            items.AddTool(ToolBarItems.PdfExport);
-            items.AddTool(ToolBarItems.WordExport);
+            search.Fields(field =>
+            {
+                //field.Add("CustomerId");
+                field.Add("FirstName");
+                field.Add("LastName");
+                //field.Add("Company");
+                //field.Add("Address");
+                //field.Add("City");
+                //field.Add("State");
+                //field.Add("Country");
+                //field.Add("PostalCode");
+                //field.Add("Phone");
+                //field.Add("Fax");
+                //field.Add("Email");
+                //field.Add("SupportRepId");
+                field.Add("EmployeeLookupText");
+            });
         })
+        .ShowColumnChooser()
+        .ToolbarSettings(toolbar => toolbar
+            .CustomToolbarItems(new List<object>() {
+                new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_Customer" }
+            })
+            .ShowToolbar()
+            .ToolbarItems(items =>
+            {
+                items.AddTool(ToolBarItems.Search);
+                items.AddTool(ToolBarItems.Add);
+                items.AddTool(ToolBarItems.Edit);
+                items.AddTool(ToolBarItems.Delete);
+                items.AddTool(ToolBarItems.ExcelExport);
+                items.AddTool(ToolBarItems.PdfExport);
+                items.AddTool(ToolBarItems.WordExport);
+            })
+        )
     )
-)
+</div>
 
 @Html.OperationResult(Model.OperationResult)
 
@@ -180,6 +182,13 @@
     $(function () {
         try {
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+
+            if (model.IsSecurityOperations.IsSearch) {
+                $("#Collection_Customer").css("display", "block");
+            }
+            else {
+                $("#Collection_Customer").css("display", "none");
+            }
 
             var gridCustomer = $("#Grid_Customer");
             var ejGridCustomer = gridCustomer.data("ejGrid");

@@ -1,4 +1,4 @@
-@model LookupModel
+﻿@model LookupModel
 
 <div class="input-group">
     <span class="input-group-addon"><img id="@(Model.ValueId + "_Button")" class="z-buttonLookup" /></span>
@@ -155,32 +155,32 @@
     $(function () {
         try {
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
-
+    
             $("#@Model.ValueId").hide();
-
+    
             $("#@(Model.ValueId)_Button").click(function () {
                 $("#Modal_Track_Lookup").modal("show");
             });
-
+    
             $("#@(Model.ValueId)_Lookup").attr("readonly", true);
             $("#@(Model.ValueId)_Lookup").val(model.Text.toLocaleString("@CultureInfo.CurrentCulture.Name"));
-
+    
             $("#Modal_Track_Lookup").modal("hide");
         } catch (exception) {
             alert(zExceptionMessage("_TrackLookup.cshtml", "function ()", exception));
         }
     });
-
+    
     function actionFailure_Grid_Track_Lookup(args) {
         try {
             alert(zErrorMessage(args.error.responseText));
         } catch (exception) {
             alert(zExceptionMessage("_TrackLookup.cshtml", "actionFailure_Grid_Track_Lookup(args)", exception));
         }
-    }
+    }    
 
     function load_Grid_Track_Lookup(args) {
-        try {
+        try {            
             var culture = "@System.Globalization.CultureInfo.CurrentCulture.Name";
             this.model.locale = culture;
         } catch (exception) {
@@ -191,15 +191,15 @@
     function rowSelected_Grid_Track_Lookup(args) {
         try {
             var data = this.model.currentViewData[args.rowIndex];
-
+    
             $("#@(Model.ValueId)").val(data.TrackId);
-
+    
             $("#@(Model.ValueId)_Lookup").val(data.LookupText);
 
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
             var culture = "@System.Globalization.CultureInfo.CurrentCulture.Name";
             zLookupElements(data, model.Elements, culture);
-
+    
             $("#Modal_Track_Lookup").modal("hide");
         } catch (exception) {
             alert(zExceptionMessage("_TrackLookup.cshtml", "rowSelected_Grid_Track_Lookup(args)", exception));

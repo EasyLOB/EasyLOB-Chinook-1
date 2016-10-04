@@ -77,7 +77,7 @@ namespace Chinook.Mvc
                 invoiceCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return PartialView("_InvoiceCollection", invoiceCollectionModel);
+            return PartialView(invoiceCollectionModel);
         }
 
         // GET & POST: Invoice/Lookup

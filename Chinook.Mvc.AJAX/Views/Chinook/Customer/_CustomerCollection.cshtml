@@ -1,181 +1,191 @@
-@model CustomerCollectionModel
+﻿@model CustomerCollectionModel
 
 @{
     ViewBag.Title = CustomerResources.EntityPlural;
+    
+    string query = "";
+    if (Model.MasterSupportRepId != null)
+    {
+        query = String.Format("ej.Query().where(\"SupportRepId\", ej.FilterOperators.equal, {0})", Model.MasterSupportRepId);
+    }
 }
 
-<div id="Customer_Title">
+<div id="Collection_Customer_Title">
     <h3>@ViewBag.Title</h3>
 </div>
 
-@(Html.EJ().Grid<Customer>("Grid_Customer")
-    .Datasource(datasource => datasource
-        .Adaptor(AdaptorType.UrlAdaptor)
-        .URL(Url.Content("~/Customer/DataSource"))
-    )
-    .AllowFiltering()
-    .AllowGrouping()
-    .AllowPaging()
-    .AllowResizing()
-    .AllowScrolling()
-    .AllowSearching()
-    .AllowSorting()
-    .ClientSideEvents(clientEvent => clientEvent
-        .ActionBegin("actionBegin_Grid_Customer")
-        .ActionFailure("actionFailure_Grid_Customer")
-        .Load("load_Grid_Customer")
-    )
-    .Columns(column =>
-    {
-        column.Field("CustomerId")
-            .AllowEditing(false)
-            .EditType(EditingType.Numeric)
-            .Format(SyncfusionPatternResources.GridFormat_Integer)
-            .HeaderText(CustomerResources.PropertyCustomerId)
-            .IsIdentity(true)
-            .IsPrimaryKey(true)
-            .TextAlign(TextAlign.Right)
-            .Visible(false)
-            .Width(100)
-            .Add();
-        column.Field("FirstName")
-            .EditType(EditingType.String)
-            .HeaderText(CustomerResources.PropertyFirstName)
-            .Visible(true)
-            .Width(240)
-            .Add();
-        column.Field("LastName")
-            .EditType(EditingType.String)
-            .HeaderText(CustomerResources.PropertyLastName)
-            .Visible(true)
-            .Width(200)
-            .Add();
-        column.Field("Company")
-            .EditType(EditingType.String)
-            .HeaderText(CustomerResources.PropertyCompany)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("Address")
-            .EditType(EditingType.String)
-            .HeaderText(CustomerResources.PropertyAddress)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("City")
-            .EditType(EditingType.String)
-            .HeaderText(CustomerResources.PropertyCity)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("State")
-            .EditType(EditingType.String)
-            .HeaderText(CustomerResources.PropertyState)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("Country")
-            .EditType(EditingType.String)
-            .HeaderText(CustomerResources.PropertyCountry)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("PostalCode")
-            .EditType(EditingType.String)
-            .HeaderText(CustomerResources.PropertyPostalCode)
-            .Visible(false)
-            .Width(100)
-            .Add();
-        column.Field("Phone")
-            .EditType(EditingType.String)
-            .HeaderText(CustomerResources.PropertyPhone)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("Fax")
-            .EditType(EditingType.String)
-            .HeaderText(CustomerResources.PropertyFax)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("Email")
-            .EditType(EditingType.String)
-            .HeaderText(CustomerResources.PropertyEmail)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("SupportRepId")
-            .EditType(EditingType.Numeric)
-            .Format(SyncfusionPatternResources.GridFormat_Integer)
-            .HeaderText(CustomerResources.PropertySupportRepId)
-            .TextAlign(TextAlign.Right)
-            .Visible(false)
-            .Width(100)
-            .Add();
-        column.Field("EmployeeLookupText")
-            .AllowEditing(false)
-            .HeaderText(EmployeeResources.EntitySingular)
-            .Visible(true)
-            .Width(100)
-            .Add();
-    })
-    .EditSettings(edit => edit
-        .AllowAdding()
-        .AllowDeleting()
-        .AllowEditing()
-    )
-    .EnablePersistence()
-    .FilterSettings(filter => filter
-        .EnableCaseSensitivity(false)
-        .FilterType(FilterType.Excel)
-        .MaxFilterChoices(System.Int32.MaxValue)
-    )
-    .Mappers(map => map
-        .ExportToExcelAction(Url.Content("~/Customer/ExportToExcel"))
-        .ExportToPdfAction(Url.Content("~/Customer/ExportToPdf"))
-        .ExportToWordAction(Url.Content("~/Customer/ExportToWord"))
-    )
-    .PageSettings(page => page
-        .PageSize(AppDefaults.SyncfusionRecordsByPage)
-    )
-    .SearchSettings(search =>
-    {
-        search.Fields(field =>
+<div id="Collection_Customer">
+    @(Html.EJ().Grid<Customer>("Grid_Customer")
+        .Datasource(datasource => datasource
+            .Adaptor(AdaptorType.UrlAdaptor)
+            .URL(Url.Content("~/Customer/DataSource"))
+        )
+        .Query(query)
+        .AllowFiltering()
+        .AllowGrouping()
+        .AllowPaging()
+        .AllowResizing()
+        .AllowScrolling()
+        .AllowSearching()
+        .AllowSorting()
+        .ClientSideEvents(clientEvent => clientEvent
+            .ActionBegin("actionBegin_Grid_Customer")
+            .ActionFailure("actionFailure_Grid_Customer")
+            .Load("load_Grid_Customer")
+            .ToolbarClick("toolbarClick_Grid_Customer")
+        )
+        .Columns(column =>
         {
-            //field.Add("CustomerId");
-            field.Add("FirstName");
-            field.Add("LastName");
-            //field.Add("Company");
-            //field.Add("Address");
-            //field.Add("City");
-            //field.Add("State");
-            //field.Add("Country");
-            //field.Add("PostalCode");
-            //field.Add("Phone");
-            //field.Add("Fax");
-            //field.Add("Email");
-            //field.Add("SupportRepId");
-            field.Add("EmployeeLookupText");
-        });
-    })
-    .ShowColumnChooser()
-    .ToolbarSettings(toolbar => toolbar
-        .CustomToolbarItems(new List<object>() {
-            new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_Customer" }
+            column.Field("CustomerId")
+                .AllowEditing(false)
+                .EditType(EditingType.Numeric)
+                .Format(SyncfusionPatternResources.GridFormat_Integer)
+                .HeaderText(CustomerResources.PropertyCustomerId)
+                .IsIdentity(true)
+                .IsPrimaryKey(true)
+                .TextAlign(TextAlign.Right)
+                .Visible(false)
+                .Width(100)
+                .Add();
+            column.Field("FirstName")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyFirstName)
+                .Visible(true)
+                .Width(240)
+                .Add();
+            column.Field("LastName")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyLastName)
+                .Visible(true)
+                .Width(200)
+                .Add();
+            column.Field("Company")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyCompany)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("Address")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyAddress)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("City")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyCity)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("State")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyState)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("Country")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyCountry)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("PostalCode")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyPostalCode)
+                .Visible(false)
+                .Width(100)
+                .Add();
+            column.Field("Phone")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyPhone)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("Fax")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyFax)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("Email")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyEmail)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("SupportRepId")
+                .EditType(EditingType.Numeric)
+                .Format(SyncfusionPatternResources.GridFormat_Integer)
+                .HeaderText(CustomerResources.PropertySupportRepId)
+                .TextAlign(TextAlign.Right)
+                .Visible(false)
+                .Width(100)
+                .Add();
+            column.Field("EmployeeLookupText")
+                .AllowEditing(false)
+                .HeaderText(EmployeeResources.EntitySingular)
+                .Visible(true)
+                .Width(100)
+                .Add();
         })
-        .ShowToolbar()
-        .ToolbarItems(items =>
+        .EditSettings(edit => edit
+            .AllowAdding()
+            .AllowDeleting()
+            .AllowEditing()
+        )
+        //.EnablePersistence()
+        .FilterSettings(filter => filter
+            .EnableCaseSensitivity(false)
+            .FilterType(FilterType.Excel)
+            .MaxFilterChoices(System.Int32.MaxValue)
+        )
+        .Mappers(map => map
+            .ExportToExcelAction(Url.Content("~/Customer/ExportToExcel"))
+            .ExportToPdfAction(Url.Content("~/Customer/ExportToPdf"))
+            .ExportToWordAction(Url.Content("~/Customer/ExportToWord"))
+        )
+        .PageSettings(page => page
+            .PageSize(AppDefaults.SyncfusionRecordsByPage)
+        )
+        .SearchSettings(search =>
         {
-            items.AddTool(ToolBarItems.Search);
-            items.AddTool(ToolBarItems.Add);
-            items.AddTool(ToolBarItems.Edit);
-            items.AddTool(ToolBarItems.Delete);
-            items.AddTool(ToolBarItems.ExcelExport);
-            items.AddTool(ToolBarItems.PdfExport);
-            items.AddTool(ToolBarItems.WordExport);
+            search.Fields(field =>
+            {
+                //field.Add("CustomerId");
+                field.Add("FirstName");
+                field.Add("LastName");
+                //field.Add("Company");
+                //field.Add("Address");
+                //field.Add("City");
+                //field.Add("State");
+                //field.Add("Country");
+                //field.Add("PostalCode");
+                //field.Add("Phone");
+                //field.Add("Fax");
+                //field.Add("Email");
+                //field.Add("SupportRepId");
+                field.Add("EmployeeLookupText");
+            });
         })
+        .ShowColumnChooser()
+        .ToolbarSettings(toolbar => toolbar
+            .CustomToolbarItems(new List<object>() {
+                new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_Customer" }
+            })
+            .ShowToolbar()
+            .ToolbarItems(items =>
+            {
+                items.AddTool(ToolBarItems.Search);
+                items.AddTool(ToolBarItems.Add);
+                items.AddTool(ToolBarItems.Edit);
+                items.AddTool(ToolBarItems.Delete);
+                items.AddTool(ToolBarItems.ExcelExport);
+                items.AddTool(ToolBarItems.PdfExport);
+                items.AddTool(ToolBarItems.WordExport);
+            })
+        )
     )
-)
+</div>
 
 @Html.OperationResult(Model.OperationResult)
 
@@ -188,15 +198,19 @@
         try {
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
     
-            ej.widget.init($("#Ajax"));
-            var title = $("#Customer_Title");       
+            var title = $("#Collection_Customer_Title");
+            
+            ej.widget.init($("#Collection_Customer"));
+
+            if (model.IsSecurityOperations.IsSearch) {
+                $("#Collection_Customer").css("display", "block");
+            }
+            else {
+                $("#Collection_Customer").css("display", "none");
+            }
 
             var gridCustomer = $("#Grid_Customer");
             var ejGridCustomer = gridCustomer.data("ejGrid");
-    
-            if (ejGridCustomer.model.filterSettings.filteredColumns.length != 0) {
-                ejGridCustomer.clearFiltering();
-            }
                 
             if (!model.IsMasterDetail) {
                 title.css("display", "block");
@@ -205,7 +219,6 @@
                 ejGridCustomer.setModel({
                     allowGrouping: true,
                     toolbarSettings: {
-                        showToolbar: true,
                         toolbarItems: [
                             ej.Grid.ToolBarItems.Search,
                             ej.Grid.ToolBarItems.Add,
@@ -223,7 +236,6 @@
                 ejGridCustomer.setModel({
                     allowGrouping: false,
                     toolbarSettings: {
-                        showToolbar: true,
                         toolbarItems: [
                             ej.Grid.ToolBarItems.Add,
                             ej.Grid.ToolBarItems.Edit,
@@ -231,13 +243,9 @@
                         ]                    
                     }
                 });
-
-                if (model.MasterSupportRepId != null) {
-                    ejGridCustomer.filterColumn("SupportRepId", ej.FilterOperators.equal, model.MasterSupportRepId, ej.Predicate.and);
-                }
             }
         } catch (exception) {
-            alert(zExceptionMessage("_CustomerCollection.cshtml", "function()", exception));
+            alert(zExceptionMessage("_CustomerCollection.cshtml", "function", exception));
         }                
     });
     
@@ -245,17 +253,6 @@
         try {
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
             var masterControllerAction = model.MasterControllerAction == null ? "" : model.MasterControllerAction.toLowerCase();
-
-            //var gridCustomer = $("#Grid_Customer");
-            //var ejGridCustomer = gridCustomer.data("ejGrid");
-
-            //ejGridCustomer.setModel({
-            //    editSettings: {
-            //        allowAdding: model.IsSecurityOperations.IsCreate,
-            //        allowDeleting: model.IsSecurityOperations.IsDelete,
-            //        allowEditing: model.IsSecurityOperations.IsUpdate
-            //    }
-            //});
     
             // Associations (FK)
             var url = "";
@@ -265,34 +262,52 @@
             }
 
             if (masterControllerAction == "" || masterControllerAction == "update") {
-                switch(args.requestType) {     
+                switch(args.requestType) {
                     case "add":
-                        args.cancel = true;
-                        $("#Ajax").load("@(Url.Action("Create", "Customer", null, Request.Url.Scheme))" + (url == "" ? "" : "?") + url);
+                        // Create
+                        if (model.IsSecurityOperations.IsCreate) {
+                            $("#Ajax").load("@(Url.Action("Create", "Customer", null, Request.Url.Scheme))" +
+                                (url == "" ? "" : "?") + url);
+                        }
                         break;
+                    case "read":
+                        // Read
+                        if (model.IsSecurityOperations.IsRead) {
+                            var data = args.data;
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#Ajax").load("@(Url.Action("Read", "Customer", null, Request.Url.Scheme))?CustomerId=" + String(data.CustomerId) +
+                                    (url == "" ? "" : "&") + url);
+                            }
+                        }
+                        break;                        
                     case "beginedit":
-                        var data = this.model.currentViewData[args.rowIndex];
-                        if (!ej.isNullOrUndefined(data)) {
-                            args.cancel = true;
-                            $("#Ajax").load("@(Url.Action("Update", "Customer", null, Request.Url.Scheme))?CustomerId=" + String(data.CustomerId) + (url == "" ? "" : "&") + url);
+                        // Update
+                        if (model.IsSecurityOperations.IsUpdate) {
+                            var data = this.model.currentViewData[args.rowIndex];
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#Ajax").load("@(Url.Action("Update", "Customer", null, Request.Url.Scheme))?CustomerId=" + String(data.CustomerId) +
+                                    (url == "" ? "" : "&") + url);
+                            }
                         }
                         break;
                     case "delete":
-                        var data = args.data;
-                        if (!ej.isNullOrUndefined(data)) {
-                            args.cancel = true;
-                            $("#Ajax").load("@(Url.Action("Delete", "Customer", null, Request.Url.Scheme))?CustomerId=" + String(data.CustomerId) + (url == "" ? "" : "&") + url);
+                        // Delete
+                        if (model.IsSecurityOperations.IsDelete) {
+                            var data = args.data;
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#Ajax").load("@(Url.Action("Delete", "Customer", null, Request.Url.Scheme))?CustomerId=" + String(data.CustomerId) +
+                                    (url == "" ? "" : "&") + url);
+                            }
                         }
                         break;
                 }
             }
-            else {
-                if (args.requestType == "add" || args.requestType == "beginedit" || args.requestType == "delete") {
-                    args.cancel = true;
-                }
+
+            if (args.requestType == "add" || args.requestType == "beginedit" || args.requestType == "delete") {
+                args.cancel = true;
             }
         } catch (exception) {
-            alert(zExceptionMessage("_CustomerCollection.cshtml", "actionBegin_Grid_Customer(args)", exception));
+            alert(zExceptionMessage("_CustomerCollection.cshtml", "actionBegin_Grid_Customer", exception));
         }            
     }
     
@@ -300,7 +315,7 @@
         try {
             alert(zErrorMessage(args.error.responseText));
         } catch (exception) {
-            alert(zExceptionMessage("_CustomerCollection.cshtml", "actionFailure_Grid_Customer(args)", exception));
+            alert(zExceptionMessage("_CustomerCollection.cshtml", "actionFailure_Grid_Customer", exception));
         }
     }    
 
@@ -309,7 +324,25 @@
             var culture = "@System.Globalization.CultureInfo.CurrentCulture.Name";
             this.model.locale = culture;
         } catch (exception) {
-            alert(zExceptionMessage("_CustomerCollection.cshtml", "load_Grid_Customer(args)", exception));
+            alert(zExceptionMessage("_CustomerCollection.cshtml", "load_Grid_Customer", exception));
+        }
+    }
+
+    function toolbarClick_Grid_Customer(sender) {
+        try {
+            var toolbar = $(sender.target);
+            var gridCustomer = $("#Grid_Customer");
+            var ejGridCustomer = gridCustomer.data("ejGrid");
+
+            if (toolbar.attr("id") == "Toolbar_Grid_Customer_Read") {
+                var records = ejGridCustomer.getSelectedRecords();
+                if (records.length == 1) {
+                    var args = { requestType: "read", data: records[0] };
+                    actionBegin_Grid_Customer(args)
+                }
+            }
+        } catch (exception) {
+            alert(zExceptionMessage("_CustomerCollection.cshtml", "toolbarClick_Grid_Customer", exception));
         }
     }
 </script>

@@ -16,16 +16,12 @@ namespace Chinook.Data
 
         #endregion Properties
 
-        #region Properties ZDTOBase
-
-        public override string LookupText { get; set; }
-
-        #endregion Properties ZDTOBase
-
         #region Methods
         
         public ArtistDTO()
         {
+            ArtistId = LibraryDefaults.Default_Int32;
+            Name = null;
         }
         
         public ArtistDTO(

@@ -3,7 +3,7 @@
 /*-----------------------PdfViewer------------------*/
 /*-----------------------End PdfViewer------------------*/
 /*-----------------------OLAP Definition Start-----------------*/
-.e-olapclient .removeSplitBtn {
+.e-pivotclient .removeSplitBtn {
   border-radius: 4px;
 }
 /*-----------------------OLAP Definition End
@@ -24,6 +24,19 @@
 /*----------------------Office 365 theme-----------------------*/
 /*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
 /*----------------------material theme-----------------------*/
+/*--------------- common ----------------- */
+/*---------------high-contrast ------*/
+/*---------------- Office-365 ----------------*/
+/*------------------ material theme ---------------------*/
+/*-----------------------HeatMap Definition-----------------*/
+/* Common style */
+
+.e-content-area {
+  background-color: white;
+  color: #111111;
+  border-color: #cecece;
+  font-family: Segoe UI;
+}
 .e-ribbon.e-js .e-header .e-bottom-line.e-select.e-item,
 .e-ribbon.e-js .e-header .e-top-line.e-select.e-item {
   background: transparent;
@@ -138,8 +151,16 @@ ej-ribbon {
 .e-ribbon.e-tab.e-js .e-header .e-select.e-disable a:hover {
   color: #282827;
 }
+.e-ribbon .e-apptab .e-menu .e-active > a,
+.e-ribbon .e-apptab .e-menu .e-active span {
+  color: #282827 !important;
+}
 .e-ribbon.e-js .e-header li.e-select:not(.e-apptab) a:hover {
   color: #3277b2;
+}
+.e-ribbon.e-js .e-header .e-active.e-tab a:hover,
+.e-ribbon.e-js .e-header .e-active.e-contextualtabset a:hover {
+  color: none;
 }
 .e-ribbon .e-apptab .e-menu ul > li > a {
   color: #282827 !important;
@@ -240,21 +261,21 @@ ej-ribbon {
 .e-ribbon .e-btn.e-select:active,
 .e-ribbon .e-btn.e-disable.e-active.e-select:hover,
 .e-ribbon .e-tbtn.e-active {
-  background: #9ac1e3;
+  background: #3277b2;
   /* Old browsers */
-  background: -moz-linear-gradient(top, #9ac1e3, #296293);
+  background: -moz-linear-gradient(top, #3277b2, #296293);
   /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #9ac1e3), color-stop(100%, #7baeda));
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3277b2), color-stop(100%, #296293));
   /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #9ac1e3, #296293);
+  background: -webkit-linear-gradient(top, #3277b2, #296293);
   /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, #9ac1e3, #296293);
+  background: -o-linear-gradient(top, #3277b2, #296293);
   /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, #9ac1e3, #296293);
+  background: -ms-linear-gradient(top, #3277b2, #296293);
   /* IE10+ */
-  background: linear-gradient(to bottom, #9ac1e3, #296293);
+  background: linear-gradient(to bottom, #3277b2, #296293);
   /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#9ac1e3', endColorstr='#7baeda', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3277b2', endColorstr='#296293', GradientType=0);
   /* IE6-9 */
 
 }
@@ -627,26 +648,31 @@ ej-ribbon {
 .e-ribbon.e-js .e-tbtn.e-active,
 .e-ribbon.e-js .e-btn.e-resizebtnselect,
 .e-ribbon.e-rbnwithqat.e-js .e-tbtn.e-active {
-  background: #9ac1e3;
+  background: #3277b2;
   /* Old browsers */
-  background: -moz-linear-gradient(top, #9ac1e3, #296293);
+  background: -moz-linear-gradient(top, #3277b2, #296293);
   /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #9ac1e3), color-stop(100%, #7baeda));
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3277b2), color-stop(100%, #296293));
   /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #9ac1e3, #296293);
+  background: -webkit-linear-gradient(top, #3277b2, #296293);
   /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, #9ac1e3, #296293);
+  background: -o-linear-gradient(top, #3277b2, #296293);
   /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, #9ac1e3, #296293);
+  background: -ms-linear-gradient(top, #3277b2, #296293);
   /* IE10+ */
-  background: linear-gradient(to bottom, #9ac1e3, #296293);
+  background: linear-gradient(to bottom, #3277b2, #296293);
   /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#9ac1e3', endColorstr='#7baeda', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3277b2', endColorstr='#296293', GradientType=0);
   /* IE6-9 */
 
 }
+.e-ribbon.e-js .e-btn,
+.e-ribbon.e-js .e-split {
+  box-shadow: none;
+}
 .e-ribbon.e-responsive .e-header,
 .e-ribbon.e-responsive .e-responsiveqat .e-btn,
+.e-ribbon.e-responsive .e-resqatScroll .e-content,
 .e-ribbon.e-responsive .e-backstagerestop {
   background: #296293 !important;
 }

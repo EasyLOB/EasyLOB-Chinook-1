@@ -3,7 +3,7 @@
 /*-----------------------PdfViewer------------------*/
 /*-----------------------End PdfViewer------------------*/
 /*-----------------------OLAP Definition Start-----------------*/
-.e-olapclient .removeSplitBtn {
+.e-pivotclient .removeSplitBtn {
   border-radius: 4px;
 }
 /*-----------------------OLAP Definition End
@@ -24,6 +24,19 @@
 /*----------------------Office 365 theme-----------------------*/
 /*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
 /*----------------------material theme-----------------------*/
+/*--------------- common ----------------- */
+/*---------------high-contrast ------*/
+/*---------------- Office-365 ----------------*/
+/*------------------ material theme ---------------------*/
+/*-----------------------HeatMap Definition-----------------*/
+/* Common style */
+
+.e-content-area {
+  background-color: white;
+  color: #111111;
+  border-color: #cecece;
+  font-family: Segoe UI;
+}
 .e-ganttchart .e-ganttviewerbodyContianer {
   background-color: white;
 }
@@ -71,10 +84,10 @@
   font-family: Segoe UI;
 }
 .e-ganttchart .connectorline-rightarrow {
-  border-left-color: #333333 !important;
+  border-left-color: #333333;
 }
 .e-ganttchart .connectorline-leftarrow {
-  border-right-color: #333333 !important;
+  border-right-color: #333333;
 }
 .e-progressbartooltip,
 .e-editingtooltip,
@@ -96,10 +109,9 @@
 }
 .e-ganttchart .e-tasklabel {
   font-family: Segoe UI;
+  color: white;
 }
 .e-ganttchart .e-gantt-mouseclick {
-  background: rgba(50, 119, 178, 0.2);
-  /* Old browsers */
   background: -moz-linear-gradient(top, rgba(50, 119, 178, 0.2), rgba(41, 98, 147, 0.2));
   /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(50, 119, 178, 0.2)), color-stop(100%, rgba(41, 98, 147, 0.2)));
@@ -112,9 +124,9 @@
   /* IE10+ */
   background: linear-gradient(to bottom, rgba(50, 119, 178, 0.2), rgba(41, 98, 147, 0.2));
   /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='rgba(50, 119, 178, 0.2)', endColorstr='rgba(41, 98, 147, 0.2)', GradientType=0);
-  /* IE6-9 */
 
+  color: #333333;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#296293", endColorstr="#296293", GradientType=0), progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
 }
 .e-ganttchart .e-progresshandle {
   background: #333333;
@@ -135,8 +147,11 @@
 }
 .e-ganttchart .e-gantt-mouseclick .e-chartcell .e-resourceinfo,
 .e-ganttchart .e-gantt-mouseclick .e-chartcell .e-tasknameContainer .e-taskbarname {
-  color: #333333;
   font-family: Segoe UI;
+  color: #333333;
+}
+.e-ganttchart .e-gantt-parenttaskbar-progress {
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#333333', GradientType=0);
 }
 .e-ganttchart .e-gantt-parenttaskbar-progress {
   background: #333333;
@@ -161,6 +176,7 @@
   background-color: rgba(51, 51, 51, 0.6);
   background: #333333 \9;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8e8e8e', endColorstr='#8e8e8e', GradientType=0);
 }
 .e-ganttchart .e-gantt-childtaskbar-progress {
   background: #3277b2;
@@ -186,6 +202,17 @@
   background: #3277b2 \9;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
 }
+.e-ganttchart .manualprogressbar {
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#42c0bd', endColorstr='#42c0bd', GradientType=0);
+  border-color: #42c0bd;
+}
+.e-ganttchart .manualprogressbar {
+  background: #42c0bd;
+}
+.e-ganttchart .manualchildtaskbar {
+  background-color: #9dd9dd;
+  border-color: #42c0bd;
+}
 .e-ganttchart .e-line {
   background-color: #333333;
 }
@@ -202,4 +229,31 @@
 }
 .e-ganttchart .e-ganttgridlines {
   border-bottom-color: #cecece;
+}
+.e-ganttchart .e-criticalconnectorline {
+  background-color: #ff5555 !important;
+}
+.e-ganttchart .e-criticalconnectorlinerightarrow {
+  border-left-color: #ff5555 !important;
+}
+.e-ganttchart .e-criticalconnectorlineleftarrow {
+  border-right-color: #ff5555 !important;
+}
+.e-ganttchart .e-criticalprogressbar {
+  background: #ff5555 !important;
+  border-color: #ff5555 !important;
+}
+.e-ganttchart .e-criticaltaskbar {
+  background: #ff8b8b !important;
+  border-color: #ff8b8b !important;
+}
+.e-gantt-manualparenttaskbar {
+  background-color: #b3b3b3;
+}
+.e-gantt-manualparenttaskbar-left,
+.e-gantt-manualparenttaskbar-right {
+  border-color: #b3b3b3;
+}
+.e-gantt-manualparenttaskbar-connectorpoint-hover {
+  background-color: #b3b3b3 !important;
 }

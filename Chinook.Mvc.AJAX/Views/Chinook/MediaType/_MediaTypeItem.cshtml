@@ -1,40 +1,39 @@
-@model MediaTypeItemModel
+﻿@model MediaTypeItemModel
 
 @{
 }
 
-@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+<div id="Item_MediaType">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
 
-@Html.HiddenFor(model => model.ControllerAction)
-@Html.HiddenFor(model => model.IsMasterDetail)
+    @Html.HiddenFor(model => model.ControllerAction)
+    @Html.HiddenFor(model => model.IsMasterDetail)
 
-@{Html.EJ().Tab("Tab_MediaType")
-    .ClientSideEvents(clientEvent => clientEvent
-        .ItemActive("itemActive_Tab_MediaType")
-    )
-    .Items(data =>
-    {
-        data.Add().ID("TabSheet_MediaType_MediaType").Text(MediaTypeResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
-            
-            <div id="Group_MediaType_MediaTypeId" class="@AppDefaults.CssClassGroup col-md-2">
-                @Html.LabelFor(model => model.MediaType.MediaTypeId, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.MediaType.MediaTypeId, new { id = "MediaType_MediaTypeId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.MediaType.MediaTypeId, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
-            
-            <div id="Group_MediaType_Name" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.LabelFor(model => model.MediaType.Name, new { @class = AppDefaults.CssClassLabel })
-                @Html.EditorFor(model => model.MediaType.Name, new { id = "MediaType_Name", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.MediaType.Name, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+    @{Html.EJ().Tab("Tab_MediaType")
+        .Items(data =>
+        {
+            data.Add().ID("TabSheet_MediaType_MediaType").Text(MediaTypeResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
+                
+                <div id="Group_MediaType_MediaTypeId" class="@AppDefaults.CssClassGroup col-md-2">
+                    @Html.LabelFor(model => model.MediaType.MediaTypeId, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.MediaType.MediaTypeId, new { id = "MediaType_MediaTypeId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.MediaType.MediaTypeId, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
+                
+                <div id="Group_MediaType_Name" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.LabelFor(model => model.MediaType.Name, new { @class = AppDefaults.CssClassLabel })
+                    @Html.EditorFor(model => model.MediaType.Name, new { id = "MediaType_Name", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.MediaType.Name, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-        </div>);
-        data.Add().ID("TabSheet_MediaType_Track").Text(TrackResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
-            <div id="Ajax_MediaType_Track"></div>
-        </div>);
-    })
-    .Render();
-}
+            </div>);
+            data.Add().ID("TabSheet_MediaType_Track").Text(TrackResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
+                <div id="Ajax_MediaType_Track"></div>
+            </div>);
+        })
+        .Render();
+    }
+</div>
 
 <script>
     // Validate hidden fields
@@ -48,13 +47,25 @@
             var mediaTypeDictionary = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(DataHelper.GetDataDictionaryAttribute(typeof(MediaType)))); }();
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
             
+            $(document).prop("title", "@(ViewBag.Title)");
+
             var ajaxUrl = "";
             // Track
             ajaxUrl = "@(Html.Raw(Url.Action("Search", "Track", new { MasterUrl = Context.Request.Url.AbsoluteUri, MasterControllerAction = Model.ControllerAction, MasterMediaTypeId = Model.MediaType.MediaTypeId })))";
             $("#Ajax_MediaType_Track").load(ajaxUrl);
-            ej.widget.init($("#Ajax"));
-            $(document).prop("title", "@(ViewBag.Title)");            
-    
+
+            ej.widget.init($("#Item_MediaType"));
+
+            if ((model.ControllerAction = "create" && model.IsSecurityOperations.IsCreate) ||
+                (model.ControllerAction = "read" && model.IsSecurityOperations.IsRead) ||
+                (model.ControllerAction = "update" && model.IsSecurityOperations.IsUpdate) ||
+                (model.ControllerAction = "delete" && model.IsSecurityOperations.IsDelete)) {
+                $("#Item_MediaType").css("display", "block");
+            }
+            else {
+                $("#Item_MediaType").css("display", "none");
+            }
+
             var readonly = (controllerAction == "delete" || controllerAction == "read");
             $("input.form-control").not(":input[type=button], :input[type=image], :input[type=reset], :input[type=submit]").attr("readonly", readonly);
             if (readonly) {
@@ -75,26 +86,9 @@
             // Collections (PK)
             var display = controllerAction == "create" ? "none" : "block";
             // Track
-            var gridTrack = $("#Grid_Track");
-            gridTrack.css("display", display);
+            $("#Grid_Track").css("display", display);
         } catch (exception) {
-            alert(zExceptionMessage("_MediaTypeItem.cshtml", "function()", exception));
+            alert(zExceptionMessage("_MediaTypeItem.cshtml", "function", exception));
         }
     });
-
-    function itemActive_Tab_MediaType(args) { // IE
-        try {
-            switch(args.activeIndex) {
-            // Track
-                case 1:
-                    $("#Grid_Track").ejGrid({
-                        allowScrolling: true,
-                        scrollSettings: { width: "100%" }
-                    });
-                    break;
-            }            
-        } catch (exception) {
-            alert(zExceptionMessage("_MediaTypeItem.cshtml", "itemActive_Tab_MediaType(args)", exception));
-        }
-    }    
 </script>

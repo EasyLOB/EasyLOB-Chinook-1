@@ -1,44 +1,46 @@
-@model PlaylistItemModel
+﻿@model PlaylistItemModel
 
 @{
 }
 
-@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+<div id="Item_Playlist">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
 
-@Html.HiddenFor(model => model.ControllerAction)
-@Html.HiddenFor(model => model.IsMasterDetail)
+    @Html.HiddenFor(model => model.ControllerAction)
+    @Html.HiddenFor(model => model.IsMasterDetail)
 
-@{Html.EJ().Tab("Tab_Playlist")
-    .ClientSideEvents(clientEvent => clientEvent
-        .ItemActive("itemActive_Tab_Playlist")
-    )
-    .Items(data =>
-    {
-        data.Add().ID("TabSheet_Playlist_Playlist").Text(PlaylistResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
+    @{Html.EJ().Tab("Tab_Playlist")
+        .ClientSideEvents(clientEvent => clientEvent
+            .ItemActive("itemActive_Tab_Playlist")
+        )
+        .Items(data =>
+        {
+            data.Add().ID("TabSheet_Playlist_Playlist").Text(PlaylistResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
 
-            <div id="Group_Playlist_PlaylistId" class="@AppDefaults.CssClassGroup col-md-2">
-                @Html.LabelFor(model => model.Playlist.PlaylistId, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.Playlist.PlaylistId, new { id = "Playlist_PlaylistId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.Playlist.PlaylistId, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_Playlist_PlaylistId" class="@AppDefaults.CssClassGroup col-md-2">
+                    @Html.LabelFor(model => model.Playlist.PlaylistId, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.Playlist.PlaylistId, new { id = "Playlist_PlaylistId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.Playlist.PlaylistId, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-            <div id="Group_Playlist_Name" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.LabelFor(model => model.Playlist.Name, new { @class = AppDefaults.CssClassLabel })
-                @Html.EditorFor(model => model.Playlist.Name, new { id = "Playlist_Name", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.Playlist.Name, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_Playlist_Name" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.LabelFor(model => model.Playlist.Name, new { @class = AppDefaults.CssClassLabel })
+                    @Html.EditorFor(model => model.Playlist.Name, new { id = "Playlist_Name", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.Playlist.Name, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-        </div>);
-        data.Add().ID("TabSheet_Playlist_PlaylistTrack").Text(PlaylistTrackResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
-            @Html.Action("Search", "PlaylistTrack", new
-            {
-                MasterControllerAction = Model.ControllerAction,
-                MasterPlaylistId = Model.Playlist.PlaylistId
-            })    
-        </div>);
-    })
-    .Render();
-}
+            </div>);
+            data.Add().ID("TabSheet_Playlist_PlaylistTrack").Text(PlaylistTrackResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
+                @Html.Action("Search", "PlaylistTrack", new
+                {
+                    MasterControllerAction = Model.ControllerAction,
+                    MasterPlaylistId = Model.Playlist.PlaylistId
+                })    
+            </div>);
+        })
+        .Render();
+    }
+</div>
 
 <script>
     // Validate hidden fields
@@ -49,6 +51,16 @@
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
             var playlistDictionary = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(DataHelper.GetDataDictionaryAttribute(typeof(Playlist)))); }();
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
+
+            if ((model.ControllerAction = "create" && model.IsSecurityOperations.IsCreate) ||
+                (model.ControllerAction = "read" && model.IsSecurityOperations.IsRead) ||
+                (model.ControllerAction = "update" && model.IsSecurityOperations.IsUpdate) ||
+                (model.ControllerAction = "delete" && model.IsSecurityOperations.IsDelete)) {
+                $("#Item_Playlist").css("display", "block");
+            }
+            else {
+                $("#Item_Playlist").css("display", "none");
+            }
             
             var readonly = (controllerAction == "delete" || controllerAction == "read");
             $("input.form-control").not(":input[type=button], :input[type=image], :input[type=reset], :input[type=submit]").attr("readonly", readonly);

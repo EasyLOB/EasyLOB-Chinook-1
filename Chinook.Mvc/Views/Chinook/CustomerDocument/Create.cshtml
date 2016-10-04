@@ -1,4 +1,4 @@
-@model CustomerDocumentItemModel
+﻿@model CustomerDocumentItemModel
 
 @{
     ViewBag.Title = AppHelper.PageTitle(CustomerDocumentResources.EntitySingular, PresentationResources.Create);
@@ -6,11 +6,11 @@
 
 <h3>@ViewBag.Title</h3>
 
-@using (Html.BeginForm("Create", "CustomerDocument", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-    <div id="Partial" class="form-inline">
+    <div class="form-inline">
         @Html.Partial("_CustomerDocumentItem", Model)
     </div>
 
@@ -24,17 +24,19 @@
 
 <script>
     $(function () {
-        var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+        try {
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
 
-        if (model.IsSecurityOperations.IsCreate) {
-            $("#Partial").show();
-            $("#Button_Cancel").show();
-            $("#Button_OK").show();
-        }
-        else {
-            $("#Partial").hide();
-            $("#Button_Cancel").show();
-            $("#Button_OK").hide();
+            if (model.IsSecurityOperations.IsCreate) {
+                $("#Button_Cancel").show();
+                $("#Button_OK").show();
+            }
+            else {
+                $("#Button_Cancel").show();
+                $("#Button_OK").hide();
+            }
+        } catch (exception) {
+            zExceptionMessage("CustomerDocument Create.cshtml", "function", exception.message)
         }
     });
 </script>

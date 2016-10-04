@@ -1,0 +1,16 @@
+﻿@model ArtistCollectionModel
+
+<div class="form-inline">
+    @Html.Partial("_ArtistCollection", Model)
+</div>
+
+<div id="OperationResult"></div>
+
+<script>
+    $(function () {
+        try {
+        } catch (exception) {
+            zExceptionMessage("Artist Search.cshtml", "function", exception.message)
+        }
+    });
+</script>

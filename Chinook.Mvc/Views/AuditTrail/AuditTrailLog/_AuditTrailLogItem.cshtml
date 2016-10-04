@@ -3,82 +3,84 @@
 @{
 }
 
-@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div id="Item_AuditTrailLog">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-@Html.HiddenFor(model => model.ControllerAction)
+    @Html.HiddenFor(model => model.ControllerAction)
 
-@{Html.EJ().Tab("Tab_AuditTrailLog")
-    .ClientSideEvents(clientEvent => clientEvent
-        .ItemActive("itemActive_Tab_AuditTrailLog")
-    )
-    .Items(data =>
-    {
-        data.Add().ID("TabSheet_AuditTrailLog_AuditTrailLog").Text(AuditTrailLogResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
+    @{Html.EJ().Tab("Tab_AuditTrailLog")
+        .ClientSideEvents(clientEvent => clientEvent
+            .ItemActive("itemActive_Tab_AuditTrailLog")
+        )
+        .Items(data =>
+        {
+            data.Add().ID("TabSheet_AuditTrailLog_AuditTrailLog").Text(AuditTrailLogResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
             
-            <div id="Group_AuditTrailLog_AuditTrailLogId" class="@AppDefaults.CssClassGroup col-md-2">
-                @Html.LabelFor(model => model.AuditTrailLog.AuditTrailLogId, new { @class = AppDefaults.CssClassLabelRequired })                    
-                @Html.EditorFor(model => model.AuditTrailLog.AuditTrailLogId, new { id = "AuditTrailLog_AuditTrailLogId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.AuditTrailLog.AuditTrailLogId, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_AuditTrailLog_AuditTrailLogId" class="@AppDefaults.CssClassGroup col-md-2">
+                    @Html.LabelFor(model => model.AuditTrailLog.AuditTrailLogId, new { @class = AppDefaults.CssClassLabelRequired })                    
+                    @Html.EditorFor(model => model.AuditTrailLog.AuditTrailLogId, new { id = "AuditTrailLog_AuditTrailLogId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.AuditTrailLog.AuditTrailLogId, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
             
-            <div id="Group_AuditTrailLog_LogDate" class="@AppDefaults.CssClassGroup col-md-2">
-                @Html.LabelFor(model => model.AuditTrailLog.LogDate, new { @class = AppDefaults.CssClassLabelRequired })                    
-                @Html.EditorFor(model => model.AuditTrailLog.LogDate, new { id = "AuditTrailLog_LogDate", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.AuditTrailLog.LogDate, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_AuditTrailLog_LogDate" class="@AppDefaults.CssClassGroup col-md-2">
+                    @Html.LabelFor(model => model.AuditTrailLog.LogDate, new { @class = AppDefaults.CssClassLabelRequired })                    
+                    @Html.EditorFor(model => model.AuditTrailLog.LogDate, new { id = "AuditTrailLog_LogDate", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.AuditTrailLog.LogDate, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
             
-            <div id="Group_AuditTrailLog_LogTime" class="@AppDefaults.CssClassGroup col-md-2">
-                @Html.LabelFor(model => model.AuditTrailLog.LogTime, new { @class = AppDefaults.CssClassLabelRequired })                    
-                @Html.EditorFor(model => model.AuditTrailLog.LogTime, new { id = "AuditTrailLog_LogTime", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.AuditTrailLog.LogTime, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_AuditTrailLog_LogTime" class="@AppDefaults.CssClassGroup col-md-2">
+                    @Html.LabelFor(model => model.AuditTrailLog.LogTime, new { @class = AppDefaults.CssClassLabelRequired })                    
+                    @Html.EditorFor(model => model.AuditTrailLog.LogTime, new { id = "AuditTrailLog_LogTime", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.AuditTrailLog.LogTime, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
             
-            <div id="Group_AuditTrailLog_LogUserName" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.LabelFor(model => model.AuditTrailLog.LogUserName, new { @class = AppDefaults.CssClassLabel })                    
-                @Html.EditorFor(model => model.AuditTrailLog.LogUserName, new { id = "AuditTrailLog_LogUserName", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.AuditTrailLog.LogUserName, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_AuditTrailLog_LogUserName" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.LabelFor(model => model.AuditTrailLog.LogUserName, new { @class = AppDefaults.CssClassLabel })                    
+                    @Html.EditorFor(model => model.AuditTrailLog.LogUserName, new { id = "AuditTrailLog_LogUserName", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.AuditTrailLog.LogUserName, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
             
-            <div id="Group_AuditTrailLog_LogDomain" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.LabelFor(model => model.AuditTrailLog.LogDomain, new { @class = AppDefaults.CssClassLabel })                    
-                @Html.EditorFor(model => model.AuditTrailLog.LogDomain, new { id = "AuditTrailLog_LogDomain", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.AuditTrailLog.LogDomain, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_AuditTrailLog_LogDomain" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.LabelFor(model => model.AuditTrailLog.LogDomain, new { @class = AppDefaults.CssClassLabel })                    
+                    @Html.EditorFor(model => model.AuditTrailLog.LogDomain, new { id = "AuditTrailLog_LogDomain", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.AuditTrailLog.LogDomain, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
             
-            <div id="Group_AuditTrailLog_LogEntity" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.LabelFor(model => model.AuditTrailLog.LogEntity, new { @class = AppDefaults.CssClassLabel })                    
-                @Html.EditorFor(model => model.AuditTrailLog.LogEntity, new { id = "AuditTrailLog_LogEntity", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.AuditTrailLog.LogEntity, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_AuditTrailLog_LogEntity" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.LabelFor(model => model.AuditTrailLog.LogEntity, new { @class = AppDefaults.CssClassLabel })                    
+                    @Html.EditorFor(model => model.AuditTrailLog.LogEntity, new { id = "AuditTrailLog_LogEntity", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.AuditTrailLog.LogEntity, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
             
-            <div id="Group_AuditTrailLog_LogOperation" class="@AppDefaults.CssClassGroup col-md-2">
-                @Html.LabelFor(model => model.AuditTrailLog.LogOperation, new { @class = AppDefaults.CssClassLabel })                    
-                @Html.EditorFor(model => model.AuditTrailLog.LogOperation, new { id = "AuditTrailLog_LogOperation", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.AuditTrailLog.LogOperation, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_AuditTrailLog_LogOperation" class="@AppDefaults.CssClassGroup col-md-2">
+                    @Html.LabelFor(model => model.AuditTrailLog.LogOperation, new { @class = AppDefaults.CssClassLabel })                    
+                    @Html.EditorFor(model => model.AuditTrailLog.LogOperation, new { id = "AuditTrailLog_LogOperation", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.AuditTrailLog.LogOperation, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
             
-            <div id="Group_AuditTrailLog_LogId" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.LabelFor(model => model.AuditTrailLog.LogId, new { @class = AppDefaults.CssClassLabel })                    
-                @Html.EditorFor(model => model.AuditTrailLog.LogId, new { id = "AuditTrailLog_LogId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.AuditTrailLog.LogId, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_AuditTrailLog_LogId" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.LabelFor(model => model.AuditTrailLog.LogId, new { @class = AppDefaults.CssClassLabel })                    
+                    @Html.EditorFor(model => model.AuditTrailLog.LogId, new { id = "AuditTrailLog_LogId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.AuditTrailLog.LogId, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
             
-            <div id="Group_AuditTrailLog_LogEntityBefore" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.LabelFor(model => model.AuditTrailLog.LogEntityBefore, new { @class = AppDefaults.CssClassLabel })                    
-                @Html.EditorFor(model => model.AuditTrailLog.LogEntityBefore, new { id = "AuditTrailLog_LogEntityBefore", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.AuditTrailLog.LogEntityBefore, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_AuditTrailLog_LogEntityBefore" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.LabelFor(model => model.AuditTrailLog.LogEntityBefore, new { @class = AppDefaults.CssClassLabel })                    
+                    @Html.EditorFor(model => model.AuditTrailLog.LogEntityBefore, new { id = "AuditTrailLog_LogEntityBefore", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.AuditTrailLog.LogEntityBefore, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
             
-            <div id="Group_AuditTrailLog_LogEntityAfter" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.LabelFor(model => model.AuditTrailLog.LogEntityAfter, new { @class = AppDefaults.CssClassLabel })                    
-                @Html.EditorFor(model => model.AuditTrailLog.LogEntityAfter, new { id = "AuditTrailLog_LogEntityAfter", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.AuditTrailLog.LogEntityAfter, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_AuditTrailLog_LogEntityAfter" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.LabelFor(model => model.AuditTrailLog.LogEntityAfter, new { @class = AppDefaults.CssClassLabel })                    
+                    @Html.EditorFor(model => model.AuditTrailLog.LogEntityAfter, new { id = "AuditTrailLog_LogEntityAfter", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.AuditTrailLog.LogEntityAfter, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-        </div>);
-    })
-    .Render();
-}
+            </div>);
+        })
+        .Render();
+    }
+</div>
 
 <script>
     // Validate hidden fields
@@ -89,7 +91,17 @@
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
             var auditTrailLogDictionary = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(DataHelper.GetDataDictionaryAttribute(typeof(AuditTrailLog)))); }();
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
-            
+
+            if ((model.ControllerAction = "create" && model.IsSecurityOperations.IsCreate) ||
+                (model.ControllerAction = "read" && model.IsSecurityOperations.IsRead) ||
+                (model.ControllerAction = "update" && model.IsSecurityOperations.IsUpdate) ||
+                (model.ControllerAction = "delete" && model.IsSecurityOperations.IsDelete)) {
+                $("#Item_AuditTrailLog").css("display", "block");
+            }
+            else {
+                $("#Item_AuditTrailLog").css("display", "none");
+            }
+
             var readonly = (controllerAction == "delete" || controllerAction == "read");
             $("input.form-control").not(":input[type=button], :input[type=image], :input[type=reset], :input[type=submit]").attr("readonly", readonly);
             if (readonly) {

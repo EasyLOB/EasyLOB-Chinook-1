@@ -75,7 +75,7 @@ namespace Chinook.Mvc
                 genreCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return PartialView("_GenreCollection", genreCollectionModel);
+            return PartialView(genreCollectionModel);
         }
 
         // GET & POST: Genre/Lookup

@@ -1,44 +1,46 @@
-@model MediaTypeItemModel
+﻿@model MediaTypeItemModel
 
 @{
 }
 
-@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+<div id="Item_MediaType">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
 
-@Html.HiddenFor(model => model.ControllerAction)
-@Html.HiddenFor(model => model.IsMasterDetail)
+    @Html.HiddenFor(model => model.ControllerAction)
+    @Html.HiddenFor(model => model.IsMasterDetail)
 
-@{Html.EJ().Tab("Tab_MediaType")
-    .ClientSideEvents(clientEvent => clientEvent
-        .ItemActive("itemActive_Tab_MediaType")
-    )
-    .Items(data =>
-    {
-        data.Add().ID("TabSheet_MediaType_MediaType").Text(MediaTypeResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
+    @{Html.EJ().Tab("Tab_MediaType")
+        .ClientSideEvents(clientEvent => clientEvent
+            .ItemActive("itemActive_Tab_MediaType")
+        )
+        .Items(data =>
+        {
+            data.Add().ID("TabSheet_MediaType_MediaType").Text(MediaTypeResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
 
-            <div id="Group_MediaType_MediaTypeId" class="@AppDefaults.CssClassGroup col-md-2">
-                @Html.LabelFor(model => model.MediaType.MediaTypeId, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.MediaType.MediaTypeId, new { id = "MediaType_MediaTypeId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.MediaType.MediaTypeId, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_MediaType_MediaTypeId" class="@AppDefaults.CssClassGroup col-md-2">
+                    @Html.LabelFor(model => model.MediaType.MediaTypeId, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.MediaType.MediaTypeId, new { id = "MediaType_MediaTypeId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.MediaType.MediaTypeId, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-            <div id="Group_MediaType_Name" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.LabelFor(model => model.MediaType.Name, new { @class = AppDefaults.CssClassLabel })
-                @Html.EditorFor(model => model.MediaType.Name, new { id = "MediaType_Name", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.MediaType.Name, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_MediaType_Name" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.LabelFor(model => model.MediaType.Name, new { @class = AppDefaults.CssClassLabel })
+                    @Html.EditorFor(model => model.MediaType.Name, new { id = "MediaType_Name", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.MediaType.Name, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-        </div>);
-        data.Add().ID("TabSheet_MediaType_Track").Text(TrackResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
-            @Html.Action("Search", "Track", new
-            {
-                MasterControllerAction = Model.ControllerAction,
-                MasterMediaTypeId = Model.MediaType.MediaTypeId
-            })    
-        </div>);
-    })
-    .Render();
-}
+            </div>);
+            data.Add().ID("TabSheet_MediaType_Track").Text(TrackResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
+                @Html.Action("Search", "Track", new
+                {
+                    MasterControllerAction = Model.ControllerAction,
+                    MasterMediaTypeId = Model.MediaType.MediaTypeId
+                })    
+            </div>);
+        })
+        .Render();
+    }
+</div>
 
 <script>
     // Validate hidden fields
@@ -49,6 +51,16 @@
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
             var mediaTypeDictionary = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(DataHelper.GetDataDictionaryAttribute(typeof(MediaType)))); }();
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
+
+            if ((model.ControllerAction = "create" && model.IsSecurityOperations.IsCreate) ||
+                (model.ControllerAction = "read" && model.IsSecurityOperations.IsRead) ||
+                (model.ControllerAction = "update" && model.IsSecurityOperations.IsUpdate) ||
+                (model.ControllerAction = "delete" && model.IsSecurityOperations.IsDelete)) {
+                $("#Item_MediaType").css("display", "block");
+            }
+            else {
+                $("#Item_MediaType").css("display", "none");
+            }
             
             var readonly = (controllerAction == "delete" || controllerAction == "read");
             $("input.form-control").not(":input[type=button], :input[type=image], :input[type=reset], :input[type=submit]").attr("readonly", readonly);

@@ -1,4 +1,4 @@
-@model AuditTrailConfigurationCollectionModel
+﻿@model AuditTrailConfigurationCollectionModel
 
 <div id="Ajax">
 </div>
@@ -8,7 +8,7 @@
         try {
             $("#Ajax").load("@(Url.Action("Search", "AuditTrailConfiguration", null, Request.Url.Scheme))");
         } catch (exception) {
-            zExceptionMessage("AuditTrailConfiguration Index.cshtml", "function()", exception.message)
+            zExceptionMessage("AuditTrailConfiguration Index.cshtml", "function", exception.message)
         }
     });
 </script>

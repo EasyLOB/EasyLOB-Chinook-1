@@ -1,57 +1,59 @@
-@model ActivityRoleItemModel
+﻿@model ActivityRoleItemModel
 
 @{
     string activityText = Model.ActivityRole == null ? "" : (Model.ActivityRole.ActivityLookupText ?? "");
     string roleText = Model.ActivityRole == null ? "" : (Model.ActivityRole.RoleLookupText ?? "");
 }
 
-@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div id="Item_ActivityRole">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
 
-@Html.HiddenFor(model => model.ControllerAction)
-@Html.HiddenFor(model => model.IsMasterDetail)
-@Html.HiddenFor(model => model.MasterActivityId)
-@Html.HiddenFor(model => model.MasterRoleId)
+    @Html.HiddenFor(model => model.ControllerAction)
+    @Html.HiddenFor(model => model.IsMasterDetail)
+    @Html.HiddenFor(model => model.MasterActivityId)
+    @Html.HiddenFor(model => model.MasterRoleId)
 
-@{Html.EJ().Tab("Tab_ActivityRole")
-    .ClientSideEvents(clientEvent => clientEvent
-        .ItemActive("itemActive_Tab_ActivityRole")
-    )
-    .Items(data =>
-    {
-        data.Add().ID("TabSheet_ActivityRole_ActivityRole").Text(ActivityRoleResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
+    @{Html.EJ().Tab("Tab_ActivityRole")
+        .ClientSideEvents(clientEvent => clientEvent
+            .ItemActive("itemActive_Tab_ActivityRole")
+        )
+        .Items(data =>
+        {
+            data.Add().ID("TabSheet_ActivityRole_ActivityRole").Text(ActivityRoleResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
 
-            <div id="Group_ActivityRole_ActivityId" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.Label(@ActivityResources.EntitySingular, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.ActivityRole.ActivityId, new { id = "ActivityRole_ActivityId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })                    
-                @Html.Action("Lookup", "Activity", new
-                {
-                    Text = activityText,
-                    ValueId = "ActivityRole_ActivityId"
-                })
-                @Html.ValidationMessageFor(model => model.ActivityRole.ActivityId, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_ActivityRole_ActivityId" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.Label(@ActivityResources.EntitySingular, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.ActivityRole.ActivityId, new { id = "ActivityRole_ActivityId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })                    
+                    @Html.Action("Lookup", "Activity", new
+                    {
+                        Text = activityText,
+                        ValueId = "ActivityRole_ActivityId"
+                    })
+                    @Html.ValidationMessageFor(model => model.ActivityRole.ActivityId, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-            <div id="Group_ActivityRole_RoleId" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.Label(@RoleResources.EntitySingular, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.ActivityRole.RoleId, new { id = "ActivityRole_RoleId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })                    
-                @Html.Action("Lookup", "Role", new
-                {
-                    Text = roleText,
-                    ValueId = "ActivityRole_RoleId"
-                })
-                @Html.ValidationMessageFor(model => model.ActivityRole.RoleId, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_ActivityRole_RoleId" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.Label(@RoleResources.EntitySingular, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.ActivityRole.RoleId, new { id = "ActivityRole_RoleId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })                    
+                    @Html.Action("Lookup", "Role", new
+                    {
+                        Text = roleText,
+                        ValueId = "ActivityRole_RoleId"
+                    })
+                    @Html.ValidationMessageFor(model => model.ActivityRole.RoleId, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-            <div id="Group_ActivityRole_Operations" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.LabelFor(model => model.ActivityRole.Operations, new { @class = AppDefaults.CssClassLabel })
-                @Html.EditorFor(model => model.ActivityRole.Operations, new { id = "ActivityRole_Operations", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.ActivityRole.Operations, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_ActivityRole_Operations" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.LabelFor(model => model.ActivityRole.Operations, new { @class = AppDefaults.CssClassLabel })
+                    @Html.EditorFor(model => model.ActivityRole.Operations, new { id = "ActivityRole_Operations", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.ActivityRole.Operations, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-        </div>);
-    })
-    .Render();
-}
+            </div>);
+        })
+        .Render();
+    }
+</div>
 
 <script>
     // Validate hidden fields
@@ -62,6 +64,16 @@
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
             var activityRoleDictionary = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(DataHelper.GetDataDictionaryAttribute(typeof(ActivityRole)))); }();
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
+
+            if ((model.ControllerAction = "create" && model.IsSecurityOperations.IsCreate) ||
+                (model.ControllerAction = "read" && model.IsSecurityOperations.IsRead) ||
+                (model.ControllerAction = "update" && model.IsSecurityOperations.IsUpdate) ||
+                (model.ControllerAction = "delete" && model.IsSecurityOperations.IsDelete)) {
+                $("#Item_ActivityRole").css("display", "block");
+            }
+            else {
+                $("#Item_ActivityRole").css("display", "none");
+            }
             
             var readonly = (controllerAction == "delete" || controllerAction == "read");
             $("input.form-control").not(":input[type=button], :input[type=image], :input[type=reset], :input[type=submit]").attr("readonly", readonly);
@@ -81,13 +93,13 @@
 
             // Associations (FK)
             // Activity
-            if (model.MasterActivityId != null) {
-                $("#ActivityRole_ActivityId").val(model.MasterActivityId);
+            if (model.MasterId != null) {
+                $("#ActivityRole_ActivityId").val(model.MasterId);
                 $("#Group_ActivityRole_ActivityId").hide();            
             }
             // Role
-            if (model.MasterRoleId != null) {
-                $("#ActivityRole_RoleId").val(model.MasterRoleId);
+            if (model.MasterId != null) {
+                $("#ActivityRole_RoleId").val(model.MasterId);
                 $("#Group_ActivityRole_RoleId").hide();            
             }
 

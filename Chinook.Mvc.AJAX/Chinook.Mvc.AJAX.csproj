@@ -120,16 +120,16 @@
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Syncfusion.Compression.Base, Version=14.2460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
-    <Reference Include="Syncfusion.Core, Version=14.2460.0.26, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL" />
-    <Reference Include="Syncfusion.DocIO.Base, Version=14.2460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
-    <Reference Include="Syncfusion.EJ, Version=14.2460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
-    <Reference Include="Syncfusion.EJ.Export, Version=14.2460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
-    <Reference Include="Syncfusion.EJ.MVC, Version=14.2500.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
-    <Reference Include="Syncfusion.EJ.ReportViewer, Version=14.2460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
-    <Reference Include="Syncfusion.Linq.Base, Version=14.2460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
-    <Reference Include="Syncfusion.Pdf.Base, Version=14.2460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
-    <Reference Include="Syncfusion.XlsIO.Base, Version=14.2460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Compression.Base, Version=14.3460.0.49, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Core, Version=14.3460.0.49, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.DocIO.Base, Version=14.3460.0.49, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.EJ, Version=14.3460.0.49, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.EJ.Export, Version=14.3460.0.49, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.EJ.MVC, Version=14.3500.0.49, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.EJ.ReportViewer, Version=14.3460.0.49, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Linq.Base, Version=14.3460.0.49, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Pdf.Base, Version=14.3460.0.49, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.XlsIO.Base, Version=14.3460.0.49, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -454,6 +454,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\easylob\easylob.css" />
     <Content Include="Content\ej\dashboard\fonts\dashboarddatepicker-font.svg" />
     <Content Include="Content\ej\dashboard\themes\bootstrap.css" />
     <Content Include="Content\ej\dashboard\themes\bootstrap.min.css" />
@@ -527,7 +528,6 @@
     <Content Include="Content\ej\dashboard\themes\ViewerIcons\loading_text.png" />
     <Content Include="Content\ej\dashboard\themes\ViewerIcons\loading_widget.png" />
     <Content Include="Content\ej\dashboard\themes\ViewerIcons\processingimage_white.png" />
-    <Content Include="Content\easylob\easylob.css" />
     <Content Include="Content\ej\web\bootstrap-theme\ej.accordion.css" />
     <Content Include="Content\ej\web\bootstrap-theme\ej.autocomplete.css" />
     <Content Include="Content\ej\web\bootstrap-theme\ej.button.css" />
@@ -553,10 +553,10 @@
     <Content Include="Content\ej\web\bootstrap-theme\ej.map.css" />
     <Content Include="Content\ej\web\bootstrap-theme\ej.menu.css" />
     <Content Include="Content\ej\web\bootstrap-theme\ej.navigationdrawer.css" />
-    <Content Include="Content\ej\web\bootstrap-theme\ej.olapclient.css" />
     <Content Include="Content\ej\web\bootstrap-theme\ej.pager.css" />
     <Content Include="Content\ej\web\bootstrap-theme\ej.pdfviewer.css" />
     <Content Include="Content\ej\web\bootstrap-theme\ej.pivotchart.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.pivotclient.css" />
     <Content Include="Content\ej\web\bootstrap-theme\ej.pivotgauge.css" />
     <Content Include="Content\ej\web\bootstrap-theme\ej.pivotgrid.css" />
     <Content Include="Content\ej\web\bootstrap-theme\ej.pivotpager.css" />
@@ -565,7 +565,7 @@
     <Content Include="Content\ej\web\bootstrap-theme\ej.radialmenu.css" />
     <Content Include="Content\ej\web\bootstrap-theme\ej.radialslider.css" />
     <Content Include="Content\ej\web\bootstrap-theme\ej.radiobutton.css" />
-    <Content Include="Content\ej\web\bootstrap-theme\ej.rangeScrollbar.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.rangescrollbar.css" />
     <Content Include="Content\ej\web\bootstrap-theme\ej.rating.css" />
     <Content Include="Content\ej\web\bootstrap-theme\ej.reportviewer.css" />
     <Content Include="Content\ej\web\bootstrap-theme\ej.ribbon.css" />
@@ -573,14 +573,16 @@
     <Content Include="Content\ej\web\bootstrap-theme\ej.rte.css" />
     <Content Include="Content\ej\web\bootstrap-theme\ej.schedule.css" />
     <Content Include="Content\ej\web\bootstrap-theme\ej.scroller.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.signature.css" />
     <Content Include="Content\ej\web\bootstrap-theme\ej.slider.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.spellcheck.css" />
     <Content Include="Content\ej\web\bootstrap-theme\ej.splitter.css" />
     <Content Include="Content\ej\web\bootstrap-theme\ej.spreadsheet.css" />
     <Content Include="Content\ej\web\bootstrap-theme\ej.symbolpalette.css" />
     <Content Include="Content\ej\web\bootstrap-theme\ej.tab.css" />
     <Content Include="Content\ej\web\bootstrap-theme\ej.tagcloud.css" />
     <Content Include="Content\ej\web\bootstrap-theme\ej.theme.css" />
-    <Content Include="Content\ej\web\bootstrap-theme\ej.theme.less" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.theme.min.css" />
     <Content Include="Content\ej\web\bootstrap-theme\ej.tile.css" />
     <Content Include="Content\ej\web\bootstrap-theme\ej.timepicker.css" />
     <Content Include="Content\ej\web\bootstrap-theme\ej.toolbar.css" />
@@ -591,7 +593,7 @@
     <Content Include="Content\ej\web\bootstrap-theme\ej.uploadbox.css" />
     <Content Include="Content\ej\web\bootstrap-theme\ej.waitingpopup.css" />
     <Content Include="Content\ej\web\bootstrap-theme\ej.web.all.css" />
-    <Content Include="Content\ej\web\bootstrap-theme\ej.widgets.all.css" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.web.all.min.css" />
     <Content Include="Content\ej\web\bootstrap-theme\images\ajax-loader.gif" />
     <Content Include="Content\ej\web\bootstrap-theme\images\checkedtick.png" />
     <Content Include="Content\ej\web\bootstrap-theme\images\dot.png" />
@@ -607,10 +609,7 @@
     <Content Include="Content\ej\web\common-images\colorpicker_light.png" />
     <Content Include="Content\ej\web\common-images\diagram_context.png" />
     <Content Include="Content\ej\web\common-images\diagram_context1.png" />
-    <Content Include="Content\ej\web\common-images\ejicons.eot" />
     <Content Include="Content\ej\web\common-images\ejicons.svg" />
-    <Content Include="Content\ej\web\common-images\ejicons.ttf" />
-    <Content Include="Content\ej\web\common-images\ejicons.woff" />
     <Content Include="Content\ej\web\common-images\grid\dropPointer.cur" />
     <Content Include="Content\ej\web\common-images\kanban\nouser.svg" />
     <Content Include="Content\ej\web\common-images\maps\Arrow_Bootom.png" />
@@ -642,6 +641,7 @@
     <Content Include="Content\ej\web\common-images\olapkpi\three-color.png" />
     <Content Include="Content\ej\web\common-images\olapkpi\triangle.png" />
     <Content Include="Content\ej\web\common-images\olapkpi\up-arrow.png" />
+    <Content Include="Content\ej\web\common-images\pdfviewer\preloader-pdfviewer.gif" />
     <Content Include="Content\ej\web\common-images\radialmenu\back.png" />
     <Content Include="Content\ej\web\common-images\radialmenu\radial.png" />
     <Content Include="Content\ej\web\common-images\reports\down.png" />
@@ -657,10 +657,7 @@
     <Content Include="Content\ej\web\common-images\ribbon\Browser.png" />
     <Content Include="Content\ej\web\common-images\ribbon\Check.png" />
     <Content Include="Content\ej\web\common-images\ribbon\Diet.png" />
-    <Content Include="Content\ej\web\common-images\ribbon\ejrbnicons.eot" />
     <Content Include="Content\ej\web\common-images\ribbon\ejrbnicons.svg" />
-    <Content Include="Content\ej\web\common-images\ribbon\ejrbnicons.ttf" />
-    <Content Include="Content\ej\web\common-images\ribbon\ejrbnicons.woff" />
     <Content Include="Content\ej\web\common-images\ribbon\gallery.png" />
     <Content Include="Content\ej\web\common-images\ribbon\Gantt.png" />
     <Content Include="Content\ej\web\common-images\ribbon\homegallery.png" />
@@ -673,6 +670,7 @@
     <Content Include="Content\ej\web\common-images\ribbon\Version.png" />
     <Content Include="Content\ej\web\common-images\Rotate.cur" />
     <Content Include="Content\ej\web\common-images\schedule_priority.png" />
+    <Content Include="Content\ej\web\common-images\spellcheck\highlight.png" />
     <Content Include="Content\ej\web\common-images\spreadsheet\blank.png" />
     <Content Include="Content\ej\web\common-images\spreadsheet\chart-sprites.png" />
     <Content Include="Content\ej\web\common-images\spreadsheet\charttab-sprites.png" />
@@ -683,10 +681,7 @@
     <Content Include="Content\ej\web\common-images\spreadsheet\draw_border_grid_dark.cur" />
     <Content Include="Content\ej\web\common-images\spreadsheet\draw_border_grid_light.cur" />
     <Content Include="Content\ej\web\common-images\spreadsheet\draw_border_light.cur" />
-    <Content Include="Content\ej\web\common-images\spreadsheet\ejxlicons.eot" />
     <Content Include="Content\ej\web\common-images\spreadsheet\ejxlicons.svg" />
-    <Content Include="Content\ej\web\common-images\spreadsheet\ejxlicons.ttf" />
-    <Content Include="Content\ej\web\common-images\spreadsheet\ejxlicons.woff" />
     <Content Include="Content\ej\web\common-images\spreadsheet\format_painter_dark.cur" />
     <Content Include="Content\ej\web\common-images\spreadsheet\format_painter_light.cur" />
     <Content Include="Content\ej\web\common-images\spreadsheet\right_arrow_dark.cur" />
@@ -719,10 +714,10 @@
     <Content Include="Content\ej\web\default-theme\ej.map.css" />
     <Content Include="Content\ej\web\default-theme\ej.menu.css" />
     <Content Include="Content\ej\web\default-theme\ej.navigationdrawer.css" />
-    <Content Include="Content\ej\web\default-theme\ej.olapclient.css" />
     <Content Include="Content\ej\web\default-theme\ej.pager.css" />
     <Content Include="Content\ej\web\default-theme\ej.pdfviewer.css" />
     <Content Include="Content\ej\web\default-theme\ej.pivotchart.css" />
+    <Content Include="Content\ej\web\default-theme\ej.pivotclient.css" />
     <Content Include="Content\ej\web\default-theme\ej.pivotgauge.css" />
     <Content Include="Content\ej\web\default-theme\ej.pivotgrid.css" />
     <Content Include="Content\ej\web\default-theme\ej.pivotpager.css" />
@@ -731,7 +726,7 @@
     <Content Include="Content\ej\web\default-theme\ej.radialmenu.css" />
     <Content Include="Content\ej\web\default-theme\ej.radialslider.css" />
     <Content Include="Content\ej\web\default-theme\ej.radiobutton.css" />
-    <Content Include="Content\ej\web\default-theme\ej.rangeScrollbar.css" />
+    <Content Include="Content\ej\web\default-theme\ej.rangescrollbar.css" />
     <Content Include="Content\ej\web\default-theme\ej.rating.css" />
     <Content Include="Content\ej\web\default-theme\ej.reportviewer.css" />
     <Content Include="Content\ej\web\default-theme\ej.ribbon.css" />
@@ -739,14 +734,16 @@
     <Content Include="Content\ej\web\default-theme\ej.rte.css" />
     <Content Include="Content\ej\web\default-theme\ej.schedule.css" />
     <Content Include="Content\ej\web\default-theme\ej.scroller.css" />
+    <Content Include="Content\ej\web\default-theme\ej.signature.css" />
     <Content Include="Content\ej\web\default-theme\ej.slider.css" />
+    <Content Include="Content\ej\web\default-theme\ej.spellcheck.css" />
     <Content Include="Content\ej\web\default-theme\ej.splitter.css" />
     <Content Include="Content\ej\web\default-theme\ej.spreadsheet.css" />
     <Content Include="Content\ej\web\default-theme\ej.symbolpalette.css" />
     <Content Include="Content\ej\web\default-theme\ej.tab.css" />
     <Content Include="Content\ej\web\default-theme\ej.tagcloud.css" />
     <Content Include="Content\ej\web\default-theme\ej.theme.css" />
-    <Content Include="Content\ej\web\default-theme\ej.theme.less" />
+    <Content Include="Content\ej\web\default-theme\ej.theme.min.css" />
     <Content Include="Content\ej\web\default-theme\ej.tile.css" />
     <Content Include="Content\ej\web\default-theme\ej.timepicker.css" />
     <Content Include="Content\ej\web\default-theme\ej.toolbar.css" />
@@ -757,7 +754,7 @@
     <Content Include="Content\ej\web\default-theme\ej.uploadbox.css" />
     <Content Include="Content\ej\web\default-theme\ej.waitingpopup.css" />
     <Content Include="Content\ej\web\default-theme\ej.web.all.css" />
-    <Content Include="Content\ej\web\default-theme\ej.widgets.all.css" />
+    <Content Include="Content\ej\web\default-theme\ej.web.all.min.css" />
     <Content Include="Content\ej\web\default-theme\images\ajax-loader.gif" />
     <Content Include="Content\ej\web\default-theme\images\checkedtick.png" />
     <Content Include="Content\ej\web\default-theme\images\dot.png" />
@@ -771,14 +768,13 @@
     <Content Include="Content\ej\web\default-theme\images\ui-icon.png" />
     <Content Include="Content\ej\web\default-theme\images\waitingpopup.gif" />
     <Content Include="Content\ej\web\ej.widgets.core.bootstrap.css" />
-    <Content Include="Content\ej\web\ej.widgets.core.bootstrap.less" />
     <Content Include="Content\ej\web\ej.widgets.core.bootstrap.min.css" />
     <Content Include="Content\ej\web\ej.widgets.core.css" />
-    <Content Include="Content\ej\web\ej.widgets.core.less" />
+    <Content Include="Content\ej\web\ej.widgets.core.material.css" />
+    <Content Include="Content\ej\web\ej.widgets.core.material.min.css" />
     <Content Include="Content\ej\web\ej.widgets.core.min.css" />
-    <Content Include="Content\ej\web\responsive-css\ej.responsive.css" />
-    <Content Include="Content\ej\web\responsive-css\ejgrid.responsive.css" />
-    <Content Include="Content\ej\web\ribbon-css\ej.icons.css" />
+    <Content Include="Content\ej\web\ej.widgets.core.office-365.css" />
+    <Content Include="Content\ej\web\ej.widgets.core.office-365.min.css" />
     <Content Include="Content\jQuery.FileUpload\css\jquery.fileupload-noscript.css" />
     <Content Include="Content\jQuery.FileUpload\css\jquery.fileupload-ui-noscript.css" />
     <Content Include="Content\jQuery.FileUpload\css\jquery.fileupload-ui.css" />
@@ -909,12 +905,32 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\ej\dashboard\themes\common-images\ejicons.eot" />
-    <Content Include="Content\ej\dashboard\themes\common-images\ejicons.ttf" />
-    <Content Include="Content\ej\dashboard\themes\common-images\ejicons.woff" />
     <Content Include="EasyLOB\INI\DashboardResources.ini" />
     <Content Include="EasyLOB\INI\MenuResources.ini" />
     <Content Include="EasyLOB\INI\ReportResources.ini" />
+    <Content Include="Scripts\ej\cultures\ej.culture.en-US.js" />
+    <Content Include="Scripts\ej\cultures\ej.culture.en-US.min.js" />
+    <Content Include="Scripts\ej\cultures\ej.culture.pt-BR.js" />
+    <Content Include="Scripts\ej\cultures\ej.culture.pt-BR.min.js" />
+    <Content Include="Scripts\ej\cultures\ej.excelfilter.locale.en-US.js" />
+    <Content Include="Scripts\ej\cultures\ej.excelfilter.locale.pt-BR.js" />
+    <Content Include="Scripts\ej\cultures\ej.grid.locale.en-US.js" />
+    <Content Include="Scripts\ej\cultures\ej.grid.locale.pt-BR.js" />
+    <Content Include="Scripts\ej\cultures\ej.pager.locale.en-US.js" />
+    <Content Include="Scripts\ej\cultures\ej.pager.locale.pt-BR.js" />
+    <Content Include="Scripts\ej\cultures\ej.reportviewer.locale.en-US.js" />
+    <Content Include="Scripts\ej\cultures\ej.reportviewer.locale.pt-BR.js" />
+    <Content Include="Scripts\ej\dashboard\ej.dashboardViewer.all.js" />
+    <Content Include="Scripts\ej\dashboard\ej.dashboardViewer.all.min.js" />
+    <Content Include="Scripts\ej\ej.globalize.js" />
+    <Content Include="Scripts\ej\ej.globalize.min.js" />
+    <Content Include="Scripts\ej\ej.unobtrusive.js" />
+    <Content Include="Scripts\ej\ej.unobtrusive.min.js" />
+    <None Include="Scripts\ej\ej.web.all-vsdoc.js" />
+    <Content Include="Scripts\ej\ej.web.all.js" />
+    <None Include="Scripts\ej\ej.web.all.min.intellisense.js" />
+    <Content Include="Scripts\ej\ej.web.all.min.js" />
+    <Content Include="Views\Dashboards\PowerBI.cshtml" />
     <Content Include="Content\ej\dashboard\fonts\dashboarddatepicker-font.eot" />
     <Content Include="Content\ej\dashboard\fonts\dashboarddatepicker-font.ttf" />
     <Content Include="Content\ej\dashboard\fonts\dashboarddatepicker-font.woff" />
@@ -936,7 +952,24 @@
     <Content Include="Content\ej\dashboard\fonts\Roboto-Regular.ttf" />
     <Content Include="Content\ej\dashboard\fonts\Roboto-Thin.ttf" />
     <Content Include="Content\ej\dashboard\fonts\Roboto-ThinItalic.ttf" />
-    <Content Include="Views\Dashboards\PowerBI.cshtml" />
+    <Content Include="Content\ej\dashboard\themes\common-images\ejicons.eot" />
+    <Content Include="Content\ej\dashboard\themes\common-images\ejicons.ttf" />
+    <Content Include="Content\ej\dashboard\themes\common-images\ejicons.woff" />
+    <Content Include="Content\ej\web\bootstrap-theme\ej.theme.less" />
+    <Content Include="Content\ej\web\common-images\ejicons.eot" />
+    <Content Include="Content\ej\web\common-images\ejicons.ttf" />
+    <Content Include="Content\ej\web\common-images\ejicons.woff" />
+    <Content Include="Content\ej\web\common-images\ribbon\ejrbnicons.eot" />
+    <Content Include="Content\ej\web\common-images\ribbon\ejrbnicons.ttf" />
+    <Content Include="Content\ej\web\common-images\ribbon\ejrbnicons.woff" />
+    <Content Include="Content\ej\web\common-images\spreadsheet\ejxlicons.eot" />
+    <Content Include="Content\ej\web\common-images\spreadsheet\ejxlicons.ttf" />
+    <Content Include="Content\ej\web\common-images\spreadsheet\ejxlicons.woff" />
+    <Content Include="Content\ej\web\default-theme\ej.theme.less" />
+    <Content Include="Content\ej\web\ej.widgets.core.bootstrap.less" />
+    <Content Include="Content\ej\web\ej.widgets.core.less" />
+    <Content Include="Content\ej\web\ej.widgets.core.material.less" />
+    <Content Include="Content\ej\web\ej.widgets.core.office-365.less" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -952,27 +985,6 @@
     <Content Include="Images\File\word.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\ej\cultures\ej.culture.en-US.js" />
-    <Content Include="Scripts\ej\cultures\ej.culture.en-US.min.js" />
-    <Content Include="Scripts\ej\cultures\ej.culture.pt-BR.js" />
-    <Content Include="Scripts\ej\cultures\ej.culture.pt-BR.min.js" />
-    <Content Include="Scripts\ej\cultures\ej.excelfilter.locale.en-US.js" />
-    <Content Include="Scripts\ej\cultures\ej.excelfilter.locale.pt-BR.js" />
-    <Content Include="Scripts\ej\cultures\ej.grid.locale.en-US.js" />
-    <Content Include="Scripts\ej\cultures\ej.grid.locale.pt-BR.js" />
-    <Content Include="Scripts\ej\cultures\ej.pager.locale.en-US.js" />
-    <Content Include="Scripts\ej\cultures\ej.pager.locale.pt-BR.js" />
-    <Content Include="Scripts\ej\cultures\ej.reportviewer.locale.en-US.js" />
-    <Content Include="Scripts\ej\cultures\ej.reportviewer.locale.pt-BR.js" />
-    <Content Include="Scripts\ej\dashboard\ej.dashboardViewer.all.min.js" />
-    <Content Include="Scripts\ej\ej.globalize.js" />
-    <Content Include="Scripts\ej\ej.globalize.min.js" />
-    <Content Include="Scripts\ej\ej.unobtrusive.js" />
-    <Content Include="Scripts\ej\ej.unobtrusive.min.js" />
-    <None Include="Scripts\ej\ej.web.all-vsdoc.js" />
-    <Content Include="Scripts\ej\ej.web.all.js" />
-    <None Include="Scripts\ej\ej.web.all.min.intellisense.js" />
-    <Content Include="Scripts\ej\ej.web.all.min.js" />
     <Content Include="Scripts\globalize\cultures\globalize.culture.af-ZA.js" />
     <Content Include="Scripts\globalize\cultures\globalize.culture.af.js" />
     <Content Include="Scripts\globalize\cultures\globalize.culture.am-ET.js" />
@@ -1582,6 +1594,18 @@
     <Content Include="Views\Identity\Manage\ManageLogins.cshtml" />
     <Content Include="Views\Identity\Manage\SetPassword.cshtml" />
     <Content Include="Views\Identity\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Chinook\Album\Search.cshtml" />
+    <Content Include="Views\Chinook\Artist\Search.cshtml" />
+    <Content Include="Views\Chinook\CustomerDocument\Search.cshtml" />
+    <Content Include="Views\Chinook\Customer\Search.cshtml" />
+    <Content Include="Views\Chinook\Employee\Search.cshtml" />
+    <Content Include="Views\Chinook\Genre\Search.cshtml" />
+    <Content Include="Views\Chinook\InvoiceLine\Search.cshtml" />
+    <Content Include="Views\Chinook\Invoice\Search.cshtml" />
+    <Content Include="Views\Chinook\MediaType\Search.cshtml" />
+    <Content Include="Views\Chinook\PlaylistTrack\Search.cshtml" />
+    <Content Include="Views\Chinook\Playlist\Search.cshtml" />
+    <Content Include="Views\Chinook\Track\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="EasyLOB-Export\" />
@@ -1886,7 +1910,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>64708</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

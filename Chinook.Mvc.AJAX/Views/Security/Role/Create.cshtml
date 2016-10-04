@@ -1,4 +1,4 @@
-@model RoleItemModel
+﻿@model RoleItemModel
 
 @{
     ViewBag.Title = AppHelper.PageTitle(RoleResources.EntitySingular, PresentationResources.Create);
@@ -19,7 +19,7 @@
 {
     @Html.AntiForgeryToken()
 
-    <div id="Partial" class="form-inline">
+    <div class="form-inline">
         @Html.Partial("_RoleItem", Model)
     </div>
 
@@ -33,28 +33,25 @@
 
 <script>
     $(function () {
-        try
-        {
+        try {
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
     
             if (model.IsSecurityOperations.IsCreate) {
-                $("#Partial").show();
                 $("#Button_Cancel").show();
                 $("#Button_OK").show();
             }
             else {
-                $("#Partial").hide();
                 $("#Button_Cancel").show();
                 $("#Button_OK").hide();
             }
         } catch (exception) {
-            zExceptionMessage("Role Create.cshtml", "function()", exception.message)
+            zExceptionMessage("Role Create.cshtml", "function", exception.message)
         }
     });
 
     function ajaxFailure(jqXHR, textStatus, errorThrown) {
         try {
-             $("#OperationResult").html(zAjaxOperationResult(jqXHR));
+            $("#OperationResult").html(zAjaxOperationResult(jqXHR));
         } catch (exception) {
             zExceptionMessage("Role Create.cshtml", "ajaxFailure", exception.message)
         }

@@ -1,51 +1,53 @@
-@model UserRoleItemModel
+﻿@model UserRoleItemModel
 
 @{
     string roleText = Model.UserRole == null ? "" : (Model.UserRole.RoleLookupText ?? "");
     string userText = Model.UserRole == null ? "" : (Model.UserRole.UserLookupText ?? "");
 }
 
-@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div id="Item_UserRole">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
 
-@Html.HiddenFor(model => model.ControllerAction)
-@Html.HiddenFor(model => model.IsMasterDetail)
-@Html.HiddenFor(model => model.MasterRoleId)
-@Html.HiddenFor(model => model.MasterUserId)
+    @Html.HiddenFor(model => model.ControllerAction)
+    @Html.HiddenFor(model => model.IsMasterDetail)
+    @Html.HiddenFor(model => model.MasterRoleId)
+    @Html.HiddenFor(model => model.MasterUserId)
 
-@{Html.EJ().Tab("Tab_UserRole")
-    .ClientSideEvents(clientEvent => clientEvent
-        .ItemActive("itemActive_Tab_UserRole")
-    )
-    .Items(data =>
-    {
-        data.Add().ID("TabSheet_UserRole_UserRole").Text(UserRoleResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
+    @{Html.EJ().Tab("Tab_UserRole")
+        .ClientSideEvents(clientEvent => clientEvent
+            .ItemActive("itemActive_Tab_UserRole")
+        )
+        .Items(data =>
+        {
+            data.Add().ID("TabSheet_UserRole_UserRole").Text(UserRoleResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
 
-            <div id="Group_UserRole_UserId" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.Label(@UserResources.EntitySingular, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.UserRole.UserId, new { id = "UserRole_UserId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })                    
-                @Html.Action("Lookup", "User", new
-                {
-                    Text = userText,
-                    ValueId = "UserRole_UserId"
-                })
-                @Html.ValidationMessageFor(model => model.UserRole.UserId, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_UserRole_UserId" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.Label(@UserResources.EntitySingular, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.UserRole.UserId, new { id = "UserRole_UserId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })                    
+                    @Html.Action("Lookup", "User", new
+                    {
+                        Text = userText,
+                        ValueId = "UserRole_UserId"
+                    })
+                    @Html.ValidationMessageFor(model => model.UserRole.UserId, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-            <div id="Group_UserRole_RoleId" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.Label(@RoleResources.EntitySingular, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.UserRole.RoleId, new { id = "UserRole_RoleId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })                    
-                @Html.Action("Lookup", "Role", new
-                {
-                    Text = roleText,
-                    ValueId = "UserRole_RoleId"
-                })
-                @Html.ValidationMessageFor(model => model.UserRole.RoleId, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_UserRole_RoleId" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.Label(@RoleResources.EntitySingular, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.UserRole.RoleId, new { id = "UserRole_RoleId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })                    
+                    @Html.Action("Lookup", "Role", new
+                    {
+                        Text = roleText,
+                        ValueId = "UserRole_RoleId"
+                    })
+                    @Html.ValidationMessageFor(model => model.UserRole.RoleId, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-        </div>);
-    })
-    .Render();
-}
+            </div>);
+        })
+        .Render();
+    }
+</div>
 
 <script>
     // Validate hidden fields
@@ -56,6 +58,16 @@
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
             var userRoleDictionary = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(DataHelper.GetDataDictionaryAttribute(typeof(UserRole)))); }();
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
+
+            if ((model.ControllerAction = "create" && model.IsSecurityOperations.IsCreate) ||
+                (model.ControllerAction = "read" && model.IsSecurityOperations.IsRead) ||
+                (model.ControllerAction = "update" && model.IsSecurityOperations.IsUpdate) ||
+                (model.ControllerAction = "delete" && model.IsSecurityOperations.IsDelete)) {
+                $("#Item_UserRole").css("display", "block");
+            }
+            else {
+                $("#Item_UserRole").css("display", "none");
+            }
             
             var readonly = (controllerAction == "delete" || controllerAction == "read");
             $("input.form-control").not(":input[type=button], :input[type=image], :input[type=reset], :input[type=submit]").attr("readonly", readonly);
@@ -75,13 +87,13 @@
 
             // Associations (FK)
             // Role
-            if (model.MasterRoleId != null) {
-                $("#UserRole_RoleId").val(model.MasterRoleId);
+            if (model.MasterId != null) {
+                $("#UserRole_RoleId").val(model.MasterId);
                 $("#Group_UserRole_RoleId").hide();            
             }
             // User
-            if (model.MasterUserId != null) {
-                $("#UserRole_UserId").val(model.MasterUserId);
+            if (model.MasterId != null) {
+                $("#UserRole_UserId").val(model.MasterId);
                 $("#Group_UserRole_UserId").hide();            
             }
 

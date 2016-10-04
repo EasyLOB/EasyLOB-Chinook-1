@@ -1,0 +1,16 @@
+﻿@model ActivityCollectionModel
+
+<div class="form-inline">
+    @Html.Partial("_ActivityCollection", Model)
+</div>
+
+<div id="OperationResult"></div>
+
+<script>
+    $(function () {
+        try {
+        } catch (exception) {
+            zExceptionMessage("Activity Search.cshtml", "function", exception.message)
+        }
+    });
+</script>

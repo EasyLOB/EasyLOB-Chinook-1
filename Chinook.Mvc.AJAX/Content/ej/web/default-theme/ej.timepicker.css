@@ -20,6 +20,19 @@
 /*----------------------Office 365 theme-----------------------*/
 /*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
 /*----------------------material theme-----------------------*/
+/*--------------- common ----------------- */
+/*---------------high-contrast ------*/
+/*---------------- Office-365 ----------------*/
+/*------------------ material theme ---------------------*/
+/*-----------------------HeatMap Definition-----------------*/
+/* Common style */
+
+.e-content-area {
+  background-color: white;
+  color: #111111;
+  border-color: #c8c8c8;
+  font-family: Segoe UI;
+}
 /*------------------------------------- TimeEditor -------------------------------------------*/
 
 .e-timewidget .e-input,
@@ -38,24 +51,24 @@
 }
 .e-timewidget .e-select,
 .e-timewidget.e-rtl .e-select,
-.e-timewidget .e-disable.e-select:hover {
+.e-ntouch.e-timewidget .e-disable.e-select:hover {
   border-color: #c8c8c8;
   color: #686969;
 }
 .e-timewidget .e-select,
 .e-timewidget.e-rtl .e-select,
-.e-timewidget .e-disable.e-select:hover {
+.e-ntouch.e-timewidget .e-disable.e-select:hover {
   background: #ececec;
 }
-.e-timewidget .e-select:hover,
+.e-ntouch.e-timewidget .e-select:hover,
 .e-time-popup.e-popup .e-hover {
   color: #282827;
 }
-.e-timewidget .e-select:hover,
+.e-ntouch.e-timewidget .e-select:hover,
 .e-time-popup.e-popup .e-hover {
   background: #86cbea;
 }
-.e-timewidget .e-select:hover {
+.e-ntouch.e-timewidget .e-select:hover {
   color: #282827;
 }
 .e-time-popup.e-popup .e-hover {

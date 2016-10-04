@@ -1,190 +1,192 @@
-@model EmployeeCollectionModel
+﻿@model EmployeeCollectionModel
 
-@(Html.EJ().Grid<Employee>("Grid_Employee")
-    .Datasource(datasource => datasource
-        .Adaptor(AdaptorType.UrlAdaptor)
-        .URL(Url.Content("~/Employee/DataSource"))
-    )
-    .AllowFiltering()
-    .AllowGrouping()
-    .AllowPaging()
-    .AllowResizing()
-    .AllowScrolling()
-    .AllowSearching()
-    .AllowSorting()
-    .ClientSideEvents(clientEvent => clientEvent
-        .ActionBegin("actionBegin_Grid_Employee")
-        .ActionFailure("actionFailure_Grid_Employee")
-        .Load("load_Grid_Employee")
-        .ToolbarClick("toolbarClick_Grid_Employee")
-    )
-    .Columns(column =>
-    {
-        column.Field("EmployeeId")
-            .AllowEditing(false)
-            .EditType(EditingType.Numeric)
-            .Format(SyncfusionPatternResources.GridFormat_Integer)
-            .HeaderText(EmployeeResources.PropertyEmployeeId)
-            .IsIdentity(true)
-            .IsPrimaryKey(true)
-            .TextAlign(TextAlign.Right)
-            .Visible(false)
-            .Width(100)
-            .Add();
-        column.Field("LastName")
-            .EditType(EditingType.String)
-            .HeaderText(EmployeeResources.PropertyLastName)
-            .Visible(true)
-            .Width(200)
-            .Add();
-        column.Field("FirstName")
-            .EditType(EditingType.String)
-            .HeaderText(EmployeeResources.PropertyFirstName)
-            .Visible(true)
-            .Width(200)
-            .Add();
-        column.Field("Title")
-            .EditType(EditingType.String)
-            .HeaderText(EmployeeResources.PropertyTitle)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("ReportsTo")
-            .EditType(EditingType.Numeric)
-            .Format(SyncfusionPatternResources.GridFormat_Integer)
-            .HeaderText(EmployeeResources.PropertyReportsTo)
-            .TextAlign(TextAlign.Right)
-            .Visible(false)
-            .Width(100)
-            .Add();
-        column.Field("EmployeeLookupText")
-            .AllowEditing(false)
-            .HeaderText(EmployeeResources.EntitySingular)
-            .Visible(true)
-            .Width(100)
-            .Add();
-        column.Field("BirthDate")
-            .EditType(EditingType.DateTimePicker)
-            .Format(SyncfusionPatternResources.GridFormat_DateTime)
-            .HeaderText(EmployeeResources.PropertyBirthDate)
-            .Visible(false)
-            .Width(100)
-            .Add();
-        column.Field("HireDate")
-            .EditType(EditingType.DateTimePicker)
-            .Format(SyncfusionPatternResources.GridFormat_DateTime)
-            .HeaderText(EmployeeResources.PropertyHireDate)
-            .Visible(false)
-            .Width(100)
-            .Add();
-        column.Field("Address")
-            .EditType(EditingType.String)
-            .HeaderText(EmployeeResources.PropertyAddress)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("City")
-            .EditType(EditingType.String)
-            .HeaderText(EmployeeResources.PropertyCity)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("State")
-            .EditType(EditingType.String)
-            .HeaderText(EmployeeResources.PropertyState)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("Country")
-            .EditType(EditingType.String)
-            .HeaderText(EmployeeResources.PropertyCountry)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("PostalCode")
-            .EditType(EditingType.String)
-            .HeaderText(EmployeeResources.PropertyPostalCode)
-            .Visible(false)
-            .Width(100)
-            .Add();
-        column.Field("Phone")
-            .EditType(EditingType.String)
-            .HeaderText(EmployeeResources.PropertyPhone)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("Fax")
-            .EditType(EditingType.String)
-            .HeaderText(EmployeeResources.PropertyFax)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("Email")
-            .EditType(EditingType.String)
-            .HeaderText(EmployeeResources.PropertyEmail)
-            .Visible(false)
-            .Width(240)
-            .Add();
-    })
-    .EditSettings(edit => edit
-        .AllowAdding()
-        .AllowDeleting()
-        .AllowEditing()
-    )
-    .EnablePersistence()
-    .FilterSettings(filter => filter
-        .EnableCaseSensitivity(false)
-        .FilterType(FilterType.Excel)
-        .MaxFilterChoices(System.Int32.MaxValue)
-    )
-    .Mappers(map => map
-        .ExportToExcelAction(Url.Content("~/Employee/ExportToExcel"))
-        .ExportToPdfAction(Url.Content("~/Employee/ExportToPdf"))
-        .ExportToWordAction(Url.Content("~/Employee/ExportToWord"))
-    )
-    .PageSettings(page => page
-        .PageSize(AppDefaults.SyncfusionRecordsByPage)
-    )
-    .SearchSettings(search =>
-    {
-        search.Fields(field =>
+<div id="Collection_Employee">
+    @(Html.EJ().Grid<Employee>("Grid_Employee")
+        .Datasource(datasource => datasource
+            .Adaptor(AdaptorType.UrlAdaptor)
+            .URL(Url.Content("~/Employee/DataSource"))
+        )
+        .AllowFiltering()
+        .AllowGrouping()
+        .AllowPaging()
+        .AllowResizing()
+        .AllowScrolling()
+        .AllowSearching()
+        .AllowSorting()
+        .ClientSideEvents(clientEvent => clientEvent
+            .ActionBegin("actionBegin_Grid_Employee")
+            .ActionFailure("actionFailure_Grid_Employee")
+            .Load("load_Grid_Employee")
+            .ToolbarClick("toolbarClick_Grid_Employee")
+        )
+        .Columns(column =>
         {
-            //field.Add("EmployeeId");
-            field.Add("LastName");
-            field.Add("FirstName");
-            //field.Add("Title");
-            //field.Add("ReportsTo");
-            field.Add("EmployeeLookupText");
-            //field.Add("BirthDate");
-            //field.Add("HireDate");
-            //field.Add("Address");
-            //field.Add("City");
-            //field.Add("State");
-            //field.Add("Country");
-            //field.Add("PostalCode");
-            //field.Add("Phone");
-            //field.Add("Fax");
-            //field.Add("Email");
-        });
-    })
-    .ShowColumnChooser()
-    .ToolbarSettings(toolbar => toolbar
-        .CustomToolbarItems(new List<object>() {
-            new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_Employee" }
+            column.Field("EmployeeId")
+                .AllowEditing(false)
+                .EditType(EditingType.Numeric)
+                .Format(SyncfusionPatternResources.GridFormat_Integer)
+                .HeaderText(EmployeeResources.PropertyEmployeeId)
+                .IsIdentity(true)
+                .IsPrimaryKey(true)
+                .TextAlign(TextAlign.Right)
+                .Visible(false)
+                .Width(100)
+                .Add();
+            column.Field("LastName")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyLastName)
+                .Visible(true)
+                .Width(200)
+                .Add();
+            column.Field("FirstName")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyFirstName)
+                .Visible(true)
+                .Width(200)
+                .Add();
+            column.Field("Title")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyTitle)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("ReportsTo")
+                .EditType(EditingType.Numeric)
+                .Format(SyncfusionPatternResources.GridFormat_Integer)
+                .HeaderText(EmployeeResources.PropertyReportsTo)
+                .TextAlign(TextAlign.Right)
+                .Visible(false)
+                .Width(100)
+                .Add();
+            column.Field("EmployeeLookupText")
+                .AllowEditing(false)
+                .HeaderText(EmployeeResources.EntitySingular)
+                .Visible(true)
+                .Width(100)
+                .Add();
+            column.Field("BirthDate")
+                .EditType(EditingType.DateTimePicker)
+                .Format(SyncfusionPatternResources.GridFormat_DateTime)
+                .HeaderText(EmployeeResources.PropertyBirthDate)
+                .Visible(false)
+                .Width(100)
+                .Add();
+            column.Field("HireDate")
+                .EditType(EditingType.DateTimePicker)
+                .Format(SyncfusionPatternResources.GridFormat_DateTime)
+                .HeaderText(EmployeeResources.PropertyHireDate)
+                .Visible(false)
+                .Width(100)
+                .Add();
+            column.Field("Address")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyAddress)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("City")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyCity)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("State")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyState)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("Country")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyCountry)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("PostalCode")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyPostalCode)
+                .Visible(false)
+                .Width(100)
+                .Add();
+            column.Field("Phone")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyPhone)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("Fax")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyFax)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("Email")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyEmail)
+                .Visible(false)
+                .Width(240)
+                .Add();
         })
-        .ShowToolbar()
-        .ToolbarItems(items =>
+        .EditSettings(edit => edit
+            .AllowAdding()
+            .AllowDeleting()
+            .AllowEditing()
+        )
+        .EnablePersistence()
+        .FilterSettings(filter => filter
+            .EnableCaseSensitivity(false)
+            .FilterType(FilterType.Excel)
+            .MaxFilterChoices(System.Int32.MaxValue)
+        )
+        .Mappers(map => map
+            .ExportToExcelAction(Url.Content("~/Employee/ExportToExcel"))
+            .ExportToPdfAction(Url.Content("~/Employee/ExportToPdf"))
+            .ExportToWordAction(Url.Content("~/Employee/ExportToWord"))
+        )
+        .PageSettings(page => page
+            .PageSize(AppDefaults.SyncfusionRecordsByPage)
+        )
+        .SearchSettings(search =>
         {
-            items.AddTool(ToolBarItems.Search);
-            items.AddTool(ToolBarItems.Add);
-            items.AddTool(ToolBarItems.Edit);
-            items.AddTool(ToolBarItems.Delete);
-            items.AddTool(ToolBarItems.ExcelExport);
-            items.AddTool(ToolBarItems.PdfExport);
-            items.AddTool(ToolBarItems.WordExport);
+            search.Fields(field =>
+            {
+                //field.Add("EmployeeId");
+                field.Add("LastName");
+                field.Add("FirstName");
+                //field.Add("Title");
+                //field.Add("ReportsTo");
+                field.Add("EmployeeLookupText");
+                //field.Add("BirthDate");
+                //field.Add("HireDate");
+                //field.Add("Address");
+                //field.Add("City");
+                //field.Add("State");
+                //field.Add("Country");
+                //field.Add("PostalCode");
+                //field.Add("Phone");
+                //field.Add("Fax");
+                //field.Add("Email");
+            });
         })
+        .ShowColumnChooser()
+        .ToolbarSettings(toolbar => toolbar
+            .CustomToolbarItems(new List<object>() {
+                new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_Employee" }
+            })
+            .ShowToolbar()
+            .ToolbarItems(items =>
+            {
+                items.AddTool(ToolBarItems.Search);
+                items.AddTool(ToolBarItems.Add);
+                items.AddTool(ToolBarItems.Edit);
+                items.AddTool(ToolBarItems.Delete);
+                items.AddTool(ToolBarItems.ExcelExport);
+                items.AddTool(ToolBarItems.PdfExport);
+                items.AddTool(ToolBarItems.WordExport);
+            })
+        )
     )
-)
+</div>
 
 @Html.OperationResult(Model.OperationResult)
 
@@ -196,6 +198,13 @@
     $(function () {
         try {
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+
+            if (model.IsSecurityOperations.IsSearch) {
+                $("#Collection_Employee").css("display", "block");
+            }
+            else {
+                $("#Collection_Employee").css("display", "none");
+            }
 
             var gridEmployee = $("#Grid_Employee");
             var ejGridEmployee = gridEmployee.data("ejGrid");

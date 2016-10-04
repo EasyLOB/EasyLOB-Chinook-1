@@ -10,7 +10,7 @@
 {
     @Html.AntiForgeryToken()
 
-    <div id="Partial" class="form-inline">
+    <div class="form-inline">
         @Html.Partial("_AuditTrailConfigurationItem", Model)
     </div>
 
@@ -24,17 +24,19 @@
 
 <script>
     $(function () {
-        var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+        try {
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
 
-        if (model.IsSecurityOperations.IsCreate) {
-            $("#Partial").show();
-            $("#Button_Cancel").show();
-            $("#Button_OK").show();
-        }
-        else {
-            $("#Partial").hide();
-            $("#Button_Cancel").show();
-            $("#Button_OK").hide();
+            if (model.IsSecurityOperations.IsCreate) {
+                $("#Button_Cancel").show();
+                $("#Button_OK").show();
+            }
+            else {
+                $("#Button_Cancel").show();
+                $("#Button_OK").hide();
+            }
+        } catch (exception) {
+            zExceptionMessage("AuditTrailConfiguration Create.cshtml", "function", exception.message)
         }
     });
 </script>

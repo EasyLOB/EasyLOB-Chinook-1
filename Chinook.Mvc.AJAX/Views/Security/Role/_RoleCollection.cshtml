@@ -2,98 +2,103 @@
 
 @{
     ViewBag.Title = RoleResources.EntityPlural;
+
+    string query = "";
 }
 
-<div id="Role_Title">
+<div id="Collection_Role_Title">
     <h3>@ViewBag.Title</h3>
 </div>
 
-@(Html.EJ().Grid<Role>("Grid_Role")
-    .Datasource(datasource => datasource
-        .Adaptor(AdaptorType.UrlAdaptor)
-        .URL(Url.Content("~/Role/DataSource"))
-    )
-    .AllowFiltering()
-    .AllowGrouping()
-    .AllowPaging()
-    .AllowResizing()
-    .AllowScrolling()
-    .AllowSearching()
-    .AllowSorting()
-    .ClientSideEvents(clientEvent => clientEvent
-        .ActionBegin("actionBegin_Grid_Role")
-        .ActionFailure("actionFailure_Grid_Role")
-        .Load("load_Grid_Role")
-        .ToolbarClick("toolbarClick_Grid_Role")
-    )
-    .Columns(column =>
-    {
-        column.Field("Id")
-            .EditType(EditingType.String)
-            .HeaderText(RoleResources.PropertyId)
-            .IsPrimaryKey(true)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("Name")
-            .EditType(EditingType.String)
-            .HeaderText(RoleResources.PropertyName)
-            .Visible(true)
-            .Width(240)
-            .Add();
-        //column.Field("Discriminator")
-        //    .EditType(EditingType.String)
-        //    .HeaderText(RoleResources.PropertyDiscriminator)
-        //    .Visible(true)
-        //    .Width(240)
-        //    .Add(); // !!!
-    })
-    .EditSettings(edit => edit
-        .AllowAdding()
-        .AllowDeleting()
-        .AllowEditing()
-    )
-    .EnablePersistence()
-    .FilterSettings(filter => filter
-        .EnableCaseSensitivity(false)
-        .FilterType(FilterType.Excel)
-        .MaxFilterChoices(System.Int32.MaxValue)
-    )
-    .Mappers(map => map
-        .ExportToExcelAction(Url.Content("~/Role/ExportToExcel"))
-        .ExportToPdfAction(Url.Content("~/Role/ExportToPdf"))
-        .ExportToWordAction(Url.Content("~/Role/ExportToWord"))
-    )
-    .PageSettings(page => page
-        .PageSize(AppDefaults.SyncfusionRecordsByPage)
-    )
-    .SearchSettings(search =>
-    {
-        search.Fields(field =>
+<div id="Collection_Role">
+    @(Html.EJ().Grid<Role>("Grid_Role")
+        .Datasource(datasource => datasource
+            .Adaptor(AdaptorType.UrlAdaptor)
+            .URL(Url.Content("~/Role/DataSource"))
+        )
+        .Query(query)
+        .AllowFiltering()
+        .AllowGrouping()
+        .AllowPaging()
+        .AllowResizing()
+        .AllowScrolling()
+        .AllowSearching()
+        .AllowSorting()
+        .ClientSideEvents(clientEvent => clientEvent
+            .ActionBegin("actionBegin_Grid_Role")
+            .ActionFailure("actionFailure_Grid_Role")
+            .Load("load_Grid_Role")
+            .ToolbarClick("toolbarClick_Grid_Role")
+        )
+        .Columns(column =>
         {
-            //field.Add("Id");
-            field.Add("Name");
-            //field.Add("Discriminator"); // !!!
-        });
-    })
-    .ShowColumnChooser()
-    .ToolbarSettings(toolbar => toolbar
-        .CustomToolbarItems(new List<object>() {
-            new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_Role" }
+            column.Field("Id")
+                .EditType(EditingType.String)
+                .HeaderText(RoleResources.PropertyId)
+                .IsPrimaryKey(true)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("Name")
+                .EditType(EditingType.String)
+                .HeaderText(RoleResources.PropertyName)
+                .Visible(true)
+                .Width(240)
+                .Add();
+            //column.Field("Discriminator")
+            //    .EditType(EditingType.String)
+            //    .HeaderText(RoleResources.PropertyDiscriminator)
+            //    .Visible(true)
+            //    .Width(240)
+            //    .Add(); // !!!
         })
-        .ShowToolbar()
-        .ToolbarItems(items =>
+        .EditSettings(edit => edit
+            .AllowAdding()
+            .AllowDeleting()
+            .AllowEditing()
+        )
+        //.EnablePersistence()
+        .FilterSettings(filter => filter
+            .EnableCaseSensitivity(false)
+            .FilterType(FilterType.Excel)
+            .MaxFilterChoices(System.Int32.MaxValue)
+        )
+        .Mappers(map => map
+            .ExportToExcelAction(Url.Content("~/Role/ExportToExcel"))
+            .ExportToPdfAction(Url.Content("~/Role/ExportToPdf"))
+            .ExportToWordAction(Url.Content("~/Role/ExportToWord"))
+        )
+        .PageSettings(page => page
+            .PageSize(AppDefaults.SyncfusionRecordsByPage)
+        )
+        .SearchSettings(search =>
         {
-            items.AddTool(ToolBarItems.Search);
-            items.AddTool(ToolBarItems.Add);
-            items.AddTool(ToolBarItems.Edit);
-            items.AddTool(ToolBarItems.Delete);
-            items.AddTool(ToolBarItems.ExcelExport);
-            items.AddTool(ToolBarItems.PdfExport);
-            items.AddTool(ToolBarItems.WordExport);
+            search.Fields(field =>
+            {
+                //field.Add("Id");
+                field.Add("Name");
+                //field.Add("Discriminator"); // !!!
+            });
         })
+        .ShowColumnChooser()
+        .ToolbarSettings(toolbar => toolbar
+            .CustomToolbarItems(new List<object>() {
+                new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_Role" }
+            })
+            .ShowToolbar()
+            .ToolbarItems(items =>
+            {
+                items.AddTool(ToolBarItems.Search);
+                items.AddTool(ToolBarItems.Add);
+                items.AddTool(ToolBarItems.Edit);
+                items.AddTool(ToolBarItems.Delete);
+                items.AddTool(ToolBarItems.ExcelExport);
+                items.AddTool(ToolBarItems.PdfExport);
+                items.AddTool(ToolBarItems.WordExport);
+            })
+        )
     )
-)
+</div>
 
 @Html.OperationResult(Model.OperationResult)
 
@@ -105,16 +110,20 @@
     $(function () {
         try {
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
-    
-            ej.widget.init($("#Ajax"));
-            var title = $("#Role_Title");       
+
+            var title = $("#Collection_Role_Title");
+
+            ej.widget.init($("#Collection_Role"));
+
+            if (model.IsSecurityOperations.IsSearch) {
+                $("#Collection_Role").css("display", "block");
+            }
+            else {
+                $("#Collection_Role").css("display", "none");
+            }
 
             var gridRole = $("#Grid_Role");
             var ejGridRole = gridRole.data("ejGrid");
-    
-            if (ejGridRole.model.filterSettings.filteredColumns.length != 0) {
-                ejGridRole.clearFiltering();
-            }
                 
             if (!model.IsMasterDetail) {
                 title.css("display", "block");
@@ -123,7 +132,6 @@
                 ejGridRole.setModel({
                     allowGrouping: true,
                     toolbarSettings: {
-                        showToolbar: true,
                         toolbarItems: [
                             ej.Grid.ToolBarItems.Search,
                             ej.Grid.ToolBarItems.Add,
@@ -141,7 +149,6 @@
                 ejGridRole.setModel({
                     allowGrouping: false,
                     toolbarSettings: {
-                        showToolbar: true,
                         toolbarItems: [
                             ej.Grid.ToolBarItems.Add,
                             ej.Grid.ToolBarItems.Edit,
@@ -168,7 +175,8 @@
                     case "add":
                         // Create
                         if (model.IsSecurityOperations.IsCreate) {
-                            $("#Ajax").load("@(Url.Action("Create", "Role", null, Request.Url.Scheme))" + (url == "" ? "" : "?") + url);
+                            $("#Ajax").load("@(Url.Action("Create", "Role", null, Request.Url.Scheme))" + (url == "" ? "" : "?") +
+                                url);
                         }
                         break;
                     case "read":
@@ -176,7 +184,8 @@
                         if (model.IsSecurityOperations.IsRead) {
                             var data = args.data;
                             if (!ej.isNullOrUndefined(data)) {
-                                $("#Ajax").load("@(Url.Action("Read", "Role", null, Request.Url.Scheme))?Id=" + String(data.Id) + (url == "" ? "" : "&") + url);
+                                $("#Ajax").load("@(Url.Action("Read", "Role", null, Request.Url.Scheme))?Id=" + String(data.Id) +
+                                    (url == "" ? "" : "&") + url);
                             }
                         }
                         break;                        
@@ -185,7 +194,8 @@
                         if (model.IsSecurityOperations.IsUpdate) {
                             var data = this.model.currentViewData[args.rowIndex];
                             if (!ej.isNullOrUndefined(data)) {
-                                $("#Ajax").load("@(Url.Action("Update", "Role", null, Request.Url.Scheme))?Id=" + String(data.Id) + (url == "" ? "" : "&") + url);
+                                $("#Ajax").load("@(Url.Action("Update", "Role", null, Request.Url.Scheme))?Id=" + String(data.Id) +
+                                    (url == "" ? "" : "&") + url);
                             }
                         }
                         break;
@@ -194,7 +204,8 @@
                         if (model.IsSecurityOperations.IsDelete) {
                             var data = args.data;
                             if (!ej.isNullOrUndefined(data)) {
-                                $("#Ajax").load("@(Url.Action("Delete", "Role", null, Request.Url.Scheme))?Id=" + String(data.Id) + (url == "" ? "" : "&") + url);
+                                $("#Ajax").load("@(Url.Action("Delete", "Role", null, Request.Url.Scheme))?Id=" + String(data.Id) +
+                                    (url == "" ? "" : "&") + url);
                             }
                         }
                         break;

@@ -1,145 +1,147 @@
 ﻿@model AuditTrailLogCollectionModel
 
-@(Html.EJ().Grid<AuditTrailLog>("Grid_AuditTrailLog")
-    .Datasource(datasource => datasource
-        .Adaptor(AdaptorType.UrlAdaptor)
-        .URL(Url.Content("~/AuditTrailLog/DataSource"))
-    )
-    .AllowFiltering()
-    .AllowGrouping()
-    .AllowPaging()
-    .AllowResizing()
-    .AllowScrolling()
-    .AllowSearching()
-    .AllowSorting()
-    .ClientSideEvents(clientEvent => clientEvent
-        .ActionBegin("actionBegin_Grid_AuditTrailLog")
-        .ActionFailure("actionFailure_Grid_AuditTrailLog")
-        .Load("load_Grid_AuditTrailLog")
-        .ToolbarClick("toolbarClick_Grid_AuditTrailLog")
-    )
-    .Columns(column =>
-    {
-        column.Field("AuditTrailLogId")
-            .AllowEditing(false)
-            .EditType(EditingType.Numeric)
-            .HeaderText(AuditTrailLogResources.PropertyAuditTrailLogId)
-            .IsIdentity(true)
-            .IsPrimaryKey(true)
-            .TextAlign(TextAlign.Right)
-            .Visible(false)
-            .Width(100)
-            .Add();
-        column.Field("LogDate")
-            .EditType(EditingType.DateTimePicker)
-            .Format(SyncfusionPatternResources.GridFormat_Date)
-            .HeaderText(AuditTrailLogResources.PropertyLogDate)
-            .Visible(false)
-            .Width(100)
-            .Add(); // !!!
-        column.Field("LogTime")
-            .EditType(EditingType.DateTimePicker)
-            .Format(SyncfusionPatternResources.GridFormat_Time)
-            .HeaderText(AuditTrailLogResources.PropertyLogTime)
-            .Visible(true)
-            .Width(100)
-            .Add(); // !!!
-        column.Field("LogUserName")
-            .EditType(EditingType.String)
-            .HeaderText(AuditTrailLogResources.PropertyLogUserName)
-            .Visible(true)
-            .Width(75)
-            .Add(); // !!!
-        column.Field("LogDomain")
-            .EditType(EditingType.String)
-            .HeaderText(AuditTrailLogResources.PropertyLogDomain)
-            .Visible(true)
-            .Width(75)
-            .Add(); // !!!
-        column.Field("LogEntity")
-            .EditType(EditingType.String)
-            .HeaderText(AuditTrailLogResources.PropertyLogEntity)
-            .Visible(true)
-            .Width(75)
-            .Add(); // !!!
-        column.Field("LogOperation")
-            .EditType(EditingType.String)
-            .HeaderText(AuditTrailLogResources.PropertyLogOperation)
-            .Visible(true)
-            .Width(75)
-            .Add(); // !!!
-        column.Field("LogId")
-            .EditType(EditingType.String)
-            .HeaderText(AuditTrailLogResources.PropertyLogId)
-            .Visible(true)
-            .Width(75)
-            .Add();
-        column.Field("LogentityBefore")
-            .EditType(EditingType.String)
-            .HeaderText(AuditTrailLogResources.PropertyLogEntityBefore)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("LogEntityAfter")
-            .EditType(EditingType.String)
-            .HeaderText(AuditTrailLogResources.PropertyLogEntityAfter)
-            .Visible(false)
-            .Width(240)
-            .Add();
-    })
-    .EditSettings(edit => edit
-        .AllowAdding()
-        .AllowDeleting()
-        .AllowEditing()
-    )
-    .EnablePersistence()
-    .FilterSettings(filter => filter
-        .EnableCaseSensitivity(false)
-        .FilterType(FilterType.Excel)
-        .MaxFilterChoices(System.Int32.MaxValue)
-    )
-    .Mappers(map => map
-        .ExportToExcelAction(Url.Content("~/AuditTrailLog/ExportToExcel"))
-        .ExportToPdfAction(Url.Content("~/AuditTrailLog/ExportToPdf"))
-        .ExportToWordAction(Url.Content("~/AuditTrailLog/ExportToWord"))
-    )
-    .PageSettings(page => page
-        .PageSize(AppDefaults.SyncfusionRecordsByPage)
-    )
-    .SearchSettings(search =>
-    {
-        search.Fields(field =>
+<div id="Collection_AuditTrailLog">
+    @(Html.EJ().Grid<AuditTrailLog>("Grid_AuditTrailLog")
+        .Datasource(datasource => datasource
+            .Adaptor(AdaptorType.UrlAdaptor)
+            .URL(Url.Content("~/AuditTrailLog/DataSource"))
+        )
+        .AllowFiltering()
+        .AllowGrouping()
+        .AllowPaging()
+        .AllowResizing()
+        .AllowScrolling()
+        .AllowSearching()
+        .AllowSorting()
+        .ClientSideEvents(clientEvent => clientEvent
+            .ActionBegin("actionBegin_Grid_AuditTrailLog")
+            .ActionFailure("actionFailure_Grid_AuditTrailLog")
+            .Load("load_Grid_AuditTrailLog")
+            .ToolbarClick("toolbarClick_Grid_AuditTrailLog")
+        )
+        .Columns(column =>
         {
-            //field.Add("AuditTrailLogId");
-            field.Add("LogDate");
-            field.Add("LogTime");
-            //field.Add("LogUserName");
-            //field.Add("LogDomain");
-            //field.Add("LogEntity");
-            //field.Add("LogOperation");
-            //field.Add("LogId");
-            //field.Add("LogEntityBefore");
-            //field.Add("LogEntityAfter");
-        });
-    })
-    .ShowColumnChooser()
-    .ToolbarSettings(toolbar => toolbar
-        .CustomToolbarItems(new List<object>() {
-            new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_AuditTrailLog" }
+            column.Field("AuditTrailLogId")
+                .AllowEditing(false)
+                .EditType(EditingType.Numeric)
+                .HeaderText(AuditTrailLogResources.PropertyAuditTrailLogId)
+                .IsIdentity(true)
+                .IsPrimaryKey(true)
+                .TextAlign(TextAlign.Right)
+                .Visible(false)
+                .Width(100)
+                .Add();
+            column.Field("LogDate")
+                .EditType(EditingType.DateTimePicker)
+                .Format(SyncfusionPatternResources.GridFormat_Date)
+                .HeaderText(AuditTrailLogResources.PropertyLogDate)
+                .Visible(false)
+                .Width(100)
+                .Add(); // !!!
+            column.Field("LogTime")
+                .EditType(EditingType.DateTimePicker)
+                .Format(SyncfusionPatternResources.GridFormat_Time)
+                .HeaderText(AuditTrailLogResources.PropertyLogTime)
+                .Visible(true)
+                .Width(100)
+                .Add(); // !!!
+            column.Field("LogUserName")
+                .EditType(EditingType.String)
+                .HeaderText(AuditTrailLogResources.PropertyLogUserName)
+                .Visible(true)
+                .Width(75)
+                .Add(); // !!!
+            column.Field("LogDomain")
+                .EditType(EditingType.String)
+                .HeaderText(AuditTrailLogResources.PropertyLogDomain)
+                .Visible(true)
+                .Width(75)
+                .Add(); // !!!
+            column.Field("LogEntity")
+                .EditType(EditingType.String)
+                .HeaderText(AuditTrailLogResources.PropertyLogEntity)
+                .Visible(true)
+                .Width(75)
+                .Add(); // !!!
+            column.Field("LogOperation")
+                .EditType(EditingType.String)
+                .HeaderText(AuditTrailLogResources.PropertyLogOperation)
+                .Visible(true)
+                .Width(75)
+                .Add(); // !!!
+            column.Field("LogId")
+                .EditType(EditingType.String)
+                .HeaderText(AuditTrailLogResources.PropertyLogId)
+                .Visible(true)
+                .Width(75)
+                .Add();
+            column.Field("LogentityBefore")
+                .EditType(EditingType.String)
+                .HeaderText(AuditTrailLogResources.PropertyLogEntityBefore)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("LogEntityAfter")
+                .EditType(EditingType.String)
+                .HeaderText(AuditTrailLogResources.PropertyLogEntityAfter)
+                .Visible(false)
+                .Width(240)
+                .Add();
         })
-        .ShowToolbar()
-        .ToolbarItems(items =>
+        .EditSettings(edit => edit
+            .AllowAdding()
+            .AllowDeleting()
+            .AllowEditing()
+        )
+        .EnablePersistence()
+        .FilterSettings(filter => filter
+            .EnableCaseSensitivity(false)
+            .FilterType(FilterType.Excel)
+            .MaxFilterChoices(System.Int32.MaxValue)
+        )
+        .Mappers(map => map
+            .ExportToExcelAction(Url.Content("~/AuditTrailLog/ExportToExcel"))
+            .ExportToPdfAction(Url.Content("~/AuditTrailLog/ExportToPdf"))
+            .ExportToWordAction(Url.Content("~/AuditTrailLog/ExportToWord"))
+        )
+        .PageSettings(page => page
+            .PageSize(AppDefaults.SyncfusionRecordsByPage)
+        )
+        .SearchSettings(search =>
         {
-            items.AddTool(ToolBarItems.Search);
-            items.AddTool(ToolBarItems.Add);
-            items.AddTool(ToolBarItems.Edit);
-            items.AddTool(ToolBarItems.Delete);
-            items.AddTool(ToolBarItems.ExcelExport);
-            items.AddTool(ToolBarItems.PdfExport);
-            items.AddTool(ToolBarItems.WordExport);
+            search.Fields(field =>
+            {
+                //field.Add("AuditTrailLogId");
+                field.Add("LogDate");
+                field.Add("LogTime");
+                //field.Add("LogUserName");
+                //field.Add("LogDomain");
+                //field.Add("LogEntity");
+                //field.Add("LogOperation");
+                //field.Add("LogId");
+                //field.Add("LogEntityBefore");
+                //field.Add("LogEntityAfter");
+            });
         })
+        .ShowColumnChooser()
+        .ToolbarSettings(toolbar => toolbar
+            .CustomToolbarItems(new List<object>() {
+                new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_AuditTrailLog" }
+            })
+            .ShowToolbar()
+            .ToolbarItems(items =>
+            {
+                items.AddTool(ToolBarItems.Search);
+                items.AddTool(ToolBarItems.Add);
+                items.AddTool(ToolBarItems.Edit);
+                items.AddTool(ToolBarItems.Delete);
+                items.AddTool(ToolBarItems.ExcelExport);
+                items.AddTool(ToolBarItems.PdfExport);
+                items.AddTool(ToolBarItems.WordExport);
+            })
+        )
     )
-)
+</div>
 
 @Html.OperationResult(Model.OperationResult)
 
@@ -151,6 +153,13 @@
     $(function () {
         try {
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+
+            if (model.IsSecurityOperations.IsSearch) {
+                $("#Collection_AuditTrailLog").css("display", "block");
+            }
+            else {
+                $("#Collection_AuditTrailLog").css("display", "none");
+            }
 
             var gridAuditTrailLog = $("#Grid_AuditTrailLog");
             var ejGridAuditTrailLog = gridAuditTrailLog.data("ejGrid");

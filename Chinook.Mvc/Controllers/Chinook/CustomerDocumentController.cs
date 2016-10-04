@@ -84,7 +84,7 @@ namespace Chinook.Mvc
                 customerDocumentCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return PartialView("_CustomerDocumentCollection", customerDocumentCollectionModel);
+            return PartialView(customerDocumentCollectionModel);
         }
 
         // GET & POST: CustomerDocument/Lookup

@@ -1,4 +1,4 @@
-@model UserRoleItemModel
+﻿@model UserRoleItemModel
 
 @{
     ViewBag.Title = AppHelper.PageTitle(UserRoleResources.EntitySingular, PresentationResources.Update);
@@ -19,12 +19,12 @@
 {
     @Html.AntiForgeryToken()
 
-    <div id="Partial" class="form-inline">
+    <div class="form-inline">
         @Html.Partial("_UserRoleItem", Model)
     </div>
     
     <div class="z-formButtons">
-        @Html.Raw(@Ajax.ImageLink("ButtonBackward", MvcHelper.ReadUrlDictionary(Context, "UserRole"), "Ajax", "z-buttonCancel", PresentationResources.Cancel))
+        @Html.Raw(@Ajax.ImageLink("ButtonCancel", MvcHelper.ReadUrlDictionary(Context, "UserRole"), "Ajax", "z-buttonCancel", PresentationResources.Cancel))
         <input id="Button_OK" type="image" class="btn btn-default z-buttonOk" title="@PresentationResources.Update" />
     </div>
 }
@@ -33,22 +33,19 @@
 
 <script>
     $(function () {
-        try
-        {
+        try {
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
     
-            if (model.IsSecurityOperations.IsCreate) {
-                $("#Partial").show();
+            if (model.IsSecurityOperations.IsUpdate) {
                 $("#Button_Cancel").show();
                 $("#Button_OK").show();
             }
             else {
-                $("#Partial").hide();
                 $("#Button_Cancel").show();
                 $("#Button_OK").hide();
             }
         } catch (exception) {
-            zExceptionMessage("UserRole Create.cshtml", "function()", exception.message)
+            zExceptionMessage("UserRole Update.cshtml", "function", exception.message)
         }
     });
 
@@ -56,7 +53,7 @@
         try {
             $("#OperationResult").html(zAjaxOperationResult(jqXHR));
         } catch (exception) {
-            zExceptionMessage("UserRole Create.cshtml", "ajaxFailure", exception.message)
+            zExceptionMessage("UserRole Update.cshtml", "ajaxFailure", exception.message)
         }
     }
 
@@ -66,7 +63,7 @@
                 $("#Ajax").load(data.uri);
             }
         } catch (exception) {
-            zExceptionMessage("UserRole Create.cshtml", "ajaxSuccess", exception.message)
+            zExceptionMessage("UserRole Update.cshtml", "ajaxSuccess", exception.message)
         }
     }
 </script>

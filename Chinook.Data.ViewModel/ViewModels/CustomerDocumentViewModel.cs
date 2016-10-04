@@ -15,13 +15,11 @@ namespace Chinook.Data
         [Display(Name = "PropertyCustomerDocumentId", ResourceType = typeof(CustomerDocumentResources))]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         //[Key]
-        [Range(1, Int32.MaxValue)]
         [Required]
         public virtual int CustomerDocumentId { get; set; }
         
         [Display(Name = "PropertyCustomerId", ResourceType = typeof(CustomerDocumentResources))]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
-        [Range(1, Int32.MaxValue)]
         [Required]
         public virtual int CustomerId { get; set; }
         
@@ -43,17 +41,14 @@ namespace Chinook.Data
     
         #endregion Associations FK
 
-        #region Properties ZViewBase
-
-        public override string LookupText { get; set; }
-
-        #endregion Properties ZViewBase
-
         #region Methods
         
         public CustomerDocumentViewModel()
         {
-            CustomerDocumentId = 1;
+            CustomerDocumentId = LibraryDefaults.Default_Int32;
+            CustomerId = LibraryDefaults.Default_Int32;
+            Description = LibraryDefaults.Default_String;
+            FileAcronym = LibraryDefaults.Default_String;
         }
         
         public CustomerDocumentViewModel(
@@ -63,7 +58,6 @@ namespace Chinook.Data
             string fileAcronym,
             string customerLookupText = null
         )
-            : this()
         {
             CustomerDocumentId = customerDocumentId;
             CustomerId = customerId;
@@ -93,9 +87,7 @@ namespace Chinook.Data
                 CustomerDocumentId = x.CustomerDocumentId,
                 CustomerId = x.CustomerId,
                 Description = x.Description,
-                FileAcronym = x.FileAcronym,
-                CustomerLookupText = x.CustomerLookupText,
-                LookupText = x.LookupText
+                FileAcronym = x.FileAcronym
             };
         }
 

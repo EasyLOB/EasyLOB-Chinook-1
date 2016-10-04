@@ -3,7 +3,7 @@
 /*-----------------------PdfViewer------------------*/
 /*-----------------------End PdfViewer------------------*/
 /*-----------------------OLAP Definition Start-----------------*/
-.e-olapclient .removeSplitBtn {
+.e-pivotclient .removeSplitBtn {
   border-radius: 4px;
 }
 /*-----------------------OLAP Definition End
@@ -24,6 +24,19 @@
 /*----------------------Office 365 theme-----------------------*/
 /*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
 /*----------------------material theme-----------------------*/
+/*--------------- common ----------------- */
+/*---------------high-contrast ------*/
+/*---------------- Office-365 ----------------*/
+/*------------------ material theme ---------------------*/
+/*-----------------------HeatMap Definition-----------------*/
+/* Common style */
+
+.e-content-area {
+  background-color: white;
+  color: #111111;
+  border-color: #cecece;
+  font-family: Segoe UI;
+}
 /*------------------------------------- listbox -------------------------------------------*/
 
 .e-listbox .e-select {
@@ -95,32 +108,20 @@
 
 }
 .dragClonelist {
+  background: #3277b2;
   color: white;
   opacity: 0.5;
   text-align: center;
 }
-.dragClonelist {
-  background: #f4f4f4;
-  /* Old browsers */
-  background: -moz-linear-gradient(top, #f4f4f4, #e9e9e9);
-  /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f4f4f4), color-stop(100%, #e9e9e9));
-  /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #f4f4f4, #e9e9e9);
-  /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, #f4f4f4, #e9e9e9);
-  /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, #f4f4f4, #e9e9e9);
-  /* IE10+ */
-  background: linear-gradient(to bottom, #f4f4f4, #e9e9e9);
-  /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4', endColorstr='#e9e9e9', GradientType=0);
-  /* IE6-9 */
-
-}
-.e-listbox li {
+.e-wrap .e-listbox li {
   padding-left: 10px !important;
   word-break: break-all;
+}
+.e-nowrap .e-listbox li {
+  padding-left: 10px !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .e-ddl-popup.e-load {
   background-image: url(images/ajax-loader.gif);

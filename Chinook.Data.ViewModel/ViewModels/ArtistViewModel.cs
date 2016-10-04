@@ -15,7 +15,6 @@ namespace Chinook.Data
         [Display(Name = "PropertyArtistId", ResourceType = typeof(ArtistResources))]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         //[Key]
-        [Range(1, Int32.MaxValue)]
         [Required]
         public virtual int ArtistId { get; set; }
         
@@ -25,24 +24,18 @@ namespace Chinook.Data
 
         #endregion Properties
 
-        #region Properties ZViewBase
-
-        public override string LookupText { get; set; }
-
-        #endregion Properties ZViewBase
-
         #region Methods
         
         public ArtistViewModel()
         {
-            ArtistId = 1;
+            ArtistId = LibraryDefaults.Default_Int32;
+            Name = null;
         }
         
         public ArtistViewModel(
             int artistId,
             string name = null
         )
-            : this()
         {
             ArtistId = artistId;
             Name = name;
@@ -67,8 +60,7 @@ namespace Chinook.Data
             return x => new ArtistDTO
             {
                 ArtistId = x.ArtistId,
-                Name = x.Name,
-                LookupText = x.LookupText
+                Name = x.Name
             };
         }
 

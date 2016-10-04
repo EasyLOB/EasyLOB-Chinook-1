@@ -5,122 +5,124 @@
 @{
 }
 
-@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div id="Item_User">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-@Html.HiddenFor(model => model.ControllerAction)
-@Html.HiddenFor(model => model.IsMasterDetail)
+    @Html.HiddenFor(model => model.ControllerAction)
+    @Html.HiddenFor(model => model.IsMasterDetail)
 
-@{Html.EJ().Tab("Tab_User")
-    .ClientSideEvents(clientEvent => clientEvent
-        .ItemActive("itemActive_Tab_User")
-    )
-    .Items(data =>
-    {
-        data.Add().ID("TabSheet_User_User").Text(UserResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
+    @{Html.EJ().Tab("Tab_User")
+        .ClientSideEvents(clientEvent => clientEvent
+            .ItemActive("itemActive_Tab_User")
+        )
+        .Items(data =>
+        {
+            data.Add().ID("TabSheet_User_User").Text(UserResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
 
-            <div id="Group_User_Id" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.LabelFor(model => model.User.Id, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.User.Id, new { id = "User_Id", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.User.Id, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_User_Id" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.LabelFor(model => model.User.Id, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.User.Id, new { id = "User_Id", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.User.Id, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-            <div id="Group_User_UserName" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.LabelFor(model => model.User.UserName, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.User.UserName, new { id = "User_UserName", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.User.UserName, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_User_UserName" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.LabelFor(model => model.User.UserName, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.User.UserName, new { id = "User_UserName", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.User.UserName, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-            <div id="Group_User_Email" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.LabelFor(model => model.User.Email, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.User.Email, new { id = "User_Email", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.User.Email, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_User_Email" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.LabelFor(model => model.User.Email, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.User.Email, new { id = "User_Email", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.User.Email, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-            <div id="Group_User_Password" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.LabelFor(model => model.User.Password, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.User.Password, new { id = "User_Password", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.User.Password, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
-            @*
-            <div id="Group_User_PasswordHash" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.LabelFor(model => model.User.PasswordHash, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.User.PasswordHash, new { id = "User_PasswordHash", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.User.PasswordHash, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_User_Password" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.LabelFor(model => model.User.Password, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.User.Password, new { id = "User_Password", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.User.Password, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
+                @*
+                <div id="Group_User_PasswordHash" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.LabelFor(model => model.User.PasswordHash, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.User.PasswordHash, new { id = "User_PasswordHash", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.User.PasswordHash, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-            <div id="Group_User_EmailConfirmed" class="@AppDefaults.CssClassGroup col-md-2">
-                @Html.LabelFor(model => model.User.EmailConfirmed, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.User.EmailConfirmed, new { id = "User_EmailConfirmed", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.User.EmailConfirmed, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_User_EmailConfirmed" class="@AppDefaults.CssClassGroup col-md-2">
+                    @Html.LabelFor(model => model.User.EmailConfirmed, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.User.EmailConfirmed, new { id = "User_EmailConfirmed", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.User.EmailConfirmed, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-            <div id="Group_User_SecurityStamp" class="@AppDefaults.CssClassGroup col-md-2">
-                @Html.LabelFor(model => model.User.SecurityStamp, new { @class = AppDefaults.CssClassLabel })
-                @Html.EditorFor(model => model.User.SecurityStamp, new { id = "User_SecurityStamp", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.User.SecurityStamp, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_User_SecurityStamp" class="@AppDefaults.CssClassGroup col-md-2">
+                    @Html.LabelFor(model => model.User.SecurityStamp, new { @class = AppDefaults.CssClassLabel })
+                    @Html.EditorFor(model => model.User.SecurityStamp, new { id = "User_SecurityStamp", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.User.SecurityStamp, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-            <div id="Group_User_PhoneNumber" class="@AppDefaults.CssClassGroup col-md-2">
-                @Html.LabelFor(model => model.User.PhoneNumber, new { @class = AppDefaults.CssClassLabel })
-                @Html.EditorFor(model => model.User.PhoneNumber, new { id = "User_PhoneNumber", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.User.PhoneNumber, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_User_PhoneNumber" class="@AppDefaults.CssClassGroup col-md-2">
+                    @Html.LabelFor(model => model.User.PhoneNumber, new { @class = AppDefaults.CssClassLabel })
+                    @Html.EditorFor(model => model.User.PhoneNumber, new { id = "User_PhoneNumber", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.User.PhoneNumber, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-            <div id="Group_User_PhoneNumberConfirmed" class="@AppDefaults.CssClassGroup col-md-3">
-                @Html.LabelFor(model => model.User.PhoneNumberConfirmed, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.User.PhoneNumberConfirmed, new { id = "User_PhoneNumberConfirmed", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.User.PhoneNumberConfirmed, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_User_PhoneNumberConfirmed" class="@AppDefaults.CssClassGroup col-md-3">
+                    @Html.LabelFor(model => model.User.PhoneNumberConfirmed, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.User.PhoneNumberConfirmed, new { id = "User_PhoneNumberConfirmed", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.User.PhoneNumberConfirmed, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-            <div id="Group_User_TwoFactorEnabled" class="@AppDefaults.CssClassGroup col-md-2">
-                @Html.LabelFor(model => model.User.TwoFactorEnabled, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.User.TwoFactorEnabled, new { id = "User_TwoFactorEnabled", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.User.TwoFactorEnabled, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_User_TwoFactorEnabled" class="@AppDefaults.CssClassGroup col-md-2">
+                    @Html.LabelFor(model => model.User.TwoFactorEnabled, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.User.TwoFactorEnabled, new { id = "User_TwoFactorEnabled", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.User.TwoFactorEnabled, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-            <div id="Group_User_LockoutEndDateUtc" class="@AppDefaults.CssClassGroup col-md-2">
-                @Html.LabelFor(model => model.User.LockoutEndDateUtc, new { @class = AppDefaults.CssClassLabel })
-                @Html.EditorFor(model => model.User.LockoutEndDateUtc, new { id = "User_LockoutEndDateUtc", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.User.LockoutEndDateUtc, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_User_LockoutEndDateUtc" class="@AppDefaults.CssClassGroup col-md-2">
+                    @Html.LabelFor(model => model.User.LockoutEndDateUtc, new { @class = AppDefaults.CssClassLabel })
+                    @Html.EditorFor(model => model.User.LockoutEndDateUtc, new { id = "User_LockoutEndDateUtc", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.User.LockoutEndDateUtc, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-            <div id="Group_User_LockoutEnabled" class="@AppDefaults.CssClassGroup col-md-2">
-                @Html.LabelFor(model => model.User.LockoutEnabled, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.User.LockoutEnabled, new { id = "User_LockoutEnabled", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.User.LockoutEnabled, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_User_LockoutEnabled" class="@AppDefaults.CssClassGroup col-md-2">
+                    @Html.LabelFor(model => model.User.LockoutEnabled, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.User.LockoutEnabled, new { id = "User_LockoutEnabled", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.User.LockoutEnabled, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-            <div id="Group_User_AccessFailedCount" class="@AppDefaults.CssClassGroup col-md-2">
-                @Html.LabelFor(model => model.User.AccessFailedCount, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.User.AccessFailedCount, new { id = "User_AccessFailedCount", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.User.AccessFailedCount, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
-            *@
-        </div>);
-        data.Add().ID("TabSheet_User_UserClaim").Text(UserClaimResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
-            @Html.Action("Search", "UserClaim", new
-            {
-                MasterControllerAction = Model.ControllerAction,
-                MasterUserId = Model.User.Id
-            })    
-        </div>);
-        data.Add().ID("TabSheet_User_UserLogin").Text(UserLoginResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
-            @Html.Action("Search", "UserLogin", new
-            {
-                MasterControllerAction = Model.ControllerAction,
-                MasterUserId = Model.User.Id
-            })    
-        </div>);
-        data.Add().ID("TabSheet_User_UserRole").Text(UserRoleResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
-            @Html.Action("Search", "UserRole", new
-            {
-                MasterControllerAction = Model.ControllerAction,
-                MasterUserId = Model.User.Id
-            })    
-        </div>);
-    })
-    .Render();
-}
+                <div id="Group_User_AccessFailedCount" class="@AppDefaults.CssClassGroup col-md-2">
+                    @Html.LabelFor(model => model.User.AccessFailedCount, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.User.AccessFailedCount, new { id = "User_AccessFailedCount", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.User.AccessFailedCount, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
+                *@
+            </div>);
+            data.Add().ID("TabSheet_User_UserClaim").Text(UserClaimResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
+                @Html.Action("Search", "UserClaim", new
+                {
+                    MasterControllerAction = Model.ControllerAction,
+                    MasterUserId = Model.User.Id
+                })    
+            </div>);
+            data.Add().ID("TabSheet_User_UserLogin").Text(UserLoginResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
+                @Html.Action("Search", "UserLogin", new
+                {
+                    MasterControllerAction = Model.ControllerAction,
+                    MasterUserId = Model.User.Id
+                })    
+            </div>);
+            data.Add().ID("TabSheet_User_UserRole").Text(UserRoleResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
+                @Html.Action("Search", "UserRole", new
+                {
+                    MasterControllerAction = Model.ControllerAction,
+                    MasterUserId = Model.User.Id
+                })    
+            </div>);
+        })
+        .Render();
+    }
+</div>
 
 <script>
     // Validate hidden fields
@@ -131,7 +133,17 @@
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
             var userDictionary = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(DataHelper.GetDataDictionaryAttribute(typeof(User)))); }();
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
-            
+
+            if ((model.ControllerAction = "create" && model.IsSecurityOperations.IsCreate) ||
+                (model.ControllerAction = "read" && model.IsSecurityOperations.IsRead) ||
+                (model.ControllerAction = "update" && model.IsSecurityOperations.IsUpdate) ||
+                (model.ControllerAction = "delete" && model.IsSecurityOperations.IsDelete)) {
+                $("#Item_User").css("display", "block");
+            }
+            else {
+                $("#Item_User").css("display", "none");
+            }
+
             var readonly = (controllerAction == "delete" || controllerAction == "read");
             $("input.form-control").not(":input[type=button], :input[type=image], :input[type=reset], :input[type=submit]").attr("readonly", readonly);
             if (readonly) {

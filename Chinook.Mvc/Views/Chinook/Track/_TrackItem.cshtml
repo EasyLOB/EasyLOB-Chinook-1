@@ -1,4 +1,4 @@
-@model TrackItemModel
+﻿@model TrackItemModel
 
 @{
     string albumText = Model.Track == null ? "" : (Model.Track.AlbumLookupText ?? "");
@@ -6,109 +6,111 @@
     string mediaTypeText = Model.Track == null ? "" : (Model.Track.MediaTypeLookupText ?? "");
 }
 
-@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+<div id="Item_Track">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
 
-@Html.HiddenFor(model => model.ControllerAction)
-@Html.HiddenFor(model => model.IsMasterDetail)
-@Html.HiddenFor(model => model.MasterAlbumId)
-@Html.HiddenFor(model => model.MasterGenreId)
-@Html.HiddenFor(model => model.MasterMediaTypeId)
+    @Html.HiddenFor(model => model.ControllerAction)
+    @Html.HiddenFor(model => model.IsMasterDetail)
+    @Html.HiddenFor(model => model.MasterAlbumId)
+    @Html.HiddenFor(model => model.MasterGenreId)
+    @Html.HiddenFor(model => model.MasterMediaTypeId)
 
-@{Html.EJ().Tab("Tab_Track")
-    .ClientSideEvents(clientEvent => clientEvent
-        .ItemActive("itemActive_Tab_Track")
-    )
-    .Items(data =>
-    {
-        data.Add().ID("TabSheet_Track_Track").Text(TrackResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
+    @{Html.EJ().Tab("Tab_Track")
+        .ClientSideEvents(clientEvent => clientEvent
+            .ItemActive("itemActive_Tab_Track")
+        )
+        .Items(data =>
+        {
+            data.Add().ID("TabSheet_Track_Track").Text(TrackResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
 
-            <div id="Group_Track_TrackId" class="@AppDefaults.CssClassGroup col-md-2">
-                @Html.LabelFor(model => model.Track.TrackId, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.Track.TrackId, new { id = "Track_TrackId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.Track.TrackId, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_Track_TrackId" class="@AppDefaults.CssClassGroup col-md-2">
+                    @Html.LabelFor(model => model.Track.TrackId, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.Track.TrackId, new { id = "Track_TrackId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.Track.TrackId, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-            <div id="Group_Track_Name" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.LabelFor(model => model.Track.Name, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.Track.Name, new { id = "Track_Name", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.Track.Name, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_Track_Name" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.LabelFor(model => model.Track.Name, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.Track.Name, new { id = "Track_Name", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.Track.Name, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-            <div id="Group_Track_AlbumId" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.Label(@AlbumResources.EntitySingular, new { @class = AppDefaults.CssClassLabel })
-                @Html.EditorFor(model => model.Track.AlbumId, new { id = "Track_AlbumId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })                    
-                @Html.Action("Lookup", "Album", new
+                <div id="Group_Track_AlbumId" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.Label(@AlbumResources.EntitySingular, new { @class = AppDefaults.CssClassLabel })
+                    @Html.EditorFor(model => model.Track.AlbumId, new { id = "Track_AlbumId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })                    
+                    @Html.Action("Lookup", "Album", new
+                    {
+                        Text = albumText,
+                        ValueId = "Track_AlbumId"
+                    })
+                    @Html.ValidationMessageFor(model => model.Track.AlbumId, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
+
+                <div id="Group_Track_MediaTypeId" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.Label(@MediaTypeResources.EntitySingular, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.Track.MediaTypeId, new { id = "Track_MediaTypeId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })                    
+                    @Html.Action("Lookup", "MediaType", new
+                    {
+                        Text = mediaTypeText,
+                        ValueId = "Track_MediaTypeId"
+                    })
+                    @Html.ValidationMessageFor(model => model.Track.MediaTypeId, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
+
+                <div id="Group_Track_GenreId" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.Label(@GenreResources.EntitySingular, new { @class = AppDefaults.CssClassLabel })
+                    @Html.EditorFor(model => model.Track.GenreId, new { id = "Track_GenreId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })                    
+                    @Html.Action("Lookup", "Genre", new
+                    {
+                        Text = genreText,
+                        ValueId = "Track_GenreId"
+                    })
+                    @Html.ValidationMessageFor(model => model.Track.GenreId, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
+
+                <div id="Group_Track_Composer" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.LabelFor(model => model.Track.Composer, new { @class = AppDefaults.CssClassLabel })
+                    @Html.EditorFor(model => model.Track.Composer, new { id = "Track_Composer", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.Track.Composer, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
+
+                <div id="Group_Track_Milliseconds" class="@AppDefaults.CssClassGroup col-md-2">
+                    @Html.LabelFor(model => model.Track.Milliseconds, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.Track.Milliseconds, new { id = "Track_Milliseconds", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.Track.Milliseconds, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
+
+                <div id="Group_Track_Bytes" class="@AppDefaults.CssClassGroup col-md-2">
+                    @Html.LabelFor(model => model.Track.Bytes, new { @class = AppDefaults.CssClassLabel })
+                    @Html.EditorFor(model => model.Track.Bytes, new { id = "Track_Bytes", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.Track.Bytes, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
+
+                <div id="Group_Track_UnitPrice" class="@AppDefaults.CssClassGroup col-md-2">
+                    @Html.LabelFor(model => model.Track.UnitPrice, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.Track.UnitPrice, new { id = "Track_UnitPrice", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.Track.UnitPrice, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
+
+            </div>);
+            data.Add().ID("TabSheet_Track_InvoiceLine").Text(InvoiceLineResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
+                @Html.Action("Search", "InvoiceLine", new
                 {
-                    Text = albumText,
-                    ValueId = "Track_AlbumId"
-                })
-                @Html.ValidationMessageFor(model => model.Track.AlbumId, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
-
-            <div id="Group_Track_MediaTypeId" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.Label(@MediaTypeResources.EntitySingular, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.Track.MediaTypeId, new { id = "Track_MediaTypeId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })                    
-                @Html.Action("Lookup", "MediaType", new
+                    MasterControllerAction = Model.ControllerAction,
+                    MasterTrackId = Model.Track.TrackId
+                })    
+            </div>);
+            data.Add().ID("TabSheet_Track_PlaylistTrack").Text(PlaylistTrackResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
+                @Html.Action("Search", "PlaylistTrack", new
                 {
-                    Text = mediaTypeText,
-                    ValueId = "Track_MediaTypeId"
-                })
-                @Html.ValidationMessageFor(model => model.Track.MediaTypeId, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
-
-            <div id="Group_Track_GenreId" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.Label(@GenreResources.EntitySingular, new { @class = AppDefaults.CssClassLabel })
-                @Html.EditorFor(model => model.Track.GenreId, new { id = "Track_GenreId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })                    
-                @Html.Action("Lookup", "Genre", new
-                {
-                    Text = genreText,
-                    ValueId = "Track_GenreId"
-                })
-                @Html.ValidationMessageFor(model => model.Track.GenreId, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
-
-            <div id="Group_Track_Composer" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.LabelFor(model => model.Track.Composer, new { @class = AppDefaults.CssClassLabel })
-                @Html.EditorFor(model => model.Track.Composer, new { id = "Track_Composer", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.Track.Composer, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
-
-            <div id="Group_Track_Milliseconds" class="@AppDefaults.CssClassGroup col-md-2">
-                @Html.LabelFor(model => model.Track.Milliseconds, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.Track.Milliseconds, new { id = "Track_Milliseconds", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.Track.Milliseconds, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
-
-            <div id="Group_Track_Bytes" class="@AppDefaults.CssClassGroup col-md-2">
-                @Html.LabelFor(model => model.Track.Bytes, new { @class = AppDefaults.CssClassLabel })
-                @Html.EditorFor(model => model.Track.Bytes, new { id = "Track_Bytes", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.Track.Bytes, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
-
-            <div id="Group_Track_UnitPrice" class="@AppDefaults.CssClassGroup col-md-2">
-                @Html.LabelFor(model => model.Track.UnitPrice, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.Track.UnitPrice, new { id = "Track_UnitPrice", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.Track.UnitPrice, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
-
-        </div>);
-        data.Add().ID("TabSheet_Track_InvoiceLine").Text(InvoiceLineResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
-            @Html.Action("Search", "InvoiceLine", new
-            {
-                MasterControllerAction = Model.ControllerAction,
-                MasterTrackId = Model.Track.TrackId
-            })    
-        </div>);
-        data.Add().ID("TabSheet_Track_PlaylistTrack").Text(PlaylistTrackResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
-            @Html.Action("Search", "PlaylistTrack", new
-            {
-                MasterControllerAction = Model.ControllerAction,
-                MasterTrackId = Model.Track.TrackId
-            })    
-        </div>);
-    })
-    .Render();
-}
+                    MasterControllerAction = Model.ControllerAction,
+                    MasterTrackId = Model.Track.TrackId
+                })    
+            </div>);
+        })
+        .Render();
+    }
+</div>
 
 <script>
     // Validate hidden fields
@@ -119,6 +121,16 @@
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
             var trackDictionary = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(DataHelper.GetDataDictionaryAttribute(typeof(Track)))); }();
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
+
+            if ((model.ControllerAction = "create" && model.IsSecurityOperations.IsCreate) ||
+                (model.ControllerAction = "read" && model.IsSecurityOperations.IsRead) ||
+                (model.ControllerAction = "update" && model.IsSecurityOperations.IsUpdate) ||
+                (model.ControllerAction = "delete" && model.IsSecurityOperations.IsDelete)) {
+                $("#Item_Track").css("display", "block");
+            }
+            else {
+                $("#Item_Track").css("display", "none");
+            }
             
             var readonly = (controllerAction == "delete" || controllerAction == "read");
             $("input.form-control").not(":input[type=button], :input[type=image], :input[type=reset], :input[type=submit]").attr("readonly", readonly);

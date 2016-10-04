@@ -1,40 +1,39 @@
-@model GenreItemModel
+﻿@model GenreItemModel
 
 @{
 }
 
-@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+<div id="Item_Genre">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
 
-@Html.HiddenFor(model => model.ControllerAction)
-@Html.HiddenFor(model => model.IsMasterDetail)
+    @Html.HiddenFor(model => model.ControllerAction)
+    @Html.HiddenFor(model => model.IsMasterDetail)
 
-@{Html.EJ().Tab("Tab_Genre")
-    .ClientSideEvents(clientEvent => clientEvent
-        .ItemActive("itemActive_Tab_Genre")
-    )
-    .Items(data =>
-    {
-        data.Add().ID("TabSheet_Genre_Genre").Text(GenreResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
-            
-            <div id="Group_Genre_GenreId" class="@AppDefaults.CssClassGroup col-md-2">
-                @Html.LabelFor(model => model.Genre.GenreId, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.Genre.GenreId, new { id = "Genre_GenreId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.Genre.GenreId, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
-            
-            <div id="Group_Genre_Name" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.LabelFor(model => model.Genre.Name, new { @class = AppDefaults.CssClassLabel })
-                @Html.EditorFor(model => model.Genre.Name, new { id = "Genre_Name", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.Genre.Name, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+    @{Html.EJ().Tab("Tab_Genre")
+        .Items(data =>
+        {
+            data.Add().ID("TabSheet_Genre_Genre").Text(GenreResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
+                
+                <div id="Group_Genre_GenreId" class="@AppDefaults.CssClassGroup col-md-2">
+                    @Html.LabelFor(model => model.Genre.GenreId, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.Genre.GenreId, new { id = "Genre_GenreId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.Genre.GenreId, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
+                
+                <div id="Group_Genre_Name" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.LabelFor(model => model.Genre.Name, new { @class = AppDefaults.CssClassLabel })
+                    @Html.EditorFor(model => model.Genre.Name, new { id = "Genre_Name", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.Genre.Name, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-        </div>);
-        data.Add().ID("TabSheet_Genre_Track").Text(TrackResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
-            <div id="Ajax_Genre_Track"></div>
-        </div>);
-    })
-    .Render();
-}
+            </div>);
+            data.Add().ID("TabSheet_Genre_Track").Text(TrackResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
+                <div id="Ajax_Genre_Track"></div>
+            </div>);
+        })
+        .Render();
+    }
+</div>
 
 <script>
     // Validate hidden fields
@@ -48,13 +47,25 @@
             var genreDictionary = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(DataHelper.GetDataDictionaryAttribute(typeof(Genre)))); }();
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
             
+            $(document).prop("title", "@(ViewBag.Title)");
+
             var ajaxUrl = "";
             // Track
             ajaxUrl = "@(Html.Raw(Url.Action("Search", "Track", new { MasterUrl = Context.Request.Url.AbsoluteUri, MasterControllerAction = Model.ControllerAction, MasterGenreId = Model.Genre.GenreId })))";
             $("#Ajax_Genre_Track").load(ajaxUrl);
-            ej.widget.init($("#Ajax"));
-            $(document).prop("title", "@(ViewBag.Title)");            
-    
+
+            ej.widget.init($("#Item_Genre"));
+
+            if ((model.ControllerAction = "create" && model.IsSecurityOperations.IsCreate) ||
+                (model.ControllerAction = "read" && model.IsSecurityOperations.IsRead) ||
+                (model.ControllerAction = "update" && model.IsSecurityOperations.IsUpdate) ||
+                (model.ControllerAction = "delete" && model.IsSecurityOperations.IsDelete)) {
+                $("#Item_Genre").css("display", "block");
+            }
+            else {
+                $("#Item_Genre").css("display", "none");
+            }
+
             var readonly = (controllerAction == "delete" || controllerAction == "read");
             $("input.form-control").not(":input[type=button], :input[type=image], :input[type=reset], :input[type=submit]").attr("readonly", readonly);
             if (readonly) {
@@ -75,26 +86,9 @@
             // Collections (PK)
             var display = controllerAction == "create" ? "none" : "block";
             // Track
-            var gridTrack = $("#Grid_Track");
-            gridTrack.css("display", display);
+            $("#Grid_Track").css("display", display);
         } catch (exception) {
-            alert(zExceptionMessage("_GenreItem.cshtml", "function()", exception));
+            alert(zExceptionMessage("_GenreItem.cshtml", "function", exception));
         }
     });
-
-    function itemActive_Tab_Genre(args) { // IE
-        try {
-            switch(args.activeIndex) {
-            // Track
-                case 1:
-                    $("#Grid_Track").ejGrid({
-                        allowScrolling: true,
-                        scrollSettings: { width: "100%" }
-                    });
-                    break;
-            }            
-        } catch (exception) {
-            alert(zExceptionMessage("_GenreItem.cshtml", "itemActive_Tab_Genre(args)", exception));
-        }
-    }    
 </script>

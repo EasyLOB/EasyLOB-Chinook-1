@@ -1,159 +1,161 @@
 @model UserCollectionModel
 
-@(Html.EJ().Grid<User>("Grid_User")
-    .Datasource(datasource => datasource
-        .Adaptor(AdaptorType.UrlAdaptor)
-        .URL(Url.Content("~/User/DataSource"))
-    )
-    .AllowFiltering()
-    .AllowGrouping()
-    .AllowPaging()
-    .AllowResizing()
-    .AllowScrolling()
-    .AllowSearching()
-    .AllowSorting()
-    .ClientSideEvents(clientEvent => clientEvent
-        .ActionBegin("actionBegin_Grid_User")
-        .ActionFailure("actionFailure_Grid_User")
-        .Load("load_Grid_User")
-        .ToolbarClick("toolbarClick_Grid_User")
-    )
-    .Columns(column =>
-    {
-        column.Field("Id")
-            .EditType(EditingType.String)
-            .HeaderText(UserResources.PropertyId)
-            .IsPrimaryKey(true)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("UserName")
-            .EditType(EditingType.String)
-            .HeaderText(UserResources.PropertyUserName)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("Email")
-            .EditType(EditingType.String)
-            .HeaderText(UserResources.PropertyEmail)
-            .Visible(true)
-            .Width(240)
-            .Add();
-        // !!!
-        //column.Field("EmailConfirmed")
-        //    .EditType(EditingType.String)
-        //    .HeaderText(UserResources.PropertyEmailConfirmed)
-        //    .Visible(true)
-        //    .Width(100)
-        //    .Add();
-        //column.Field("PasswordHash")
-        //    .EditType(EditingType.String)
-        //    .HeaderText(UserResources.PropertyPasswordHash)
-        //    .Visible(false)
-        //    .Width(-10)
-        //    .Add();
-        //column.Field("SecurityStamp")
-        //    .EditType(EditingType.String)
-        //    .HeaderText(UserResources.PropertySecurityStamp)
-        //    .Visible(false)
-        //    .Width(-10)
-        //    .Add();
-        //column.Field("PhoneNumber")
-        //    .EditType(EditingType.String)
-        //    .HeaderText(UserResources.PropertyPhoneNumber)
-        //    .Visible(false)
-        //    .Width(-10)
-        //    .Add();
-        //column.Field("PhoneNumberConfirmed")
-        //    .EditType(EditingType.String)
-        //    .HeaderText(UserResources.PropertyPhoneNumberConfirmed)
-        //    .Visible(false)
-        //    .Width(100)
-        //    .Add();
-        //column.Field("TwoFactorEnabled")
-        //    .EditType(EditingType.String)
-        //    .HeaderText(UserResources.PropertyTwoFactorEnabled)
-        //    .Visible(false)
-        //    .Width(100)
-        //    .Add();
-        //column.Field("LockoutEndDateUtc")
-        //    .EditType(EditingType.DateTimePicker)
-        //    .Format(SyncfusionPatternResources.GridFormat_DateTime)
-        //    .HeaderText(UserResources.PropertyLockoutEndDateUtc)
-        //    .Visible(false)
-        //    .Width(100)
-        //    .Add();
-        //column.Field("LockoutEnabled")
-        //    .EditType(EditingType.String)
-        //    .HeaderText(UserResources.PropertyLockoutEnabled)
-        //    .Visible(false)
-        //    .Width(100)
-        //    .Add();
-        //column.Field("AccessFailedCount")
-        //    .EditType(EditingType.Numeric)
-        //    .Format(SyncfusionPatternResources.GridFormat_Integer)
-        //    .HeaderText(UserResources.PropertyAccessFailedCount)
-        //    .TextAlign(TextAlign.Right)
-        //    .Visible(false)
-        //    .Width(100)
-        //    .Add();
-    })
-    .EditSettings(edit => edit
-        .AllowAdding()
-        .AllowDeleting()
-        .AllowEditing()
-    )
-    .EnablePersistence()
-    .FilterSettings(filter => filter
-        .EnableCaseSensitivity(false)
-        .FilterType(FilterType.Excel)
-        .MaxFilterChoices(System.Int32.MaxValue)
-    )
-    .Mappers(map => map
-        .ExportToExcelAction(Url.Content("~/User/ExportToExcel"))
-        .ExportToPdfAction(Url.Content("~/User/ExportToPdf"))
-        .ExportToWordAction(Url.Content("~/User/ExportToWord"))
-    )
-    .PageSettings(page => page
-        .PageSize(AppDefaults.SyncfusionRecordsByPage)
-    )
-    .SearchSettings(search =>
-    {
-        search.Fields(field =>
+<div id="Collection_User">
+    @(Html.EJ().Grid<User>("Grid_User")
+        .Datasource(datasource => datasource
+            .Adaptor(AdaptorType.UrlAdaptor)
+            .URL(Url.Content("~/User/DataSource"))
+        )
+        .AllowFiltering()
+        .AllowGrouping()
+        .AllowPaging()
+        .AllowResizing()
+        .AllowScrolling()
+        .AllowSearching()
+        .AllowSorting()
+        .ClientSideEvents(clientEvent => clientEvent
+            .ActionBegin("actionBegin_Grid_User")
+            .ActionFailure("actionFailure_Grid_User")
+            .Load("load_Grid_User")
+            .ToolbarClick("toolbarClick_Grid_User")
+        )
+        .Columns(column =>
         {
-            //field.Add("Id");
-            field.Add("UserName");
-            field.Add("Email");
+            column.Field("Id")
+                .EditType(EditingType.String)
+                .HeaderText(UserResources.PropertyId)
+                .IsPrimaryKey(true)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("UserName")
+                .EditType(EditingType.String)
+                .HeaderText(UserResources.PropertyUserName)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("Email")
+                .EditType(EditingType.String)
+                .HeaderText(UserResources.PropertyEmail)
+                .Visible(true)
+                .Width(240)
+                .Add();
             // !!!
-            //field.Add("EmailConfirmed");
-            //field.Add("PasswordHash");
-            //field.Add("SecurityStamp");
-            //field.Add("PhoneNumber");
-            //field.Add("PhoneNumberConfirmed");
-            //field.Add("TwoFactorEnabled");
-            //field.Add("LockoutEndDateUtc");
-            //field.Add("LockoutEnabled");
-            //field.Add("AccessFailedCount");
-        });
-    })
-    .ShowColumnChooser()
-    .ToolbarSettings(toolbar => toolbar
-        .CustomToolbarItems(new List<object>() {
-            new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_User" }
+            //column.Field("EmailConfirmed")
+            //    .EditType(EditingType.String)
+            //    .HeaderText(UserResources.PropertyEmailConfirmed)
+            //    .Visible(true)
+            //    .Width(100)
+            //    .Add();
+            //column.Field("PasswordHash")
+            //    .EditType(EditingType.String)
+            //    .HeaderText(UserResources.PropertyPasswordHash)
+            //    .Visible(false)
+            //    .Width(-10)
+            //    .Add();
+            //column.Field("SecurityStamp")
+            //    .EditType(EditingType.String)
+            //    .HeaderText(UserResources.PropertySecurityStamp)
+            //    .Visible(false)
+            //    .Width(-10)
+            //    .Add();
+            //column.Field("PhoneNumber")
+            //    .EditType(EditingType.String)
+            //    .HeaderText(UserResources.PropertyPhoneNumber)
+            //    .Visible(false)
+            //    .Width(-10)
+            //    .Add();
+            //column.Field("PhoneNumberConfirmed")
+            //    .EditType(EditingType.String)
+            //    .HeaderText(UserResources.PropertyPhoneNumberConfirmed)
+            //    .Visible(false)
+            //    .Width(100)
+            //    .Add();
+            //column.Field("TwoFactorEnabled")
+            //    .EditType(EditingType.String)
+            //    .HeaderText(UserResources.PropertyTwoFactorEnabled)
+            //    .Visible(false)
+            //    .Width(100)
+            //    .Add();
+            //column.Field("LockoutEndDateUtc")
+            //    .EditType(EditingType.DateTimePicker)
+            //    .Format(SyncfusionPatternResources.GridFormat_DateTime)
+            //    .HeaderText(UserResources.PropertyLockoutEndDateUtc)
+            //    .Visible(false)
+            //    .Width(100)
+            //    .Add();
+            //column.Field("LockoutEnabled")
+            //    .EditType(EditingType.String)
+            //    .HeaderText(UserResources.PropertyLockoutEnabled)
+            //    .Visible(false)
+            //    .Width(100)
+            //    .Add();
+            //column.Field("AccessFailedCount")
+            //    .EditType(EditingType.Numeric)
+            //    .Format(SyncfusionPatternResources.GridFormat_Integer)
+            //    .HeaderText(UserResources.PropertyAccessFailedCount)
+            //    .TextAlign(TextAlign.Right)
+            //    .Visible(false)
+            //    .Width(100)
+            //    .Add();
         })
-        .ShowToolbar()
-        .ToolbarItems(items =>
+        .EditSettings(edit => edit
+            .AllowAdding()
+            .AllowDeleting()
+            .AllowEditing()
+        )
+        .EnablePersistence()
+        .FilterSettings(filter => filter
+            .EnableCaseSensitivity(false)
+            .FilterType(FilterType.Excel)
+            .MaxFilterChoices(System.Int32.MaxValue)
+        )
+        .Mappers(map => map
+            .ExportToExcelAction(Url.Content("~/User/ExportToExcel"))
+            .ExportToPdfAction(Url.Content("~/User/ExportToPdf"))
+            .ExportToWordAction(Url.Content("~/User/ExportToWord"))
+        )
+        .PageSettings(page => page
+            .PageSize(AppDefaults.SyncfusionRecordsByPage)
+        )
+        .SearchSettings(search =>
         {
-            items.AddTool(ToolBarItems.Search);
-            items.AddTool(ToolBarItems.Add);
-            items.AddTool(ToolBarItems.Edit);
-            items.AddTool(ToolBarItems.Delete);
-            items.AddTool(ToolBarItems.ExcelExport);
-            items.AddTool(ToolBarItems.PdfExport);
-            items.AddTool(ToolBarItems.WordExport);
+            search.Fields(field =>
+            {
+                //field.Add("Id");
+                field.Add("UserName");
+                field.Add("Email");
+                // !!!
+                //field.Add("EmailConfirmed");
+                //field.Add("PasswordHash");
+                //field.Add("SecurityStamp");
+                //field.Add("PhoneNumber");
+                //field.Add("PhoneNumberConfirmed");
+                //field.Add("TwoFactorEnabled");
+                //field.Add("LockoutEndDateUtc");
+                //field.Add("LockoutEnabled");
+                //field.Add("AccessFailedCount");
+            });
         })
+        .ShowColumnChooser()
+        .ToolbarSettings(toolbar => toolbar
+            .CustomToolbarItems(new List<object>() {
+                new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_User" }
+            })
+            .ShowToolbar()
+            .ToolbarItems(items =>
+            {
+                items.AddTool(ToolBarItems.Search);
+                items.AddTool(ToolBarItems.Add);
+                items.AddTool(ToolBarItems.Edit);
+                items.AddTool(ToolBarItems.Delete);
+                items.AddTool(ToolBarItems.ExcelExport);
+                items.AddTool(ToolBarItems.PdfExport);
+                items.AddTool(ToolBarItems.WordExport);
+            })
+        )
     )
-)
+</div>
 
 @Html.OperationResult(Model.OperationResult)
 
@@ -165,6 +167,13 @@
     $(function () {
         try {
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+
+            if (model.IsSecurityOperations.IsSearch) {
+                $("#Collection_User").css("display", "block");
+            }
+            else {
+                $("#Collection_User").css("display", "none");
+            }
 
             var gridUser = $("#Grid_User");
             var ejGridUser = gridUser.data("ejGrid");

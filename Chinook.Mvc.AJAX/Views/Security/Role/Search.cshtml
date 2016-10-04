@@ -1,0 +1,16 @@
+﻿@model RoleCollectionModel
+
+<div class="form-inline">
+    @Html.Partial("_RoleCollection", Model)
+</div>
+
+<div id="OperationResult"></div>
+
+<script>
+    $(function () {
+        try {
+        } catch (exception) {
+            zExceptionMessage("Role Search.cshtml", "function", exception.message)
+        }
+    });
+</script>

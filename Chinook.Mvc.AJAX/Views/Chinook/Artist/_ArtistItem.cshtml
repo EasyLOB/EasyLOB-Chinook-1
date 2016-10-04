@@ -1,40 +1,39 @@
-@model ArtistItemModel
+﻿@model ArtistItemModel
 
 @{
 }
 
-@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+<div id="Item_Artist">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
 
-@Html.HiddenFor(model => model.ControllerAction)
-@Html.HiddenFor(model => model.IsMasterDetail)
+    @Html.HiddenFor(model => model.ControllerAction)
+    @Html.HiddenFor(model => model.IsMasterDetail)
 
-@{Html.EJ().Tab("Tab_Artist")
-    .ClientSideEvents(clientEvent => clientEvent
-        .ItemActive("itemActive_Tab_Artist")
-    )
-    .Items(data =>
-    {
-        data.Add().ID("TabSheet_Artist_Artist").Text(ArtistResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
-            
-            <div id="Group_Artist_ArtistId" class="@AppDefaults.CssClassGroup col-md-2">
-                @Html.LabelFor(model => model.Artist.ArtistId, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.Artist.ArtistId, new { id = "Artist_ArtistId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.Artist.ArtistId, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
-            
-            <div id="Group_Artist_Name" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.LabelFor(model => model.Artist.Name, new { @class = AppDefaults.CssClassLabel })
-                @Html.EditorFor(model => model.Artist.Name, new { id = "Artist_Name", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.Artist.Name, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+    @{Html.EJ().Tab("Tab_Artist")
+        .Items(data =>
+        {
+            data.Add().ID("TabSheet_Artist_Artist").Text(ArtistResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
+                
+                <div id="Group_Artist_ArtistId" class="@AppDefaults.CssClassGroup col-md-2">
+                    @Html.LabelFor(model => model.Artist.ArtistId, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.Artist.ArtistId, new { id = "Artist_ArtistId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.Artist.ArtistId, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
+                
+                <div id="Group_Artist_Name" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.LabelFor(model => model.Artist.Name, new { @class = AppDefaults.CssClassLabel })
+                    @Html.EditorFor(model => model.Artist.Name, new { id = "Artist_Name", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.Artist.Name, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-        </div>);
-        data.Add().ID("TabSheet_Artist_Album").Text(AlbumResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
-            <div id="Ajax_Artist_Album"></div>
-        </div>);
-    })
-    .Render();
-}
+            </div>);
+            data.Add().ID("TabSheet_Artist_Album").Text(AlbumResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
+                <div id="Ajax_Artist_Album"></div>
+            </div>);
+        })
+        .Render();
+    }
+</div>
 
 <script>
     // Validate hidden fields
@@ -48,13 +47,25 @@
             var artistDictionary = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(DataHelper.GetDataDictionaryAttribute(typeof(Artist)))); }();
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
             
+            $(document).prop("title", "@(ViewBag.Title)");
+
             var ajaxUrl = "";
             // Album
             ajaxUrl = "@(Html.Raw(Url.Action("Search", "Album", new { MasterUrl = Context.Request.Url.AbsoluteUri, MasterControllerAction = Model.ControllerAction, MasterArtistId = Model.Artist.ArtistId })))";
             $("#Ajax_Artist_Album").load(ajaxUrl);
-            ej.widget.init($("#Ajax"));
-            $(document).prop("title", "@(ViewBag.Title)");            
-    
+
+            ej.widget.init($("#Item_Artist"));
+
+            if ((model.ControllerAction = "create" && model.IsSecurityOperations.IsCreate) ||
+                (model.ControllerAction = "read" && model.IsSecurityOperations.IsRead) ||
+                (model.ControllerAction = "update" && model.IsSecurityOperations.IsUpdate) ||
+                (model.ControllerAction = "delete" && model.IsSecurityOperations.IsDelete)) {
+                $("#Item_Artist").css("display", "block");
+            }
+            else {
+                $("#Item_Artist").css("display", "none");
+            }
+
             var readonly = (controllerAction == "delete" || controllerAction == "read");
             $("input.form-control").not(":input[type=button], :input[type=image], :input[type=reset], :input[type=submit]").attr("readonly", readonly);
             if (readonly) {
@@ -75,26 +86,9 @@
             // Collections (PK)
             var display = controllerAction == "create" ? "none" : "block";
             // Album
-            var gridAlbum = $("#Grid_Album");
-            gridAlbum.css("display", display);
+            $("#Grid_Album").css("display", display);
         } catch (exception) {
-            alert(zExceptionMessage("_ArtistItem.cshtml", "function()", exception));
+            alert(zExceptionMessage("_ArtistItem.cshtml", "function", exception));
         }
     });
-
-    function itemActive_Tab_Artist(args) { // IE
-        try {
-            switch(args.activeIndex) {
-            // Album
-                case 1:
-                    $("#Grid_Album").ejGrid({
-                        allowScrolling: true,
-                        scrollSettings: { width: "100%" }
-                    });
-                    break;
-            }            
-        } catch (exception) {
-            alert(zExceptionMessage("_ArtistItem.cshtml", "itemActive_Tab_Artist(args)", exception));
-        }
-    }    
 </script>

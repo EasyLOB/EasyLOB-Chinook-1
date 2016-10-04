@@ -1,107 +1,120 @@
-@model UserRoleCollectionModel
+﻿@model UserRoleCollectionModel
 
 @{
     ViewBag.Title = UserRoleResources.EntityPlural;
+    
+    string query = "";
+    if (Model.MasterRoleId != null)
+    {
+        query = String.Format("ej.Query().where(\"RoleId\", ej.FilterOperators.equal, \"{0}\")", Model.MasterRoleId);
+    }
+    else if (Model.MasterUserId != null)
+    {
+        query = String.Format("ej.Query().where(\"UserId\", ej.FilterOperators.equal, \"{0}\")", Model.MasterUserId);
+    }
 }
 
-<div id="UserRole_Title">
+<div id="Collection_UserRole_Title">
     <h3>@ViewBag.Title</h3>
 </div>
 
-@(Html.EJ().Grid<UserRole>("Grid_UserRole")
-    .Datasource(datasource => datasource
-        .Adaptor(AdaptorType.UrlAdaptor)
-        .URL(Url.Content("~/UserRole/DataSource"))
-    )
-    .AllowFiltering()
-    .AllowGrouping()
-    .AllowPaging()
-    .AllowResizing()
-    .AllowScrolling()
-    .AllowSearching()
-    .AllowSorting()
-    .ClientSideEvents(clientEvent => clientEvent
-        .ActionBegin("actionBegin_Grid_UserRole")
-        .ActionFailure("actionFailure_Grid_UserRole")
-        .Load("load_Grid_UserRole")
-        .ToolbarClick("toolbarClick_Grid_UserRole")
-    )
-    .Columns(column =>
-    {
-        column.Field("UserId")
-            .EditType(EditingType.String)
-            .HeaderText(UserRoleResources.PropertyUserId)
-            .IsPrimaryKey(true)
-            .Visible(true)
-            .Width(240)
-            .Add();
-        column.Field("UserLookupText")
-            .AllowEditing(false)
-            .HeaderText(UserResources.EntitySingular)
-            .Visible(true)
-            .Width(100)
-            .Add();
-        column.Field("RoleId")
-            .EditType(EditingType.String)
-            .HeaderText(UserRoleResources.PropertyRoleId)
-            .IsPrimaryKey(true)
-            .Visible(true)
-            .Width(240)
-            .Add();
-        column.Field("RoleLookupText")
-            .AllowEditing(false)
-            .HeaderText(RoleResources.EntitySingular)
-            .Visible(true)
-            .Width(100)
-            .Add();
-    })
-    .EditSettings(edit => edit
-        .AllowAdding()
-        .AllowDeleting()
-        .AllowEditing()
-    )
-    .EnablePersistence()
-    .FilterSettings(filter => filter
-        .EnableCaseSensitivity(false)
-        .FilterType(FilterType.Excel)
-        .MaxFilterChoices(System.Int32.MaxValue)
-    )
-    .Mappers(map => map
-        .ExportToExcelAction(Url.Content("~/UserRole/ExportToExcel"))
-        .ExportToPdfAction(Url.Content("~/UserRole/ExportToPdf"))
-        .ExportToWordAction(Url.Content("~/UserRole/ExportToWord"))
-    )
-    .PageSettings(page => page
-        .PageSize(AppDefaults.SyncfusionRecordsByPage)
-    )
-    .SearchSettings(search =>
-    {
-        search.Fields(field =>
+<div id="Collection_UserRole">
+    @(Html.EJ().Grid<UserRole>("Grid_UserRole")
+        .Datasource(datasource => datasource
+            .Adaptor(AdaptorType.UrlAdaptor)
+            .URL(Url.Content("~/UserRole/DataSource"))
+        )
+        .Query(query)
+        .AllowFiltering()
+        .AllowGrouping()
+        .AllowPaging()
+        .AllowResizing()
+        .AllowScrolling()
+        .AllowSearching()
+        .AllowSorting()
+        .ClientSideEvents(clientEvent => clientEvent
+            .ActionBegin("actionBegin_Grid_UserRole")
+            .ActionFailure("actionFailure_Grid_UserRole")
+            .Load("load_Grid_UserRole")
+            .ToolbarClick("toolbarClick_Grid_UserRole")
+        )
+        .Columns(column =>
         {
-            field.Add("UserId");
-            field.Add("UserLookupText");
-            field.Add("RoleId");
-            field.Add("RoleLookupText");
-        });
-    })
-    .ShowColumnChooser()
-    .ToolbarSettings(toolbar => toolbar
-        .CustomToolbarItems(new List<object>() {
-            new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_UserRole" }
+            column.Field("UserId")
+                .EditType(EditingType.String)
+                .HeaderText(UserRoleResources.PropertyUserId)
+                .IsPrimaryKey(true)
+                .Visible(true)
+                .Width(240)
+                .Add();
+            column.Field("UserLookupText")
+                .AllowEditing(false)
+                .HeaderText(UserResources.EntitySingular)
+                .Visible(true)
+                .Width(100)
+                .Add();
+            column.Field("RoleId")
+                .EditType(EditingType.String)
+                .HeaderText(UserRoleResources.PropertyRoleId)
+                .IsPrimaryKey(true)
+                .Visible(true)
+                .Width(240)
+                .Add();
+            column.Field("RoleLookupText")
+                .AllowEditing(false)
+                .HeaderText(RoleResources.EntitySingular)
+                .Visible(true)
+                .Width(100)
+                .Add();
         })
-        .ShowToolbar()
-        .ToolbarItems(items =>
+        .EditSettings(edit => edit
+            .AllowAdding()
+            .AllowDeleting()
+            .AllowEditing()
+        )
+        //.EnablePersistence()
+        .FilterSettings(filter => filter
+            .EnableCaseSensitivity(false)
+            .FilterType(FilterType.Excel)
+            .MaxFilterChoices(System.Int32.MaxValue)
+        )
+        .Mappers(map => map
+            .ExportToExcelAction(Url.Content("~/UserRole/ExportToExcel"))
+            .ExportToPdfAction(Url.Content("~/UserRole/ExportToPdf"))
+            .ExportToWordAction(Url.Content("~/UserRole/ExportToWord"))
+        )
+        .PageSettings(page => page
+            .PageSize(AppDefaults.SyncfusionRecordsByPage)
+        )
+        .SearchSettings(search =>
         {
-            items.AddTool(ToolBarItems.Search);
-            items.AddTool(ToolBarItems.Add);
-            items.AddTool(ToolBarItems.Edit);
-            items.AddTool(ToolBarItems.Delete);
-            items.AddTool(ToolBarItems.ExcelExport);
-            items.AddTool(ToolBarItems.PdfExport);
-            items.AddTool(ToolBarItems.WordExport);
+            search.Fields(field =>
+            {
+                field.Add("UserId");
+                field.Add("UserLookupText");
+                field.Add("RoleId");
+                field.Add("RoleLookupText");
+            });
         })
+        .ShowColumnChooser()
+        .ToolbarSettings(toolbar => toolbar
+            .CustomToolbarItems(new List<object>() {
+                new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_UserRole" }
+            })
+            .ShowToolbar()
+            .ToolbarItems(items =>
+            {
+                items.AddTool(ToolBarItems.Search);
+                items.AddTool(ToolBarItems.Add);
+                items.AddTool(ToolBarItems.Edit);
+                items.AddTool(ToolBarItems.Delete);
+                items.AddTool(ToolBarItems.ExcelExport);
+                items.AddTool(ToolBarItems.PdfExport);
+                items.AddTool(ToolBarItems.WordExport);
+            })
+        )
     )
-)
+</div>
 
 @Html.OperationResult(Model.OperationResult)
 
@@ -114,15 +127,19 @@
         try {
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
     
-            ej.widget.init($("#Ajax"));
-            var title = $("#UserRole_Title");       
+            var title = $("#Collection_UserRole_Title");
+            
+            ej.widget.init($("#Collection_UserRole"));
+
+            if (model.IsSecurityOperations.IsSearch) {
+                $("#Collection_UserRole").css("display", "block");
+            }
+            else {
+                $("#Collection_UserRole").css("display", "none");
+            }
 
             var gridUserRole = $("#Grid_UserRole");
             var ejGridUserRole = gridUserRole.data("ejGrid");
-    
-            if (ejGridUserRole.model.filterSettings.filteredColumns.length != 0) {
-                ejGridUserRole.clearFiltering();
-            }
                 
             if (!model.IsMasterDetail) {
                 title.css("display", "block");
@@ -131,7 +148,6 @@
                 ejGridUserRole.setModel({
                     allowGrouping: true,
                     toolbarSettings: {
-                        showToolbar: true,
                         toolbarItems: [
                             ej.Grid.ToolBarItems.Search,
                             ej.Grid.ToolBarItems.Add,
@@ -149,7 +165,6 @@
                 ejGridUserRole.setModel({
                     allowGrouping: false,
                     toolbarSettings: {
-                        showToolbar: true,
                         toolbarItems: [
                             ej.Grid.ToolBarItems.Add,
                             ej.Grid.ToolBarItems.Edit,
@@ -157,15 +172,9 @@
                         ]                    
                     }
                 });
-
-                if (model.MasterRoleId != null) {
-                    ejGridUserRole.filterColumn("RoleId", ej.FilterOperators.equal, model.MasterRoleId, ej.Predicate.and);
-                } else if (model.MasterUserId != null) {
-                    ejGridUserRole.filterColumn("UserId", ej.FilterOperators.equal, model.MasterUserId, ej.Predicate.and);
-                }
             }
         } catch (exception) {
-            alert(zExceptionMessage("_UserRoleCollection.cshtml", "function()", exception));
+            alert(zExceptionMessage("_UserRoleCollection.cshtml", "function", exception));
         }                
     });
     
@@ -190,7 +199,8 @@
                     case "add":
                         // Create
                         if (model.IsSecurityOperations.IsCreate) {
-                            $("#Ajax").load("@(Url.Action("Create", "UserRole", null, Request.Url.Scheme))" + (url == "" ? "" : "?") + url);
+                            $("#Ajax").load("@(Url.Action("Create", "UserRole", null, Request.Url.Scheme))" +
+                                (url == "" ? "" : "?") + url);
                         }
                         break;
                     case "read":
@@ -198,7 +208,8 @@
                         if (model.IsSecurityOperations.IsRead) {
                             var data = args.data;
                             if (!ej.isNullOrUndefined(data)) {
-                                $("#Ajax").load("@(Url.Action("Read", "UserRole", null, Request.Url.Scheme))?UserId=" + String(data.UserId) + "&RoleId=" + String(data.RoleId) + (url == "" ? "" : "&") + url);
+                                $("#Ajax").load("@(Url.Action("Read", "UserRole", null, Request.Url.Scheme))?UserId=" + String(data.UserId) + "&RoleId=" + String(data.RoleId) +
+                                    (url == "" ? "" : "&") + url);
                             }
                         }
                         break;                        
@@ -207,7 +218,8 @@
                         if (model.IsSecurityOperations.IsUpdate) {
                             var data = this.model.currentViewData[args.rowIndex];
                             if (!ej.isNullOrUndefined(data)) {
-                                $("#Ajax").load("@(Url.Action("Update", "UserRole", null, Request.Url.Scheme))?UserId=" + String(data.UserId) + "&RoleId=" + String(data.RoleId) + (url == "" ? "" : "&") + url);
+                                $("#Ajax").load("@(Url.Action("Update", "UserRole", null, Request.Url.Scheme))?UserId=" + String(data.UserId) + "&RoleId=" + String(data.RoleId) +
+                                    (url == "" ? "" : "&") + url);
                             }
                         }
                         break;
@@ -216,7 +228,8 @@
                         if (model.IsSecurityOperations.IsDelete) {
                             var data = args.data;
                             if (!ej.isNullOrUndefined(data)) {
-                                $("#Ajax").load("@(Url.Action("Delete", "UserRole", null, Request.Url.Scheme))?UserId=" + String(data.UserId) + "&RoleId=" + String(data.RoleId) + (url == "" ? "" : "&") + url);
+                                $("#Ajax").load("@(Url.Action("Delete", "UserRole", null, Request.Url.Scheme))?UserId=" + String(data.UserId) + "&RoleId=" + String(data.RoleId) +
+                                    (url == "" ? "" : "&") + url);
                             }
                         }
                         break;
@@ -227,7 +240,7 @@
                 args.cancel = true;
             }
         } catch (exception) {
-            alert(zExceptionMessage("_UserRoleCollection.cshtml", "actionBegin_Grid_UserRole(args)", exception));
+            alert(zExceptionMessage("_UserRoleCollection.cshtml", "actionBegin_Grid_UserRole", exception));
         }            
     }
     
@@ -235,7 +248,7 @@
         try {
             alert(zErrorMessage(args.error.responseText));
         } catch (exception) {
-            alert(zExceptionMessage("_UserRoleCollection.cshtml", "actionFailure_Grid_UserRole(args)", exception));
+            alert(zExceptionMessage("_UserRoleCollection.cshtml", "actionFailure_Grid_UserRole", exception));
         }
     }    
 
@@ -244,7 +257,7 @@
             var culture = "@System.Globalization.CultureInfo.CurrentCulture.Name";
             this.model.locale = culture;
         } catch (exception) {
-            alert(zExceptionMessage("_UserRoleCollection.cshtml", "load_Grid_UserRole(args)", exception));
+            alert(zExceptionMessage("_UserRoleCollection.cshtml", "load_Grid_UserRole", exception));
         }
     }
 
@@ -262,7 +275,7 @@
                 }
             }
         } catch (exception) {
-            alert(zExceptionMessage("_UserRoleCollection.cshtml", "toolbarClick_Grid_UserRole(sender)", exception));
+            alert(zExceptionMessage("_UserRoleCollection.cshtml", "toolbarClick_Grid_UserRole", exception));
         }
     }
 </script>

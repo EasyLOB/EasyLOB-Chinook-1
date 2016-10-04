@@ -1,0 +1,16 @@
+﻿@model CustomerDocumentCollectionModel
+
+<div class="form-inline">
+    @Html.Partial("_CustomerDocumentCollection", Model)
+</div>
+    
+@Html.OperationResult(Model.OperationResult)
+
+<script>
+    $(function () {
+        try {
+        } catch (exception) {
+            zExceptionMessage("CustomerDocument Search.cshtml", "function", exception.message)
+        }
+    });
+</script>

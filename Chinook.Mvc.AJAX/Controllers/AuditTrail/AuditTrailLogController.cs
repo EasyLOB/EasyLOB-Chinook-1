@@ -81,7 +81,7 @@ namespace EasyLOB.AuditTrail.Mvc
                 auditTrailLogCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return PartialView("_AuditTrailLogCollection", auditTrailLogCollectionModel);
+            return PartialView(auditTrailLogCollectionModel);
         }
 
         // GET & POST: AuditTrailLog/Lookup

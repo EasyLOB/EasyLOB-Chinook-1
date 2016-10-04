@@ -15,7 +15,6 @@ namespace Chinook.Data
         [Display(Name = "PropertyAlbumId", ResourceType = typeof(AlbumResources))]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         //[Key]
-        [Range(1, Int32.MaxValue)]
         [Required]
         public virtual int AlbumId { get; set; }
         
@@ -26,7 +25,6 @@ namespace Chinook.Data
         
         [Display(Name = "PropertyArtistId", ResourceType = typeof(AlbumResources))]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
-        [Range(1, Int32.MaxValue)]
         [Required]
         public virtual int ArtistId { get; set; }
 
@@ -38,17 +36,13 @@ namespace Chinook.Data
     
         #endregion Associations FK
 
-        #region Properties ZViewBase
-
-        public override string LookupText { get; set; }
-
-        #endregion Properties ZViewBase
-
         #region Methods
         
         public AlbumViewModel()
         {
-            AlbumId = 1;
+            AlbumId = LibraryDefaults.Default_Int32;
+            Title = LibraryDefaults.Default_String;
+            ArtistId = LibraryDefaults.Default_Int32;
         }
         
         public AlbumViewModel(
@@ -57,7 +51,6 @@ namespace Chinook.Data
             int artistId,
             string artistLookupText = null
         )
-            : this()
         {
             AlbumId = albumId;
             Title = title;
@@ -85,9 +78,7 @@ namespace Chinook.Data
             {
                 AlbumId = x.AlbumId,
                 Title = x.Title,
-                ArtistId = x.ArtistId,
-                ArtistLookupText = x.ArtistLookupText,
-                LookupText = x.LookupText
+                ArtistId = x.ArtistId
             };
         }
 

@@ -20,6 +20,19 @@
 /*----------------------Office 365 theme-----------------------*/
 /*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
 /*----------------------material theme-----------------------*/
+/*--------------- common ----------------- */
+/*---------------high-contrast ------*/
+/*---------------- Office-365 ----------------*/
+/*------------------ material theme ---------------------*/
+/*-----------------------HeatMap Definition-----------------*/
+/* Common style */
+
+.e-content-area {
+  background-color: white;
+  color: #111111;
+  border-color: #c8c8c8;
+  font-family: Segoe UI;
+}
 /*------------------------------reportviewer Theme Start-------------------------------*/
 
 .e-reportviewer-outerborder:hover {
@@ -146,7 +159,7 @@
 .e-reportviewer-gotoprevious.e-reportviewer-disabled,
 .e-reportviewer-gotolast.e-reportviewer-disabled,
 .e-reportviewer-gotofirst.e-reportviewer-disabled {
-  color: #b2b2b2;
+  opacity: 0.5;
 }
 /*------------------------------reportviewer Theme End-------------------------------*/
 

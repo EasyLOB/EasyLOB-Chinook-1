@@ -1,0 +1,16 @@
+﻿@model TrackCollectionModel
+
+<div class="form-inline">
+    @Html.Partial("_TrackCollection", Model)
+</div>
+
+<div id="OperationResult"></div>
+
+<script>
+    $(function () {
+        try {
+        } catch (exception) {
+            zExceptionMessage("Track Search.cshtml", "function", exception.message)
+        }
+    });
+</script>

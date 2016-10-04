@@ -15,7 +15,6 @@ namespace Chinook.Data
         [Display(Name = "PropertyTrackId", ResourceType = typeof(TrackResources))]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         //[Key]
-        [Range(1, Int32.MaxValue)]
         [Required]
         public virtual int TrackId { get; set; }
         
@@ -30,7 +29,6 @@ namespace Chinook.Data
         
         [Display(Name = "PropertyMediaTypeId", ResourceType = typeof(TrackResources))]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
-        [Range(1, Int32.MaxValue)]
         [Required]
         public virtual int MediaTypeId { get; set; }
         
@@ -44,7 +42,6 @@ namespace Chinook.Data
         
         [Display(Name = "PropertyMilliseconds", ResourceType = typeof(TrackResources))]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
-        [Range(1, Int32.MaxValue)]
         [Required]
         public virtual int Milliseconds { get; set; }
         
@@ -54,7 +51,6 @@ namespace Chinook.Data
         
         [Display(Name = "PropertyUnitPrice", ResourceType = typeof(TrackResources))]
         [DisplayFormat(DataFormatString = "{0:f2}", ApplyFormatInEditMode = true)]
-        [Range(0.01, Double.MaxValue)]
         [Required]
         public virtual decimal UnitPrice { get; set; }
 
@@ -70,19 +66,21 @@ namespace Chinook.Data
     
         #endregion Associations FK
 
-        #region Properties ZViewBase
-
-        public override string LookupText { get; set; }
-
-        #endregion Properties ZViewBase
-
         #region Methods
         
         public TrackViewModel()
         {
-            TrackId = 1;
+            TrackId = LibraryDefaults.Default_Int32;
+            Name = LibraryDefaults.Default_String;
+            MediaTypeId = LibraryDefaults.Default_Int32;
+            Milliseconds = LibraryDefaults.Default_Int32;
+            UnitPrice = LibraryDefaults.Default_Decimal;
+            AlbumId = null;
+            GenreId = null;
+            Composer = null;
+            Bytes = null;
         }
-        
+
         public TrackViewModel(
             int trackId,
             string name,
@@ -97,7 +95,6 @@ namespace Chinook.Data
             string genreLookupText = null,
             string mediaTypeLookupText = null
         )
-            : this()
         {
             TrackId = trackId;
             Name = name;
@@ -139,11 +136,7 @@ namespace Chinook.Data
                 Composer = x.Composer,
                 Milliseconds = x.Milliseconds,
                 Bytes = x.Bytes,
-                UnitPrice = x.UnitPrice,
-                AlbumLookupText = x.AlbumLookupText,
-                GenreLookupText = x.GenreLookupText,
-                MediaTypeLookupText = x.MediaTypeLookupText,
-                LookupText = x.LookupText
+                UnitPrice = x.UnitPrice
             };
         }
 

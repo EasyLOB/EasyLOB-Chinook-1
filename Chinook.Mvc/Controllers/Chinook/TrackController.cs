@@ -77,7 +77,7 @@ namespace Chinook.Mvc
                 trackCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return PartialView("_TrackCollection", trackCollectionModel);
+            return PartialView(trackCollectionModel);
         }
 
         // GET & POST: Track/Lookup

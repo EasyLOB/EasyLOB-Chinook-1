@@ -15,31 +15,26 @@ namespace Chinook.Data
         [Display(Name = "PropertyInvoiceLineId", ResourceType = typeof(InvoiceLineResources))]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         //[Key]
-        [Range(1, Int32.MaxValue)]
         [Required]
         public virtual int InvoiceLineId { get; set; }
         
         [Display(Name = "PropertyInvoiceId", ResourceType = typeof(InvoiceLineResources))]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
-        [Range(1, Int32.MaxValue)]
         [Required]
         public virtual int InvoiceId { get; set; }
         
         [Display(Name = "PropertyTrackId", ResourceType = typeof(InvoiceLineResources))]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
-        [Range(1, Int32.MaxValue)]
         [Required]
         public virtual int TrackId { get; set; }
         
         [Display(Name = "PropertyUnitPrice", ResourceType = typeof(InvoiceLineResources))]
         [DisplayFormat(DataFormatString = "{0:f2}", ApplyFormatInEditMode = true)]
-        [Range(0.01, Double.MaxValue)]
         [Required]
         public virtual decimal UnitPrice { get; set; }
         
         [Display(Name = "PropertyQuantity", ResourceType = typeof(InvoiceLineResources))]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
-        [Range(1, Int32.MaxValue)]
         [Required]
         public virtual int Quantity { get; set; }
 
@@ -53,17 +48,15 @@ namespace Chinook.Data
     
         #endregion Associations FK
 
-        #region Properties ZViewBase
-
-        public override string LookupText { get; set; }
-
-        #endregion Properties ZViewBase
-
         #region Methods
         
         public InvoiceLineViewModel()
         {
-            InvoiceLineId = 1;
+            InvoiceLineId = LibraryDefaults.Default_Int32;
+            InvoiceId = LibraryDefaults.Default_Int32;
+            TrackId = LibraryDefaults.Default_Int32;
+            UnitPrice = LibraryDefaults.Default_Decimal;
+            Quantity = LibraryDefaults.Default_Int32;
         }
         
         public InvoiceLineViewModel(
@@ -75,7 +68,6 @@ namespace Chinook.Data
             string invoiceLookupText = null,
             string trackLookupText = null
         )
-            : this()
         {
             InvoiceLineId = invoiceLineId;
             InvoiceId = invoiceId;
@@ -108,10 +100,7 @@ namespace Chinook.Data
                 InvoiceId = x.InvoiceId,
                 TrackId = x.TrackId,
                 UnitPrice = x.UnitPrice,
-                Quantity = x.Quantity,
-                InvoiceLookupText = x.InvoiceLookupText,
-                TrackLookupText = x.TrackLookupText,
-                LookupText = x.LookupText
+                Quantity = x.Quantity
             };
         }
 

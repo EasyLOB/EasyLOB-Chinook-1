@@ -1,50 +1,49 @@
-@model UserLoginItemModel
+﻿@model UserLoginItemModel
 
 @{
     string userText = Model.UserLogin == null ? "" : (Model.UserLogin.UserLookupText ?? "");
 }
 
-@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div id="Item_UserLogin">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
 
-@Html.HiddenFor(model => model.ControllerAction)
-@Html.HiddenFor(model => model.IsMasterDetail)
-@Html.HiddenFor(model => model.MasterUserId)
+    @Html.HiddenFor(model => model.ControllerAction)
+    @Html.HiddenFor(model => model.IsMasterDetail)
+    @Html.HiddenFor(model => model.MasterUserId)
 
-@{Html.EJ().Tab("Tab_UserLogin")
-    .ClientSideEvents(clientEvent => clientEvent
-        .ItemActive("itemActive_Tab_UserLogin")
-    )
-    .Items(data =>
-    {
-        data.Add().ID("TabSheet_UserLogin_UserLogin").Text(UserLoginResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
-            
-            <div id="Group_UserLogin_LoginProvider" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.LabelFor(model => model.UserLogin.LoginProvider, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.UserLogin.LoginProvider, new { id = "UserLogin_LoginProvider", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.UserLogin.LoginProvider, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
-            
-            <div id="Group_UserLogin_ProviderKey" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.LabelFor(model => model.UserLogin.ProviderKey, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.UserLogin.ProviderKey, new { id = "UserLogin_ProviderKey", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.UserLogin.ProviderKey, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
-            
-            <div id="Group_UserLogin_UserId" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.Label(@UserResources.EntitySingular, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.UserLogin.UserId, new { id = "UserLogin_UserId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })                    
-                @Html.Action("Lookup", "User", new
-                {
-                    Text = userText,
-                    ValueId = "UserLogin_UserId"
-                })
-                @Html.ValidationMessageFor(model => model.UserLogin.UserId, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+    @{Html.EJ().Tab("Tab_UserLogin")
+        .Items(data =>
+        {
+            data.Add().ID("TabSheet_UserLogin_UserLogin").Text(UserLoginResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
+                
+                <div id="Group_UserLogin_LoginProvider" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.LabelFor(model => model.UserLogin.LoginProvider, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.UserLogin.LoginProvider, new { id = "UserLogin_LoginProvider", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.UserLogin.LoginProvider, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
+                
+                <div id="Group_UserLogin_ProviderKey" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.LabelFor(model => model.UserLogin.ProviderKey, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.UserLogin.ProviderKey, new { id = "UserLogin_ProviderKey", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.UserLogin.ProviderKey, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
+                
+                <div id="Group_UserLogin_UserId" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.Label(@UserResources.EntitySingular, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.UserLogin.UserId, new { id = "UserLogin_UserId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })                    
+                    @Html.Action("Lookup", "User", new
+                    {
+                        Text = userText,
+                        ValueId = "UserLogin_UserId"
+                    })
+                    @Html.ValidationMessageFor(model => model.UserLogin.UserId, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-        </div>);
-    })
-    .Render();
-}
+            </div>);
+        })
+        .Render();
+    }
+</div>
 
 <script>
     // Validate hidden fields
@@ -58,10 +57,22 @@
             var userLoginDictionary = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(DataHelper.GetDataDictionaryAttribute(typeof(UserLogin)))); }();
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
             
+            $(document).prop("title", "@(ViewBag.Title)");
+
             var ajaxUrl = "";
-            ej.widget.init($("#Ajax"));
-            $(document).prop("title", "@(ViewBag.Title)");            
-    
+
+            ej.widget.init($("#Item_UserLogin"));
+
+            if ((model.ControllerAction = "create" && model.IsSecurityOperations.IsCreate) ||
+                (model.ControllerAction = "read" && model.IsSecurityOperations.IsRead) ||
+                (model.ControllerAction = "update" && model.IsSecurityOperations.IsUpdate) ||
+                (model.ControllerAction = "delete" && model.IsSecurityOperations.IsDelete)) {
+                $("#Item_UserLogin").css("display", "block");
+            }
+            else {
+                $("#Item_UserLogin").css("display", "none");
+            }
+
             var readonly = (controllerAction == "delete" || controllerAction == "read");
             $("input.form-control").not(":input[type=button], :input[type=image], :input[type=reset], :input[type=submit]").attr("readonly", readonly);
             if (readonly) {
@@ -81,22 +92,15 @@
 
             // Associations (FK)
             // User
-            if (model.MasterUserId != null) {
-                $("#UserLogin_UserId").val(model.MasterUserId);
+            if (model.MasterId != null) {
+                $("#UserLogin_UserId").val(model.MasterId);
                 $("#Group_UserLogin_UserId").hide();            
             }
 
             // Collections (PK)
             var display = controllerAction == "create" ? "none" : "block";
         } catch (exception) {
-            alert(zExceptionMessage("_UserLoginItem.cshtml", "function()", exception));
+            alert(zExceptionMessage("_UserLoginItem.cshtml", "function", exception));
         }
     });
-
-    function itemActive_Tab_UserLogin(args) { // IE
-        try {
-        } catch (exception) {
-            alert(zExceptionMessage("_UserLoginItem.cshtml", "itemActive_Tab_UserLogin(args)", exception));
-        }
-    }    
 </script>

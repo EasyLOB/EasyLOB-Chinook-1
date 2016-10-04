@@ -15,13 +15,11 @@ namespace Chinook.Data
         [Display(Name = "PropertyInvoiceId", ResourceType = typeof(InvoiceResources))]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         //[Key]
-        [Range(1, Int32.MaxValue)]
         [Required]
         public virtual int InvoiceId { get; set; }
         
         [Display(Name = "PropertyCustomerId", ResourceType = typeof(InvoiceResources))]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
-        [Range(1, Int32.MaxValue)]
         [Required]
         public virtual int CustomerId { get; set; }
         
@@ -52,7 +50,6 @@ namespace Chinook.Data
         
         [Display(Name = "PropertyTotal", ResourceType = typeof(InvoiceResources))]
         [DisplayFormat(DataFormatString = "{0:f2}", ApplyFormatInEditMode = true)]
-        [Range(0.00, Double.MaxValue)] // !!!
         [Required]
         public virtual decimal Total { get; set; }
 
@@ -64,20 +61,20 @@ namespace Chinook.Data
     
         #endregion Associations FK
 
-        #region Properties ZViewBase
-
-        public override string LookupText { get; set; }
-
-        #endregion Properties ZViewBase
-
         #region Methods
         
         public InvoiceViewModel()
         {
-            InvoiceId = 1;
-
-            // !!!
-            InvoiceDate = DateTime.Today;
+            InvoiceId = LibraryDefaults.Default_Int32;
+            CustomerId = LibraryDefaults.Default_Int32;
+            //InvoiceDate = LibraryDefaults.Default_DateTime;            
+            InvoiceDate = DateTime.Today; // !!!
+            Total = LibraryDefaults.Default_Decimal;
+            BillingAddress = null;
+            BillingCity = null;
+            BillingState = null;
+            BillingCountry = null;
+            BillingPostalCode = null;
         }
         
         public InvoiceViewModel(
@@ -92,7 +89,6 @@ namespace Chinook.Data
             string billingPostalCode = null,
             string customerLookupText = null
         )
-            : this()
         {
             InvoiceId = invoiceId;
             CustomerId = customerId;
@@ -132,9 +128,7 @@ namespace Chinook.Data
                 BillingState = x.BillingState,
                 BillingCountry = x.BillingCountry,
                 BillingPostalCode = x.BillingPostalCode,
-                Total = x.Total,
-                CustomerLookupText = x.CustomerLookupText,
-                LookupText = x.LookupText
+                Total = x.Total
             };
         }
 

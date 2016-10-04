@@ -15,7 +15,6 @@ namespace Chinook.Data
         [Display(Name = "PropertyGenreId", ResourceType = typeof(GenreResources))]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         //[Key]
-        [Range(1, Int32.MaxValue)]
         [Required]
         public virtual int GenreId { get; set; }
         
@@ -25,24 +24,18 @@ namespace Chinook.Data
 
         #endregion Properties
 
-        #region Properties ZViewBase
-
-        public override string LookupText { get; set; }
-
-        #endregion Properties ZViewBase
-
         #region Methods
         
         public GenreViewModel()
         {
-            GenreId = 1;
+            GenreId = LibraryDefaults.Default_Int32;
+            Name = null;
         }
         
         public GenreViewModel(
             int genreId,
             string name = null
         )
-            : this()
         {
             GenreId = genreId;
             Name = name;
@@ -67,8 +60,7 @@ namespace Chinook.Data
             return x => new GenreDTO
             {
                 GenreId = x.GenreId,
-                Name = x.Name,
-                LookupText = x.LookupText
+                Name = x.Name
             };
         }
 

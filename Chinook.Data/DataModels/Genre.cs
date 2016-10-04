@@ -24,19 +24,9 @@ namespace Chinook.Data
 
         #endregion Properties
 
-        #region Properties ZDataBase
-
-        public override string LookupText
-        {
-            get { return base.LookupText; }
-            set { }
-        }
-
-        #endregion Properties ZDataBase
-
         #region Collections (PK)
 
-        public virtual IList<Track> Tracks { get; set; }
+        public virtual IList<Track> Tracks { get; }
 
         #endregion Collections (PK)
 

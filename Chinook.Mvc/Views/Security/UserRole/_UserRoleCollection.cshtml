@@ -1,99 +1,101 @@
-@model UserRoleCollectionModel
+﻿@model UserRoleCollectionModel
 
-@(Html.EJ().Grid<UserRole>("Grid_UserRole")
-    .Datasource(datasource => datasource
-        .Adaptor(AdaptorType.UrlAdaptor)
-        .URL(Url.Content("~/UserRole/DataSource"))
-    )
-    .AllowFiltering()
-    .AllowGrouping()
-    .AllowPaging()
-    .AllowResizing()
-    .AllowScrolling()
-    .AllowSearching()
-    .AllowSorting()
-    .ClientSideEvents(clientEvent => clientEvent
-        .ActionBegin("actionBegin_Grid_UserRole")
-        .ActionFailure("actionFailure_Grid_UserRole")
-        .Load("load_Grid_UserRole")
-        .ToolbarClick("toolbarClick_Grid_UserRole")
-    )
-    .Columns(column =>
-    {
-        column.Field("UserId")
-            .EditType(EditingType.String)
-            .HeaderText(UserRoleResources.PropertyUserId)
-            .IsPrimaryKey(true)
-            .Visible(true)
-            .Width(240)
-            .Add();
-        column.Field("UserLookupText")
-            .AllowEditing(false)
-            .HeaderText(UserResources.EntitySingular)
-            .Visible(true)
-            .Width(100)
-            .Add();
-        column.Field("RoleId")
-            .EditType(EditingType.String)
-            .HeaderText(UserRoleResources.PropertyRoleId)
-            .IsPrimaryKey(true)
-            .Visible(true)
-            .Width(240)
-            .Add();
-        column.Field("RoleLookupText")
-            .AllowEditing(false)
-            .HeaderText(RoleResources.EntitySingular)
-            .Visible(true)
-            .Width(100)
-            .Add();
-    })
-    .EditSettings(edit => edit
-        .AllowAdding()
-        .AllowDeleting()
-        .AllowEditing()
-    )
-    .EnablePersistence()
-    .FilterSettings(filter => filter
-        .EnableCaseSensitivity(false)
-        .FilterType(FilterType.Excel)
-        .MaxFilterChoices(System.Int32.MaxValue)
-    )
-    .Mappers(map => map
-        .ExportToExcelAction(Url.Content("~/UserRole/ExportToExcel"))
-        .ExportToPdfAction(Url.Content("~/UserRole/ExportToPdf"))
-        .ExportToWordAction(Url.Content("~/UserRole/ExportToWord"))
-    )
-    .PageSettings(page => page
-        .PageSize(AppDefaults.SyncfusionRecordsByPage)
-    )
-    .SearchSettings(search =>
-    {
-        search.Fields(field =>
+<div id="Collection_UserRole">
+    @(Html.EJ().Grid<UserRole>("Grid_UserRole")
+        .Datasource(datasource => datasource
+            .Adaptor(AdaptorType.UrlAdaptor)
+            .URL(Url.Content("~/UserRole/DataSource"))
+        )
+        .AllowFiltering()
+        .AllowGrouping()
+        .AllowPaging()
+        .AllowResizing()
+        .AllowScrolling()
+        .AllowSearching()
+        .AllowSorting()
+        .ClientSideEvents(clientEvent => clientEvent
+            .ActionBegin("actionBegin_Grid_UserRole")
+            .ActionFailure("actionFailure_Grid_UserRole")
+            .Load("load_Grid_UserRole")
+            .ToolbarClick("toolbarClick_Grid_UserRole")
+        )
+        .Columns(column =>
         {
-            field.Add("UserId");
-            field.Add("UserLookupText");
-            field.Add("RoleId");
-            field.Add("RoleLookupText");
-        });
-    })
-    .ShowColumnChooser()
-    .ToolbarSettings(toolbar => toolbar
-        .CustomToolbarItems(new List<object>() {
-            new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_UserRole" }
+            column.Field("UserId")
+                .EditType(EditingType.String)
+                .HeaderText(UserRoleResources.PropertyUserId)
+                .IsPrimaryKey(true)
+                .Visible(true)
+                .Width(240)
+                .Add();
+            column.Field("UserLookupText")
+                .AllowEditing(false)
+                .HeaderText(UserResources.EntitySingular)
+                .Visible(true)
+                .Width(100)
+                .Add();
+            column.Field("RoleId")
+                .EditType(EditingType.String)
+                .HeaderText(UserRoleResources.PropertyRoleId)
+                .IsPrimaryKey(true)
+                .Visible(true)
+                .Width(240)
+                .Add();
+            column.Field("RoleLookupText")
+                .AllowEditing(false)
+                .HeaderText(RoleResources.EntitySingular)
+                .Visible(true)
+                .Width(100)
+                .Add();
         })
-        .ShowToolbar()
-        .ToolbarItems(items =>
+        .EditSettings(edit => edit
+            .AllowAdding()
+            .AllowDeleting()
+            .AllowEditing()
+        )
+        .EnablePersistence()
+        .FilterSettings(filter => filter
+            .EnableCaseSensitivity(false)
+            .FilterType(FilterType.Excel)
+            .MaxFilterChoices(System.Int32.MaxValue)
+        )
+        .Mappers(map => map
+            .ExportToExcelAction(Url.Content("~/UserRole/ExportToExcel"))
+            .ExportToPdfAction(Url.Content("~/UserRole/ExportToPdf"))
+            .ExportToWordAction(Url.Content("~/UserRole/ExportToWord"))
+        )
+        .PageSettings(page => page
+            .PageSize(AppDefaults.SyncfusionRecordsByPage)
+        )
+        .SearchSettings(search =>
         {
-            items.AddTool(ToolBarItems.Search);
-            items.AddTool(ToolBarItems.Add);
-            items.AddTool(ToolBarItems.Edit);
-            items.AddTool(ToolBarItems.Delete);
-            items.AddTool(ToolBarItems.ExcelExport);
-            items.AddTool(ToolBarItems.PdfExport);
-            items.AddTool(ToolBarItems.WordExport);
+            search.Fields(field =>
+            {
+                field.Add("UserId");
+                field.Add("UserLookupText");
+                field.Add("RoleId");
+                field.Add("RoleLookupText");
+            });
         })
+        .ShowColumnChooser()
+        .ToolbarSettings(toolbar => toolbar
+            .CustomToolbarItems(new List<object>() {
+                new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_UserRole" }
+            })
+            .ShowToolbar()
+            .ToolbarItems(items =>
+            {
+                items.AddTool(ToolBarItems.Search);
+                items.AddTool(ToolBarItems.Add);
+                items.AddTool(ToolBarItems.Edit);
+                items.AddTool(ToolBarItems.Delete);
+                items.AddTool(ToolBarItems.ExcelExport);
+                items.AddTool(ToolBarItems.PdfExport);
+                items.AddTool(ToolBarItems.WordExport);
+            })
+        )
     )
-)
+</div>
 
 @Html.OperationResult(Model.OperationResult)
 
@@ -105,6 +107,13 @@
     $(function () {
         try {
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+
+            if (model.IsSecurityOperations.IsSearch) {
+                $("#Collection_UserRole").css("display", "block");
+            }
+            else {
+                $("#Collection_UserRole").css("display", "none");
+            }
 
             var gridUserRole = $("#Grid_UserRole");
             var ejGridUserRole = gridUserRole.data("ejGrid");

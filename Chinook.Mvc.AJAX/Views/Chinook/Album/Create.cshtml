@@ -1,4 +1,4 @@
-@model AlbumItemModel
+﻿@model AlbumItemModel
 
 @{
     ViewBag.Title = AppHelper.PageTitle(AlbumResources.EntitySingular, PresentationResources.Create);
@@ -19,7 +19,7 @@
 {
     @Html.AntiForgeryToken()
 
-    <div id="Partial" class="form-inline">
+    <div class="form-inline">
         @Html.Partial("_AlbumItem", Model)
     </div>
 
@@ -33,22 +33,19 @@
 
 <script>
     $(function () {
-        try
-        {
+        try {
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
     
             if (model.IsSecurityOperations.IsCreate) {
-                $("#Partial").show();
                 $("#Button_Cancel").show();
                 $("#Button_OK").show();
             }
             else {
-                $("#Partial").hide();
                 $("#Button_Cancel").show();
                 $("#Button_OK").hide();
             }
         } catch (exception) {
-            zExceptionMessage("Album Create.cshtml", "function()", exception.message)
+            zExceptionMessage("Album Create.cshtml", "function", exception.message)
         }
     });
 

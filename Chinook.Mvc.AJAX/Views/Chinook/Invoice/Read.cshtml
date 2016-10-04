@@ -1,4 +1,4 @@
-@model InvoiceItemModel
+﻿@model InvoiceItemModel
 
 @{
     ViewBag.Title = AppHelper.PageTitle(InvoiceResources.EntitySingular, PresentationResources.Read);
@@ -19,7 +19,7 @@
 {
     @Html.AntiForgeryToken()
 
-    <div id="Partial" class="form-inline">
+    <div class="form-inline">
         @Html.Partial("_InvoiceItem", Model)
     </div>
     
@@ -32,20 +32,17 @@
 
 <script>
     $(function () {
-        try
-        {
+        try {
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
     
-            if (model.IsSecurityOperations.IsCreate) {
-                $("#Partial").show();
+            if (model.IsSecurityOperations.IsRead) {
                 $("#Button_Cancel").show();
             }
             else {
-                $("#Partial").hide();
                 $("#Button_Cancel").show();
             }
         } catch (exception) {
-            zExceptionMessage("Invoice Create.cshtml", "function()", exception.message)
+            zExceptionMessage("Invoice Read.cshtml", "function", exception.message)
         }
     });
 
@@ -53,7 +50,7 @@
         try {
             $("#OperationResult").html(zAjaxOperationResult(jqXHR));
         } catch (exception) {
-            zExceptionMessage("Invoice Create.cshtml", "ajaxFailure", exception.message)
+            zExceptionMessage("Invoice Read.cshtml", "ajaxFailure", exception.message)
         }
     }
 
@@ -63,7 +60,7 @@
                 $("#Ajax").load(data.uri);
             }
         } catch (exception) {
-            zExceptionMessage("Invoice Create.cshtml", "ajaxSuccess", exception.message)
+            zExceptionMessage("Invoice Read.cshtml", "ajaxSuccess", exception.message)
         }
     }
 </script>

@@ -1,110 +1,124 @@
-@model PlaylistTrackCollectionModel
+﻿@model PlaylistTrackCollectionModel
 
 @{
     ViewBag.Title = PlaylistTrackResources.EntityPlural;
+    
+    string query = "";
+    if (Model.MasterPlaylistId != null)
+    {
+        query = String.Format("ej.Query().where(\"PlaylistId\", ej.FilterOperators.equal, {0})", Model.MasterPlaylistId);
+    }
+    else if (Model.MasterTrackId != null)
+    {
+        query = String.Format("ej.Query().where(\"TrackId\", ej.FilterOperators.equal, {0})", Model.MasterTrackId);
+    }
 }
 
-<div id="PlaylistTrack_Title">
+<div id="Collection_PlaylistTrack_Title">
     <h3>@ViewBag.Title</h3>
 </div>
 
-@(Html.EJ().Grid<PlaylistTrack>("Grid_PlaylistTrack")
-    .Datasource(datasource => datasource
-        .Adaptor(AdaptorType.UrlAdaptor)
-        .URL(Url.Content("~/PlaylistTrack/DataSource"))
-    )
-    .AllowFiltering()
-    .AllowGrouping()
-    .AllowPaging()
-    .AllowResizing()
-    .AllowScrolling()
-    .AllowSearching()
-    .AllowSorting()
-    .ClientSideEvents(clientEvent => clientEvent
-        .ActionBegin("actionBegin_Grid_PlaylistTrack")
-        .ActionFailure("actionFailure_Grid_PlaylistTrack")
-        .Load("load_Grid_PlaylistTrack")
-    )
-    .Columns(column =>
-    {
-        column.Field("PlaylistId")
-            .EditType(EditingType.Numeric)
-            .Format(SyncfusionPatternResources.GridFormat_Integer)
-            .HeaderText(PlaylistTrackResources.PropertyPlaylistId)
-            .IsPrimaryKey(true)
-            .TextAlign(TextAlign.Right)
-            .Visible(true)
-            .Width(100)
-            .Add();
-        column.Field("PlaylistLookupText")
-            .AllowEditing(false)
-            .HeaderText(PlaylistResources.EntitySingular)
-            .Visible(true)
-            .Width(100)
-            .Add();
-        column.Field("TrackId")
-            .EditType(EditingType.Numeric)
-            .Format(SyncfusionPatternResources.GridFormat_Integer)
-            .HeaderText(PlaylistTrackResources.PropertyTrackId)
-            .IsPrimaryKey(true)
-            .TextAlign(TextAlign.Right)
-            .Visible(true)
-            .Width(100)
-            .Add();
-        column.Field("TrackLookupText")
-            .AllowEditing(false)
-            .HeaderText(TrackResources.EntitySingular)
-            .Visible(true)
-            .Width(100)
-            .Add();
-    })
-    .EditSettings(edit => edit
-        .AllowAdding()
-        .AllowDeleting()
-        .AllowEditing()
-    )
-    .EnablePersistence()
-    .FilterSettings(filter => filter
-        .EnableCaseSensitivity(false)
-        .FilterType(FilterType.Excel)
-        .MaxFilterChoices(System.Int32.MaxValue)
-    )
-    .Mappers(map => map
-        .ExportToExcelAction(Url.Content("~/PlaylistTrack/ExportToExcel"))
-        .ExportToPdfAction(Url.Content("~/PlaylistTrack/ExportToPdf"))
-        .ExportToWordAction(Url.Content("~/PlaylistTrack/ExportToWord"))
-    )
-    .PageSettings(page => page
-        .PageSize(AppDefaults.SyncfusionRecordsByPage)
-    )
-    .SearchSettings(search =>
-    {
-        search.Fields(field =>
+<div id="Collection_PlaylistTrack">
+    @(Html.EJ().Grid<PlaylistTrack>("Grid_PlaylistTrack")
+        .Datasource(datasource => datasource
+            .Adaptor(AdaptorType.UrlAdaptor)
+            .URL(Url.Content("~/PlaylistTrack/DataSource"))
+        )
+        .Query(query)
+        .AllowFiltering()
+        .AllowGrouping()
+        .AllowPaging()
+        .AllowResizing()
+        .AllowScrolling()
+        .AllowSearching()
+        .AllowSorting()
+        .ClientSideEvents(clientEvent => clientEvent
+            .ActionBegin("actionBegin_Grid_PlaylistTrack")
+            .ActionFailure("actionFailure_Grid_PlaylistTrack")
+            .Load("load_Grid_PlaylistTrack")
+            .ToolbarClick("toolbarClick_Grid_PlaylistTrack")
+        )
+        .Columns(column =>
         {
-            field.Add("PlaylistId");
-            field.Add("PlaylistLookupText");
-            field.Add("TrackId");
-            field.Add("TrackLookupText");
-        });
-    })
-    .ShowColumnChooser()
-    .ToolbarSettings(toolbar => toolbar
-        .CustomToolbarItems(new List<object>() {
-            new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_PlaylistTrack" }
+            column.Field("PlaylistId")
+                .EditType(EditingType.Numeric)
+                .Format(SyncfusionPatternResources.GridFormat_Integer)
+                .HeaderText(PlaylistTrackResources.PropertyPlaylistId)
+                .IsPrimaryKey(true)
+                .TextAlign(TextAlign.Right)
+                .Visible(true)
+                .Width(100)
+                .Add();
+            column.Field("PlaylistLookupText")
+                .AllowEditing(false)
+                .HeaderText(PlaylistResources.EntitySingular)
+                .Visible(true)
+                .Width(100)
+                .Add();
+            column.Field("TrackId")
+                .EditType(EditingType.Numeric)
+                .Format(SyncfusionPatternResources.GridFormat_Integer)
+                .HeaderText(PlaylistTrackResources.PropertyTrackId)
+                .IsPrimaryKey(true)
+                .TextAlign(TextAlign.Right)
+                .Visible(true)
+                .Width(100)
+                .Add();
+            column.Field("TrackLookupText")
+                .AllowEditing(false)
+                .HeaderText(TrackResources.EntitySingular)
+                .Visible(true)
+                .Width(100)
+                .Add();
         })
-        .ShowToolbar()
-        .ToolbarItems(items =>
+        .EditSettings(edit => edit
+            .AllowAdding()
+            .AllowDeleting()
+            .AllowEditing()
+        )
+        //.EnablePersistence()
+        .FilterSettings(filter => filter
+            .EnableCaseSensitivity(false)
+            .FilterType(FilterType.Excel)
+            .MaxFilterChoices(System.Int32.MaxValue)
+        )
+        .Mappers(map => map
+            .ExportToExcelAction(Url.Content("~/PlaylistTrack/ExportToExcel"))
+            .ExportToPdfAction(Url.Content("~/PlaylistTrack/ExportToPdf"))
+            .ExportToWordAction(Url.Content("~/PlaylistTrack/ExportToWord"))
+        )
+        .PageSettings(page => page
+            .PageSize(AppDefaults.SyncfusionRecordsByPage)
+        )
+        .SearchSettings(search =>
         {
-            items.AddTool(ToolBarItems.Search);
-            items.AddTool(ToolBarItems.Add);
-            items.AddTool(ToolBarItems.Edit);
-            items.AddTool(ToolBarItems.Delete);
-            items.AddTool(ToolBarItems.ExcelExport);
-            items.AddTool(ToolBarItems.PdfExport);
-            items.AddTool(ToolBarItems.WordExport);
+            search.Fields(field =>
+            {
+                field.Add("PlaylistId");
+                field.Add("PlaylistLookupText");
+                field.Add("TrackId");
+                field.Add("TrackLookupText");
+            });
         })
+        .ShowColumnChooser()
+        .ToolbarSettings(toolbar => toolbar
+            .CustomToolbarItems(new List<object>() {
+                new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_PlaylistTrack" }
+            })
+            .ShowToolbar()
+            .ToolbarItems(items =>
+            {
+                items.AddTool(ToolBarItems.Search);
+                items.AddTool(ToolBarItems.Add);
+                items.AddTool(ToolBarItems.Edit);
+                items.AddTool(ToolBarItems.Delete);
+                items.AddTool(ToolBarItems.ExcelExport);
+                items.AddTool(ToolBarItems.PdfExport);
+                items.AddTool(ToolBarItems.WordExport);
+            })
+        )
     )
-)
+</div>
 
 @Html.OperationResult(Model.OperationResult)
 
@@ -117,15 +131,19 @@
         try {
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
     
-            ej.widget.init($("#Ajax"));
-            var title = $("#PlaylistTrack_Title");       
+            var title = $("#Collection_PlaylistTrack_Title");
+            
+            ej.widget.init($("#Collection_PlaylistTrack"));
+
+            if (model.IsSecurityOperations.IsSearch) {
+                $("#Collection_PlaylistTrack").css("display", "block");
+            }
+            else {
+                $("#Collection_PlaylistTrack").css("display", "none");
+            }
 
             var gridPlaylistTrack = $("#Grid_PlaylistTrack");
             var ejGridPlaylistTrack = gridPlaylistTrack.data("ejGrid");
-    
-            if (ejGridPlaylistTrack.model.filterSettings.filteredColumns.length != 0) {
-                ejGridPlaylistTrack.clearFiltering();
-            }
                 
             if (!model.IsMasterDetail) {
                 title.css("display", "block");
@@ -134,7 +152,6 @@
                 ejGridPlaylistTrack.setModel({
                     allowGrouping: true,
                     toolbarSettings: {
-                        showToolbar: true,
                         toolbarItems: [
                             ej.Grid.ToolBarItems.Search,
                             ej.Grid.ToolBarItems.Add,
@@ -152,7 +169,6 @@
                 ejGridPlaylistTrack.setModel({
                     allowGrouping: false,
                     toolbarSettings: {
-                        showToolbar: true,
                         toolbarItems: [
                             ej.Grid.ToolBarItems.Add,
                             ej.Grid.ToolBarItems.Edit,
@@ -160,15 +176,9 @@
                         ]                    
                     }
                 });
-
-                if (model.MasterPlaylistId != null) {
-                    ejGridPlaylistTrack.filterColumn("PlaylistId", ej.FilterOperators.equal, model.MasterPlaylistId, ej.Predicate.and);
-                } else if (model.MasterTrackId != null) {
-                    ejGridPlaylistTrack.filterColumn("TrackId", ej.FilterOperators.equal, model.MasterTrackId, ej.Predicate.and);
-                }
             }
         } catch (exception) {
-            alert(zExceptionMessage("_PlaylistTrackCollection.cshtml", "function()", exception));
+            alert(zExceptionMessage("_PlaylistTrackCollection.cshtml", "function", exception));
         }                
     });
     
@@ -176,17 +186,6 @@
         try {
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
             var masterControllerAction = model.MasterControllerAction == null ? "" : model.MasterControllerAction.toLowerCase();
-
-            //var gridPlaylistTrack = $("#Grid_PlaylistTrack");
-            //var ejGridPlaylistTrack = gridPlaylistTrack.data("ejGrid");
-
-            //ejGridPlaylistTrack.setModel({
-            //    editSettings: {
-            //        allowAdding: model.IsSecurityOperations.IsCreate,
-            //        allowDeleting: model.IsSecurityOperations.IsDelete,
-            //        allowEditing: model.IsSecurityOperations.IsUpdate
-            //    }
-            //});
     
             // Associations (FK)
             var url = "";
@@ -200,34 +199,52 @@
             }
 
             if (masterControllerAction == "" || masterControllerAction == "update") {
-                switch(args.requestType) {     
+                switch(args.requestType) {
                     case "add":
-                        args.cancel = true;
-                        $("#Ajax").load("@(Url.Action("Create", "PlaylistTrack", null, Request.Url.Scheme))" + (url == "" ? "" : "?") + url);
+                        // Create
+                        if (model.IsSecurityOperations.IsCreate) {
+                            $("#Ajax").load("@(Url.Action("Create", "PlaylistTrack", null, Request.Url.Scheme))" +
+                                (url == "" ? "" : "?") + url);
+                        }
                         break;
+                    case "read":
+                        // Read
+                        if (model.IsSecurityOperations.IsRead) {
+                            var data = args.data;
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#Ajax").load("@(Url.Action("Read", "PlaylistTrack", null, Request.Url.Scheme))?PlaylistId=" + String(data.PlaylistId) + "&TrackId=" + String(data.TrackId) +
+                                    (url == "" ? "" : "&") + url);
+                            }
+                        }
+                        break;                        
                     case "beginedit":
-                        var data = this.model.currentViewData[args.rowIndex];
-                        if (!ej.isNullOrUndefined(data)) {
-                            args.cancel = true;
-                            $("#Ajax").load("@(Url.Action("Update", "PlaylistTrack", null, Request.Url.Scheme))?PlaylistId=" + String(data.PlaylistId) + "&TrackId=" + String(data.TrackId) + (url == "" ? "" : "&") + url);
+                        // Update
+                        if (model.IsSecurityOperations.IsUpdate) {
+                            var data = this.model.currentViewData[args.rowIndex];
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#Ajax").load("@(Url.Action("Update", "PlaylistTrack", null, Request.Url.Scheme))?PlaylistId=" + String(data.PlaylistId) + "&TrackId=" + String(data.TrackId) +
+                                    (url == "" ? "" : "&") + url);
+                            }
                         }
                         break;
                     case "delete":
-                        var data = args.data;
-                        if (!ej.isNullOrUndefined(data)) {
-                            args.cancel = true;
-                            $("#Ajax").load("@(Url.Action("Delete", "PlaylistTrack", null, Request.Url.Scheme))?PlaylistId=" + String(data.PlaylistId) + "&TrackId=" + String(data.TrackId) + (url == "" ? "" : "&") + url);
+                        // Delete
+                        if (model.IsSecurityOperations.IsDelete) {
+                            var data = args.data;
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#Ajax").load("@(Url.Action("Delete", "PlaylistTrack", null, Request.Url.Scheme))?PlaylistId=" + String(data.PlaylistId) + "&TrackId=" + String(data.TrackId) +
+                                    (url == "" ? "" : "&") + url);
+                            }
                         }
                         break;
                 }
             }
-            else {
-                if (args.requestType == "add" || args.requestType == "beginedit" || args.requestType == "delete") {
-                    args.cancel = true;
-                }
+
+            if (args.requestType == "add" || args.requestType == "beginedit" || args.requestType == "delete") {
+                args.cancel = true;
             }
         } catch (exception) {
-            alert(zExceptionMessage("_PlaylistTrackCollection.cshtml", "actionBegin_Grid_PlaylistTrack(args)", exception));
+            alert(zExceptionMessage("_PlaylistTrackCollection.cshtml", "actionBegin_Grid_PlaylistTrack", exception));
         }            
     }
     
@@ -235,7 +252,7 @@
         try {
             alert(zErrorMessage(args.error.responseText));
         } catch (exception) {
-            alert(zExceptionMessage("_PlaylistTrackCollection.cshtml", "actionFailure_Grid_PlaylistTrack(args)", exception));
+            alert(zExceptionMessage("_PlaylistTrackCollection.cshtml", "actionFailure_Grid_PlaylistTrack", exception));
         }
     }    
 
@@ -244,7 +261,25 @@
             var culture = "@System.Globalization.CultureInfo.CurrentCulture.Name";
             this.model.locale = culture;
         } catch (exception) {
-            alert(zExceptionMessage("_PlaylistTrackCollection.cshtml", "load_Grid_PlaylistTrack(args)", exception));
+            alert(zExceptionMessage("_PlaylistTrackCollection.cshtml", "load_Grid_PlaylistTrack", exception));
+        }
+    }
+
+    function toolbarClick_Grid_PlaylistTrack(sender) {
+        try {
+            var toolbar = $(sender.target);
+            var gridPlaylistTrack = $("#Grid_PlaylistTrack");
+            var ejGridPlaylistTrack = gridPlaylistTrack.data("ejGrid");
+
+            if (toolbar.attr("id") == "Toolbar_Grid_PlaylistTrack_Read") {
+                var records = ejGridPlaylistTrack.getSelectedRecords();
+                if (records.length == 1) {
+                    var args = { requestType: "read", data: records[0] };
+                    actionBegin_Grid_PlaylistTrack(args)
+                }
+            }
+        } catch (exception) {
+            alert(zExceptionMessage("_PlaylistTrackCollection.cshtml", "toolbarClick_Grid_PlaylistTrack", exception));
         }
     }
 </script>

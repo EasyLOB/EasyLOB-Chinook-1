@@ -75,7 +75,7 @@ namespace Chinook.Mvc
                 mediaTypeCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return PartialView("_MediaTypeCollection", mediaTypeCollectionModel);
+            return PartialView(mediaTypeCollectionModel);
         }
 
         // GET & POST: MediaType/Lookup

@@ -1,197 +1,207 @@
-@model EmployeeCollectionModel
+﻿@model EmployeeCollectionModel
 
 @{
     ViewBag.Title = EmployeeResources.EntityPlural;
+    
+    string query = "";
+    if (Model.MasterReportsTo != null)
+    {
+        query = String.Format("ej.Query().where(\"ReportsTo\", ej.FilterOperators.equal, {0})", Model.MasterReportsTo);
+    }
 }
 
-<div id="Employee_Title">
+<div id="Collection_Employee_Title">
     <h3>@ViewBag.Title</h3>
 </div>
 
-@(Html.EJ().Grid<Employee>("Grid_Employee")
-    .Datasource(datasource => datasource
-        .Adaptor(AdaptorType.UrlAdaptor)
-        .URL(Url.Content("~/Employee/DataSource"))
-    )
-    .AllowFiltering()
-    .AllowGrouping()
-    .AllowPaging()
-    .AllowResizing()
-    .AllowScrolling()
-    .AllowSearching()
-    .AllowSorting()
-    .ClientSideEvents(clientEvent => clientEvent
-        .ActionBegin("actionBegin_Grid_Employee")
-        .ActionFailure("actionFailure_Grid_Employee")
-        .Load("load_Grid_Employee")
-    )
-    .Columns(column =>
-    {
-        column.Field("EmployeeId")
-            .AllowEditing(false)
-            .EditType(EditingType.Numeric)
-            .Format(SyncfusionPatternResources.GridFormat_Integer)
-            .HeaderText(EmployeeResources.PropertyEmployeeId)
-            .IsIdentity(true)
-            .IsPrimaryKey(true)
-            .TextAlign(TextAlign.Right)
-            .Visible(false)
-            .Width(100)
-            .Add();
-        column.Field("LastName")
-            .EditType(EditingType.String)
-            .HeaderText(EmployeeResources.PropertyLastName)
-            .Visible(true)
-            .Width(200)
-            .Add();
-        column.Field("FirstName")
-            .EditType(EditingType.String)
-            .HeaderText(EmployeeResources.PropertyFirstName)
-            .Visible(true)
-            .Width(200)
-            .Add();
-        column.Field("Title")
-            .EditType(EditingType.String)
-            .HeaderText(EmployeeResources.PropertyTitle)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("ReportsTo")
-            .EditType(EditingType.Numeric)
-            .Format(SyncfusionPatternResources.GridFormat_Integer)
-            .HeaderText(EmployeeResources.PropertyReportsTo)
-            .TextAlign(TextAlign.Right)
-            .Visible(false)
-            .Width(100)
-            .Add();
-        column.Field("EmployeeLookupText")
-            .AllowEditing(false)
-            .HeaderText(EmployeeResources.EntitySingular)
-            .Visible(true)
-            .Width(100)
-            .Add();
-        column.Field("BirthDate")
-            .EditType(EditingType.DateTimePicker)
-            .Format(SyncfusionPatternResources.GridFormat_DateTime)
-            .HeaderText(EmployeeResources.PropertyBirthDate)
-            .Visible(false)
-            .Width(100)
-            .Add();
-        column.Field("HireDate")
-            .EditType(EditingType.DateTimePicker)
-            .Format(SyncfusionPatternResources.GridFormat_DateTime)
-            .HeaderText(EmployeeResources.PropertyHireDate)
-            .Visible(false)
-            .Width(100)
-            .Add();
-        column.Field("Address")
-            .EditType(EditingType.String)
-            .HeaderText(EmployeeResources.PropertyAddress)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("City")
-            .EditType(EditingType.String)
-            .HeaderText(EmployeeResources.PropertyCity)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("State")
-            .EditType(EditingType.String)
-            .HeaderText(EmployeeResources.PropertyState)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("Country")
-            .EditType(EditingType.String)
-            .HeaderText(EmployeeResources.PropertyCountry)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("PostalCode")
-            .EditType(EditingType.String)
-            .HeaderText(EmployeeResources.PropertyPostalCode)
-            .Visible(false)
-            .Width(100)
-            .Add();
-        column.Field("Phone")
-            .EditType(EditingType.String)
-            .HeaderText(EmployeeResources.PropertyPhone)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("Fax")
-            .EditType(EditingType.String)
-            .HeaderText(EmployeeResources.PropertyFax)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("Email")
-            .EditType(EditingType.String)
-            .HeaderText(EmployeeResources.PropertyEmail)
-            .Visible(false)
-            .Width(240)
-            .Add();
-    })
-    .EditSettings(edit => edit
-        .AllowAdding()
-        .AllowDeleting()
-        .AllowEditing()
-    )
-    .EnablePersistence()
-    .FilterSettings(filter => filter
-        .EnableCaseSensitivity(false)
-        .FilterType(FilterType.Excel)
-        .MaxFilterChoices(System.Int32.MaxValue)
-    )
-    .Mappers(map => map
-        .ExportToExcelAction(Url.Content("~/Employee/ExportToExcel"))
-        .ExportToPdfAction(Url.Content("~/Employee/ExportToPdf"))
-        .ExportToWordAction(Url.Content("~/Employee/ExportToWord"))
-    )
-    .PageSettings(page => page
-        .PageSize(AppDefaults.SyncfusionRecordsByPage)
-    )
-    .SearchSettings(search =>
-    {
-        search.Fields(field =>
+<div id="Collection_Employee">
+    @(Html.EJ().Grid<Employee>("Grid_Employee")
+        .Datasource(datasource => datasource
+            .Adaptor(AdaptorType.UrlAdaptor)
+            .URL(Url.Content("~/Employee/DataSource"))
+        )
+        .Query(query)
+        .AllowFiltering()
+        .AllowGrouping()
+        .AllowPaging()
+        .AllowResizing()
+        .AllowScrolling()
+        .AllowSearching()
+        .AllowSorting()
+        .ClientSideEvents(clientEvent => clientEvent
+            .ActionBegin("actionBegin_Grid_Employee")
+            .ActionFailure("actionFailure_Grid_Employee")
+            .Load("load_Grid_Employee")
+            .ToolbarClick("toolbarClick_Grid_Employee")
+        )
+        .Columns(column =>
         {
-            //field.Add("EmployeeId");
-            field.Add("LastName");
-            field.Add("FirstName");
-            //field.Add("Title");
-            //field.Add("ReportsTo");
-            field.Add("EmployeeLookupText");
-            //field.Add("BirthDate");
-            //field.Add("HireDate");
-            //field.Add("Address");
-            //field.Add("City");
-            //field.Add("State");
-            //field.Add("Country");
-            //field.Add("PostalCode");
-            //field.Add("Phone");
-            //field.Add("Fax");
-            //field.Add("Email");
-        });
-    })
-    .ShowColumnChooser()
-    .ToolbarSettings(toolbar => toolbar
-        .CustomToolbarItems(new List<object>() {
-            new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_Employee" }
+            column.Field("EmployeeId")
+                .AllowEditing(false)
+                .EditType(EditingType.Numeric)
+                .Format(SyncfusionPatternResources.GridFormat_Integer)
+                .HeaderText(EmployeeResources.PropertyEmployeeId)
+                .IsIdentity(true)
+                .IsPrimaryKey(true)
+                .TextAlign(TextAlign.Right)
+                .Visible(false)
+                .Width(100)
+                .Add();
+            column.Field("LastName")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyLastName)
+                .Visible(true)
+                .Width(200)
+                .Add();
+            column.Field("FirstName")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyFirstName)
+                .Visible(true)
+                .Width(200)
+                .Add();
+            column.Field("Title")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyTitle)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("ReportsTo")
+                .EditType(EditingType.Numeric)
+                .Format(SyncfusionPatternResources.GridFormat_Integer)
+                .HeaderText(EmployeeResources.PropertyReportsTo)
+                .TextAlign(TextAlign.Right)
+                .Visible(false)
+                .Width(100)
+                .Add();
+            column.Field("EmployeeLookupText")
+                .AllowEditing(false)
+                .HeaderText(EmployeeResources.EntitySingular)
+                .Visible(true)
+                .Width(100)
+                .Add();
+            column.Field("BirthDate")
+                .EditType(EditingType.DateTimePicker)
+                .Format(SyncfusionPatternResources.GridFormat_DateTime)
+                .HeaderText(EmployeeResources.PropertyBirthDate)
+                .Visible(false)
+                .Width(100)
+                .Add();
+            column.Field("HireDate")
+                .EditType(EditingType.DateTimePicker)
+                .Format(SyncfusionPatternResources.GridFormat_DateTime)
+                .HeaderText(EmployeeResources.PropertyHireDate)
+                .Visible(false)
+                .Width(100)
+                .Add();
+            column.Field("Address")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyAddress)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("City")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyCity)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("State")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyState)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("Country")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyCountry)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("PostalCode")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyPostalCode)
+                .Visible(false)
+                .Width(100)
+                .Add();
+            column.Field("Phone")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyPhone)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("Fax")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyFax)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("Email")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyEmail)
+                .Visible(false)
+                .Width(240)
+                .Add();
         })
-        .ShowToolbar()
-        .ToolbarItems(items =>
+        .EditSettings(edit => edit
+            .AllowAdding()
+            .AllowDeleting()
+            .AllowEditing()
+        )
+        //.EnablePersistence()
+        .FilterSettings(filter => filter
+            .EnableCaseSensitivity(false)
+            .FilterType(FilterType.Excel)
+            .MaxFilterChoices(System.Int32.MaxValue)
+        )
+        .Mappers(map => map
+            .ExportToExcelAction(Url.Content("~/Employee/ExportToExcel"))
+            .ExportToPdfAction(Url.Content("~/Employee/ExportToPdf"))
+            .ExportToWordAction(Url.Content("~/Employee/ExportToWord"))
+        )
+        .PageSettings(page => page
+            .PageSize(AppDefaults.SyncfusionRecordsByPage)
+        )
+        .SearchSettings(search =>
         {
-            items.AddTool(ToolBarItems.Search);
-            items.AddTool(ToolBarItems.Add);
-            items.AddTool(ToolBarItems.Edit);
-            items.AddTool(ToolBarItems.Delete);
-            items.AddTool(ToolBarItems.ExcelExport);
-            items.AddTool(ToolBarItems.PdfExport);
-            items.AddTool(ToolBarItems.WordExport);
+            search.Fields(field =>
+            {
+                //field.Add("EmployeeId");
+                field.Add("LastName");
+                field.Add("FirstName");
+                //field.Add("Title");
+                //field.Add("ReportsTo");
+                field.Add("EmployeeLookupText");
+                //field.Add("BirthDate");
+                //field.Add("HireDate");
+                //field.Add("Address");
+                //field.Add("City");
+                //field.Add("State");
+                //field.Add("Country");
+                //field.Add("PostalCode");
+                //field.Add("Phone");
+                //field.Add("Fax");
+                //field.Add("Email");
+            });
         })
+        .ShowColumnChooser()
+        .ToolbarSettings(toolbar => toolbar
+            .CustomToolbarItems(new List<object>() {
+                new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_Employee" }
+            })
+            .ShowToolbar()
+            .ToolbarItems(items =>
+            {
+                items.AddTool(ToolBarItems.Search);
+                items.AddTool(ToolBarItems.Add);
+                items.AddTool(ToolBarItems.Edit);
+                items.AddTool(ToolBarItems.Delete);
+                items.AddTool(ToolBarItems.ExcelExport);
+                items.AddTool(ToolBarItems.PdfExport);
+                items.AddTool(ToolBarItems.WordExport);
+            })
+        )
     )
-)
+</div>
 
 @Html.OperationResult(Model.OperationResult)
 
@@ -204,15 +214,19 @@
         try {
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
     
-            ej.widget.init($("#Ajax"));
-            var title = $("#Employee_Title");       
+            var title = $("#Collection_Employee_Title");
+            
+            ej.widget.init($("#Collection_Employee"));
+
+            if (model.IsSecurityOperations.IsSearch) {
+                $("#Collection_Employee").css("display", "block");
+            }
+            else {
+                $("#Collection_Employee").css("display", "none");
+            }
 
             var gridEmployee = $("#Grid_Employee");
             var ejGridEmployee = gridEmployee.data("ejGrid");
-    
-            if (ejGridEmployee.model.filterSettings.filteredColumns.length != 0) {
-                ejGridEmployee.clearFiltering();
-            }
                 
             if (!model.IsMasterDetail) {
                 title.css("display", "block");
@@ -221,7 +235,6 @@
                 ejGridEmployee.setModel({
                     allowGrouping: true,
                     toolbarSettings: {
-                        showToolbar: true,
                         toolbarItems: [
                             ej.Grid.ToolBarItems.Search,
                             ej.Grid.ToolBarItems.Add,
@@ -239,7 +252,6 @@
                 ejGridEmployee.setModel({
                     allowGrouping: false,
                     toolbarSettings: {
-                        showToolbar: true,
                         toolbarItems: [
                             ej.Grid.ToolBarItems.Add,
                             ej.Grid.ToolBarItems.Edit,
@@ -247,13 +259,9 @@
                         ]                    
                     }
                 });
-
-                if (model.MasterReportsTo != null) {
-                    ejGridEmployee.filterColumn("ReportsTo", ej.FilterOperators.equal, model.MasterReportsTo, ej.Predicate.and);
-                }
             }
         } catch (exception) {
-            alert(zExceptionMessage("_EmployeeCollection.cshtml", "function()", exception));
+            alert(zExceptionMessage("_EmployeeCollection.cshtml", "function", exception));
         }                
     });
     
@@ -261,17 +269,6 @@
         try {
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
             var masterControllerAction = model.MasterControllerAction == null ? "" : model.MasterControllerAction.toLowerCase();
-
-            //var gridEmployee = $("#Grid_Employee");
-            //var ejGridEmployee = gridEmployee.data("ejGrid");
-
-            //ejGridEmployee.setModel({
-            //    editSettings: {
-            //        allowAdding: model.IsSecurityOperations.IsCreate,
-            //        allowDeleting: model.IsSecurityOperations.IsDelete,
-            //        allowEditing: model.IsSecurityOperations.IsUpdate
-            //    }
-            //});
     
             // Associations (FK)
             var url = "";
@@ -281,34 +278,52 @@
             }
 
             if (masterControllerAction == "" || masterControllerAction == "update") {
-                switch(args.requestType) {     
+                switch(args.requestType) {
                     case "add":
-                        args.cancel = true;
-                        $("#Ajax").load("@(Url.Action("Create", "Employee", null, Request.Url.Scheme))" + (url == "" ? "" : "?") + url);
+                        // Create
+                        if (model.IsSecurityOperations.IsCreate) {
+                            $("#Ajax").load("@(Url.Action("Create", "Employee", null, Request.Url.Scheme))" +
+                                (url == "" ? "" : "?") + url);
+                        }
                         break;
+                    case "read":
+                        // Read
+                        if (model.IsSecurityOperations.IsRead) {
+                            var data = args.data;
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#Ajax").load("@(Url.Action("Read", "Employee", null, Request.Url.Scheme))?EmployeeId=" + String(data.EmployeeId) +
+                                    (url == "" ? "" : "&") + url);
+                            }
+                        }
+                        break;                        
                     case "beginedit":
-                        var data = this.model.currentViewData[args.rowIndex];
-                        if (!ej.isNullOrUndefined(data)) {
-                            args.cancel = true;
-                            $("#Ajax").load("@(Url.Action("Update", "Employee", null, Request.Url.Scheme))?EmployeeId=" + String(data.EmployeeId) + (url == "" ? "" : "&") + url);
+                        // Update
+                        if (model.IsSecurityOperations.IsUpdate) {
+                            var data = this.model.currentViewData[args.rowIndex];
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#Ajax").load("@(Url.Action("Update", "Employee", null, Request.Url.Scheme))?EmployeeId=" + String(data.EmployeeId) +
+                                    (url == "" ? "" : "&") + url);
+                            }
                         }
                         break;
                     case "delete":
-                        var data = args.data;
-                        if (!ej.isNullOrUndefined(data)) {
-                            args.cancel = true;
-                            $("#Ajax").load("@(Url.Action("Delete", "Employee", null, Request.Url.Scheme))?EmployeeId=" + String(data.EmployeeId) + (url == "" ? "" : "&") + url);
+                        // Delete
+                        if (model.IsSecurityOperations.IsDelete) {
+                            var data = args.data;
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#Ajax").load("@(Url.Action("Delete", "Employee", null, Request.Url.Scheme))?EmployeeId=" + String(data.EmployeeId) +
+                                    (url == "" ? "" : "&") + url);
+                            }
                         }
                         break;
                 }
             }
-            else {
-                if (args.requestType == "add" || args.requestType == "beginedit" || args.requestType == "delete") {
-                    args.cancel = true;
-                }
+
+            if (args.requestType == "add" || args.requestType == "beginedit" || args.requestType == "delete") {
+                args.cancel = true;
             }
         } catch (exception) {
-            alert(zExceptionMessage("_EmployeeCollection.cshtml", "actionBegin_Grid_Employee(args)", exception));
+            alert(zExceptionMessage("_EmployeeCollection.cshtml", "actionBegin_Grid_Employee", exception));
         }            
     }
     
@@ -316,7 +331,7 @@
         try {
             alert(zErrorMessage(args.error.responseText));
         } catch (exception) {
-            alert(zExceptionMessage("_EmployeeCollection.cshtml", "actionFailure_Grid_Employee(args)", exception));
+            alert(zExceptionMessage("_EmployeeCollection.cshtml", "actionFailure_Grid_Employee", exception));
         }
     }    
 
@@ -325,7 +340,25 @@
             var culture = "@System.Globalization.CultureInfo.CurrentCulture.Name";
             this.model.locale = culture;
         } catch (exception) {
-            alert(zExceptionMessage("_EmployeeCollection.cshtml", "load_Grid_Employee(args)", exception));
+            alert(zExceptionMessage("_EmployeeCollection.cshtml", "load_Grid_Employee", exception));
+        }
+    }
+
+    function toolbarClick_Grid_Employee(sender) {
+        try {
+            var toolbar = $(sender.target);
+            var gridEmployee = $("#Grid_Employee");
+            var ejGridEmployee = gridEmployee.data("ejGrid");
+
+            if (toolbar.attr("id") == "Toolbar_Grid_Employee_Read") {
+                var records = ejGridEmployee.getSelectedRecords();
+                if (records.length == 1) {
+                    var args = { requestType: "read", data: records[0] };
+                    actionBegin_Grid_Employee(args)
+                }
+            }
+        } catch (exception) {
+            alert(zExceptionMessage("_EmployeeCollection.cshtml", "toolbarClick_Grid_Employee", exception));
         }
     }
 </script>

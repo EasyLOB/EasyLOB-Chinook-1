@@ -1,103 +1,105 @@
-@model PlaylistTrackCollectionModel
+﻿@model PlaylistTrackCollectionModel
 
-@(Html.EJ().Grid<PlaylistTrack>("Grid_PlaylistTrack")
-    .Datasource(datasource => datasource
-        .Adaptor(AdaptorType.UrlAdaptor)
-        .URL(Url.Content("~/PlaylistTrack/DataSource"))
-    )
-    .AllowFiltering()
-    .AllowGrouping()
-    .AllowPaging()
-    .AllowResizing()
-    .AllowScrolling()
-    .AllowSearching()
-    .AllowSorting()
-    .ClientSideEvents(clientEvent => clientEvent
-        .ActionBegin("actionBegin_Grid_PlaylistTrack")
-        .ActionFailure("actionFailure_Grid_PlaylistTrack")
-        .Load("load_Grid_PlaylistTrack")
-        .ToolbarClick("toolbarClick_Grid_PlaylistTrack")
-    )
-    .Columns(column =>
-    {
-        column.Field("PlaylistId")
-            .EditType(EditingType.Numeric)
-            .Format(SyncfusionPatternResources.GridFormat_Integer)
-            .HeaderText(PlaylistTrackResources.PropertyPlaylistId)
-            .IsPrimaryKey(true)
-            .TextAlign(TextAlign.Right)
-            .Visible(true)
-            .Width(100)
-            .Add();
-        column.Field("PlaylistLookupText")
-            .AllowEditing(false)
-            .HeaderText(PlaylistResources.EntitySingular)
-            .Visible(true)
-            .Width(100)
-            .Add();
-        column.Field("TrackId")
-            .EditType(EditingType.Numeric)
-            .Format(SyncfusionPatternResources.GridFormat_Integer)
-            .HeaderText(PlaylistTrackResources.PropertyTrackId)
-            .IsPrimaryKey(true)
-            .TextAlign(TextAlign.Right)
-            .Visible(true)
-            .Width(100)
-            .Add();
-        column.Field("TrackLookupText")
-            .AllowEditing(false)
-            .HeaderText(TrackResources.EntitySingular)
-            .Visible(true)
-            .Width(100)
-            .Add();
-    })
-    .EditSettings(edit => edit
-        .AllowAdding()
-        .AllowDeleting()
-        .AllowEditing()
-    )
-    .EnablePersistence()
-    .FilterSettings(filter => filter
-        .EnableCaseSensitivity(false)
-        .FilterType(FilterType.Excel)
-        .MaxFilterChoices(System.Int32.MaxValue)
-    )
-    .Mappers(map => map
-        .ExportToExcelAction(Url.Content("~/PlaylistTrack/ExportToExcel"))
-        .ExportToPdfAction(Url.Content("~/PlaylistTrack/ExportToPdf"))
-        .ExportToWordAction(Url.Content("~/PlaylistTrack/ExportToWord"))
-    )
-    .PageSettings(page => page
-        .PageSize(AppDefaults.SyncfusionRecordsByPage)
-    )
-    .SearchSettings(search =>
-    {
-        search.Fields(field =>
+<div id="Collection_PlaylistTrack">
+    @(Html.EJ().Grid<PlaylistTrack>("Grid_PlaylistTrack")
+        .Datasource(datasource => datasource
+            .Adaptor(AdaptorType.UrlAdaptor)
+            .URL(Url.Content("~/PlaylistTrack/DataSource"))
+        )
+        .AllowFiltering()
+        .AllowGrouping()
+        .AllowPaging()
+        .AllowResizing()
+        .AllowScrolling()
+        .AllowSearching()
+        .AllowSorting()
+        .ClientSideEvents(clientEvent => clientEvent
+            .ActionBegin("actionBegin_Grid_PlaylistTrack")
+            .ActionFailure("actionFailure_Grid_PlaylistTrack")
+            .Load("load_Grid_PlaylistTrack")
+            .ToolbarClick("toolbarClick_Grid_PlaylistTrack")
+        )
+        .Columns(column =>
         {
-            field.Add("PlaylistId");
-            field.Add("PlaylistLookupText");
-            field.Add("TrackId");
-            field.Add("TrackLookupText");
-        });
-    })
-    .ShowColumnChooser()
-    .ToolbarSettings(toolbar => toolbar
-        .CustomToolbarItems(new List<object>() {
-            new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_PlaylistTrack" }
+            column.Field("PlaylistId")
+                .EditType(EditingType.Numeric)
+                .Format(SyncfusionPatternResources.GridFormat_Integer)
+                .HeaderText(PlaylistTrackResources.PropertyPlaylistId)
+                .IsPrimaryKey(true)
+                .TextAlign(TextAlign.Right)
+                .Visible(true)
+                .Width(100)
+                .Add();
+            column.Field("PlaylistLookupText")
+                .AllowEditing(false)
+                .HeaderText(PlaylistResources.EntitySingular)
+                .Visible(true)
+                .Width(100)
+                .Add();
+            column.Field("TrackId")
+                .EditType(EditingType.Numeric)
+                .Format(SyncfusionPatternResources.GridFormat_Integer)
+                .HeaderText(PlaylistTrackResources.PropertyTrackId)
+                .IsPrimaryKey(true)
+                .TextAlign(TextAlign.Right)
+                .Visible(true)
+                .Width(100)
+                .Add();
+            column.Field("TrackLookupText")
+                .AllowEditing(false)
+                .HeaderText(TrackResources.EntitySingular)
+                .Visible(true)
+                .Width(100)
+                .Add();
         })
-        .ShowToolbar()
-        .ToolbarItems(items =>
+        .EditSettings(edit => edit
+            .AllowAdding()
+            .AllowDeleting()
+            .AllowEditing()
+        )
+        .EnablePersistence()
+        .FilterSettings(filter => filter
+            .EnableCaseSensitivity(false)
+            .FilterType(FilterType.Excel)
+            .MaxFilterChoices(System.Int32.MaxValue)
+        )
+        .Mappers(map => map
+            .ExportToExcelAction(Url.Content("~/PlaylistTrack/ExportToExcel"))
+            .ExportToPdfAction(Url.Content("~/PlaylistTrack/ExportToPdf"))
+            .ExportToWordAction(Url.Content("~/PlaylistTrack/ExportToWord"))
+        )
+        .PageSettings(page => page
+            .PageSize(AppDefaults.SyncfusionRecordsByPage)
+        )
+        .SearchSettings(search =>
         {
-            items.AddTool(ToolBarItems.Search);
-            items.AddTool(ToolBarItems.Add);
-            items.AddTool(ToolBarItems.Edit);
-            items.AddTool(ToolBarItems.Delete);
-            items.AddTool(ToolBarItems.ExcelExport);
-            items.AddTool(ToolBarItems.PdfExport);
-            items.AddTool(ToolBarItems.WordExport);
+            search.Fields(field =>
+            {
+                field.Add("PlaylistId");
+                field.Add("PlaylistLookupText");
+                field.Add("TrackId");
+                field.Add("TrackLookupText");
+            });
         })
+        .ShowColumnChooser()
+        .ToolbarSettings(toolbar => toolbar
+            .CustomToolbarItems(new List<object>() {
+                new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_PlaylistTrack" }
+            })
+            .ShowToolbar()
+            .ToolbarItems(items =>
+            {
+                items.AddTool(ToolBarItems.Search);
+                items.AddTool(ToolBarItems.Add);
+                items.AddTool(ToolBarItems.Edit);
+                items.AddTool(ToolBarItems.Delete);
+                items.AddTool(ToolBarItems.ExcelExport);
+                items.AddTool(ToolBarItems.PdfExport);
+                items.AddTool(ToolBarItems.WordExport);
+            })
+        )
     )
-)
+</div>
 
 @Html.OperationResult(Model.OperationResult)
 
@@ -109,6 +111,13 @@
     $(function () {
         try {
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+
+            if (model.IsSecurityOperations.IsSearch) {
+                $("#Collection_PlaylistTrack").css("display", "block");
+            }
+            else {
+                $("#Collection_PlaylistTrack").css("display", "none");
+            }
 
             var gridPlaylistTrack = $("#Grid_PlaylistTrack");
             var ejGridPlaylistTrack = gridPlaylistTrack.data("ejGrid");

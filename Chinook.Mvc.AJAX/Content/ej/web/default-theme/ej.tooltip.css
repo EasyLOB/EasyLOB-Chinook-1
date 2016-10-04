@@ -20,6 +20,19 @@
 /*----------------------Office 365 theme-----------------------*/
 /*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
 /*----------------------material theme-----------------------*/
+/*--------------- common ----------------- */
+/*---------------high-contrast ------*/
+/*---------------- Office-365 ----------------*/
+/*------------------ material theme ---------------------*/
+/*-----------------------HeatMap Definition-----------------*/
+/* Common style */
+
+.e-content-area {
+  background-color: white;
+  color: #111111;
+  border-color: #c8c8c8;
+  font-family: Segoe UI;
+}
 /*------------------------------------- Tooltip -------------------------------------------*/
 
 .e-tooltip-wrap {
@@ -27,22 +40,24 @@
   border: 1px solid #c8c8c8;
 }
 .e-tooltip-wrap .e-arrowTipOuter {
-  border-color: #c8c8c8 transparent;
-  border-image: none;
-  border-style: solid;
-  border-width: 9px 9px 0;
-  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  left: 0px;
+  top: 0px;
+  border-top: 10px solid #c8c8c8;
   position: absolute;
-  top: 0;
 }
 .e-tooltip-wrap .e-arrowTipInner {
-  border-color: white transparent;
-  border-image: none;
-  border-style: solid;
-  border-width: 8px 8px 0;
+  width: 0;
+  height: 0;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-top: 9px solid white;
   left: 1px;
+  top: 0px;
   position: absolute;
-  top: 0;
 }
 .e-def {
   color: #333333;

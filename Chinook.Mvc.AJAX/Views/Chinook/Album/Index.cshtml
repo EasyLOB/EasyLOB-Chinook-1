@@ -1,4 +1,4 @@
-@model AlbumCollectionModel
+﻿@model AlbumCollectionModel
 
 <div id="Ajax">
 </div>
@@ -8,7 +8,7 @@
         try {
             $("#Ajax").load("@(Url.Action("Search", "Album", null, Request.Url.Scheme))");
         } catch (exception) {
-            zExceptionMessage("Album Index.cshtml", "function()", exception.message)
+            zExceptionMessage("Album Index.cshtml", "function", exception.message)
         }
     });
 </script>

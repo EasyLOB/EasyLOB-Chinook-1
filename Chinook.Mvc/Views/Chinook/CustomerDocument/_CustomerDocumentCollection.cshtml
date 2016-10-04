@@ -1,113 +1,115 @@
 @model CustomerDocumentCollectionModel
 
-@(Html.EJ().Grid<CustomerDocument>("Grid_CustomerDocument")
-    .Datasource(datasource => datasource
-        .Adaptor(AdaptorType.UrlAdaptor)
-        .URL(Url.Content("~/CustomerDocument/DataSource"))
-    )
-    .AllowFiltering()
-    .AllowGrouping()
-    .AllowPaging()
-    .AllowResizing()
-    .AllowScrolling()
-    .AllowSearching()
-    .AllowSorting()
-    .ClientSideEvents(clientEvent => clientEvent
-        .ActionBegin("actionBegin_Grid_CustomerDocument")
-        .ActionFailure("actionFailure_Grid_CustomerDocument")
-        .Load("load_Grid_CustomerDocument")
-        .ToolbarClick("toolbarClick_Grid_CustomerDocument")
-        // !!!
-        .ActionComplete("actionComplete_Grid_CustomerDocument")
-    )
-    .Columns(column =>
-    {
-        column.Field("CustomerDocumentId")
-            .AllowEditing(false)
-            .EditType(EditingType.Numeric)
-            .Format(SyncfusionPatternResources.GridFormat_Integer)
-            .HeaderText(CustomerDocumentResources.PropertyCustomerDocumentId)
-            .IsIdentity(true)
-            .IsPrimaryKey(true)
-            .TextAlign(TextAlign.Right)
-            .Visible(false)
-            .Width(100)
-            .Add();
-        column.Field("CustomerId")
-            .EditType(EditingType.Numeric)
-            .Format(SyncfusionPatternResources.GridFormat_Integer)
-            .HeaderText(CustomerDocumentResources.PropertyCustomerId)
-            .TextAlign(TextAlign.Right)
-            .Visible(false)
-            .Width(100)
-            .Add();
-        column.Field("CustomerLookupText")
-            .AllowEditing(false)
-            .HeaderText(CustomerResources.EntitySingular)
-            .Visible(true)
-            .Width(100)
-            .Add();
-        column.Field("Description")
-            .EditType(EditingType.String)
-            .HeaderText(CustomerDocumentResources.PropertyDescription)
-            .Visible(true)
-            .Width(240)
-            .Add();
-        column.Field("FileAcronym")
-            .EditType(EditingType.String)
-            .HeaderText(CustomerDocumentResources.PropertyFileAcronym)
-            .Visible(true)
-            .Width(100)
-            .Add();
-    })
-    .EditSettings(edit => edit
-        .AllowAdding()
-        .AllowDeleting()
-        .AllowEditing()
-    )
-    .EnablePersistence()
-    .FilterSettings(filter => filter
-        .EnableCaseSensitivity(false)
-        .FilterType(FilterType.Excel)
-        .MaxFilterChoices(System.Int32.MaxValue)
-    )
-    .Mappers(map => map
-        .ExportToExcelAction(Url.Content("~/CustomerDocument/ExportToExcel"))
-        .ExportToPdfAction(Url.Content("~/CustomerDocument/ExportToPdf"))
-        .ExportToWordAction(Url.Content("~/CustomerDocument/ExportToWord"))
-    )
-    .PageSettings(page => page
-        .PageSize(AppDefaults.SyncfusionRecordsByPage)
-    )
-    .SearchSettings(search =>
-    {
-        search.Fields(field =>
+<div id="Collection_CustomerDocument">
+    @(Html.EJ().Grid<CustomerDocument>("Grid_CustomerDocument")
+        .Datasource(datasource => datasource
+            .Adaptor(AdaptorType.UrlAdaptor)
+            .URL(Url.Content("~/CustomerDocument/DataSource"))
+        )
+        .AllowFiltering()
+        .AllowGrouping()
+        .AllowPaging()
+        .AllowResizing()
+        .AllowScrolling()
+        .AllowSearching()
+        .AllowSorting()
+        .ClientSideEvents(clientEvent => clientEvent
+            .ActionBegin("actionBegin_Grid_CustomerDocument")
+            .ActionFailure("actionFailure_Grid_CustomerDocument")
+            .Load("load_Grid_CustomerDocument")
+            .ToolbarClick("toolbarClick_Grid_CustomerDocument")
+            // !!!
+            .ActionComplete("actionComplete_Grid_CustomerDocument")
+        )
+        .Columns(column =>
         {
-            //field.Add("CustomerDocumentId");
-            //field.Add("CustomerId");
-            field.Add("CustomerLookupText");
-            field.Add("Description");
-            field.Add("FileAcronym");
-        });
-    })
-    .ShowColumnChooser()
-    .ToolbarSettings(toolbar => toolbar
-        .CustomToolbarItems(new List<object>() {
-            new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_CustomerDocument" }
+            column.Field("CustomerDocumentId")
+                .AllowEditing(false)
+                .EditType(EditingType.Numeric)
+                .Format(SyncfusionPatternResources.GridFormat_Integer)
+                .HeaderText(CustomerDocumentResources.PropertyCustomerDocumentId)
+                .IsIdentity(true)
+                .IsPrimaryKey(true)
+                .TextAlign(TextAlign.Right)
+                .Visible(false)
+                .Width(100)
+                .Add();
+            column.Field("CustomerId")
+                .EditType(EditingType.Numeric)
+                .Format(SyncfusionPatternResources.GridFormat_Integer)
+                .HeaderText(CustomerDocumentResources.PropertyCustomerId)
+                .TextAlign(TextAlign.Right)
+                .Visible(false)
+                .Width(100)
+                .Add();
+            column.Field("CustomerLookupText")
+                .AllowEditing(false)
+                .HeaderText(CustomerResources.EntitySingular)
+                .Visible(true)
+                .Width(100)
+                .Add();
+            column.Field("Description")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerDocumentResources.PropertyDescription)
+                .Visible(true)
+                .Width(240)
+                .Add();
+            column.Field("FileAcronym")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerDocumentResources.PropertyFileAcronym)
+                .Visible(true)
+                .Width(100)
+                .Add();
         })
-        .ShowToolbar()
-        .ToolbarItems(items =>
+        .EditSettings(edit => edit
+            .AllowAdding()
+            .AllowDeleting()
+            .AllowEditing()
+        )
+        .EnablePersistence()
+        .FilterSettings(filter => filter
+            .EnableCaseSensitivity(false)
+            .FilterType(FilterType.Excel)
+            .MaxFilterChoices(System.Int32.MaxValue)
+        )
+        .Mappers(map => map
+            .ExportToExcelAction(Url.Content("~/CustomerDocument/ExportToExcel"))
+            .ExportToPdfAction(Url.Content("~/CustomerDocument/ExportToPdf"))
+            .ExportToWordAction(Url.Content("~/CustomerDocument/ExportToWord"))
+        )
+        .PageSettings(page => page
+            .PageSize(AppDefaults.SyncfusionRecordsByPage)
+        )
+        .SearchSettings(search =>
         {
-            items.AddTool(ToolBarItems.Search);
-            items.AddTool(ToolBarItems.Add);
-            items.AddTool(ToolBarItems.Edit);
-            items.AddTool(ToolBarItems.Delete);
-            items.AddTool(ToolBarItems.ExcelExport);
-            items.AddTool(ToolBarItems.PdfExport);
-            items.AddTool(ToolBarItems.WordExport);
+            search.Fields(field =>
+            {
+                //field.Add("CustomerDocumentId");
+                //field.Add("CustomerId");
+                field.Add("CustomerLookupText");
+                field.Add("Description");
+                field.Add("FileAcronym");
+            });
         })
+        .ShowColumnChooser()
+        .ToolbarSettings(toolbar => toolbar
+            .CustomToolbarItems(new List<object>() {
+                new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_CustomerDocument" }
+            })
+            .ShowToolbar()
+            .ToolbarItems(items =>
+            {
+                items.AddTool(ToolBarItems.Search);
+                items.AddTool(ToolBarItems.Add);
+                items.AddTool(ToolBarItems.Edit);
+                items.AddTool(ToolBarItems.Delete);
+                items.AddTool(ToolBarItems.ExcelExport);
+                items.AddTool(ToolBarItems.PdfExport);
+                items.AddTool(ToolBarItems.WordExport);
+            })
+        )
     )
-)
+</div>
 
 @Html.OperationResult(Model.OperationResult)
 
@@ -119,6 +121,13 @@
     $(function () {
         try {
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+
+            if (model.IsSecurityOperations.IsSearch) {
+                $("#Collection_CustomerDocument").css("display", "block");
+            }
+            else {
+                $("#Collection_CustomerDocument").css("display", "none");
+            }
 
             var gridCustomerDocument = $("#Grid_CustomerDocument");
             var ejGridCustomerDocument = gridCustomerDocument.data("ejGrid");

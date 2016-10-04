@@ -77,7 +77,7 @@ namespace EasyLOB.Security.Mvc
                 userLoginCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return PartialView("_UserLoginCollection", userLoginCollectionModel);
+            return PartialView(userLoginCollectionModel);
         }
 
         // GET & POST: UserLogin/Lookup

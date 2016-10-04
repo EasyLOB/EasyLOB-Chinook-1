@@ -77,7 +77,7 @@ namespace EasyLOB.Security.Mvc
                 userRoleCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return PartialView("_UserRoleCollection", userRoleCollectionModel);
+            return PartialView(userRoleCollectionModel);
         }
 
         // GET & POST: UserRole/Lookup

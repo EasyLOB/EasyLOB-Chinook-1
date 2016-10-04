@@ -1,44 +1,46 @@
-@model ActivityItemModel
+﻿@model ActivityItemModel
 
 @{
 }
 
-@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div id="Item_Activity">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
 
-@Html.HiddenFor(model => model.ControllerAction)
-@Html.HiddenFor(model => model.IsMasterDetail)
+    @Html.HiddenFor(model => model.ControllerAction)
+    @Html.HiddenFor(model => model.IsMasterDetail)
 
-@{Html.EJ().Tab("Tab_Activity")
-    .ClientSideEvents(clientEvent => clientEvent
-        .ItemActive("itemActive_Tab_Activity")
-    )
-    .Items(data =>
-    {
-        data.Add().ID("TabSheet_Activity_Activity").Text(ActivityResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
+    @{Html.EJ().Tab("Tab_Activity")
+        .ClientSideEvents(clientEvent => clientEvent
+            .ItemActive("itemActive_Tab_Activity")
+        )
+        .Items(data =>
+        {
+            data.Add().ID("TabSheet_Activity_Activity").Text(ActivityResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
 
-            <div id="Group_Activity_Id" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.LabelFor(model => model.Activity.Id, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.Activity.Id, new { id = "Activity_Id", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.Activity.Id, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_Activity_Id" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.LabelFor(model => model.Activity.Id, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.Activity.Id, new { id = "Activity_Id", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.Activity.Id, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-            <div id="Group_Activity_Name" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.LabelFor(model => model.Activity.Name, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.Activity.Name, new { id = "Activity_Name", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.Activity.Name, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_Activity_Name" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.LabelFor(model => model.Activity.Name, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.Activity.Name, new { id = "Activity_Name", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.Activity.Name, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-        </div>);
-        data.Add().ID("TabSheet_Activity_ActivityRole").Text(ActivityRoleResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
-            @Html.Action("Search", "ActivityRole", new
-            {
-                MasterControllerAction = Model.ControllerAction,
-                MasterActivityId = Model.Activity.Id
-            })    
-        </div>);
-    })
-    .Render();
-}
+            </div>);
+            data.Add().ID("TabSheet_Activity_ActivityRole").Text(ActivityRoleResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
+                @Html.Action("Search", "ActivityRole", new
+                {
+                    MasterControllerAction = Model.ControllerAction,
+                    MasterActivityId = Model.Activity.Id
+                })    
+            </div>);
+        })
+        .Render();
+    }
+</div>
 
 <script>
     // Validate hidden fields
@@ -49,6 +51,16 @@
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
             var activityDictionary = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(DataHelper.GetDataDictionaryAttribute(typeof(Activity)))); }();
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
+
+            if ((model.ControllerAction = "create" && model.IsSecurityOperations.IsCreate) ||
+                (model.ControllerAction = "read" && model.IsSecurityOperations.IsRead) ||
+                (model.ControllerAction = "update" && model.IsSecurityOperations.IsUpdate) ||
+                (model.ControllerAction = "delete" && model.IsSecurityOperations.IsDelete)) {
+                $("#Item_Activity").css("display", "block");
+            }
+            else {
+                $("#Item_Activity").css("display", "none");
+            }
             
             var readonly = (controllerAction == "delete" || controllerAction == "read");
             $("input.form-control").not(":input[type=button], :input[type=image], :input[type=reset], :input[type=submit]").attr("readonly", readonly);
@@ -72,9 +84,6 @@
             // ActivityRole
             var gridActivityRole = $("#Grid_ActivityRole");
             gridActivityRole.css("display", display);
-
-            // !!!            
-            $("#Group_Activity_Id").hide();
         } catch (exception) {
             alert(zExceptionMessage("_ActivityItem.cshtml", "function()", exception));
         }    

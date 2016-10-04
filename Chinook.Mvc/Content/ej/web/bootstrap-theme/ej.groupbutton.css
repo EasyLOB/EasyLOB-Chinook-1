@@ -3,7 +3,7 @@
 /*-----------------------PdfViewer------------------*/
 /*-----------------------End PdfViewer------------------*/
 /*-----------------------OLAP Definition Start-----------------*/
-.e-olapclient .removeSplitBtn {
+.e-pivotclient .removeSplitBtn {
   border-radius: 4px;
 }
 /*-----------------------OLAP Definition End
@@ -24,6 +24,19 @@
 /*----------------------Office 365 theme-----------------------*/
 /*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
 /*----------------------material theme-----------------------*/
+/*--------------- common ----------------- */
+/*---------------high-contrast ------*/
+/*---------------- Office-365 ----------------*/
+/*------------------ material theme ---------------------*/
+/*-----------------------HeatMap Definition-----------------*/
+/* Common style */
+
+.e-content-area {
+  background-color: white;
+  color: #111111;
+  border-color: #cecece;
+  font-family: Segoe UI;
+}
 /*------------------------------------- GroupButton -------------------------------------------*/
 
 .e-groupbutton {
@@ -74,10 +87,26 @@
 .e-groupbutton > .e-ul > .e-grp-btn-item.e-active.e-hover .e-btn-content .e-btntxt {
   color: #333333;
 }
-.e-groupbutton > .e-ul > .e-grp-btn-item.e-hover {
-  color: #333333;
+.e-groupbutton > .e-ul > .e-grp-btn-item.e-active.e-hover,
+.e-groupbutton.e-rtl > .e-horizontal.e-ul > .e-grp-btn-item.e-active.e-hover {
+  border-color: #cecece;
 }
-.e-groupbutton > .e-ul > .e-grp-btn-item.e-hover {
+.e-groupbutton > .e-horizontal.e-ul > .e-grp-btn-item {
+  border-right-color: transparent;
+}
+.e-groupbutton > .e-vertical.e-ul > .e-grp-btn-item {
+  border-bottom-color: transparent;
+}
+.e-groupbutton.e-rtl > .e-horizontal.e-ul > .e-grp-btn-item {
+  border-left-color: transparent;
+}
+.e-groupbutton > .e-ul > .e-grp-btn-item.e-hover,
+.e-groupbutton.e-rtl > .e-horizontal.e-ul > .e-grp-btn-item.e-hover {
+  color: #333333;
+  border-color: #cecece;
+}
+.e-groupbutton > .e-ul > .e-grp-btn-item.e-hover,
+.e-groupbutton.e-rtl > .e-horizontal.e-ul > .e-grp-btn-item.e-hover {
   background: #f4f4f4;
   /* Old browsers */
   background: -moz-linear-gradient(top, #f4f4f4, #e9e9e9);
@@ -96,6 +125,12 @@
   /* IE6-9 */
 
 }
+.e-groupbutton > .e-horizontal.e-ul > .e-grp-btn-item.last {
+  border-right-color: #cecece;
+}
+.e-groupbutton > .e-vertical.e-ul > .e-grp-btn-item.last {
+  border-bottom-color: #cecece;
+}
 .e-groupbutton > .e-ul > .e-grp-btn-item .e-btn-content > a,
 .e-groupbutton > .e-ul > .e-grp-btn-item .e-btn-content > span,
 .e-groupbutton > .e-ul > .e-grp-btn-item .e-btn-content > div {
@@ -107,4 +142,19 @@
 .e-groupbutton > .e-ul > .e-grp-btn-item.e-active .e-btn-content > div {
   color: white;
   text-decoration: none;
+}
+.e-groupbutton.e-rtl > .e-horizontal.e-ul > .e-grp-btn-item.last {
+  border-left-color: #cecece;
+}
+.e-groupbutton > .e-horizontal.e-ul > .e-grp-btn-item.e-hover {
+  border-right-color: transparent;
+}
+.e-groupbutton > .e-vertical.e-ul > .e-grp-btn-item.e-hover {
+  border-bottom-color: transparent;
+}
+.e-groupbutton.e-rtl > .e-horizontal.e-ul > .e-grp-btn-item.e-hover {
+  border-left-color: transparent;
+}
+.e-groupbutton.e-rtl > .e-vertical.e-ul > .e-grp-btn-item.e-hover {
+  border-left-color: transparent;
 }

@@ -26,16 +26,14 @@ namespace Chinook.Data
     
         #endregion Associations FK
 
-        #region Properties ZDTOBase
-
-        public override string LookupText { get; set; }
-
-        #endregion Properties ZDTOBase
-
         #region Methods
         
         public CustomerDocumentDTO()
         {
+            CustomerDocumentId = LibraryDefaults.Default_Int32;
+            CustomerId = LibraryDefaults.Default_Int32;
+            Description = LibraryDefaults.Default_String;
+            FileAcronym = LibraryDefaults.Default_String;
         }
         
         public CustomerDocumentDTO(

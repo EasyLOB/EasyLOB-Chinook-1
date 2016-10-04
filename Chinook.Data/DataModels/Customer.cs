@@ -70,9 +70,9 @@ namespace Chinook.Data
 
         #region Collections (PK)
 
-        public virtual IList<CustomerDocument> CustomerDocuments { get; set; }
+        public virtual IList<CustomerDocument> CustomerDocuments { get; }
 
-        public virtual IList<Invoice> Invoices { get; set; }
+        public virtual IList<Invoice> Invoices { get; }
 
         #endregion Collections (PK)
 

@@ -75,7 +75,7 @@ namespace EasyLOB.Security.Mvc
                 activityCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return PartialView("_ActivityCollection", activityCollectionModel);
+            return PartialView(activityCollectionModel);
         }
 
         // GET & POST: Activity/Lookup

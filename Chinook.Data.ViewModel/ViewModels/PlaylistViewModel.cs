@@ -15,7 +15,6 @@ namespace Chinook.Data
         [Display(Name = "PropertyPlaylistId", ResourceType = typeof(PlaylistResources))]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         //[Key]
-        [Range(1, Int32.MaxValue)]
         [Required]
         public virtual int PlaylistId { get; set; }
         
@@ -25,24 +24,18 @@ namespace Chinook.Data
 
         #endregion Properties
 
-        #region Properties ZViewBase
-
-        public override string LookupText { get; set; }
-
-        #endregion Properties ZViewBase
-
         #region Methods
         
         public PlaylistViewModel()
         {
-            PlaylistId = 1;
+            PlaylistId = LibraryDefaults.Default_Int32;
+            Name = null;
         }
         
         public PlaylistViewModel(
             int playlistId,
             string name = null
         )
-            : this()
         {
             PlaylistId = playlistId;
             Name = name;
@@ -67,8 +60,7 @@ namespace Chinook.Data
             return x => new PlaylistDTO
             {
                 PlaylistId = x.PlaylistId,
-                Name = x.Name,
-                LookupText = x.LookupText
+                Name = x.Name
             };
         }
 

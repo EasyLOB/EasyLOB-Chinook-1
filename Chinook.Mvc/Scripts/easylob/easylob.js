@@ -1,4 +1,4 @@
-﻿function zAjaxFailureMessage(jqXHR) { // jqXHR = jQuery XMLHttpRequest
+﻿function zAjaxOperationResult(jqXHR) { // jqXHR = jQuery XMLHttpRequest
     var message = "";
 
     if (jqXHR != null) {
@@ -82,26 +82,21 @@ function zErrorMessage(response) {
 function zExceptionMessage(fileName, functionName, exception) {
     return "File: " + fileName +
         "\nFunction: " + functionName +
-        "\nException: " + exception.message;
+        "\nException: " + exception.message +
+        "\nSTACK: " + exception.stack;
 }
 
-function zLookupElements(data, elements, culture) {    
-    //alert(JSON.stringify(data));
-    //alert(JSON.stringify(elements));
-    //alert(JSON.stringify(culture));
+function zLookupElements(data, elements, culture) {
+    // ZLibrary.Mvc.LookupModelElement
+    // elements.Id
+    // elements.Property
     if (elements != null) {
         for (var i = 0, length = elements.length; i < length; i++) {
-            // EasyLOB.Library.Mvc.LookupModelElement
-            //     elements.Id
-            //     elements.Property
-            //alert(JSON.stringify(element.Id));
-            //alert(JSON.stringify(element.Property));
             var element = elements[i];
             // $("#Id")
             if ($("#" + element.Id).length) {
                 // data.Property
                 if (data.hasOwnProperty(element.Property)) {
-                    //alert(data[element.Property].toLocaleString(culture));
                     $("#" + element.Id).val(data[element.Property].toLocaleString(culture));
                 }
             }

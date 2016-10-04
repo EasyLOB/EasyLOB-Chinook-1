@@ -82,7 +82,8 @@ function zErrorMessage(response) {
 function zExceptionMessage(fileName, functionName, exception) {
     return "File: " + fileName +
         "\nFunction: " + functionName +
-        "\nException: " + exception.message;
+        "\nException: " + exception.message +
+        "\nSTACK: " + exception.stack;
 }
 
 function zLookupElements(data, elements, culture) {

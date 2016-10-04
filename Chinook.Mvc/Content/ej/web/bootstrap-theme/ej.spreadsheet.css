@@ -3,7 +3,7 @@
 /*-----------------------PdfViewer------------------*/
 /*-----------------------End PdfViewer------------------*/
 /*-----------------------OLAP Definition Start-----------------*/
-.e-olapclient .removeSplitBtn {
+.e-pivotclient .removeSplitBtn {
   border-radius: 4px;
 }
 /*-----------------------OLAP Definition End
@@ -24,6 +24,19 @@
 /*----------------------Office 365 theme-----------------------*/
 /*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
 /*----------------------material theme-----------------------*/
+/*--------------- common ----------------- */
+/*---------------high-contrast ------*/
+/*---------------- Office-365 ----------------*/
+/*------------------ material theme ---------------------*/
+/*-----------------------HeatMap Definition-----------------*/
+/* Common style */
+
+.e-content-area {
+  background-color: white;
+  color: #111111;
+  border-color: #cecece;
+  font-family: Segoe UI;
+}
 .e-spreadsheet {
   color: #333333;
   border-color: #cecece;
@@ -36,7 +49,8 @@
 }
 .e-spreadsheet .e-headercell:hover,
 .e-spreadsheet .e-rowheader:hover {
-  background-color: #e0eff6;
+  background-color: #deebf6;
+  border-color: #cecece;
 }
 .e-spreadsheet .e-rowheadercontent {
   border-bottom-color: #cecece;
@@ -85,7 +99,7 @@
 }
 .e-spreadsheet .e-selected,
 .e-spreadsheet .e-ctrlselected {
-  background: #e0eff6;
+  background: #deebf6;
   color: #333333;
 }
 .e-spreadsheet .e-activecell {
@@ -94,7 +108,7 @@
 }
 .e-spreadsheet .e-rowhighlight,
 .e-spreadsheet .e-colhighlight {
-  background-color: #e0eff6;
+  background-color: #deebf6;
   color: #3c719e;
 }
 .e-spreadsheet .e-rowhighlight {
@@ -105,11 +119,12 @@
 }
 .e-spreadsheet .e-rowhighlight:hover,
 .e-spreadsheet .e-colhighlight:hover {
-  background-color: #e0eff6;
+  background-color: #deebf6;
+  border-bottom-color: #3c719e;
 }
 .e-menu-wrap .e-chartcell:hover,
 .e-chartimg:hover {
-  background-color: #e0eff6;
+  background-color: #f4f4f4;
 }
 /*-------------------- Borders ------------------------ */
 
@@ -306,7 +321,7 @@
 }
 .e-spreadsheet .e-pager .e-currentitem,
 .e-spreadsheet .e-pager .e-currentitem:hover {
-  background: #e0eff6;
+  background: #deebf6;
   color: #3c719e;
 }
 .e-spreadsheet .e-pager .e-numericitem:hover {
@@ -407,7 +422,7 @@ div.e-dlg-field-validation-error:before {
 }
 .e-menu-wrap .e-cellstyleheader,
 .e-menu-wrap .e-formatastableheader {
-  background-color: white;
+  background-color: #fcfcfc;
   color: #333333;
   border-color: #cecece;
 }
@@ -423,7 +438,7 @@ div.e-dlg-field-validation-error:before {
 }
 .e-spreadsheet .e-comment-txtarea {
   background-color: #f7fbbd;
-  color: #333333;
+  color: black;
 }
 .e-list.e-hdrcolor {
   background-color: #f2f2f2 !important;
@@ -590,9 +605,6 @@ div.e-dlg-field-validation-error:before {
 .e-spreadsheet .e-content.e-viewbrdr {
   border-color: #cecece;
 }
-.e-chkbox-wrap div > span.e-chkhover {
-  background-color: #e0eff6;
-}
 /*-------------------------------------Spreadsheet Ribbon override------------*/
 
 .e-spreadsheet .e-ribbon .e-header {
@@ -619,6 +631,9 @@ div.e-dlg-field-validation-error:before {
 }
 .e-spreadsheet .e-ribbon .e-ddl {
   border-color: #bcbcbc;
+}
+.e-spreadsheet .e-ribbon .e-ddl.e-widget.e-focus .e-in-wrap {
+  box-shadow: 0 0 7px #cccccc;
 }
 .e-spreadsheet .e-ribbon .e-ddl {
   border-color: #bcbcbc;
@@ -679,6 +694,18 @@ div.e-dlg-field-validation-error:before {
 
 .e-spreadsheet .e-spreadsheetactpanel {
   border-left-color: #cecece;
+}
+/*---------------------------Border Menu-------------------------------*/
+
+.e-spreadsheet .e-bordercontainer {
+  background-color: white;
+}
+.e-spreadsheet .e-bordercell:hover {
+  border-color: #f4f4f4;
+}
+.e-spreadsheet .e-ss-bdr-header {
+  background-color: white;
+  border-color: #cecece;
 }
 /*-------------------------------------SpreadSheet End -----------------------*/
 

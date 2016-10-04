@@ -3,7 +3,7 @@
 /*-----------------------PdfViewer------------------*/
 /*-----------------------End PdfViewer------------------*/
 /*-----------------------OLAP Definition Start-----------------*/
-.e-olapclient .removeSplitBtn {
+.e-pivotclient .removeSplitBtn {
   border-radius: 4px;
 }
 /*-----------------------OLAP Definition End
@@ -24,6 +24,19 @@
 /*----------------------Office 365 theme-----------------------*/
 /*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
 /*----------------------material theme-----------------------*/
+/*--------------- common ----------------- */
+/*---------------high-contrast ------*/
+/*---------------- Office-365 ----------------*/
+/*------------------ material theme ---------------------*/
+/*-----------------------HeatMap Definition-----------------*/
+/* Common style */
+
+.e-content-area {
+  background-color: white;
+  color: #111111;
+  border-color: #cecece;
+  font-family: Segoe UI;
+}
 /*------------------------------------- Colorpicker -------------------------------------------*/
 
 .e-colorpicker .e-hsv-color,
@@ -214,6 +227,7 @@
 .e-presetWrapper.e-menu.e-context .e-color-image.e-mhover {
   background-image: url(../common-images/colorpicker_light.png);
   background-color: transparent;
+  filter: none;
 }
 .e-presetWrapper .e-presetHeader,
 .e-colorpicker .e-element .e-icon:before {
@@ -222,7 +236,8 @@
 .e-colorpicker .e-buttons .e-grpbtn .e-btn {
   color: #333333;
 }
-.e-colorpicker .e-buttons .e-color-code {
+.e-colorpicker .e-buttons .e-color-code,
+.e-colorpicker .e-codeeditor .e-close_01 {
   color: #333333;
 }
 .e-colorpicker .e-buttons .e-grpbtn .e-click {
@@ -274,4 +289,11 @@
 }
 .e-presetWrapper.e-menu.e-context li.e-list {
   background: white;
+}
+.e-colorpicker .e-context.e-menu .e-mhover > a,
+.e-colorpicker .e-context.e-menu .e-mhover > span,
+.e-colorpicker .e-context.e-menu .e-mfocused,
+.e-colorpicker .e-context.e-menu .e-mfocused > a,
+.e-colorpicker .e-context.e-menu .e-mfocused > span {
+  background: transparent;
 }

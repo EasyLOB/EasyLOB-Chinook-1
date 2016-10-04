@@ -1,4 +1,4 @@
-@model MediaTypeCollectionModel
+﻿@model MediaTypeCollectionModel
 
 <div id="Ajax">
 </div>
@@ -8,7 +8,7 @@
         try {
             $("#Ajax").load("@(Url.Action("Search", "MediaType", null, Request.Url.Scheme))");
         } catch (exception) {
-            zExceptionMessage("MediaType Index.cshtml", "function()", exception.message)
+            zExceptionMessage("MediaType Index.cshtml", "function", exception.message)
         }
     });
 </script>

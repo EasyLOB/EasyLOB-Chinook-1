@@ -1,0 +1,16 @@
+﻿@model PlaylistCollectionModel
+
+<div class="form-inline">
+    @Html.Partial("_PlaylistCollection", Model)
+</div>
+
+<div id="OperationResult"></div>
+
+<script>
+    $(function () {
+        try {
+        } catch (exception) {
+            zExceptionMessage("Playlist Search.cshtml", "function", exception.message)
+        }
+    });
+</script>

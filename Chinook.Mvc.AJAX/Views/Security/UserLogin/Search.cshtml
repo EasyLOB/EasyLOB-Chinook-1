@@ -1,0 +1,16 @@
+﻿@model UserLoginCollectionModel
+
+<div class="form-inline">
+    @Html.Partial("_UserLoginCollection", Model)
+</div>
+
+<div id="OperationResult"></div>
+
+<script>
+    $(function () {
+        try {
+        } catch (exception) {
+            zExceptionMessage("UserLogin Search.cshtml", "function", exception.message)
+        }
+    });
+</script>

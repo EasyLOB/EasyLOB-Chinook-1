@@ -1,131 +1,133 @@
-@model InvoiceLineCollectionModel
+﻿@model InvoiceLineCollectionModel
 
-@(Html.EJ().Grid<InvoiceLine>("Grid_InvoiceLine")
-    .Datasource(datasource => datasource
-        .Adaptor(AdaptorType.UrlAdaptor)
-        .URL(Url.Content("~/InvoiceLine/DataSource"))
-    )
-    .AllowFiltering()
-    .AllowGrouping()
-    .AllowPaging()
-    .AllowResizing()
-    .AllowScrolling()
-    .AllowSearching()
-    .AllowSorting()
-    .ClientSideEvents(clientEvent => clientEvent
-        .ActionBegin("actionBegin_Grid_InvoiceLine")
-        .ActionFailure("actionFailure_Grid_InvoiceLine")
-        .Load("load_Grid_InvoiceLine")
-        .ToolbarClick("toolbarClick_Grid_InvoiceLine")
-    )
-    .Columns(column =>
-    {
-        column.Field("InvoiceLineId")
-            .AllowEditing(false)
-            .EditType(EditingType.Numeric)
-            .Format(SyncfusionPatternResources.GridFormat_Integer)
-            .HeaderText(InvoiceLineResources.PropertyInvoiceLineId)
-            .IsIdentity(true)
-            .IsPrimaryKey(true)
-            .TextAlign(TextAlign.Right)
-            .Visible(false)
-            .Width(100)
-            .Add();
-        column.Field("InvoiceId")
-            .EditType(EditingType.Numeric)
-            .Format(SyncfusionPatternResources.GridFormat_Integer)
-            .HeaderText(InvoiceLineResources.PropertyInvoiceId)
-            .TextAlign(TextAlign.Right)
-            .Visible(false)
-            .Width(100)
-            .Add();
-        column.Field("InvoiceLookupText")
-            .AllowEditing(false)
-            .HeaderText(InvoiceResources.EntitySingular)
-            .Visible(true)
-            .Width(100)
-            .Add();
-        column.Field("TrackId")
-            .EditType(EditingType.Numeric)
-            .Format(SyncfusionPatternResources.GridFormat_Integer)
-            .HeaderText(InvoiceLineResources.PropertyTrackId)
-            .TextAlign(TextAlign.Right)
-            .Visible(false)
-            .Width(100)
-            .Add();
-        column.Field("TrackLookupText")
-            .AllowEditing(false)
-            .HeaderText(TrackResources.EntitySingular)
-            .Visible(true)
-            .Width(100)
-            .Add();
-        column.Field("UnitPrice")
-            .EditType(EditingType.Numeric)
-            .Format(SyncfusionPatternResources.GridFormat_Float)
-            .HeaderText(InvoiceLineResources.PropertyUnitPrice)
-            .TextAlign(TextAlign.Right)
-            .Visible(true)
-            .Width(100)
-            .Add();
-        column.Field("Quantity")
-            .EditType(EditingType.Numeric)
-            .Format(SyncfusionPatternResources.GridFormat_Integer)
-            .HeaderText(InvoiceLineResources.PropertyQuantity)
-            .TextAlign(TextAlign.Right)
-            .Visible(true)
-            .Width(100)
-            .Add();
-    })
-    .EditSettings(edit => edit
-        .AllowAdding()
-        .AllowDeleting()
-        .AllowEditing()
-    )
-    .EnablePersistence()
-    .FilterSettings(filter => filter
-        .EnableCaseSensitivity(false)
-        .FilterType(FilterType.Excel)
-        .MaxFilterChoices(System.Int32.MaxValue)
-    )
-    .Mappers(map => map
-        .ExportToExcelAction(Url.Content("~/InvoiceLine/ExportToExcel"))
-        .ExportToPdfAction(Url.Content("~/InvoiceLine/ExportToPdf"))
-        .ExportToWordAction(Url.Content("~/InvoiceLine/ExportToWord"))
-    )
-    .PageSettings(page => page
-        .PageSize(AppDefaults.SyncfusionRecordsByPage)
-    )
-    .SearchSettings(search =>
-    {
-        search.Fields(field =>
+<div id="Collection_InvoiceLine">
+    @(Html.EJ().Grid<InvoiceLine>("Grid_InvoiceLine")
+        .Datasource(datasource => datasource
+            .Adaptor(AdaptorType.UrlAdaptor)
+            .URL(Url.Content("~/InvoiceLine/DataSource"))
+        )
+        .AllowFiltering()
+        .AllowGrouping()
+        .AllowPaging()
+        .AllowResizing()
+        .AllowScrolling()
+        .AllowSearching()
+        .AllowSorting()
+        .ClientSideEvents(clientEvent => clientEvent
+            .ActionBegin("actionBegin_Grid_InvoiceLine")
+            .ActionFailure("actionFailure_Grid_InvoiceLine")
+            .Load("load_Grid_InvoiceLine")
+            .ToolbarClick("toolbarClick_Grid_InvoiceLine")
+        )
+        .Columns(column =>
         {
-            //field.Add("InvoiceLineId");
-            //field.Add("InvoiceId");
-            field.Add("InvoiceLookupText");
-            //field.Add("TrackId");
-            field.Add("TrackLookupText");
-            field.Add("UnitPrice");
-            field.Add("Quantity");
-        });
-    })
-    .ShowColumnChooser()
-    .ToolbarSettings(toolbar => toolbar
-        .CustomToolbarItems(new List<object>() {
-            new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_InvoiceLine" }
+            column.Field("InvoiceLineId")
+                .AllowEditing(false)
+                .EditType(EditingType.Numeric)
+                .Format(SyncfusionPatternResources.GridFormat_Integer)
+                .HeaderText(InvoiceLineResources.PropertyInvoiceLineId)
+                .IsIdentity(true)
+                .IsPrimaryKey(true)
+                .TextAlign(TextAlign.Right)
+                .Visible(false)
+                .Width(100)
+                .Add();
+            column.Field("InvoiceId")
+                .EditType(EditingType.Numeric)
+                .Format(SyncfusionPatternResources.GridFormat_Integer)
+                .HeaderText(InvoiceLineResources.PropertyInvoiceId)
+                .TextAlign(TextAlign.Right)
+                .Visible(false)
+                .Width(100)
+                .Add();
+            column.Field("InvoiceLookupText")
+                .AllowEditing(false)
+                .HeaderText(InvoiceResources.EntitySingular)
+                .Visible(true)
+                .Width(100)
+                .Add();
+            column.Field("TrackId")
+                .EditType(EditingType.Numeric)
+                .Format(SyncfusionPatternResources.GridFormat_Integer)
+                .HeaderText(InvoiceLineResources.PropertyTrackId)
+                .TextAlign(TextAlign.Right)
+                .Visible(false)
+                .Width(100)
+                .Add();
+            column.Field("TrackLookupText")
+                .AllowEditing(false)
+                .HeaderText(TrackResources.EntitySingular)
+                .Visible(true)
+                .Width(100)
+                .Add();
+            column.Field("UnitPrice")
+                .EditType(EditingType.Numeric)
+                .Format(SyncfusionPatternResources.GridFormat_Float)
+                .HeaderText(InvoiceLineResources.PropertyUnitPrice)
+                .TextAlign(TextAlign.Right)
+                .Visible(true)
+                .Width(100)
+                .Add();
+            column.Field("Quantity")
+                .EditType(EditingType.Numeric)
+                .Format(SyncfusionPatternResources.GridFormat_Integer)
+                .HeaderText(InvoiceLineResources.PropertyQuantity)
+                .TextAlign(TextAlign.Right)
+                .Visible(true)
+                .Width(100)
+                .Add();
         })
-        .ShowToolbar()
-        .ToolbarItems(items =>
+        .EditSettings(edit => edit
+            .AllowAdding()
+            .AllowDeleting()
+            .AllowEditing()
+        )
+        .EnablePersistence()
+        .FilterSettings(filter => filter
+            .EnableCaseSensitivity(false)
+            .FilterType(FilterType.Excel)
+            .MaxFilterChoices(System.Int32.MaxValue)
+        )
+        .Mappers(map => map
+            .ExportToExcelAction(Url.Content("~/InvoiceLine/ExportToExcel"))
+            .ExportToPdfAction(Url.Content("~/InvoiceLine/ExportToPdf"))
+            .ExportToWordAction(Url.Content("~/InvoiceLine/ExportToWord"))
+        )
+        .PageSettings(page => page
+            .PageSize(AppDefaults.SyncfusionRecordsByPage)
+        )
+        .SearchSettings(search =>
         {
-            items.AddTool(ToolBarItems.Search);
-            items.AddTool(ToolBarItems.Add);
-            items.AddTool(ToolBarItems.Edit);
-            items.AddTool(ToolBarItems.Delete);
-            items.AddTool(ToolBarItems.ExcelExport);
-            items.AddTool(ToolBarItems.PdfExport);
-            items.AddTool(ToolBarItems.WordExport);
+            search.Fields(field =>
+            {
+                //field.Add("InvoiceLineId");
+                //field.Add("InvoiceId");
+                field.Add("InvoiceLookupText");
+                //field.Add("TrackId");
+                field.Add("TrackLookupText");
+                field.Add("UnitPrice");
+                field.Add("Quantity");
+            });
         })
+        .ShowColumnChooser()
+        .ToolbarSettings(toolbar => toolbar
+            .CustomToolbarItems(new List<object>() {
+                new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_InvoiceLine" }
+            })
+            .ShowToolbar()
+            .ToolbarItems(items =>
+            {
+                items.AddTool(ToolBarItems.Search);
+                items.AddTool(ToolBarItems.Add);
+                items.AddTool(ToolBarItems.Edit);
+                items.AddTool(ToolBarItems.Delete);
+                items.AddTool(ToolBarItems.ExcelExport);
+                items.AddTool(ToolBarItems.PdfExport);
+                items.AddTool(ToolBarItems.WordExport);
+            })
+        )
     )
-)
+</div>
 
 @Html.OperationResult(Model.OperationResult)
 
@@ -137,6 +139,13 @@
     $(function () {
         try {
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+
+            if (model.IsSecurityOperations.IsSearch) {
+                $("#Collection_InvoiceLine").css("display", "block");
+            }
+            else {
+                $("#Collection_InvoiceLine").css("display", "none");
+            }
 
             var gridInvoiceLine = $("#Grid_InvoiceLine");
             var ejGridInvoiceLine = gridInvoiceLine.data("ejGrid");

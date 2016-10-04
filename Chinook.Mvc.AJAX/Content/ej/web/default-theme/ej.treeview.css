@@ -20,9 +20,23 @@
 /*----------------------Office 365 theme-----------------------*/
 /*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
 /*----------------------material theme-----------------------*/
+/*--------------- common ----------------- */
+/*---------------high-contrast ------*/
+/*---------------- Office-365 ----------------*/
+/*------------------ material theme ---------------------*/
+/*-----------------------HeatMap Definition-----------------*/
+/* Common style */
+
+.e-content-area {
+  background-color: white;
+  color: #111111;
+  border-color: #c8c8c8;
+  font-family: Segoe UI;
+}
 /*Theme Color*/
 
-.e-treeview {
+.e-treeview,
+.e-dragedNode {
   font-family: Segoe UI;
 }
 .e-treeview .e-text {
@@ -69,6 +83,28 @@
   background-position: right center;
   background-repeat: no-repeat;
 }
+.e-treeview.e-rtl .e-icon.e-load {
+  background-position: left center;
+}
 .e-treeview .e-item .e-icon {
   color: #686969;
+}
+.e-treeview .e-fe-popup .e-content {
+  background-color: white;
+  border-color: #c8c8c8;
+}
+.e-treeview .e-fe-popup .e-downtail:after {
+  border-top-color: white;
+}
+.e-treeview .e-fe-popup .e-downtail:before,
+.e-treeview .e-fe-popup .e-downtail {
+  border-top-color: #c8c8c8;
+}
+.e-treeview .e-fe-popup .e-spanclicked {
+  border-color: #686969;
+}
+.e-drop-count {
+  background-color: #686969;
+  border-color: white;
+  color: white;
 }

@@ -20,6 +20,19 @@
 /*----------------------Office 365 theme-----------------------*/
 /*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
 /*----------------------material theme-----------------------*/
+/*--------------- common ----------------- */
+/*---------------high-contrast ------*/
+/*---------------- Office-365 ----------------*/
+/*------------------ material theme ---------------------*/
+/*-----------------------HeatMap Definition-----------------*/
+/* Common style */
+
+.e-content-area {
+  background-color: white;
+  color: #111111;
+  border-color: #c8c8c8;
+  font-family: Segoe UI;
+}
 /*------------------------------------- listbox -------------------------------------------*/
 
 .e-listbox .e-select {
@@ -43,16 +56,20 @@
   background: #86cbea;
 }
 .dragClonelist {
+  background: #179bd7;
   color: white;
   opacity: 0.5;
   text-align: center;
 }
-.dragClonelist {
-  background: #86cbea;
-}
-.e-listbox li {
+.e-wrap .e-listbox li {
   padding-left: 10px !important;
   word-break: break-all;
+}
+.e-nowrap .e-listbox li {
+  padding-left: 10px !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .e-ddl-popup.e-load {
   background-image: url(images/ajax-loader.gif);

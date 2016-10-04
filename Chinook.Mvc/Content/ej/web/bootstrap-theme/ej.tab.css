@@ -3,7 +3,7 @@
 /*-----------------------PdfViewer------------------*/
 /*-----------------------End PdfViewer------------------*/
 /*-----------------------OLAP Definition Start-----------------*/
-.e-olapclient .removeSplitBtn {
+.e-pivotclient .removeSplitBtn {
   border-radius: 4px;
 }
 /*-----------------------OLAP Definition End
@@ -24,6 +24,19 @@
 /*----------------------Office 365 theme-----------------------*/
 /*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
 /*----------------------material theme-----------------------*/
+/*--------------- common ----------------- */
+/*---------------high-contrast ------*/
+/*---------------- Office-365 ----------------*/
+/*------------------ material theme ---------------------*/
+/*-----------------------HeatMap Definition-----------------*/
+/* Common style */
+
+.e-content-area {
+  background-color: white;
+  color: #111111;
+  border-color: #cecece;
+  font-family: Segoe UI;
+}
 /*Theme Color*/
 
 .e-tab.e-js.e-widget {
@@ -35,7 +48,6 @@
 .e-tab.e-js > .e-left,
 .e-tab.e-js > .e-right,
 .e-tab.e-disable .e-select:hover {
-  background: none;
   border: none;
 }
 .e-tab.e-js > .e-header,
@@ -44,6 +56,13 @@
 .e-tab.e-js > .e-right,
 .e-tab.e-disable .e-select:hover {
   background: #fcfcfc;
+}
+.e-tab.e-js > .e-header,
+.e-tab.e-js .e-header > .e-select.e-disable:hover,
+.e-tab.e-js > .e-left,
+.e-tab.e-js > .e-right,
+.e-tab.e-disable .e-select:hover {
+  background: none;
 }
 .e-tab.e-js .e-header .e-select.e-disable a,
 .e-tab.e-js.e-disable a {

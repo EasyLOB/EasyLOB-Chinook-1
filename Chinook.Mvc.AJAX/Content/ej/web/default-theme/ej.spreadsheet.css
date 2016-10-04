@@ -20,6 +20,19 @@
 /*----------------------Office 365 theme-----------------------*/
 /*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
 /*----------------------material theme-----------------------*/
+/*--------------- common ----------------- */
+/*---------------high-contrast ------*/
+/*---------------- Office-365 ----------------*/
+/*------------------ material theme ---------------------*/
+/*-----------------------HeatMap Definition-----------------*/
+/* Common style */
+
+.e-content-area {
+  background-color: white;
+  color: #111111;
+  border-color: #c8c8c8;
+  font-family: Segoe UI;
+}
 .e-spreadsheet {
   color: #333333;
   border-color: #c8c8c8;
@@ -33,6 +46,7 @@
 .e-spreadsheet .e-headercell:hover,
 .e-spreadsheet .e-rowheader:hover {
   background-color: #e0eff6;
+  border-color: #c8c8c8;
 }
 .e-spreadsheet .e-rowheadercontent {
   border-bottom-color: #c8c8c8;
@@ -102,10 +116,11 @@
 .e-spreadsheet .e-rowhighlight:hover,
 .e-spreadsheet .e-colhighlight:hover {
   background-color: #e0eff6;
+  border-bottom-color: #2390c1;
 }
 .e-menu-wrap .e-chartcell:hover,
 .e-chartimg:hover {
-  background-color: #e0eff6;
+  background-color: #86cbea;
 }
 /*-------------------- Borders ------------------------ */
 
@@ -403,7 +418,7 @@ div.e-dlg-field-validation-error:before {
 }
 .e-menu-wrap .e-cellstyleheader,
 .e-menu-wrap .e-formatastableheader {
-  background-color: white;
+  background-color: #fcfcfc;
   color: #333333;
   border-color: #c8c8c8;
 }
@@ -419,7 +434,7 @@ div.e-dlg-field-validation-error:before {
 }
 .e-spreadsheet .e-comment-txtarea {
   background-color: #f7fbbd;
-  color: #333333;
+  color: black;
 }
 .e-list.e-hdrcolor {
   background-color: #f2f2f2 !important;
@@ -522,9 +537,6 @@ div.e-dlg-field-validation-error:before {
 .e-spreadsheet .e-content.e-viewbrdr {
   border-color: #c8c8c8;
 }
-.e-chkbox-wrap div > span.e-chkhover {
-  background-color: #e0eff6;
-}
 /*-------------------------------------Spreadsheet Ribbon override------------*/
 
 .e-spreadsheet .e-ribbon .e-header {
@@ -551,6 +563,9 @@ div.e-dlg-field-validation-error:before {
 }
 .e-spreadsheet .e-ribbon .e-ddl {
   border-color: #b6b6b6;
+}
+.e-spreadsheet .e-ribbon .e-ddl.e-widget.e-focus .e-in-wrap {
+  box-shadow: 0 0 7px #cccccc;
 }
 .e-spreadsheet .e-ribbon .e-ddl {
   border-color: #b6b6b6;
@@ -611,6 +626,18 @@ div.e-dlg-field-validation-error:before {
 
 .e-spreadsheet .e-spreadsheetactpanel {
   border-left-color: #c8c8c8;
+}
+/*---------------------------Border Menu-------------------------------*/
+
+.e-spreadsheet .e-bordercontainer {
+  background-color: white;
+}
+.e-spreadsheet .e-bordercell:hover {
+  border-color: #86cbea;
+}
+.e-spreadsheet .e-ss-bdr-header {
+  background-color: white;
+  border-color: #c8c8c8;
 }
 /*-------------------------------------SpreadSheet End -----------------------*/
 

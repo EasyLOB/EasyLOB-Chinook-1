@@ -1,4 +1,4 @@
-@model TrackCollectionModel
+﻿@model TrackCollectionModel
 
 <div id="Ajax">
 </div>
@@ -8,7 +8,7 @@
         try {
             $("#Ajax").load("@(Url.Action("Search", "Track", null, Request.Url.Scheme))");
         } catch (exception) {
-            zExceptionMessage("Track Index.cshtml", "function()", exception.message)
+            zExceptionMessage("Track Index.cshtml", "function", exception.message)
         }
     });
 </script>

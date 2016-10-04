@@ -20,6 +20,19 @@
 /*----------------------Office 365 theme-----------------------*/
 /*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
 /*----------------------material theme-----------------------*/
+/*--------------- common ----------------- */
+/*---------------high-contrast ------*/
+/*---------------- Office-365 ----------------*/
+/*------------------ material theme ---------------------*/
+/*-----------------------HeatMap Definition-----------------*/
+/* Common style */
+
+.e-content-area {
+  background-color: white;
+  color: #111111;
+  border-color: #c8c8c8;
+  font-family: Segoe UI;
+}
 /*Theme Color*/
 
 /*---------------- RTE Theme CSS----------------------*/
@@ -53,6 +66,14 @@
 }
 .e-rte-imageTab .e-item:focus {
   box-shadow: 1px 0 0 0 #179bd7;
+}
+/*-----------------Tooltip class ----------------------*/
+
+.e-rteTooltip {
+  min-width: auto;
+}
+.e-rteTooltip .e-tipContainer .e-tipcontent {
+  padding: 2px 4px;
 }
 /*----------------------- Toolbar Class-------------------------- */
 
@@ -159,6 +180,24 @@
 .e-rte .e-dialog .e-dialog-tab.e-tab .e-header li,
 .e-rte-context-menu.e-context .e-rte-separator {
   border-color: #c8c8c8;
+}
+.e-rte-context-menu.e-menu .e-list.e-mhover .e-rte-toolbar-icon {
+  color: #282827;
+}
+.e-rte-toolbar .e-toolbar .e-tooltxt.e-active {
+  color: white;
+}
+.e-rte-toolbar .e-toolbar .e-ul {
+  border-color: #c8c8c8;
+}
+.e-rte .e-tooltxt .e-btn.e-select,
+.e-btn.e-ntouch.e-disable.e-select:hover,
+.e-btn.e-disable.e-select:hover,
+.e-tbtn.e-disable {
+  background: #ececec;
+}
+.e-rte .e-tooltxt .e-btn.e-ntouch.e-select:hover {
+  background: #86cbea;
 }
 /*---------------- RTE Theme End------------------*/
 

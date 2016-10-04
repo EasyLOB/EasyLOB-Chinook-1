@@ -20,6 +20,19 @@
 /*----------------------Office 365 theme-----------------------*/
 /*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
 /*----------------------material theme-----------------------*/
+/*--------------- common ----------------- */
+/*---------------high-contrast ------*/
+/*---------------- Office-365 ----------------*/
+/*------------------ material theme ---------------------*/
+/*-----------------------HeatMap Definition-----------------*/
+/* Common style */
+
+.e-content-area {
+  background-color: white;
+  color: #111111;
+  border-color: #c8c8c8;
+  font-family: Segoe UI;
+}
 .hoverCell {
   background-color: #86cbea !important;
 }
@@ -139,7 +152,7 @@ input[type=number]::-webkit-outer-spin-button {
 .e-pivotgrid.e-rtl .colheader:hover,
 .e-pivotgrid.e-rtl .rowheader,
 .e-pivotgrid.e-rtl .rowheader:hover {
-  padding: 6px 0px 6px 24px;
+  padding: 6px 0px 6px 40px;
 }
 .e-pivotgrid .expand,
 .e-pivotgrid .collapse {
@@ -365,6 +378,9 @@ input[type=number]::-webkit-outer-spin-button {
   color: #686969;
   border-color: #c8c8c8;
 }
+.e-pivotgrid .pivotButton .e-btn {
+  text-align: left !important;
+}
 .e-pivotgrid .pivotButton .e-btn.e-select {
   border: none;
   height: auto;
@@ -545,6 +561,17 @@ input[type=number]::-webkit-outer-spin-button {
   margin-top: -5px;
   height: 31px;
 }
+.column-resize table.pivotGridTable {
+  table-layout: fixed;
+  width: 100%;
+}
+.column-resize td,
+.column-resize th {
+  overflow: hidden;
+}
+.column-resize thead > tr {
+  cursor: pointer;
+}
 .pivotTree .calculatedFieldMenuItem {
   border-bottom: solid 1px #c8c8c8;
 }
@@ -646,7 +673,8 @@ input[type=number]::-webkit-outer-spin-button {
 .e-pivotschemadesigner .schemaValue {
   /*background: @aeb-bgcolor;*/
   border: 1px solid #c8c8c8;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
   height: 75%;
   width: 93%;
   margin-left: 10px;
@@ -756,40 +784,68 @@ input[type=number]::-webkit-outer-spin-button {
   color: white;
   cursor: move;
 }
-.e-pivotschemadesigner .pivotButton {
+.e-pivotschemadesigner .pivotButton > .pvtBtnDiv {
   display: block;
+  width: auto;
+  background: #ececec;
+  margin: 2px 3px 0;
+  border: 1px solid #c8c8c8 !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.e-pivotschemadesigner .pvtBtnDiv > .pvtBtn {
+  cursor: move;
+  text-align: left;
+  text-overflow: ellipsis;
+  height: auto;
+  color: #686969;
+  border-color: #c8c8c8;
+  border: none !important;
+  overflow: hidden;
 }
 .e-pivotschemadesigner .pivotButton > .pvtBtn {
   cursor: move;
   text-align: left;
   text-overflow: ellipsis;
-  margin: 2px 3px 0;
-  width: 97%;
   height: auto;
   color: #686969;
   border-color: #c8c8c8;
-  border: 1px solid #c8c8c8 !important;
+  overflow: hidden;
 }
-.e-pivotschemadesigner.e-rtl .pivotButton > .pvtBtn {
+.e-hoverBtn {
+  background: #86cbea !important;
+}
+.dragHover {
+  background: #179bd7 !important;
+}
+.e-pivotschemadesigner.e-rtl .pvtBtnDiv > .pvtBtn {
   text-align: right;
 }
-/* .e-pivotschemadesigner .pvtBtn:hover
-{
-    background: linear-gradient(@active-font-color, @active-bg-stcolor);
-    border-color: @active-border-color;
-    color: @active-font-color;
-} */
-
-.e-pivotschemadesigner .pivotButton > .pvtBtn:hover {
+.e-pivotschemadesigner .pivotButton > .pvtBtnDiv:hover {
   border: 1px solid white !important;
   color: #282827;
 }
-.e-pivotschemadesigner .pivotButton > .pvtBtn:hover {
+.e-pivotschemadesigner .pivotButton > .pvtBtnDiv:hover {
   background: #86cbea;
+}
+.e-pivotschemadesigner .pvtBtnDiv > .pvtBtn:hover {
+  background: #86cbea;
+}
+.e-pivotschemadesigner .filter,
+.e-pivotschemadesigner .sorting,
+.e-pivotschemadesigner .removeBtn {
+  color: #333333;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
 }
 .e-pivotschemadesigner .btnDeferUpdate {
   text-overflow: ellipsis;
   width: 90px;
+}
+.e-pivotclient .e-pivotschemadesigner .btnDeferUpdate {
+  width: 60px;
 }
 .e-pivotschemadesigner .errOKBtn {
   display: inline-block;
@@ -809,7 +865,7 @@ input[type=number]::-webkit-outer-spin-button {
   width: auto;
 }
 .e-pivotschemadesigner .dropIndicatorHover {
-  background: none repeat scroll 0 0 #86cbea;
+  background: #86cbea;
 }
 .e-pivotschemadesigner .removePivotBtn:before {
   background-repeat: no-repeat;
@@ -829,16 +885,28 @@ input[type=number]::-webkit-outer-spin-button {
   cursor: pointer;
   background: none repeat scroll 0 0 #86cbea;
 }
-.e-pivotschemadesigner .ascending:before {
+.e-pivotschemadesigner .sorting:before {
   content: "\e672";
+  float: right;
+  margin-right: 4px;
 }
-.e-pivotschemadesigner .descending:before {
+.e-pivotschemadesigner .sorting.descending:before {
   content: "\e673";
+  float: right;
 }
 .e-pivotschemadesigner .filter:before {
   content: "\e669";
   float: right;
-  margin-right: 40px;
+  margin-right: 4px;
+}
+.e-pivotschemadesigner .filter.filtered:before {
+  content: "\e668";
+  float: right;
+}
+.e-pivotschemadesigner .removeBtn:before {
+  content: "\e711";
+  float: right;
+  margin-right: 4px;
 }
 .e-pivotschemadesigner.e-rtl .filter:before {
   float: left;
@@ -848,13 +916,6 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .e-pivotschemadesigner.e-rtl .filter {
   float: left !important;
-}
-.e-pivotschemadesigner .filter {
-  color: #686969;
-  display: inline-block;
-  position: relative;
-  vertical-align: middle;
-  cursor: pointer;
 }
 .e-pivotschemadesigner .treeDrop,
 .e-pivotschemadesigner .sortDiv:hover,
@@ -933,6 +994,9 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .e-pivotschemadesigner .schemaFieldTree.e-treeview .e-text {
   width: 90%;
+}
+.e-pivotschemadesigner .pivotButton .e-btn {
+  text-align: left !important;
 }
 .e-pivotschemadesigner .schemaFieldTree ul,
 .e-pivotschemadesigner .schemaFieldTree li {

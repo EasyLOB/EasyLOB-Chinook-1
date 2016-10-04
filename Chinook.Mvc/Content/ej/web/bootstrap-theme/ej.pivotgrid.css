@@ -3,7 +3,7 @@
 /*-----------------------PdfViewer------------------*/
 /*-----------------------End PdfViewer------------------*/
 /*-----------------------OLAP Definition Start-----------------*/
-.e-olapclient .removeSplitBtn {
+.e-pivotclient .removeSplitBtn {
   border-radius: 4px;
 }
 /*-----------------------OLAP Definition End
@@ -24,6 +24,19 @@
 /*----------------------Office 365 theme-----------------------*/
 /*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
 /*----------------------material theme-----------------------*/
+/*--------------- common ----------------- */
+/*---------------high-contrast ------*/
+/*---------------- Office-365 ----------------*/
+/*------------------ material theme ---------------------*/
+/*-----------------------HeatMap Definition-----------------*/
+/* Common style */
+
+.e-content-area {
+  background-color: white;
+  color: #111111;
+  border-color: #cecece;
+  font-family: Segoe UI;
+}
 .hoverCell {
   background-color: #f4f4f4 !important;
 }
@@ -143,7 +156,7 @@ input[type=number]::-webkit-outer-spin-button {
 .e-pivotgrid.e-rtl .colheader:hover,
 .e-pivotgrid.e-rtl .rowheader,
 .e-pivotgrid.e-rtl .rowheader:hover {
-  padding: 6px 0px 6px 24px;
+  padding: 6px 0px 6px 40px;
 }
 .e-pivotgrid .expand,
 .e-pivotgrid .collapse {
@@ -369,6 +382,9 @@ input[type=number]::-webkit-outer-spin-button {
   color: #666666;
   border-color: #cecece;
 }
+.e-pivotgrid .pivotButton .e-btn {
+  text-align: left !important;
+}
 .e-pivotgrid .pivotButton .e-btn.e-select {
   border: none;
   height: auto;
@@ -565,6 +581,17 @@ input[type=number]::-webkit-outer-spin-button {
   margin-top: -5px;
   height: 31px;
 }
+.column-resize table.pivotGridTable {
+  table-layout: fixed;
+  width: 100%;
+}
+.column-resize td,
+.column-resize th {
+  overflow: hidden;
+}
+.column-resize thead > tr {
+  cursor: pointer;
+}
 .pivotTree .calculatedFieldMenuItem {
   border-bottom: solid 1px #cecece;
 }
@@ -682,7 +709,8 @@ input[type=number]::-webkit-outer-spin-button {
 .e-pivotschemadesigner .schemaValue {
   /*background: @aeb-bgcolor;*/
   border: 1px solid #cecece;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
   height: 75%;
   width: 93%;
   margin-left: 10px;
@@ -792,35 +820,48 @@ input[type=number]::-webkit-outer-spin-button {
   color: white;
   cursor: move;
 }
-.e-pivotschemadesigner .pivotButton {
+.e-pivotschemadesigner .pivotButton > .pvtBtnDiv {
   display: block;
+  width: auto;
+  background: #fcfcfc;
+  margin: 2px 3px 0;
+  border: 1px solid #cecece !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.e-pivotschemadesigner .pvtBtnDiv > .pvtBtn {
+  cursor: move;
+  text-align: left;
+  text-overflow: ellipsis;
+  height: auto;
+  color: #666666;
+  border-color: #cecece;
+  border: none !important;
+  overflow: hidden;
 }
 .e-pivotschemadesigner .pivotButton > .pvtBtn {
   cursor: move;
   text-align: left;
   text-overflow: ellipsis;
-  margin: 2px 3px 0;
-  width: 97%;
   height: auto;
   color: #666666;
   border-color: #cecece;
-  border: 1px solid #cecece !important;
+  overflow: hidden;
 }
-.e-pivotschemadesigner.e-rtl .pivotButton > .pvtBtn {
+.e-hoverBtn {
+  background: #f4f4f4 !important;
+}
+.dragHover {
+  background: #3277b2 !important;
+}
+.e-pivotschemadesigner.e-rtl .pvtBtnDiv > .pvtBtn {
   text-align: right;
 }
-/* .e-pivotschemadesigner .pvtBtn:hover
-{
-    background: linear-gradient(@active-font-color, @active-bg-stcolor);
-    border-color: @active-border-color;
-    color: @active-font-color;
-} */
-
-.e-pivotschemadesigner .pivotButton > .pvtBtn:hover {
+.e-pivotschemadesigner .pivotButton > .pvtBtnDiv:hover {
   border: 1px solid white !important;
   color: #333333;
 }
-.e-pivotschemadesigner .pivotButton > .pvtBtn:hover {
+.e-pivotschemadesigner .pivotButton > .pvtBtnDiv:hover {
   background: #f4f4f4;
   /* Old browsers */
   background: -moz-linear-gradient(top, #f4f4f4, #e9e9e9);
@@ -839,9 +880,40 @@ input[type=number]::-webkit-outer-spin-button {
   /* IE6-9 */
 
 }
+.e-pivotschemadesigner .pvtBtnDiv > .pvtBtn:hover {
+  background: #f4f4f4;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f4f4f4), color-stop(100%, #e9e9e9));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #f4f4f4, #e9e9e9);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4', endColorstr='#e9e9e9', GradientType=0);
+  /* IE6-9 */
+
+}
+.e-pivotschemadesigner .filter,
+.e-pivotschemadesigner .sorting,
+.e-pivotschemadesigner .removeBtn {
+  color: #333333;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+}
 .e-pivotschemadesigner .btnDeferUpdate {
   text-overflow: ellipsis;
   width: 90px;
+}
+.e-pivotclient .e-pivotschemadesigner .btnDeferUpdate {
+  width: 60px;
 }
 .e-pivotschemadesigner .errOKBtn {
   display: inline-block;
@@ -861,7 +933,23 @@ input[type=number]::-webkit-outer-spin-button {
   width: auto;
 }
 .e-pivotschemadesigner .dropIndicatorHover {
-  background: none repeat scroll 0 0 #f4f4f4;
+  background: #f4f4f4;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f4f4f4), color-stop(100%, #e9e9e9));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #f4f4f4, #e9e9e9);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #f4f4f4, #e9e9e9);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4', endColorstr='#e9e9e9', GradientType=0);
+  /* IE6-9 */
+
 }
 .e-pivotschemadesigner .removePivotBtn:before {
   background-repeat: no-repeat;
@@ -881,16 +969,28 @@ input[type=number]::-webkit-outer-spin-button {
   cursor: pointer;
   background: none repeat scroll 0 0 #f4f4f4;
 }
-.e-pivotschemadesigner .ascending:before {
+.e-pivotschemadesigner .sorting:before {
   content: "\e672";
+  float: right;
+  margin-right: 4px;
 }
-.e-pivotschemadesigner .descending:before {
+.e-pivotschemadesigner .sorting.descending:before {
   content: "\e673";
+  float: right;
 }
 .e-pivotschemadesigner .filter:before {
   content: "\e669";
   float: right;
-  margin-right: 40px;
+  margin-right: 4px;
+}
+.e-pivotschemadesigner .filter.filtered:before {
+  content: "\e668";
+  float: right;
+}
+.e-pivotschemadesigner .removeBtn:before {
+  content: "\e711";
+  float: right;
+  margin-right: 4px;
 }
 .e-pivotschemadesigner.e-rtl .filter:before {
   float: left;
@@ -900,13 +1000,6 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .e-pivotschemadesigner.e-rtl .filter {
   float: left !important;
-}
-.e-pivotschemadesigner .filter {
-  color: #666666;
-  display: inline-block;
-  position: relative;
-  vertical-align: middle;
-  cursor: pointer;
 }
 .e-pivotschemadesigner .treeDrop,
 .e-pivotschemadesigner .sortDiv:hover,
@@ -985,6 +1078,9 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .e-pivotschemadesigner .schemaFieldTree.e-treeview .e-text {
   width: 90%;
+}
+.e-pivotschemadesigner .pivotButton .e-btn {
+  text-align: left !important;
 }
 .e-pivotschemadesigner .schemaFieldTree ul,
 .e-pivotschemadesigner .schemaFieldTree li {

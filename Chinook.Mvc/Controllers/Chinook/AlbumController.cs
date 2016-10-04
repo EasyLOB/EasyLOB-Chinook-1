@@ -77,7 +77,7 @@ namespace Chinook.Mvc
                 albumCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return PartialView("_AlbumCollection", albumCollectionModel);
+            return PartialView(albumCollectionModel);
         }
 
         // GET & POST: Album/Lookup

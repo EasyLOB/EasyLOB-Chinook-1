@@ -1,4 +1,4 @@
-@model MediaTypeItemModel
+﻿@model MediaTypeItemModel
 
 @{
     ViewBag.Title = AppHelper.PageTitle(MediaTypeResources.EntitySingular, PresentationResources.Delete);
@@ -19,7 +19,7 @@
 {
     @Html.AntiForgeryToken()
 
-    <div id="Partial" class="form-inline">
+    <div class="form-inline">
         @Html.Partial("_MediaTypeItem", Model)
     </div>
     
@@ -33,22 +33,19 @@
 
 <script>
     $(function () {
-        try
-        {
+        try {
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
     
-            if (model.IsSecurityOperations.IsCreate) {
-                $("#Partial").show();
+            if (model.IsSecurityOperations.IsDelete) {
                 $("#Button_Cancel").show();
                 $("#Button_OK").show();
             }
             else {
-                $("#Partial").hide();
                 $("#Button_Cancel").show();
                 $("#Button_OK").hide();
             }
         } catch (exception) {
-            zExceptionMessage("MediaType Create.cshtml", "function()", exception.message)
+            zExceptionMessage("MediaType Delete.cshtml", "function", exception.message)
         }
     });
 
@@ -56,7 +53,7 @@
         try {
             $("#OperationResult").html(zAjaxOperationResult(jqXHR));
         } catch (exception) {
-            zExceptionMessage("MediaType Create.cshtml", "ajaxFailure", exception.message)
+            zExceptionMessage("MediaType Delete.cshtml", "ajaxFailure", exception.message)
         }
     }
 
@@ -66,7 +63,7 @@
                 $("#Ajax").load(data.uri);
             }
         } catch (exception) {
-            zExceptionMessage("MediaType Create.cshtml", "ajaxSuccess", exception.message)
+            zExceptionMessage("MediaType Delete.cshtml", "ajaxSuccess", exception.message)
         }
     }
 </script>

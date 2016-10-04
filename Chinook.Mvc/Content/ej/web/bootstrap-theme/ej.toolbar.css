@@ -3,7 +3,7 @@
 /*-----------------------PdfViewer------------------*/
 /*-----------------------End PdfViewer------------------*/
 /*-----------------------OLAP Definition Start-----------------*/
-.e-olapclient .removeSplitBtn {
+.e-pivotclient .removeSplitBtn {
   border-radius: 4px;
 }
 /*-----------------------OLAP Definition End
@@ -24,6 +24,19 @@
 /*----------------------Office 365 theme-----------------------*/
 /*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
 /*----------------------material theme-----------------------*/
+/*--------------- common ----------------- */
+/*---------------high-contrast ------*/
+/*---------------- Office-365 ----------------*/
+/*------------------ material theme ---------------------*/
+/*-----------------------HeatMap Definition-----------------*/
+/* Common style */
+
+.e-content-area {
+  background-color: white;
+  color: #111111;
+  border-color: #cecece;
+  font-family: Segoe UI;
+}
 /*------------------------------------- ToolBar -------------------------------------------*/
 
 .e-toolbar {
@@ -53,6 +66,9 @@
   /* IE6-9 */
 
 }
+.e-toolbar {
+  background: #fcfcfc;
+}
 .e-toolbar.e-focus {
   box-shadow: 0 0 2px #cccccc;
 }
@@ -60,6 +76,14 @@
   border-right: 1px solid #cecece;
   border-left: none;
   border-radius: initial;
+}
+/*-------------------tooltip class ----------------------*/
+
+.e-toolbarTooltip {
+  min-width: auto;
+}
+.e-toolbarTooltip .e-tipContainer .e-tipcontent {
+  padding: 2px 4px;
 }
 .e-toolbar > .e-horizontal .e-separator {
   border-right: 1px solid #cecece;

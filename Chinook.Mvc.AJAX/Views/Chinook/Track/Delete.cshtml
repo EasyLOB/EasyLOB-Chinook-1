@@ -1,4 +1,4 @@
-@model TrackItemModel
+﻿@model TrackItemModel
 
 @{
     ViewBag.Title = AppHelper.PageTitle(TrackResources.EntitySingular, PresentationResources.Delete);
@@ -19,7 +19,7 @@
 {
     @Html.AntiForgeryToken()
 
-    <div id="Partial" class="form-inline">
+    <div class="form-inline">
         @Html.Partial("_TrackItem", Model)
     </div>
     
@@ -33,22 +33,19 @@
 
 <script>
     $(function () {
-        try
-        {
+        try {
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
     
-            if (model.IsSecurityOperations.IsCreate) {
-                $("#Partial").show();
+            if (model.IsSecurityOperations.IsDelete) {
                 $("#Button_Cancel").show();
                 $("#Button_OK").show();
             }
             else {
-                $("#Partial").hide();
                 $("#Button_Cancel").show();
                 $("#Button_OK").hide();
             }
         } catch (exception) {
-            zExceptionMessage("Track Create.cshtml", "function()", exception.message)
+            zExceptionMessage("Track Delete.cshtml", "function", exception.message)
         }
     });
 
@@ -56,7 +53,7 @@
         try {
             $("#OperationResult").html(zAjaxOperationResult(jqXHR));
         } catch (exception) {
-            zExceptionMessage("Track Create.cshtml", "ajaxFailure", exception.message)
+            zExceptionMessage("Track Delete.cshtml", "ajaxFailure", exception.message)
         }
     }
 
@@ -66,7 +63,7 @@
                 $("#Ajax").load(data.uri);
             }
         } catch (exception) {
-            zExceptionMessage("Track Create.cshtml", "ajaxSuccess", exception.message)
+            zExceptionMessage("Track Delete.cshtml", "ajaxSuccess", exception.message)
         }
     }
 </script>

@@ -48,16 +48,25 @@ namespace Chinook.Data
     
         #endregion Associations FK
 
-        #region Properties ZDTOBase
-
-        public override string LookupText { get; set; }
-
-        #endregion Properties ZDTOBase
-
         #region Methods
         
         public EmployeeDTO()
         {
+            EmployeeId = LibraryDefaults.Default_Int32;
+            LastName = LibraryDefaults.Default_String;
+            FirstName = LibraryDefaults.Default_String;
+            Title = null;
+            ReportsTo = null;
+            BirthDate = null;
+            HireDate = null;
+            Address = null;
+            City = null;
+            State = null;
+            Country = null;
+            PostalCode = null;
+            Phone = null;
+            Fax = null;
+            Email = null;
         }
         
         public EmployeeDTO(

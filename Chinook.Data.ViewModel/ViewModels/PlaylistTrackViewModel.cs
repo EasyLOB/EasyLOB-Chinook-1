@@ -16,7 +16,6 @@ namespace Chinook.Data
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         //[Key]
         //[Column(Order=1)]
-        [Range(1, Int32.MaxValue)]
         [Required]
         public virtual int PlaylistId { get; set; }
         
@@ -24,7 +23,6 @@ namespace Chinook.Data
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         //[Key]
         //[Column(Order=2)]
-        [Range(1, Int32.MaxValue)]
         [Required]
         public virtual int TrackId { get; set; }
 
@@ -38,27 +36,20 @@ namespace Chinook.Data
     
         #endregion Associations FK
 
-        #region Properties ZViewBase
-
-        public override string LookupText { get; set; }
-
-        #endregion Properties ZViewBase
-
         #region Methods
         
         public PlaylistTrackViewModel()
         {
-            PlaylistId = 1;
-            TrackId = 1;
+            PlaylistId = LibraryDefaults.Default_Int32;
+            TrackId = LibraryDefaults.Default_Int32;
         }
-        
+
         public PlaylistTrackViewModel(
             int playlistId,
             int trackId,
             string playlistLookupText = null,
             string trackLookupText = null
         )
-            : this()
         {
             PlaylistId = playlistId;
             TrackId = trackId;
@@ -85,10 +76,7 @@ namespace Chinook.Data
             return x => new PlaylistTrackDTO
             {
                 PlaylistId = x.PlaylistId,
-                TrackId = x.TrackId,
-                PlaylistLookupText = x.PlaylistLookupText,
-                TrackLookupText = x.TrackLookupText,
-                LookupText = x.LookupText
+                TrackId = x.TrackId
             };
         }
 

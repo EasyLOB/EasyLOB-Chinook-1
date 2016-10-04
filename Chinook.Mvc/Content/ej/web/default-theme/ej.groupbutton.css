@@ -20,6 +20,19 @@
 /*----------------------Office 365 theme-----------------------*/
 /*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
 /*----------------------material theme-----------------------*/
+/*--------------- common ----------------- */
+/*---------------high-contrast ------*/
+/*---------------- Office-365 ----------------*/
+/*------------------ material theme ---------------------*/
+/*-----------------------HeatMap Definition-----------------*/
+/* Common style */
+
+.e-content-area {
+  background-color: white;
+  color: #111111;
+  border-color: #c8c8c8;
+  font-family: Segoe UI;
+}
 /*------------------------------------- GroupButton -------------------------------------------*/
 
 .e-groupbutton {
@@ -54,11 +67,33 @@
 .e-groupbutton > .e-ul > .e-grp-btn-item.e-active.e-hover .e-btn-content .e-btntxt {
   color: #282827;
 }
-.e-groupbutton > .e-ul > .e-grp-btn-item.e-hover {
-  color: #282827;
+.e-groupbutton > .e-ul > .e-grp-btn-item.e-active.e-hover,
+.e-groupbutton.e-rtl > .e-horizontal.e-ul > .e-grp-btn-item.e-active.e-hover {
+  border-color: #c8c8c8;
 }
-.e-groupbutton > .e-ul > .e-grp-btn-item.e-hover {
+.e-groupbutton > .e-horizontal.e-ul > .e-grp-btn-item {
+  border-right-color: transparent;
+}
+.e-groupbutton > .e-vertical.e-ul > .e-grp-btn-item {
+  border-bottom-color: transparent;
+}
+.e-groupbutton.e-rtl > .e-horizontal.e-ul > .e-grp-btn-item {
+  border-left-color: transparent;
+}
+.e-groupbutton > .e-ul > .e-grp-btn-item.e-hover,
+.e-groupbutton.e-rtl > .e-horizontal.e-ul > .e-grp-btn-item.e-hover {
+  color: #282827;
+  border-color: #c8c8c8;
+}
+.e-groupbutton > .e-ul > .e-grp-btn-item.e-hover,
+.e-groupbutton.e-rtl > .e-horizontal.e-ul > .e-grp-btn-item.e-hover {
   background: #86cbea;
+}
+.e-groupbutton > .e-horizontal.e-ul > .e-grp-btn-item.last {
+  border-right-color: #c8c8c8;
+}
+.e-groupbutton > .e-vertical.e-ul > .e-grp-btn-item.last {
+  border-bottom-color: #c8c8c8;
 }
 .e-groupbutton > .e-ul > .e-grp-btn-item .e-btn-content > a,
 .e-groupbutton > .e-ul > .e-grp-btn-item .e-btn-content > span,
@@ -71,4 +106,19 @@
 .e-groupbutton > .e-ul > .e-grp-btn-item.e-active .e-btn-content > div {
   color: white;
   text-decoration: none;
+}
+.e-groupbutton.e-rtl > .e-horizontal.e-ul > .e-grp-btn-item.last {
+  border-left-color: #c8c8c8;
+}
+.e-groupbutton > .e-horizontal.e-ul > .e-grp-btn-item.e-hover {
+  border-right-color: transparent;
+}
+.e-groupbutton > .e-vertical.e-ul > .e-grp-btn-item.e-hover {
+  border-bottom-color: transparent;
+}
+.e-groupbutton.e-rtl > .e-horizontal.e-ul > .e-grp-btn-item.e-hover {
+  border-left-color: transparent;
+}
+.e-groupbutton.e-rtl > .e-vertical.e-ul > .e-grp-btn-item.e-hover {
+  border-left-color: transparent;
 }

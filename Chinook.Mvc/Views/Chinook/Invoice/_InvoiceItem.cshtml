@@ -4,90 +4,92 @@
     string customerText = Model.Invoice == null ? "" : (Model.Invoice.CustomerLookupText ?? "");
 }
 
-@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+<div id="Item_Invoice">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
 
-@Html.HiddenFor(model => model.ControllerAction)
-@Html.HiddenFor(model => model.IsMasterDetail)
-@Html.HiddenFor(model => model.MasterCustomerId)
+    @Html.HiddenFor(model => model.ControllerAction)
+    @Html.HiddenFor(model => model.IsMasterDetail)
+    @Html.HiddenFor(model => model.MasterCustomerId)
 
-@{Html.EJ().Tab("Tab_Invoice")
-    .ClientSideEvents(clientEvent => clientEvent
-        .ItemActive("itemActive_Tab_Invoice")
-    )
-    .Items(data =>
-    {
-        data.Add().ID("TabSheet_Invoice_Invoice").Text(InvoiceResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
+    @{Html.EJ().Tab("Tab_Invoice")
+        .ClientSideEvents(clientEvent => clientEvent
+            .ItemActive("itemActive_Tab_Invoice")
+        )
+        .Items(data =>
+        {
+            data.Add().ID("TabSheet_Invoice_Invoice").Text(InvoiceResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
 
-            <div id="Group_Invoice_InvoiceId" class="@AppDefaults.CssClassGroup col-md-2">
-                @Html.LabelFor(model => model.Invoice.InvoiceId, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.Invoice.InvoiceId, new { id = "Invoice_InvoiceId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.Invoice.InvoiceId, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_Invoice_InvoiceId" class="@AppDefaults.CssClassGroup col-md-2">
+                    @Html.LabelFor(model => model.Invoice.InvoiceId, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.Invoice.InvoiceId, new { id = "Invoice_InvoiceId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.Invoice.InvoiceId, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-            <div id="Group_Invoice_CustomerId" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.Label(@CustomerResources.EntitySingular, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.Invoice.CustomerId, new { id = "Invoice_CustomerId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })                    
-                @Html.Action("Lookup", "Customer", new
+                <div id="Group_Invoice_CustomerId" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.Label(@CustomerResources.EntitySingular, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.Invoice.CustomerId, new { id = "Invoice_CustomerId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })                    
+                    @Html.Action("Lookup", "Customer", new
+                    {
+                        Text = customerText,
+                        ValueId = "Invoice_CustomerId"
+                    })
+                    @Html.ValidationMessageFor(model => model.Invoice.CustomerId, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
+
+                <div id="Group_Invoice_InvoiceDate" class="@AppDefaults.CssClassGroup col-md-2">
+                    @Html.LabelFor(model => model.Invoice.InvoiceDate, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.Invoice.InvoiceDate, new { id = "Invoice_InvoiceDate", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.Invoice.InvoiceDate, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
+
+                <div id="Group_Invoice_BillingAddress" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.LabelFor(model => model.Invoice.BillingAddress, new { @class = AppDefaults.CssClassLabel })
+                    @Html.EditorFor(model => model.Invoice.BillingAddress, new { id = "Invoice_BillingAddress", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.Invoice.BillingAddress, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
+
+                <div id="Group_Invoice_BillingCity" class="@AppDefaults.CssClassGroup col-md-5">
+                    @Html.LabelFor(model => model.Invoice.BillingCity, new { @class = AppDefaults.CssClassLabel })
+                    @Html.EditorFor(model => model.Invoice.BillingCity, new { id = "Invoice_BillingCity", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.Invoice.BillingCity, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
+
+                <div id="Group_Invoice_BillingState" class="@AppDefaults.CssClassGroup col-md-5">
+                    @Html.LabelFor(model => model.Invoice.BillingState, new { @class = AppDefaults.CssClassLabel })
+                    @Html.EditorFor(model => model.Invoice.BillingState, new { id = "Invoice_BillingState", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.Invoice.BillingState, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
+
+                <div id="Group_Invoice_BillingCountry" class="@AppDefaults.CssClassGroup col-md-5">
+                    @Html.LabelFor(model => model.Invoice.BillingCountry, new { @class = AppDefaults.CssClassLabel })
+                    @Html.EditorFor(model => model.Invoice.BillingCountry, new { id = "Invoice_BillingCountry", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.Invoice.BillingCountry, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
+
+                <div id="Group_Invoice_BillingPostalCode" class="@AppDefaults.CssClassGroup col-md-2">
+                    @Html.LabelFor(model => model.Invoice.BillingPostalCode, new { @class = AppDefaults.CssClassLabel })
+                    @Html.EditorFor(model => model.Invoice.BillingPostalCode, new { id = "Invoice_BillingPostalCode", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.Invoice.BillingPostalCode, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
+
+                <div id="Group_Invoice_Total" class="@AppDefaults.CssClassGroup col-md-2">
+                    @Html.LabelFor(model => model.Invoice.Total, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.Invoice.Total, new { id = "Invoice_Total", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.Invoice.Total, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
+
+            </div>);
+            data.Add().ID("TabSheet_Invoice_InvoiceLine").Text(InvoiceLineResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
+                @Html.Action("Search", "InvoiceLine", new
                 {
-                    Text = customerText,
-                    ValueId = "Invoice_CustomerId"
-                })
-                @Html.ValidationMessageFor(model => model.Invoice.CustomerId, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
-
-            <div id="Group_Invoice_InvoiceDate" class="@AppDefaults.CssClassGroup col-md-2">
-                @Html.LabelFor(model => model.Invoice.InvoiceDate, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.Invoice.InvoiceDate, new { id = "Invoice_InvoiceDate", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.Invoice.InvoiceDate, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
-
-            <div id="Group_Invoice_BillingAddress" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.LabelFor(model => model.Invoice.BillingAddress, new { @class = AppDefaults.CssClassLabel })
-                @Html.EditorFor(model => model.Invoice.BillingAddress, new { id = "Invoice_BillingAddress", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.Invoice.BillingAddress, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
-
-            <div id="Group_Invoice_BillingCity" class="@AppDefaults.CssClassGroup col-md-5">
-                @Html.LabelFor(model => model.Invoice.BillingCity, new { @class = AppDefaults.CssClassLabel })
-                @Html.EditorFor(model => model.Invoice.BillingCity, new { id = "Invoice_BillingCity", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.Invoice.BillingCity, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
-
-            <div id="Group_Invoice_BillingState" class="@AppDefaults.CssClassGroup col-md-5">
-                @Html.LabelFor(model => model.Invoice.BillingState, new { @class = AppDefaults.CssClassLabel })
-                @Html.EditorFor(model => model.Invoice.BillingState, new { id = "Invoice_BillingState", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.Invoice.BillingState, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
-
-            <div id="Group_Invoice_BillingCountry" class="@AppDefaults.CssClassGroup col-md-5">
-                @Html.LabelFor(model => model.Invoice.BillingCountry, new { @class = AppDefaults.CssClassLabel })
-                @Html.EditorFor(model => model.Invoice.BillingCountry, new { id = "Invoice_BillingCountry", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.Invoice.BillingCountry, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
-
-            <div id="Group_Invoice_BillingPostalCode" class="@AppDefaults.CssClassGroup col-md-2">
-                @Html.LabelFor(model => model.Invoice.BillingPostalCode, new { @class = AppDefaults.CssClassLabel })
-                @Html.EditorFor(model => model.Invoice.BillingPostalCode, new { id = "Invoice_BillingPostalCode", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.Invoice.BillingPostalCode, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
-
-            <div id="Group_Invoice_Total" class="@AppDefaults.CssClassGroup col-md-2">
-                @Html.LabelFor(model => model.Invoice.Total, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.Invoice.Total, new { id = "Invoice_Total", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.Invoice.Total, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
-
-        </div>);
-        data.Add().ID("TabSheet_Invoice_InvoiceLine").Text(InvoiceLineResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
-            @Html.Action("Search", "InvoiceLine", new
-            {
-                MasterControllerAction = Model.ControllerAction,
-                MasterInvoiceId = Model.Invoice.InvoiceId
-            })    
-        </div>);
-    })
-    .Render();
-}
+                    MasterControllerAction = Model.ControllerAction,
+                    MasterInvoiceId = Model.Invoice.InvoiceId
+                })    
+            </div>);
+        })
+        .Render();
+    }
+</div>
 
 <script>
     // Validate hidden fields
@@ -98,7 +100,17 @@
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
             var invoiceDictionary = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(DataHelper.GetDataDictionaryAttribute(typeof(Invoice)))); }();
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
-            
+
+            if ((model.ControllerAction = "create" && model.IsSecurityOperations.IsCreate) ||
+                (model.ControllerAction = "read" && model.IsSecurityOperations.IsRead) ||
+                (model.ControllerAction = "update" && model.IsSecurityOperations.IsUpdate) ||
+                (model.ControllerAction = "delete" && model.IsSecurityOperations.IsDelete)) {
+                $("#Item_Invoice").css("display", "block");
+            }
+            else {
+                $("#Item_Invoice").css("display", "none");
+            }
+
             var readonly = (controllerAction == "delete" || controllerAction == "read");
             $("input.form-control").not(":input[type=button], :input[type=image], :input[type=reset], :input[type=submit]").attr("readonly", readonly);
             if (readonly) {

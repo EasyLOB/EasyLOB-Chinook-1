@@ -3,7 +3,7 @@
 /*-----------------------PdfViewer------------------*/
 /*-----------------------End PdfViewer------------------*/
 /*-----------------------OLAP Definition Start-----------------*/
-.e-olapclient .removeSplitBtn {
+.e-pivotclient .removeSplitBtn {
   border-radius: 4px;
 }
 /*-----------------------OLAP Definition End
@@ -24,11 +24,31 @@
 /*----------------------Office 365 theme-----------------------*/
 /*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
 /*----------------------material theme-----------------------*/
+/*--------------- common ----------------- */
+/*---------------high-contrast ------*/
+/*---------------- Office-365 ----------------*/
+/*------------------ material theme ---------------------*/
+/*-----------------------HeatMap Definition-----------------*/
+/* Common style */
+
+.e-content-area {
+  background-color: white;
+  color: #111111;
+  border-color: #cecece;
+  font-family: Segoe UI;
+}
 /*Theme Color*/
 
 .e-radiobtn-wrap > span {
   background-color: white;
   background-image: none;
+  border-color: #cecece;
+}
+.e-radiobtn-wrap > span.e-rad-active,
+.e-radiobtn-wrap > span.e-rad-active:hover {
+  border-color: #cecece;
+}
+.e-radiobtn-wrap > span:hover {
   border-color: #cecece;
 }
 .e-radiobtn-wrap.e-focus > span {
@@ -39,6 +59,7 @@
 }
 .e-radiobtn-wrap .e-circle_01 {
   color: #3277b2;
+  border-color: #cecece;
 }
 .e-radiobtn-wrap .e-text {
   font-family: Segoe UI;

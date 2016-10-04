@@ -1,0 +1,16 @@
+﻿@model InvoiceCollectionModel
+
+<div class="form-inline">
+    @Html.Partial("_InvoiceCollection", Model)
+</div>
+
+<div id="OperationResult"></div>
+
+<script>
+    $(function () {
+        try {
+        } catch (exception) {
+            zExceptionMessage("Invoice Search.cshtml", "function", exception.message)
+        }
+    });
+</script>

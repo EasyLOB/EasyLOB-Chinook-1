@@ -1,0 +1,16 @@
+﻿@model MediaTypeCollectionModel
+
+<div class="form-inline">
+    @Html.Partial("_MediaTypeCollection", Model)
+</div>
+
+<div id="OperationResult"></div>
+
+<script>
+    $(function () {
+        try {
+        } catch (exception) {
+            zExceptionMessage("MediaType Search.cshtml", "function", exception.message)
+        }
+    });
+</script>

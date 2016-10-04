@@ -1,44 +1,46 @@
-@model GenreItemModel
+﻿@model GenreItemModel
 
 @{
 }
 
-@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+<div id="Item_Genre">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
 
-@Html.HiddenFor(model => model.ControllerAction)
-@Html.HiddenFor(model => model.IsMasterDetail)
+    @Html.HiddenFor(model => model.ControllerAction)
+    @Html.HiddenFor(model => model.IsMasterDetail)
 
-@{Html.EJ().Tab("Tab_Genre")
-    .ClientSideEvents(clientEvent => clientEvent
-        .ItemActive("itemActive_Tab_Genre")
-    )
-    .Items(data =>
-    {
-        data.Add().ID("TabSheet_Genre_Genre").Text(GenreResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
+    @{Html.EJ().Tab("Tab_Genre")
+        .ClientSideEvents(clientEvent => clientEvent
+            .ItemActive("itemActive_Tab_Genre")
+        )
+        .Items(data =>
+        {
+            data.Add().ID("TabSheet_Genre_Genre").Text(GenreResources.EntitySingular).ContentTemplate(@<div class="panel-body">        
 
-            <div id="Group_Genre_GenreId" class="@AppDefaults.CssClassGroup col-md-2">
-                @Html.LabelFor(model => model.Genre.GenreId, new { @class = AppDefaults.CssClassLabelRequired })
-                @Html.EditorFor(model => model.Genre.GenreId, new { id = "Genre_GenreId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.Genre.GenreId, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_Genre_GenreId" class="@AppDefaults.CssClassGroup col-md-2">
+                    @Html.LabelFor(model => model.Genre.GenreId, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.Genre.GenreId, new { id = "Genre_GenreId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.Genre.GenreId, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-            <div id="Group_Genre_Name" class="@AppDefaults.CssClassGroup col-md-6">
-                @Html.LabelFor(model => model.Genre.Name, new { @class = AppDefaults.CssClassLabel })
-                @Html.EditorFor(model => model.Genre.Name, new { id = "Genre_Name", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
-                @Html.ValidationMessageFor(model => model.Genre.Name, "", new { @class = AppDefaults.CssClassValidator })
-            </div>
+                <div id="Group_Genre_Name" class="@AppDefaults.CssClassGroup col-md-6">
+                    @Html.LabelFor(model => model.Genre.Name, new { @class = AppDefaults.CssClassLabel })
+                    @Html.EditorFor(model => model.Genre.Name, new { id = "Genre_Name", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @Html.ValidationMessageFor(model => model.Genre.Name, "", new { @class = AppDefaults.CssClassValidator })
+                </div>
 
-        </div>);
-        data.Add().ID("TabSheet_Genre_Track").Text(TrackResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
-            @Html.Action("Search", "Track", new
-            {
-                MasterControllerAction = Model.ControllerAction,
-                MasterGenreId = Model.Genre.GenreId
-            })    
-        </div>);
-    })
-    .Render();
-}
+            </div>);
+            data.Add().ID("TabSheet_Genre_Track").Text(TrackResources.EntityPlural).ContentTemplate(@<div class="panel-body">    
+                @Html.Action("Search", "Track", new
+                {
+                    MasterControllerAction = Model.ControllerAction,
+                    MasterGenreId = Model.Genre.GenreId
+                })    
+            </div>);
+        })
+        .Render();
+    }
+</div>
 
 <script>
     // Validate hidden fields
@@ -49,6 +51,16 @@
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
             var genreDictionary = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(DataHelper.GetDataDictionaryAttribute(typeof(Genre)))); }();
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
+
+            if ((model.ControllerAction = "create" && model.IsSecurityOperations.IsCreate) ||
+                (model.ControllerAction = "read" && model.IsSecurityOperations.IsRead) ||
+                (model.ControllerAction = "update" && model.IsSecurityOperations.IsUpdate) ||
+                (model.ControllerAction = "delete" && model.IsSecurityOperations.IsDelete)) {
+                $("#Item_Genre").css("display", "block");
+            }
+            else {
+                $("#Item_Genre").css("display", "none");
+            }
             
             var readonly = (controllerAction == "delete" || controllerAction == "read");
             $("input.form-control").not(":input[type=button], :input[type=image], :input[type=reset], :input[type=submit]").attr("readonly", readonly);

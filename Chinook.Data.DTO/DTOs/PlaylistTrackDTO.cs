@@ -24,18 +24,14 @@ namespace Chinook.Data
     
         #endregion Associations FK
 
-        #region Properties ZDTOBase
-
-        public override string LookupText { get; set; }
-
-        #endregion Properties ZDTOBase
-
         #region Methods
         
         public PlaylistTrackDTO()
         {
+            PlaylistId = LibraryDefaults.Default_Int32;
+            TrackId = LibraryDefaults.Default_Int32;
         }
-        
+
         public PlaylistTrackDTO(
             int playlistId,
             int trackId,

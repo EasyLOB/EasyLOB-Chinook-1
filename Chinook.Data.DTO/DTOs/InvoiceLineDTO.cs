@@ -30,16 +30,15 @@ namespace Chinook.Data
     
         #endregion Associations FK
 
-        #region Properties ZDTOBase
-
-        public override string LookupText { get; set; }
-
-        #endregion Properties ZDTOBase
-
         #region Methods
         
         public InvoiceLineDTO()
         {
+            InvoiceLineId = LibraryDefaults.Default_Int32;
+            InvoiceId = LibraryDefaults.Default_Int32;
+            TrackId = LibraryDefaults.Default_Int32;
+            UnitPrice = LibraryDefaults.Default_Decimal;
+            Quantity = LibraryDefaults.Default_Int32;
         }
         
         public InvoiceLineDTO(

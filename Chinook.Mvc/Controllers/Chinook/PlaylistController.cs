@@ -75,7 +75,7 @@ namespace Chinook.Mvc
                 playlistCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return PartialView("_PlaylistCollection", playlistCollectionModel);
+            return PartialView(playlistCollectionModel);
         }
 
         // GET & POST: Playlist/Lookup

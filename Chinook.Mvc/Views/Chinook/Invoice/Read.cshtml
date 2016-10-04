@@ -1,4 +1,4 @@
-@model InvoiceItemModel
+﻿@model InvoiceItemModel
 
 @{
     ViewBag.Title = AppHelper.PageTitle(InvoiceResources.EntitySingular, PresentationResources.Read);
@@ -10,7 +10,7 @@
 {
     @Html.AntiForgeryToken()
 
-    <div id="Partial" class="form-inline">
+    <div class="form-inline">
         @Html.Partial("_InvoiceItem", Model)
     </div>
     
@@ -23,15 +23,17 @@
 
 <script>
     $(function () {
-        var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+        try {
+            var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
 
-        if (model.IsSecurityOperations.IsRead) {
-            $("#Partial").show();
-            $("#Button_Cancel").show();
-        }
-        else {
-            $("#Partial").hide();
-            $("#Button_Cancel").show();
+            if (model.IsSecurityOperations.IsRead) {
+                $("#Button_Cancel").show();
+            }
+            else {
+                $("#Button_Cancel").show();
+            }
+        } catch (exception) {
+            zExceptionMessage("Invoice Read.cshtml", "function", exception.message)
         }
     });
 </script>

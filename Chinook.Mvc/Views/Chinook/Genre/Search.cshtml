@@ -1,0 +1,16 @@
+﻿@model GenreCollectionModel
+
+<div class="form-inline">
+    @Html.Partial("_GenreCollection", Model)
+</div>
+    
+@Html.OperationResult(Model.OperationResult)
+
+<script>
+    $(function () {
+        try {
+        } catch (exception) {
+            zExceptionMessage("Genre Search.cshtml", "function", exception.message)
+        }
+    });
+</script>

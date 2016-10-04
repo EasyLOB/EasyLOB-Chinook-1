@@ -62,7 +62,7 @@ namespace Chinook.Data
 
         #region Collections (PK)
 
-        public virtual IList<InvoiceLine> InvoiceLines { get; set; }
+        public virtual IList<InvoiceLine> InvoiceLines { get; }
 
         #endregion Collections (PK)
 

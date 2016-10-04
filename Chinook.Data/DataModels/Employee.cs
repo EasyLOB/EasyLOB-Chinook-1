@@ -74,9 +74,9 @@ namespace Chinook.Data
 
         #region Collections (PK)
 
-        public virtual IList<Customer> Customers { get; set; }
+        public virtual IList<Customer> Customers { get; }
 
-        public virtual IList<Employee> Employees { get; set; }
+        public virtual IList<Employee> Employees { get; }
 
         #endregion Collections (PK)
 

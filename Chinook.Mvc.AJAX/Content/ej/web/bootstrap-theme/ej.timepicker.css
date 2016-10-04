@@ -3,7 +3,7 @@
 /*-----------------------PdfViewer------------------*/
 /*-----------------------End PdfViewer------------------*/
 /*-----------------------OLAP Definition Start-----------------*/
-.e-olapclient .removeSplitBtn {
+.e-pivotclient .removeSplitBtn {
   border-radius: 4px;
 }
 /*-----------------------OLAP Definition End
@@ -24,6 +24,19 @@
 /*----------------------Office 365 theme-----------------------*/
 /*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
 /*----------------------material theme-----------------------*/
+/*--------------- common ----------------- */
+/*---------------high-contrast ------*/
+/*---------------- Office-365 ----------------*/
+/*------------------ material theme ---------------------*/
+/*-----------------------HeatMap Definition-----------------*/
+/* Common style */
+
+.e-content-area {
+  background-color: white;
+  color: #111111;
+  border-color: #cecece;
+  font-family: Segoe UI;
+}
 /*------------------------------------- TimeEditor -------------------------------------------*/
 
 .e-timewidget .e-input,
@@ -41,20 +54,23 @@
   box-shadow: 0 0 7px rgba(154, 146, 203, 0.87);
   border-color: #cecece;
 }
+.e-timewidget:hover .e-in-wrap {
+  border-color: #cecece;
+}
 .e-timewidget .e-select,
 .e-timewidget.e-rtl .e-select,
-.e-timewidget .e-disable.e-select:hover {
+.e-ntouch.e-timewidget .e-disable.e-select:hover {
   background: #fcfcfc;
   /* Old browsers */
 
   border-color: #cecece;
   color: #666666;
 }
-.e-timewidget .e-select:hover,
+.e-ntouch.e-timewidget .e-select:hover,
 .e-time-popup.e-popup .e-hover {
   color: #333333;
 }
-.e-timewidget .e-select:hover,
+.e-ntouch.e-timewidget .e-select:hover,
 .e-time-popup.e-popup .e-hover {
   background: #f4f4f4;
   /* Old browsers */
@@ -74,7 +90,7 @@
   /* IE6-9 */
 
 }
-.e-timewidget .e-select:hover {
+.e-ntouch.e-timewidget .e-select:hover {
   color: #333333;
 }
 .e-time-popup.e-popup .e-hover {

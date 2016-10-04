@@ -3,7 +3,7 @@
 /*-----------------------PdfViewer------------------*/
 /*-----------------------End PdfViewer------------------*/
 /*-----------------------OLAP Definition Start-----------------*/
-.e-olapclient .removeSplitBtn {
+.e-pivotclient .removeSplitBtn {
   border-radius: 4px;
 }
 /*-----------------------OLAP Definition End
@@ -24,6 +24,19 @@
 /*----------------------Office 365 theme-----------------------*/
 /*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
 /*----------------------material theme-----------------------*/
+/*--------------- common ----------------- */
+/*---------------high-contrast ------*/
+/*---------------- Office-365 ----------------*/
+/*------------------ material theme ---------------------*/
+/*-----------------------HeatMap Definition-----------------*/
+/* Common style */
+
+.e-content-area {
+  background-color: white;
+  color: #111111;
+  border-color: #cecece;
+  font-family: Segoe UI;
+}
 /*Theme Color*/
 
 /*---------------- RTE Theme CSS----------------------*/
@@ -57,6 +70,14 @@
 }
 .e-rte-imageTab .e-item:focus {
   box-shadow: 1px 0 0 0 #3277b2;
+}
+/*-----------------Tooltip class ----------------------*/
+
+.e-rteTooltip {
+  min-width: auto;
+}
+.e-rteTooltip .e-tipContainer .e-tipcontent {
+  padding: 2px 4px;
 }
 /*----------------------- Toolbar Class-------------------------- */
 
@@ -227,6 +248,24 @@
 .e-rte .e-dialog .e-dialog-tab.e-tab .e-header li,
 .e-rte-context-menu.e-context .e-rte-separator {
   border-color: #cecece;
+}
+.e-rte-context-menu.e-menu .e-list.e-mhover .e-rte-toolbar-icon {
+  color: #333333;
+}
+.e-rte-toolbar .e-toolbar .e-tooltxt.e-active {
+  color: white;
+}
+.e-rte-toolbar .e-toolbar .e-ul {
+  border-color: #cecece;
+}
+.e-rte .e-tooltxt .e-btn.e-select,
+.e-btn.e-ntouch.e-disable.e-select:hover,
+.e-btn.e-disable.e-select:hover,
+.e-tbtn.e-disable {
+  background: #fcfcfc;
+}
+.e-rte .e-tooltxt .e-btn.e-ntouch.e-select:hover {
+  background: #f4f4f4;
 }
 /*---------------- RTE Theme End------------------*/
 

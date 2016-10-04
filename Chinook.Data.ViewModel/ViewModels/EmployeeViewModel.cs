@@ -15,7 +15,6 @@ namespace Chinook.Data
         [Display(Name = "PropertyEmployeeId", ResourceType = typeof(EmployeeResources))]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         //[Key]
-        [Range(1, Int32.MaxValue)]
         [Required]
         public virtual int EmployeeId { get; set; }
         
@@ -85,17 +84,25 @@ namespace Chinook.Data
     
         #endregion Associations FK
 
-        #region Properties ZViewBase
-
-        public override string LookupText { get; set; }
-
-        #endregion Properties ZViewBase
-
         #region Methods
         
         public EmployeeViewModel()
         {
-            EmployeeId = 1;
+            EmployeeId = LibraryDefaults.Default_Int32;
+            LastName = LibraryDefaults.Default_String;
+            FirstName = LibraryDefaults.Default_String;
+            Title = null;
+            ReportsTo = null;
+            BirthDate = null;
+            HireDate = null;
+            Address = null;
+            City = null;
+            State = null;
+            Country = null;
+            PostalCode = null;
+            Phone = null;
+            Fax = null;
+            Email = null;
         }
         
         public EmployeeViewModel(
@@ -116,7 +123,6 @@ namespace Chinook.Data
             string email = null,
             string employeeLookupText = null
         )
-            : this()
         {
             EmployeeId = employeeId;
             LastName = lastName;
@@ -168,9 +174,7 @@ namespace Chinook.Data
                 PostalCode = x.PostalCode,
                 Phone = x.Phone,
                 Fax = x.Fax,
-                Email = x.Email,
-                EmployeeLookupText = x.EmployeeLookupText,
-                LookupText = x.LookupText
+                Email = x.Email
             };
         }
 

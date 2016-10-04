@@ -32,7 +32,7 @@ namespace Chinook.Data
 
         #region Collections (PK)
 
-        public virtual IList<Album> Albums { get; set; }
+        public virtual IList<Album> Albums { get; }
 
         #endregion Collections (PK)
 

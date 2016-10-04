@@ -75,7 +75,7 @@ namespace Chinook.Mvc
                 artistCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return PartialView("_ArtistCollection", artistCollectionModel);
+            return PartialView(artistCollectionModel);
         }
 
         // GET & POST: Artist/Lookup

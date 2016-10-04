@@ -1,84 +1,86 @@
-@model ActivityCollectionModel
+﻿@model ActivityCollectionModel
 
-@(Html.EJ().Grid<Activity>("Grid_Activity")
-    .Datasource(datasource => datasource
-        .Adaptor(AdaptorType.UrlAdaptor)
-        .URL(Url.Content("~/Activity/DataSource"))
-    )
-    .AllowFiltering()
-    .AllowGrouping()
-    .AllowPaging()
-    .AllowResizing()
-    .AllowScrolling()
-    .AllowSearching()
-    .AllowSorting()
-    .ClientSideEvents(clientEvent => clientEvent
-        .ActionBegin("actionBegin_Grid_Activity")
-        .ActionFailure("actionFailure_Grid_Activity")
-        .Load("load_Grid_Activity")
-        .ToolbarClick("toolbarClick_Grid_Activity")
-    )
-    .Columns(column =>
-    {
-        column.Field("Id")
-            .EditType(EditingType.String)
-            .HeaderText(ActivityResources.PropertyId)
-            .IsPrimaryKey(true)
-            .Visible(false)
-            .Width(240)
-            .Add();
-        column.Field("Name")
-            .EditType(EditingType.String)
-            .HeaderText(ActivityResources.PropertyName)
-            .Visible(true)
-            .Width(240)
-            .Add();
-    })
-    .EditSettings(edit => edit
-        .AllowAdding()
-        .AllowDeleting()
-        .AllowEditing()
-    )
-    .EnablePersistence()
-    .FilterSettings(filter => filter
-        .EnableCaseSensitivity(false)
-        .FilterType(FilterType.Excel)
-        .MaxFilterChoices(System.Int32.MaxValue)
-    )
-    .Mappers(map => map
-        .ExportToExcelAction(Url.Content("~/Activity/ExportToExcel"))
-        .ExportToPdfAction(Url.Content("~/Activity/ExportToPdf"))
-        .ExportToWordAction(Url.Content("~/Activity/ExportToWord"))
-    )
-    .PageSettings(page => page
-        .PageSize(AppDefaults.SyncfusionRecordsByPage)
-    )
-    .SearchSettings(search =>
-    {
-        search.Fields(field =>
+<div id="Collection_Activity">
+    @(Html.EJ().Grid<Activity>("Grid_Activity")
+        .Datasource(datasource => datasource
+            .Adaptor(AdaptorType.UrlAdaptor)
+            .URL(Url.Content("~/Activity/DataSource"))
+        )
+        .AllowFiltering()
+        .AllowGrouping()
+        .AllowPaging()
+        .AllowResizing()
+        .AllowScrolling()
+        .AllowSearching()
+        .AllowSorting()
+        .ClientSideEvents(clientEvent => clientEvent
+            .ActionBegin("actionBegin_Grid_Activity")
+            .ActionFailure("actionFailure_Grid_Activity")
+            .Load("load_Grid_Activity")
+            .ToolbarClick("toolbarClick_Grid_Activity")
+        )
+        .Columns(column =>
         {
-            //field.Add("Id");
-            field.Add("Name");
-        });
-    })
-    .ShowColumnChooser()
-    .ToolbarSettings(toolbar => toolbar
-        .CustomToolbarItems(new List<object>() {
-            new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_Activity" }
+            column.Field("Id")
+                .EditType(EditingType.String)
+                .HeaderText(ActivityResources.PropertyId)
+                .IsPrimaryKey(true)
+                .Visible(false)
+                .Width(240)
+                .Add();
+            column.Field("Name")
+                .EditType(EditingType.String)
+                .HeaderText(ActivityResources.PropertyName)
+                .Visible(true)
+                .Width(240)
+                .Add();
         })
-        .ShowToolbar()
-        .ToolbarItems(items =>
+        .EditSettings(edit => edit
+            .AllowAdding()
+            .AllowDeleting()
+            .AllowEditing()
+        )
+        .EnablePersistence()
+        .FilterSettings(filter => filter
+            .EnableCaseSensitivity(false)
+            .FilterType(FilterType.Excel)
+            .MaxFilterChoices(System.Int32.MaxValue)
+        )
+        .Mappers(map => map
+            .ExportToExcelAction(Url.Content("~/Activity/ExportToExcel"))
+            .ExportToPdfAction(Url.Content("~/Activity/ExportToPdf"))
+            .ExportToWordAction(Url.Content("~/Activity/ExportToWord"))
+        )
+        .PageSettings(page => page
+            .PageSize(AppDefaults.SyncfusionRecordsByPage)
+        )
+        .SearchSettings(search =>
         {
-            items.AddTool(ToolBarItems.Search);
-            items.AddTool(ToolBarItems.Add);
-            items.AddTool(ToolBarItems.Edit);
-            items.AddTool(ToolBarItems.Delete);
-            items.AddTool(ToolBarItems.ExcelExport);
-            items.AddTool(ToolBarItems.PdfExport);
-            items.AddTool(ToolBarItems.WordExport);
+            search.Fields(field =>
+            {
+                //field.Add("Id");
+                field.Add("Name");
+            });
         })
+        .ShowColumnChooser()
+        .ToolbarSettings(toolbar => toolbar
+            .CustomToolbarItems(new List<object>() {
+                new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Toolbar_Grid_Activity" }
+            })
+            .ShowToolbar()
+            .ToolbarItems(items =>
+            {
+                items.AddTool(ToolBarItems.Search);
+                items.AddTool(ToolBarItems.Add);
+                items.AddTool(ToolBarItems.Edit);
+                items.AddTool(ToolBarItems.Delete);
+                items.AddTool(ToolBarItems.ExcelExport);
+                items.AddTool(ToolBarItems.PdfExport);
+                items.AddTool(ToolBarItems.WordExport);
+            })
+        )
     )
-)
+</div>
 
 @Html.OperationResult(Model.OperationResult)
 
@@ -90,6 +92,13 @@
     $(function () {
         try {
             var model = function () { return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)); }();
+
+            if (model.IsSecurityOperations.IsSearch) {
+                $("#Collection_Activity").css("display", "block");
+            }
+            else {
+                $("#Collection_Activity").css("display", "none");
+            }
 
             var gridActivity = $("#Grid_Activity");
             var ejGridActivity = gridActivity.data("ejGrid");

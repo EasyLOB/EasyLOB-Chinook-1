@@ -20,10 +20,26 @@
 /*----------------------Office 365 theme-----------------------*/
 /*----------------------High-Contrast-01 & High-Contrast-02 theme-----------------------*/
 /*----------------------material theme-----------------------*/
+/*--------------- common ----------------- */
+/*---------------high-contrast ------*/
+/*---------------- Office-365 ----------------*/
+/*------------------ material theme ---------------------*/
+/*-----------------------HeatMap Definition-----------------*/
+/* Common style */
+
+.e-content-area {
+  background-color: white;
+  color: #111111;
+  border-color: #c8c8c8;
+  font-family: Segoe UI;
+}
 .e-fileexplorer,
 .e-fileexplorer input,
 input.e-fe-dialog-text,
 .e-fe-toolbar.e-responsive-toolbar input {
+  border-color: #c8c8c8;
+}
+.e-fileexplorer {
   border-color: #c8c8c8;
 }
 .e-fileexplorer .e-splitter .e-splitbar,
@@ -58,8 +74,13 @@ input.e-fe-dialog-text,
 .e-fileexplorer .e-tileview .e-tilenode.e-active:hover .e-name {
   color: #282827;
 }
-.e-fileexplorer .e-toolbar .e-feItem-Layout .e-active .e-icon {
+.e-fileexplorer .e-toolbar .e-fe-split-button .e-active .e-icon,
+.fe-context-menu.e-menu.e-context .e-list.e-active > .e-menulink > .e-fileexplorer-toolbar-icon {
   color: white;
+}
+.e-fileexplorer .e-toolbar .e-fe-split-button.e-hover .e-active .e-icon,
+.e-fileexplorer .e-toolbar .e-fe-split-button.e-hover .e-icon {
+  color: #282827;
 }
 .e-fileexplorer .e-treeview .e-fe-node-hover,
 .e-fe-dialog.e-icon.e-close:hover {
@@ -119,8 +140,8 @@ input.e-fe-dialog-text,
 .e-fileexplorer .e-swithListView.e-button:hover {
   background: #86cbea;
 }
-.e-fileexplorer .e-toolbar .e-feItem-Layout.e-hover .e-btn.e-select,
-.e-fileexplorer .e-toolbar .e-feItem-Layout .e-btn.e-select:focus {
+.e-fileexplorer .e-toolbar .e-fe-split-button.e-hover .e-btn.e-select,
+.e-fileexplorer .e-toolbar .e-fe-split-button .e-btn.e-select:focus {
   background: #86cbea;
 }
 .e-fileexplorer .e-toolbar {
@@ -170,10 +191,10 @@ input.e-fe-dialog-text,
 .e-fileexplorer .e-toolbar .e-feItem-Addressbar.e-active,
 .e-fe-toolbar.e-responsive-toolbar .e-feItem-Searchbar.e-active,
 .e-fe-toolbar.e-responsive-toolbar .e-feItem-Addressbar.e-active,
-.e-fileexplorer .e-toolbar .e-feItem-Layout.e-hover,
-.e-fe-toolbar.e-responsive-toolbar .e-feItem-Layout.e-hover,
-.e-fileexplorer .e-toolbar .e-feItem-Layout.e-active,
-.e-fe-toolbar.e-responsive-toolbar .e-feItem-Layout.e-active {
+.e-fileexplorer .e-toolbar .e-fe-split-button.e-hover,
+.e-fe-toolbar.e-responsive-toolbar .e-fe-split-button.e-hover,
+.e-fileexplorer .e-toolbar .e-fe-split-button.e-active,
+.e-fe-toolbar.e-responsive-toolbar .e-fe-split-button.e-active {
   background: #ececec;
   border-color: #ececec;
 }
@@ -184,7 +205,7 @@ input.e-fe-dialog-text,
 .e-dialog .e-fe-table table .e-border {
   border-color: #c8c8c8;
 }
-.e-fileexplorer .e-toolbar .e-feItem-Layout .e-active .e-btn {
+.e-fileexplorer .e-toolbar .e-fe-split-button .e-active .e-btn {
   background: #179bd7;
   color: white;
 }
@@ -217,4 +238,14 @@ input.e-fe-dialog-text,
 
 .e-fileexplorer .e-toolbar {
   border-bottom-color: #179bd7;
+}
+.fe-context-menu.e-menu.e-context .e-mhover > a > span.e-fileexplorer-toolbar-icon,
+.fe-context-menu.e-menu.e-context .e-mfocused > a > span.e-fileexplorer-toolbar-icon {
+  color: #282827;
+}
+.e-fileexplorer .e-toolbar > ul > li .e-split.e-active .e-splitbutton.e-btn.e-select {
+  background: #179bd7;
+}
+.e-fileexplorer .e-toolbar > ul > .e-fe-split-button.e-hover .e-split.e-active .e-splitbutton.e-btn.e-select {
+  background: #86cbea;
 }
