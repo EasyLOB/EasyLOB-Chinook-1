@@ -2,23 +2,24 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using Chinook.Data;
 using Chinook.Data.Resources;
 using EasyLOB.Data;
 using EasyLOB.Library;
 
-namespace Chinook.Data
+namespace Chinook.Mvc
 {
-    public partial class MediaTypeViewModel : ZViewBase<MediaTypeViewModel, MediaTypeDTO, MediaType>
+    public partial class ArtistViewModel : ZViewBase<ArtistViewModel, ArtistDTO, Artist>
     {
         #region Properties
         
-        [Display(Name = "PropertyMediaTypeId", ResourceType = typeof(MediaTypeResources))]
+        [Display(Name = "PropertyArtistId", ResourceType = typeof(ArtistResources))]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         //[Key]
         [Required]
-        public virtual int MediaTypeId { get; set; }
+        public virtual int ArtistId { get; set; }
         
-        [Display(Name = "PropertyName", ResourceType = typeof(MediaTypeResources))]
+        [Display(Name = "PropertyName", ResourceType = typeof(ArtistResources))]
         [StringLength(120)]
         public virtual string Name { get; set; }
 
@@ -26,27 +27,27 @@ namespace Chinook.Data
 
         #region Methods
         
-        public MediaTypeViewModel()
+        public ArtistViewModel()
         {
-            MediaTypeId = LibraryDefaults.Default_Int32;
+            ArtistId = LibraryDefaults.Default_Int32;
             Name = null;
         }
         
-        public MediaTypeViewModel(
-            int mediaTypeId,
+        public ArtistViewModel(
+            int artistId,
             string name = null
         )
         {
-            MediaTypeId = mediaTypeId;
+            ArtistId = artistId;
             Name = name;
         }
 
-        public MediaTypeViewModel(IZDataBase data)
+        public ArtistViewModel(IZDataBase data)
         {
             FromData(data);
         }
 
-        public MediaTypeViewModel(IZDTOBase<MediaTypeDTO, MediaType> dto)
+        public ArtistViewModel(IZDTOBase<ArtistDTO, Artist> dto)
         {
             FromDTO(dto);
         }
@@ -55,20 +56,20 @@ namespace Chinook.Data
 
         #region Methods ZViewBase
 
-        public override Func<MediaTypeViewModel, MediaTypeDTO> GetDTOSelector()
+        public override Func<ArtistViewModel, ArtistDTO> GetDTOSelector()
         {
-            return x => new MediaTypeDTO
+            return x => new ArtistDTO
             {
-                MediaTypeId = x.MediaTypeId,
+                ArtistId = x.ArtistId,
                 Name = x.Name
             };
         }
 
-        public override Func<MediaTypeDTO, MediaTypeViewModel> GetViewSelector()
+        public override Func<ArtistDTO, ArtistViewModel> GetViewSelector()
         {
-            return x => new MediaTypeViewModel
+            return x => new ArtistViewModel
             {
-                MediaTypeId = x.MediaTypeId,
+                ArtistId = x.ArtistId,
                 Name = x.Name,
                 LookupText = x.LookupText
             };
@@ -78,19 +79,19 @@ namespace Chinook.Data
         {
             if (data != null)
             {
-                MediaTypeDTO dto = new MediaTypeDTO(data);
-                MediaTypeViewModel view = (new List<MediaTypeDTO> { (MediaTypeDTO)dto })
+                ArtistDTO dto = new ArtistDTO(data);
+                ArtistViewModel view = (new List<ArtistDTO> { (ArtistDTO)dto })
                     .Select(GetViewSelector())
                     .SingleOrDefault();
                 LibraryHelper.Clone(view, this);            
             }
         }
 
-        public override void FromDTO(IZDTOBase<MediaTypeDTO, MediaType> dto)
+        public override void FromDTO(IZDTOBase<ArtistDTO, Artist> dto)
         {
             if (dto != null)
             {
-                MediaTypeViewModel view = (new List<MediaTypeDTO> { (MediaTypeDTO)dto })
+                ArtistViewModel view = (new List<ArtistDTO> { (ArtistDTO)dto })
                     .Select(GetViewSelector())
                     .SingleOrDefault();
                 LibraryHelper.Clone(view, this);
@@ -102,9 +103,9 @@ namespace Chinook.Data
             return ToDTO().ToData();
         }
         
-        public override IZDTOBase<MediaTypeDTO, MediaType> ToDTO()
+        public override IZDTOBase<ArtistDTO, Artist> ToDTO()
         {
-            return (new List<MediaTypeViewModel> { this })
+            return (new List<ArtistViewModel> { this })
                 .Select(GetDTOSelector())
                 .SingleOrDefault();   
         }

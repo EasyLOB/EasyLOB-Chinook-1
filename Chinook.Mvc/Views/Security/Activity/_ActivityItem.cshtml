@@ -84,6 +84,9 @@
             // ActivityRole
             var gridActivityRole = $("#Grid_ActivityRole");
             gridActivityRole.css("display", display);
+
+            // !!!            
+            $("#Group_Activity_Id").hide();
         } catch (exception) {
             alert(zExceptionMessage("_ActivityItem.cshtml", "function()", exception));
         }    

@@ -2,11 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using Chinook.Data;
 using Chinook.Data.Resources;
 using EasyLOB.Data;
 using EasyLOB.Library;
 
-namespace Chinook.Data
+namespace Chinook.Mvc
 {
     public partial class CustomerViewModel : ZViewBase<CustomerViewModel, CustomerDTO, Customer>
     {

@@ -2,23 +2,24 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using Chinook.Data;
 using Chinook.Data.Resources;
 using EasyLOB.Data;
 using EasyLOB.Library;
 
-namespace Chinook.Data
+namespace Chinook.Mvc
 {
-    public partial class GenreViewModel : ZViewBase<GenreViewModel, GenreDTO, Genre>
+    public partial class ArtistViewModel : ZViewBase<ArtistViewModel, ArtistDTO, Artist>
     {
         #region Properties
         
-        [Display(Name = "PropertyGenreId", ResourceType = typeof(GenreResources))]
+        [Display(Name = "PropertyArtistId", ResourceType = typeof(ArtistResources))]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         //[Key]
         [Required]
-        public virtual int GenreId { get; set; }
+        public virtual int ArtistId { get; set; }
         
-        [Display(Name = "PropertyName", ResourceType = typeof(GenreResources))]
+        [Display(Name = "PropertyName", ResourceType = typeof(ArtistResources))]
         [StringLength(120)]
         public virtual string Name { get; set; }
 
@@ -26,27 +27,27 @@ namespace Chinook.Data
 
         #region Methods
         
-        public GenreViewModel()
+        public ArtistViewModel()
         {
-            GenreId = LibraryDefaults.Default_Int32;
+            ArtistId = LibraryDefaults.Default_Int32;
             Name = null;
         }
         
-        public GenreViewModel(
-            int genreId,
+        public ArtistViewModel(
+            int artistId,
             string name = null
         )
         {
-            GenreId = genreId;
+            ArtistId = artistId;
             Name = name;
         }
 
-        public GenreViewModel(IZDataBase data)
+        public ArtistViewModel(IZDataBase data)
         {
             FromData(data);
         }
 
-        public GenreViewModel(IZDTOBase<GenreDTO, Genre> dto)
+        public ArtistViewModel(IZDTOBase<ArtistDTO, Artist> dto)
         {
             FromDTO(dto);
         }
@@ -55,20 +56,20 @@ namespace Chinook.Data
 
         #region Methods ZViewBase
 
-        public override Func<GenreViewModel, GenreDTO> GetDTOSelector()
+        public override Func<ArtistViewModel, ArtistDTO> GetDTOSelector()
         {
-            return x => new GenreDTO
+            return x => new ArtistDTO
             {
-                GenreId = x.GenreId,
+                ArtistId = x.ArtistId,
                 Name = x.Name
             };
         }
 
-        public override Func<GenreDTO, GenreViewModel> GetViewSelector()
+        public override Func<ArtistDTO, ArtistViewModel> GetViewSelector()
         {
-            return x => new GenreViewModel
+            return x => new ArtistViewModel
             {
-                GenreId = x.GenreId,
+                ArtistId = x.ArtistId,
                 Name = x.Name,
                 LookupText = x.LookupText
             };
@@ -78,19 +79,19 @@ namespace Chinook.Data
         {
             if (data != null)
             {
-                GenreDTO dto = new GenreDTO(data);
-                GenreViewModel view = (new List<GenreDTO> { (GenreDTO)dto })
+                ArtistDTO dto = new ArtistDTO(data);
+                ArtistViewModel view = (new List<ArtistDTO> { (ArtistDTO)dto })
                     .Select(GetViewSelector())
                     .SingleOrDefault();
                 LibraryHelper.Clone(view, this);            
             }
         }
 
-        public override void FromDTO(IZDTOBase<GenreDTO, Genre> dto)
+        public override void FromDTO(IZDTOBase<ArtistDTO, Artist> dto)
         {
             if (dto != null)
             {
-                GenreViewModel view = (new List<GenreDTO> { (GenreDTO)dto })
+                ArtistViewModel view = (new List<ArtistDTO> { (ArtistDTO)dto })
                     .Select(GetViewSelector())
                     .SingleOrDefault();
                 LibraryHelper.Clone(view, this);
@@ -102,9 +103,9 @@ namespace Chinook.Data
             return ToDTO().ToData();
         }
         
-        public override IZDTOBase<GenreDTO, Genre> ToDTO()
+        public override IZDTOBase<ArtistDTO, Artist> ToDTO()
         {
-            return (new List<GenreViewModel> { this })
+            return (new List<ArtistViewModel> { this })
                 .Select(GetDTOSelector())
                 .SingleOrDefault();   
         }

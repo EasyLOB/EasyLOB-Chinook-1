@@ -291,14 +291,35 @@
     <Compile Include="Models\AuditTrail\CollectionModels\AuditTrailLogCollectionModel.cs" />
     <Compile Include="Models\AuditTrail\ItemModels\AuditTrailConfigurationItemModel.cs" />
     <Compile Include="Models\AuditTrail\ItemModels\AuditTrailLogItemModel.cs" />
+    <Compile Include="Models\AuditTrail\ViewModels\AuditTrailConfigurationViewModel.cs" />
+    <Compile Include="Models\AuditTrail\ViewModels\AuditTrailLogViewModel.cs" />
     <Compile Include="Models\Chinook\CollectionModels\CustomerDocumentCollectionModel.cs" />
     <Compile Include="Models\Chinook\ItemModels\CustomerDocumentItemModel.cs" />
     <Compile Include="Models\Chinook\Tasks\TaskImportGenreModel.cs" />
     <Compile Include="Models\Chinook\Tasks\TaskSalesModel.cs" />
+    <Compile Include="Models\Chinook\ViewModels\AlbumViewModel.cs" />
+    <Compile Include="Models\Chinook\ViewModels\ArtistViewModel.cs" />
+    <Compile Include="Models\Chinook\ViewModels\CustomerDocumentViewModel.cs" />
+    <Compile Include="Models\Chinook\ViewModels\CustomerViewModel.cs" />
+    <Compile Include="Models\Chinook\ViewModels\EmployeeViewModel.cs" />
+    <Compile Include="Models\Chinook\ViewModels\GenreViewModel.cs" />
+    <Compile Include="Models\Chinook\ViewModels\InvoiceLineViewModel.cs" />
+    <Compile Include="Models\Chinook\ViewModels\InvoiceViewModel.cs" />
+    <Compile Include="Models\Chinook\ViewModels\MediaTypeViewModel.cs" />
+    <Compile Include="Models\Chinook\ViewModels\PlaylistTrackViewModel.cs" />
+    <Compile Include="Models\Chinook\ViewModels\PlaylistViewModel.cs" />
+    <Compile Include="Models\Chinook\ViewModels\TrackViewModel.cs" />
     <Compile Include="Models\Identity\AccountViewModels.cs" />
     <Compile Include="Models\Identity\ManageViewModels.cs" />
     <Compile Include="Models\Reports\ReportModelRDL.cs" />
     <Compile Include="Models\Reports\ReportModelRDLC.cs" />
+    <Compile Include="Models\Security\ViewModels\ActivityRoleViewModel.cs" />
+    <Compile Include="Models\Security\ViewModels\ActivityViewModel.cs" />
+    <Compile Include="Models\Security\ViewModels\RoleViewModel.cs" />
+    <Compile Include="Models\Security\ViewModels\UserClaimViewModel.cs" />
+    <Compile Include="Models\Security\ViewModels\UserLoginViewModel.cs" />
+    <Compile Include="Models\Security\ViewModels\UserRoleViewModel.cs" />
+    <Compile Include="Models\Security\ViewModels\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\AccountResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1719,10 +1740,6 @@
     <ProjectReference Include="..\Chinook.Data.DTO\Chinook.Data.DTO.csproj">
       <Project>{23a32c53-01ae-4354-92f3-3ac50907ce5c}</Project>
       <Name>Chinook.Data.DTO</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Chinook.Data.ViewModel\Chinook.Data.ViewModel.csproj">
-      <Project>{1bbb4c93-56f2-440b-a12a-6c522466274b}</Project>
-      <Name>Chinook.Data.ViewModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\Chinook.Data\Chinook.Data.csproj">
       <Project>{9536d998-473d-4ee6-bb32-45a9c7b38297}</Project>

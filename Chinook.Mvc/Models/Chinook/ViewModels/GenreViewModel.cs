@@ -2,23 +2,24 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using Chinook.Data;
 using Chinook.Data.Resources;
 using EasyLOB.Data;
 using EasyLOB.Library;
 
-namespace Chinook.Data
+namespace Chinook.Mvc
 {
-    public partial class PlaylistViewModel : ZViewBase<PlaylistViewModel, PlaylistDTO, Playlist>
+    public partial class GenreViewModel : ZViewBase<GenreViewModel, GenreDTO, Genre>
     {
         #region Properties
         
-        [Display(Name = "PropertyPlaylistId", ResourceType = typeof(PlaylistResources))]
+        [Display(Name = "PropertyGenreId", ResourceType = typeof(GenreResources))]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         //[Key]
         [Required]
-        public virtual int PlaylistId { get; set; }
+        public virtual int GenreId { get; set; }
         
-        [Display(Name = "PropertyName", ResourceType = typeof(PlaylistResources))]
+        [Display(Name = "PropertyName", ResourceType = typeof(GenreResources))]
         [StringLength(120)]
         public virtual string Name { get; set; }
 
@@ -26,27 +27,27 @@ namespace Chinook.Data
 
         #region Methods
         
-        public PlaylistViewModel()
+        public GenreViewModel()
         {
-            PlaylistId = LibraryDefaults.Default_Int32;
+            GenreId = LibraryDefaults.Default_Int32;
             Name = null;
         }
         
-        public PlaylistViewModel(
-            int playlistId,
+        public GenreViewModel(
+            int genreId,
             string name = null
         )
         {
-            PlaylistId = playlistId;
+            GenreId = genreId;
             Name = name;
         }
 
-        public PlaylistViewModel(IZDataBase data)
+        public GenreViewModel(IZDataBase data)
         {
             FromData(data);
         }
 
-        public PlaylistViewModel(IZDTOBase<PlaylistDTO, Playlist> dto)
+        public GenreViewModel(IZDTOBase<GenreDTO, Genre> dto)
         {
             FromDTO(dto);
         }
@@ -55,20 +56,20 @@ namespace Chinook.Data
 
         #region Methods ZViewBase
 
-        public override Func<PlaylistViewModel, PlaylistDTO> GetDTOSelector()
+        public override Func<GenreViewModel, GenreDTO> GetDTOSelector()
         {
-            return x => new PlaylistDTO
+            return x => new GenreDTO
             {
-                PlaylistId = x.PlaylistId,
+                GenreId = x.GenreId,
                 Name = x.Name
             };
         }
 
-        public override Func<PlaylistDTO, PlaylistViewModel> GetViewSelector()
+        public override Func<GenreDTO, GenreViewModel> GetViewSelector()
         {
-            return x => new PlaylistViewModel
+            return x => new GenreViewModel
             {
-                PlaylistId = x.PlaylistId,
+                GenreId = x.GenreId,
                 Name = x.Name,
                 LookupText = x.LookupText
             };
@@ -78,19 +79,19 @@ namespace Chinook.Data
         {
             if (data != null)
             {
-                PlaylistDTO dto = new PlaylistDTO(data);
-                PlaylistViewModel view = (new List<PlaylistDTO> { (PlaylistDTO)dto })
+                GenreDTO dto = new GenreDTO(data);
+                GenreViewModel view = (new List<GenreDTO> { (GenreDTO)dto })
                     .Select(GetViewSelector())
                     .SingleOrDefault();
                 LibraryHelper.Clone(view, this);            
             }
         }
 
-        public override void FromDTO(IZDTOBase<PlaylistDTO, Playlist> dto)
+        public override void FromDTO(IZDTOBase<GenreDTO, Genre> dto)
         {
             if (dto != null)
             {
-                PlaylistViewModel view = (new List<PlaylistDTO> { (PlaylistDTO)dto })
+                GenreViewModel view = (new List<GenreDTO> { (GenreDTO)dto })
                     .Select(GetViewSelector())
                     .SingleOrDefault();
                 LibraryHelper.Clone(view, this);
@@ -102,9 +103,9 @@ namespace Chinook.Data
             return ToDTO().ToData();
         }
         
-        public override IZDTOBase<PlaylistDTO, Playlist> ToDTO()
+        public override IZDTOBase<GenreDTO, Genre> ToDTO()
         {
-            return (new List<PlaylistViewModel> { this })
+            return (new List<GenreViewModel> { this })
                 .Select(GetDTOSelector())
                 .SingleOrDefault();   
         }
