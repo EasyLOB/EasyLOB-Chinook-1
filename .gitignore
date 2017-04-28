@@ -5,6 +5,10 @@
 EasyLOB-Export/
 EasyLOB-Import/
 *Backup.rdl
+*.rdl.data
+
+# EasyLOB
+Help/Help/
 
 # User-specific files
 *.suo
@@ -22,9 +26,9 @@ EasyLOB-Import/
 [Rr]eleases/
 x64/
 x86/
-bld/
-[Bb]in/
-[Oo]bj/
+# bld/
+# [Bb]in/
+# [Oo]bj/
 
 # Visual Studio 2015 cache/options directory
 .vs/
@@ -65,7 +69,7 @@ artifacts/
 *.tlh
 *.tmp
 *.tmp_proj
-*.log
+# *.log
 *.vspscc
 *.vssscc
 .builds
