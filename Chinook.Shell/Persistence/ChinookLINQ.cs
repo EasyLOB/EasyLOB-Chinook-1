@@ -1,11 +1,13 @@
 ﻿using Chinook.Data;
 using Chinook.Persistence;
 using EasyLOB;
+using EasyLOB.Library;
 using EasyLOB.Persistence;
 using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Linq;
 using System.Linq.Dynamic;
 
 // http://stackoverflow.com/questions/13692015/how-to-rewrite-this-linq-using-join-with-lambda-expressions
@@ -55,5 +57,42 @@ namespace Chinook.Shell
                 Console.WriteLine("{0} {1}", genre.GenreId, genre.Name);
             }
         }
+
+        private static void PersistenceChinookLINQDataContextDemo()
+        {
+            Console.WriteLine("\nPersistence Chinook LINQ DataContext Demo");
+
+            //string connectionString = LibraryHelper.ConnectionStrings("Chinook");
+            //MyChinookDataContext dataContext = new MyChinookDataContext(connectionString);
+
+            //Console.WriteLine("\nLINQ DataContext");
+            //var genres =
+            //    from g in dataContext.Genres
+            //    select new
+            //    {
+            //        g.GenreId,
+            //        g.Name
+            //    };
+            //foreach (var genre in genres)
+            //{
+            //    Console.WriteLine("{0} {1}", genre.GenreId, genre.Name);
+            //}
+        }
     }
+
+    //[Table("Genre")]
+    ////[Table(Name = "Genre")]
+    //public class MyGenre : Genre
+    //{
+    //}
+
+    //public class MyChinookDataContext : DataContext
+    //{
+    //    public Table<MyGenre> Genres;
+
+    //    public MyChinookDataContext(String connString)
+    //        : base(connString)
+    //    {
+    //    }
+    //}
 }

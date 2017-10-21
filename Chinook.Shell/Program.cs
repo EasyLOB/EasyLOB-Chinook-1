@@ -11,7 +11,7 @@ namespace Chinook.Shell
             bool exit = false;
 
             // Hangfire
-            GlobalConfiguration.Configuration.UseSqlServerStorage("hangfire");
+            //GlobalConfiguration.Configuration.UseSqlServerStorage("hangfire");
 
             while (!exit)
             {

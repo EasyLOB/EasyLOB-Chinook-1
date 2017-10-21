@@ -14,8 +14,8 @@ namespace EasyLOB
             container.RegisterType(typeof(IChinookApplication), typeof(ChinookApplication));
 
             // Entity Framework
-            //container.RegisterType(typeof(IChinookUnitOfWork), typeof(ChinookUnitOfWorkEF));
-            //container.RegisterType(typeof(IChinookGenericRepository<>), typeof(ChinookGenericRepositoryEF<>));
+            container.RegisterType(typeof(IChinookUnitOfWork), typeof(ChinookUnitOfWorkEF));
+            container.RegisterType(typeof(IChinookGenericRepository<>), typeof(ChinookGenericRepositoryEF<>));
 
             // LINQ to DB
             //container.RegisterType(typeof(IChinookUnitOfWork), typeof(ChinookUnitOfWorkLINQ2DB));
@@ -34,8 +34,8 @@ namespace EasyLOB
             //container.RegisterType(typeof(IChinookGenericRepository<>), typeof(ChinookGenericRepositoryRavenDB<>));
 
             // Redis
-            container.RegisterType(typeof(IChinookUnitOfWork), typeof(ChinookUnitOfWorkRedis));
-            container.RegisterType(typeof(IChinookGenericRepository<>), typeof(ChinookGenericRepositoryRedis<>));
+            //container.RegisterType(typeof(IChinookUnitOfWork), typeof(ChinookUnitOfWorkRedis));
+            //container.RegisterType(typeof(IChinookGenericRepository<>), typeof(ChinookGenericRepositoryRedis<>));
         }
     }
 }

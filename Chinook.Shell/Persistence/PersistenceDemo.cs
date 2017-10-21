@@ -23,6 +23,7 @@ namespace Chinook.Shell
                 Console.WriteLine("<8> Chinook Transaction Commit Demo (*)");
                 Console.WriteLine("<9> Chinook Transaction Rollback Demo (*)");
                 Console.WriteLine("<A> Security Demo");
+                Console.WriteLine("<B> Chinook LIND DataContext Demo");
                 Console.WriteLine("\n(*) NoSQL Databases MongoDb, RavenDB and Redis DO NOT SUPPORT TRANSACTION");
                 Console.Write("\nChoose an option... ");
 
@@ -73,6 +74,10 @@ namespace Chinook.Shell
 
                     case ('A'):
                         PersistenceSecurityDemo();
+                        break;
+
+                    case ('B'):
+                        PersistenceChinookLINQDataContextDemo();
                         break;
                 }
 
