@@ -4,4 +4,4 @@ Please, refer to the [Wiki](https://github.com/EasyLOB/EasyLOB/wiki) for full Do
 
 # EasyLOB Chinook
 
-![alt tag](https://github.com/EasyLOB/EasyLOB/wiki/Media/Solution.Chinook.png)
+![alt tag](https://github.com/EasyLOB/EasyLOB-1/wiki/Media/Solution.Chinook.png)
